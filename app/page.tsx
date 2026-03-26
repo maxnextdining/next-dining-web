@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { brands } from "@/lib/brands";
 import type { Metadata } from "next";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "NEXT DINING — 넥스트다이닝",
@@ -8,7 +9,6 @@ export const metadata: Metadata = {
     "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영합니다. 서울 한남동, 강남, 명동, 잠실 등 전국 15개 매장.",
 };
 
-// 홈페이지 브랜드 카테고리별 배치 순서
 const BRAND_SECTIONS = [
   {
     label: "한식",
@@ -105,6 +105,13 @@ const FAQ_ITEMS = [
   },
 ];
 
+// Stats for the hero
+const STATS = [
+  { value: "10", label: "브랜드" },
+  { value: "15+", label: "직영 매장" },
+  { value: "4", label: "도시" },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -112,30 +119,57 @@ export default function HomePage() {
       <FaqJsonLd items={FAQ_ITEMS} />
 
       {/* 히어로 */}
-      <section className="relative min-h-[85vh] bg-stone-950 text-white overflow-hidden flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-950/70 to-stone-950" />
+      <section className="relative min-h-[90vh] hero-gradient text-white overflow-hidden flex items-center noise-overlay">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
+
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <p className="text-xs font-semibold tracking-[0.3em] text-stone-500 uppercase mb-8">
-            Next Dining
-          </p>
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight max-w-4xl">
-            음식이 만드는
-            <br />
-            <span className="text-stone-400">새로운 기준</span>
-          </h1>
-          <p className="mt-8 text-lg sm:text-xl text-stone-400 max-w-xl leading-relaxed">
-            봉우리 한정식부터 나가사키 장인 돈카츠까지.
-            <br className="hidden sm:block" />
-            10개 브랜드가 각자의 철학과 이야기로 한국 외식의 수준을 높입니다.
-          </p>
-          <div className="mt-12 flex flex-wrap gap-4">
-            <Link href="/brands" className="bg-white text-stone-900 px-8 py-4 rounded-xl text-sm font-semibold hover:bg-stone-100 transition-colors">
-              브랜드 보기
-            </Link>
-            <Link href="/contact" className="border border-stone-600 text-stone-300 px-8 py-4 rounded-xl text-sm font-semibold hover:border-stone-400 hover:text-white transition-colors">
-              문의하기
-            </Link>
-          </div>
+          <ScrollReveal>
+            <p className="text-xs font-semibold tracking-[0.35em] text-stone-400 uppercase mb-8">
+              Next Dining Corp.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <h1 className="text-5xl sm:text-7xl lg:text-[5.5rem] font-bold leading-[1.02] tracking-tight max-w-5xl">
+              검증된 장인의 맛을
+              <br />
+              <span className="text-gradient">새로운 기준</span>으로
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal delay={200}>
+            <p className="mt-8 text-lg sm:text-xl text-stone-400 max-w-xl leading-relaxed">
+              봉우리 한정식부터 나가사키 장인 돈카츠, 뉴욕 맨해튼까지.
+              <br className="hidden sm:block" />
+              10개 브랜드가 각자의 철학과 이야기로 한국 외식의 수준을 높입니다.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={300}>
+            <div className="mt-12 flex flex-wrap gap-4">
+              <Link href="/brands" className="group relative bg-white text-stone-900 px-8 py-4 rounded-xl text-sm font-semibold overflow-hidden transition-all hover:shadow-lg hover:shadow-white/10">
+                <span className="relative z-10">브랜드 보기</span>
+                <div className="absolute inset-0 bg-stone-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link href="/contact" className="glass text-stone-300 px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white/10 transition-all">
+                입점 문의
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          {/* Stats */}
+          <ScrollReveal delay={500}>
+            <div className="mt-20 flex gap-12 sm:gap-16">
+              {STATS.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-3xl sm:text-4xl font-bold text-white">{stat.value}</p>
+                  <p className="text-xs text-stone-500 mt-1 tracking-wider uppercase">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -148,65 +182,87 @@ export default function HomePage() {
         return (
           <section
             key={section.label}
-            className={`${sectionIdx % 2 === 0 ? "bg-white" : "bg-stone-50"} py-20`}
+            className={`${sectionIdx % 2 === 0 ? "bg-white" : "bg-stone-50/50"} py-24`}
           >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="mb-10">
-                <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">
-                  {section.labelEn}
-                </p>
-                <h2 className="text-2xl sm:text-3xl font-bold">{section.label}</h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {sectionBrands.map((brand) => {
+              <ScrollReveal>
+                <div className="mb-12">
+                  <p className="text-xs font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">
+                    {section.labelEn}
+                  </p>
+                  <h2 className="text-3xl sm:text-4xl font-bold">{section.label}</h2>
+                  <div className="mt-4 w-12 h-0.5 bg-stone-900" />
+                </div>
+              </ScrollReveal>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {sectionBrands.map((brand, brandIdx) => {
                   if (!brand) return null;
                   return (
-                    <Link
-                      key={brand.id}
-                      href={`/brands/${brand.id}`}
-                      className="group block rounded-2xl overflow-hidden border border-stone-100 hover:border-stone-300 hover:shadow-lg transition-all bg-white"
-                    >
-                      <div className="aspect-[4/3] bg-stone-100 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300 group-hover:scale-105 transition-transform duration-500" />
-                        {brand.locations.some((l) => l.status === "coming-soon") && (
-                          <div className="absolute top-3 right-3">
-                            <span className="text-xs bg-amber-400/90 px-2 py-1 rounded-full text-amber-900 font-medium">
-                              신규 오픈 예정
+                    <ScrollReveal key={brand.id} delay={brandIdx * 100}>
+                      <Link
+                        href={`/brands/${brand.id}`}
+                        className="brand-card group block rounded-2xl overflow-hidden border border-stone-100 bg-white"
+                      >
+                        <div className="aspect-[4/3] relative overflow-hidden">
+                          <div
+                            className={`brand-image absolute inset-0 brand-gradient-${brand.id}`}
+                          />
+                          {/* Brand initial overlay */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-white/20 text-[120px] font-bold leading-none select-none">
+                              {brand.nameEn.charAt(0)}
                             </span>
                           </div>
-                        )}
-                      </div>
-                      <div className="p-5">
-                        <p className="text-xs text-stone-400 font-medium tracking-wider mb-1">
-                          {brand.nameEn}
-                        </p>
-                        <h3 className="font-bold text-stone-900 text-lg mb-1">{brand.name}</h3>
-                        <p className="text-sm text-stone-500 mb-3 line-clamp-2">{brand.tagline}</p>
-                        {brand.storyElements?.originStory && (
-                          <p className="text-xs text-stone-400 line-clamp-2 border-t border-stone-100 pt-3">
-                            {brand.storyElements.originStory}
-                          </p>
-                        )}
-                        <div className="mt-3 flex items-center gap-2 flex-wrap">
-                          {brand.locations
-                            .filter((l) => l.status === "active")
-                            .slice(0, 3)
-                            .map((loc) => (
-                              <span
-                                key={loc.name}
-                                className="text-xs bg-stone-50 border border-stone-200 px-2 py-0.5 rounded-full text-stone-600"
-                              >
-                                {loc.name}
+                          {/* Price range badge */}
+                          {brand.priceRange && (
+                            <div className="absolute top-4 left-4">
+                              <span className="glass text-xs text-white/80 px-2.5 py-1 rounded-full">
+                                {brand.priceRange}
                               </span>
-                            ))}
-                          {brand.locations.filter((l) => l.status === "active").length > 3 && (
-                            <span className="text-xs text-stone-400">
-                              +{brand.locations.filter((l) => l.status === "active").length - 3}
-                            </span>
+                            </div>
                           )}
+                          {brand.locations.some((l) => l.status === "coming-soon") && (
+                            <div className="absolute top-4 right-4">
+                              <span className="text-xs bg-amber-400/90 px-2.5 py-1 rounded-full text-amber-900 font-medium">
+                                신규 오픈 예정
+                              </span>
+                            </div>
+                          )}
+                          {/* Hover overlay */}
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
                         </div>
-                      </div>
-                    </Link>
+                        <div className="p-6">
+                          <p className="text-[10px] font-semibold text-stone-400 tracking-[0.15em] uppercase mb-1.5">
+                            {brand.nameEn}
+                          </p>
+                          <h3 className="font-bold text-stone-900 text-xl mb-2 group-hover:text-stone-700 transition-colors">{brand.name}</h3>
+                          <p className="text-sm text-stone-500 mb-4 line-clamp-2 leading-relaxed">{brand.tagline}</p>
+                          {brand.storyElements?.originStory && (
+                            <p className="text-xs text-stone-400 line-clamp-2 border-t border-stone-100 pt-4 leading-relaxed">
+                              {brand.storyElements.originStory}
+                            </p>
+                          )}
+                          <div className="mt-4 flex items-center gap-2 flex-wrap">
+                            {brand.locations
+                              .filter((l) => l.status === "active")
+                              .slice(0, 3)
+                              .map((loc) => (
+                                <span
+                                  key={loc.name}
+                                  className="text-[11px] bg-stone-50 border border-stone-200 px-2 py-0.5 rounded-full text-stone-600"
+                                >
+                                  {loc.name}
+                                </span>
+                              ))}
+                            {brand.locations.filter((l) => l.status === "active").length > 3 && (
+                              <span className="text-[11px] text-stone-400">
+                                +{brand.locations.filter((l) => l.status === "active").length - 3}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </Link>
+                    </ScrollReveal>
                   );
                 })}
               </div>
@@ -217,33 +273,41 @@ export default function HomePage() {
 
       {/* 채용 CTA */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
-        <div className="bg-stone-900 text-white rounded-3xl p-10 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-          <div>
-            <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Join Us</p>
-            <h2 className="text-2xl lg:text-3xl font-bold mb-3">넥스트다이닝과 함께 성장할 분을 찾습니다</h2>
-            <p className="text-stone-400 text-sm leading-relaxed max-w-lg">
-              요리사, 서비스 스태프, 경영지원팀까지. 좋은 음식과 좋은 공간을 만들고 싶은 분들의 지원을 기다립니다.
-            </p>
+        <ScrollReveal direction="scale">
+          <div className="relative bg-stone-900 text-white rounded-3xl p-10 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 overflow-hidden noise-overlay">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="relative">
+              <p className="text-xs font-semibold tracking-[0.2em] text-stone-400 uppercase mb-3">Join Us</p>
+              <h2 className="text-2xl lg:text-3xl font-bold mb-3">넥스트다이닝과 함께 성장할 분을 찾습니다</h2>
+              <p className="text-stone-400 text-sm leading-relaxed max-w-lg">
+                요리사, 서비스 스태프, 경영지원팀까지. 좋은 음식과 좋은 공간을 만들고 싶은 분들의 지원을 기다립니다.
+              </p>
+            </div>
+            <Link href="/careers" className="relative shrink-0 bg-white text-stone-900 px-8 py-4 rounded-xl font-semibold text-sm hover:bg-stone-100 transition-colors">
+              채용 공고 보기
+            </Link>
           </div>
-          <Link href="/careers" className="shrink-0 bg-white text-stone-900 px-8 py-4 rounded-xl font-semibold text-sm hover:bg-stone-100 transition-colors">
-            채용 공고 보기
-          </Link>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* FAQ — GEO 최적화 */}
-      <section className="bg-stone-50 py-24">
+      <section className="bg-stone-50/50 py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">FAQ</p>
-            <h2 className="text-2xl font-bold">자주 묻는 질문</h2>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-14">
+              <p className="text-xs font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">FAQ</p>
+              <h2 className="text-3xl font-bold">자주 묻는 질문</h2>
+              <div className="mt-4 mx-auto w-12 h-0.5 bg-stone-900" />
+            </div>
+          </ScrollReveal>
           <div className="space-y-4">
-            {FAQ_ITEMS.map((faq) => (
-              <div key={faq.q} className="bg-white rounded-xl p-6 border border-stone-100">
-                <h3 className="font-semibold text-stone-900 mb-2">Q. {faq.q}</h3>
-                <p className="text-sm text-stone-600 leading-relaxed">A. {faq.a}</p>
-              </div>
+            {FAQ_ITEMS.map((faq, idx) => (
+              <ScrollReveal key={faq.q} delay={idx * 60}>
+                <div className="bg-white rounded-2xl p-6 border border-stone-100 hover:border-stone-200 hover:shadow-sm transition-all">
+                  <h3 className="font-semibold text-stone-900 mb-2">Q. {faq.q}</h3>
+                  <p className="text-sm text-stone-600 leading-relaxed">A. {faq.a}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
