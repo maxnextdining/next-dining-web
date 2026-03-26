@@ -68,10 +68,9 @@ export const brands: Brand[] = [
     locations: [
       { name: '역삼 본점', address: '서울 강남구 논현로94길 25-3, 2층', status: 'active', phone: '0507-1402-8551', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
       { name: '을지로점', address: '서울 중구 을지로5길 26, 미래에셋 센터원 B1', status: 'active', phone: '02-6030-8960', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
-      { name: '판교점', address: '경기 성남시 분당구 판교역로146번길 20, 현대백화점 판교점 9층', status: 'active', phone: '031-5170-1936', hours: '매일 11:00~21:00 (BT 15:00~17:00)' },
     ],
     image: '/images/bongwoori.jpg',
-    keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '판교 한정식', '서울 한정식 추천', '기업 접대 식당'],
+    keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
     priceRange: '₩₩₩₩',
     cuisine: '한정식',
     menuHighlights: [
@@ -121,11 +120,10 @@ export const brands: Brand[] = [
       spaceExperience: '시청 인근 소박하지만 정겨운 공간. 바쁜 도심 속 따뜻한 한 끼를 나누는 동네 만두집의 정서를 간직하고 있습니다.',
     },
     locations: [
-      { name: '여의도 본점', address: '서울 영등포구 국제금융로8길 34, 오륜빌딩 3층', status: 'active', phone: '02-780-7867', hours: '평일 11:00~21:00 (BT 15:00~17:00) / 토·일 휴무' },
-      { name: '국회점', address: '서울 영등포구 국회대로72길 11, 프린스텔빌딩', status: 'active', phone: '0507-1318-5454', hours: '월~목 11:00~21:00 / 금·토 ~20:30 / 일 휴무' },
+      { name: '시청점', address: '서울 중구 시청 인근', status: 'active' },
     ],
     image: '/images/jinjin-mandu.jpg',
-    keywords: ['여의도 만두', '여의도 점심 맛집', '수제만두 서울', '국회의사당 맛집', '만두 전문점', '황해도식 만두'],
+    keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
     priceRange: '₩₩',
     cuisine: '한식',
     menuHighlights: [
@@ -153,11 +151,14 @@ export const brands: Brand[] = [
     },
     locations: [
       { name: '역삼점 (한국본점)', address: '서울 강남구 논현로94길 25-3, B1', status: 'active', phone: '0507-1421-8853', hours: '평일 11:30~22:30 (BT 14:30~17:30) / 주말 12:00~21:30' },
+      { name: '여의도점', address: '서울 영등포구 여의도', status: 'active' },
+      { name: '을지로점', address: '서울 중구 을지로', status: 'active' },
+      { name: '광화문점', address: '서울 종로구 광화문', status: 'active' },
       { name: '잠실롯데월드몰점', address: '서울 송파구 올림픽로 300, 롯데월드몰 6층', status: 'active', phone: '0507-1349-4625', hours: '매일 10:30~22:00 (BT 15:00~17:00)' },
       { name: '부산 롯데백화점점', address: '부산 부산진구 가야대로 772, 롯데백화점 부산본점 9층', status: 'active', phone: '051-810-3997', hours: '매일 10:30~20:30' },
     ],
     image: '/images/jinkawa.jpg',
-    keywords: ['진가와', '역삼 소바', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
+    keywords: ['진가와', '역삼 소바', '여의도 일식', '을지로 소바', '광화문 맛집', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
     priceRange: '₩₩₩',
     cuisine: '소바',
     menuHighlights: [
@@ -168,6 +169,9 @@ export const brands: Brand[] = [
     ],
     reservationLinks: [
       { location: '역삼점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/jkwyud' },
+      { location: '여의도점', url: 'https://app.catchtable.co.kr/ct/shop/jkwyud' },
+      { location: '을지로점', url: 'https://app.catchtable.co.kr/ct/shop/jkwjr' },
+      { location: '광화문점', url: 'https://app.catchtable.co.kr/ct/shop/jinkawagwm' },
     ],
   },
   {
