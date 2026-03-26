@@ -54,7 +54,7 @@ const BRAND_RESERVATIONS: {
   {
     brandId: "daisen",
     locations: [
-      { name: "한남점 (한국본점)", reservationUrl: "https://app.catchtable.co.kr/ct/shop/daisen_hannam", reservationPlatform: "캐치테이블", note: "오마카세 사전 예약 필수 (카운터 7석)" },
+      { name: "한남점 (한국본점)", reservationUrl: "https://app.catchtable.co.kr/ct/shop/daisen_hannam", reservationPlatform: "캐치테이블", note: "사전 예약 필수 (프라이빗 룸 운영)" },
     ],
   },
   {

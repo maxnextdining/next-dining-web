@@ -75,8 +75,8 @@ export default async function BrandDetailPage({ params }: Props) {
         address: {
           "@type": "PostalAddress",
           streetAddress: loc.address,
-          addressLocality: "서울",
-          addressCountry: "KR",
+          addressLocality: loc.address.startsWith('서울') ? '서울' : loc.address.startsWith('경기') ? '경기' : loc.address.startsWith('부산') ? '부산' : loc.address.split(' ')[0],
+          addressCountry: loc.address.includes('NY') || loc.address.includes('New York') || loc.address.includes('Manhattan') ? 'US' : 'KR',
         },
         url: `https://next-dining.com/brands/${brand.id}`,
         ...(brand.menuHighlights && brand.menuHighlights.length > 0 && {

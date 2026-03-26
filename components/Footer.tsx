@@ -3,11 +3,14 @@ import Image from 'next/image';
 
 const BRAND_LINKS = [
   { href: '/brands/bongwoori', label: '봉우리 한정식' },
+  { href: '/brands/bongwoori-soban', label: '봉우리소반' },
   { href: '/brands/jinkawa', label: '진가와' },
   { href: '/brands/bunjiro', label: '분지로' },
   { href: '/brands/takumi-nagasaki', label: '타쿠미나가사키' },
   { href: '/brands/daisen', label: '다이센스시' },
   { href: '/brands/cafe-le-sens', label: '카페 르상스' },
+  { href: '/brands/jinjin-mandu', label: '진진만두' },
+  { href: '/brands/menya-always', label: '멘야올웨이즈' },
   { href: '/brands/noflex-nyc', label: 'NOFLEX NYC' },
 ];
 
@@ -74,8 +77,7 @@ export default function Footer() {
         <div className="mt-10 pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <p>© {new Date().getFullYear()} Next Dining Corp. All rights reserved.</p>
           <div className="flex gap-5">
-            <Link href="/privacy" className="hover:text-stone-300">개인정보처리방침</Link>
-            <Link href="/terms" className="hover:text-stone-300">이용약관</Link>
+            <span>next-dining.com</span>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ const OPEN_POSITIONS = [
         brand: "다이센스시",
         location: "한남동",
         type: "정규직",
-        description: "카운터 7석 오마카세 레스토랑의 세심한 서비스를 함께 만들 분을 찾습니다.",
+        description: "프라이빗 룸을 갖춘 프리미엄 스시 레스토랑의 세심한 서비스를 함께 만들 분을 찾습니다.",
       },
       {
         title: "홀 스태프",

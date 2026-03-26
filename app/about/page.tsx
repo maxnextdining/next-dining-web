@@ -43,7 +43,7 @@ const BRAND_ORIGINS = [
     id: "daisen",
     title: "다이센스시",
     origin: "큐슈 지방 압도적 1위 브랜드 와카타케마루(若竹丸) 한국 진출",
-    highlight: "큐슈 최고의 스시야가 한남동 카운터에",
+    highlight: "큐슈 최고의 스시야가 한남동 프라이빗 룸으로",
   },
   {
     id: "cafe-le-sens",
@@ -54,8 +54,8 @@ const BRAND_ORIGINS = [
   {
     id: "jinjin-mandu",
     title: "진진만두",
-    origin: "여의도 30년 경력 남승욱 대표 창립",
-    highlight: "30년 한자리, 변하지 않는 손맛",
+    origin: "여의도 30년 내공 남승욱 대표 창립, 현재 시청점 운영",
+    highlight: "30년 내공, 변하지 않는 손맛",
   },
   {
     id: "menya-always",
