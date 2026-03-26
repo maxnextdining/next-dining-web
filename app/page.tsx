@@ -8,15 +8,24 @@ export const metadata: Metadata = {
     "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영합니다. 서울 한남동, 강남, 명동, 잠실 등 전국 15개 매장.",
 };
 
-const CATEGORY_LABEL: Record<string, string> = {
-  japanese: "일식",
-  korean: "한식",
-  american: "양식",
-  cafe: "카페",
-};
-
-// 히어로에서 순환 표시할 대표 브랜드 3개
-const FEATURED_BRANDS = ["bunjiro", "bongwoori", "daisen"];
+// 홈페이지 브랜드 카테고리별 배치 순서
+const BRAND_SECTIONS = [
+  {
+    label: "한식",
+    labelEn: "Korean",
+    ids: ["bongwoori", "jinjin-mandu", "bongwoori-soban"],
+  },
+  {
+    label: "일식",
+    labelEn: "Japanese",
+    ids: ["jinkawa", "bunjiro", "daisen", "takumi-nagasaki", "menya-always"],
+  },
+  {
+    label: "카페 / 라운지",
+    labelEn: "Cafe & Lounge",
+    ids: ["cafe-le-sens", "noflex-nyc"],
+  },
+];
 
 function OrganizationJsonLd() {
   const data = {
@@ -97,23 +106,17 @@ const FAQ_ITEMS = [
 ];
 
 export default function HomePage() {
-  const activeBrands = brands.filter(
-    (b) => b.locations.some((l) => l.status === "active") || b.id === "menya-always"
-  );
-
-  const featured = brands.filter((b) => FEATURED_BRANDS.includes(b.id));
-
   return (
     <>
       <OrganizationJsonLd />
       <FaqJsonLd items={FAQ_ITEMS} />
 
-      {/* 히어로 — 몰입형 풀스크린 */}
-      <section className="relative min-h-screen bg-stone-950 text-white overflow-hidden flex items-center">
+      {/* 히어로 */}
+      <section className="relative min-h-[85vh] bg-stone-950 text-white overflow-hidden flex items-center">
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-950/70 to-stone-950" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
           <p className="text-xs font-semibold tracking-[0.3em] text-stone-500 uppercase mb-8">
-            Next Dining Corp
+            Next Dining
           </p>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight max-w-4xl">
             음식이 만드는
@@ -133,78 +136,84 @@ export default function HomePage() {
               문의하기
             </Link>
           </div>
-
-          {/* 대표 브랜드 미리보기 */}
-          <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {featured.map((b) => (
-              <Link
-                key={b.id}
-                href={`/brands/${b.id}`}
-                className="group bg-white/5 backdrop-blur border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all"
-              >
-                <p className="text-xs tracking-widest text-stone-500 mb-2">{b.nameEn}</p>
-                <p className="font-semibold text-white mb-1">{b.name}</p>
-                <p className="text-sm text-stone-400 line-clamp-2">{b.tagline}</p>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* 브랜드 갤러리 — 스토리 강조 */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">Our Restaurants</p>
-            <h2 className="text-3xl sm:text-4xl font-bold">10개의 이야기</h2>
-          </div>
-          <Link href="/brands" className="text-sm text-stone-500 hover:text-stone-900 transition-colors hidden sm:block">
-            전체 보기 →
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeBrands.map((brand) => (
-            <Link key={brand.id} href={`/brands/${brand.id}`} className="group block rounded-2xl overflow-hidden border border-stone-100 hover:border-stone-300 hover:shadow-lg transition-all">
-              <div className="aspect-[4/3] bg-stone-100 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300 group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute top-3 left-3">
-                  <span className="text-xs bg-white/80 backdrop-blur px-2 py-1 rounded-full text-stone-600 font-medium">
-                    {CATEGORY_LABEL[brand.category]}
-                  </span>
-                </div>
-                {brand.locations.some((l) => l.status === "coming-soon") && (
-                  <div className="absolute top-3 right-3">
-                    <span className="text-xs bg-amber-400/90 px-2 py-1 rounded-full text-amber-900 font-medium">신규 오픈 예정</span>
-                  </div>
-                )}
+      {/* 브랜드 갤러리 — 카테고리별 */}
+      {BRAND_SECTIONS.map((section, sectionIdx) => {
+        const sectionBrands = section.ids
+          .map((id) => brands.find((b) => b.id === id))
+          .filter(Boolean);
+
+        return (
+          <section
+            key={section.label}
+            className={`${sectionIdx % 2 === 0 ? "bg-white" : "bg-stone-50"} py-20`}
+          >
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="mb-10">
+                <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">
+                  {section.labelEn}
+                </p>
+                <h2 className="text-2xl sm:text-3xl font-bold">{section.label}</h2>
               </div>
-              <div className="p-5">
-                <p className="text-xs text-stone-400 font-medium tracking-wider mb-1">{brand.nameEn}</p>
-                <h3 className="font-bold text-stone-900 text-lg mb-1">{brand.name}</h3>
-                <p className="text-sm text-stone-500 mb-3 line-clamp-2">{brand.tagline}</p>
-                {/* 핵심 스토리 한 줄 */}
-                {brand.storyElements?.originStory && (
-                  <p className="text-xs text-stone-400 line-clamp-2 border-t border-stone-100 pt-3">
-                    {brand.storyElements.originStory}
-                  </p>
-                )}
-                <div className="mt-3 flex items-center gap-2 flex-wrap">
-                  {brand.locations.filter((l) => l.status === "active").slice(0, 3).map((loc) => (
-                    <span key={loc.name} className="text-xs bg-stone-50 border border-stone-200 px-2 py-0.5 rounded-full text-stone-600">
-                      {loc.name}
-                    </span>
-                  ))}
-                  {brand.locations.filter((l) => l.status === "active").length > 3 && (
-                    <span className="text-xs text-stone-400">
-                      +{brand.locations.filter((l) => l.status === "active").length - 3}
-                    </span>
-                  )}
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sectionBrands.map((brand) => {
+                  if (!brand) return null;
+                  return (
+                    <Link
+                      key={brand.id}
+                      href={`/brands/${brand.id}`}
+                      className="group block rounded-2xl overflow-hidden border border-stone-100 hover:border-stone-300 hover:shadow-lg transition-all bg-white"
+                    >
+                      <div className="aspect-[4/3] bg-stone-100 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300 group-hover:scale-105 transition-transform duration-500" />
+                        {brand.locations.some((l) => l.status === "coming-soon") && (
+                          <div className="absolute top-3 right-3">
+                            <span className="text-xs bg-amber-400/90 px-2 py-1 rounded-full text-amber-900 font-medium">
+                              신규 오픈 예정
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-5">
+                        <p className="text-xs text-stone-400 font-medium tracking-wider mb-1">
+                          {brand.nameEn}
+                        </p>
+                        <h3 className="font-bold text-stone-900 text-lg mb-1">{brand.name}</h3>
+                        <p className="text-sm text-stone-500 mb-3 line-clamp-2">{brand.tagline}</p>
+                        {brand.storyElements?.originStory && (
+                          <p className="text-xs text-stone-400 line-clamp-2 border-t border-stone-100 pt-3">
+                            {brand.storyElements.originStory}
+                          </p>
+                        )}
+                        <div className="mt-3 flex items-center gap-2 flex-wrap">
+                          {brand.locations
+                            .filter((l) => l.status === "active")
+                            .slice(0, 3)
+                            .map((loc) => (
+                              <span
+                                key={loc.name}
+                                className="text-xs bg-stone-50 border border-stone-200 px-2 py-0.5 rounded-full text-stone-600"
+                              >
+                                {loc.name}
+                              </span>
+                            ))}
+                          {brand.locations.filter((l) => l.status === "active").length > 3 && (
+                            <span className="text-xs text-stone-400">
+                              +{brand.locations.filter((l) => l.status === "active").length - 3}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+            </div>
+          </section>
+        );
+      })}
 
       {/* 채용 CTA */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
