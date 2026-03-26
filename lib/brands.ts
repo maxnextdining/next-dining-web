@@ -1,4 +1,4 @@
-export type BrandCategory = 'japanese' | 'korean' | 'cafe';
+export type BrandCategory = 'japanese' | 'korean' | 'cafe' | 'american';
 export type LocationStatus = 'active' | 'coming-soon' | 'closed';
 
 export interface BrandLocation {
@@ -261,6 +261,28 @@ export const brands: Brand[] = [
     keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울'],
     priceRange: '₩₩',
     cuisine: '라멘',
+  },
+  {
+    id: 'noflex-nyc',
+    name: '노플렉스 뉴욕',
+    nameEn: 'NOFLEX NYC',
+    category: 'american',
+    tagline: '뉴욕 스타일, 허세 없는 한 끼',
+    description:
+      '노플렉스 뉴욕(NOFLEX NYC)은 뉴욕의 자유롭고 솔직한 식문화를 서울에 옮겨온 아메리칸 다이닝 브랜드입니다. "No Flex" — 과시 없이, 음식의 본질에 집중합니다. 정직한 재료와 뉴요커의 감성이 만나 새로운 캐주얼 다이닝 경험을 선사합니다.',
+    story:
+      '뉴욕이 사랑하는 건 화려함이 아니라 진짜. NOFLEX NYC는 그 정신 그대로, 허세 없이 맛있는 한 끼를 지향합니다.',
+    storyElements: {
+      originStory: '뉴욕의 다이닝 씬에서 영감을 받아 탄생. "No Flex" — 과시를 덜어내고 음식 본연의 맛과 즐거움에 집중하자는 철학을 담았습니다.',
+      ingredientPhilosophy: '정직한 재료, 심플한 조리. 뉴욕 스타일 특유의 대담한 풍미를 위해 신선한 재료를 아끼지 않습니다.',
+      signatureMenu: '뉴욕 스타일 버거, 스테이크, 브런치 — 겉은 캐주얼하지만 재료와 조리에는 타협 없는 아메리칸 컴포트 푸드.',
+      spaceExperience: '뉴욕 브루클린의 자유로운 에너지를 담은 인테리어. 편안하면서도 세련된 분위기에서 부담 없이 즐기는 식사.',
+    },
+    locations: [],
+    image: '/images/noflex-nyc.jpg',
+    keywords: ['노플렉스뉴욕', '뉴욕 버거 서울', '아메리칸 다이닝', '캐주얼 다이닝 서울', 'NOFLEX NYC'],
+    priceRange: '₩₩',
+    cuisine: '아메리칸',
   },
 ];
 

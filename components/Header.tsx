@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const NAV = [
@@ -19,10 +20,14 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* 로고 */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="h-8 w-8 rounded-lg bg-stone-900 flex items-center justify-center">
-            <span className="text-white text-xs font-bold tracking-wider">ND</span>
-          </div>
-          <span className="font-semibold text-stone-900 tracking-wide text-sm">NEXT DINING</span>
+          <Image
+            src="/images/next-dining-logo.svg"
+            alt="NEXT DINING"
+            width={140}
+            height={32}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         {/* 데스크탑 Nav */}

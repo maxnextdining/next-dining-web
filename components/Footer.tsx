@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const BRAND_LINKS = [
   { href: '/brands/bongwoori', label: '봉우리 한정식' },
@@ -7,6 +8,7 @@ const BRAND_LINKS = [
   { href: '/brands/takumi-nagasaki', label: '타쿠미나가사키' },
   { href: '/brands/daisen', label: '다이센스시' },
   { href: '/brands/cafe-le-sens', label: '카페 르상스' },
+  { href: '/brands/noflex-nyc', label: 'NOFLEX NYC' },
 ];
 
 export default function Footer() {
@@ -17,17 +19,20 @@ export default function Footer() {
           {/* 회사 */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="h-7 w-7 rounded-md bg-white/10 flex items-center justify-center">
-                <span className="text-white text-xs font-bold">ND</span>
-              </div>
-              <span className="font-semibold text-white text-sm tracking-wide">NEXT DINING</span>
+              <Image
+                src="/images/next-dining-logo.svg"
+                alt="NEXT DINING"
+                width={140}
+                height={32}
+                className="h-7 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-sm leading-relaxed text-stone-400 max-w-xs">
               음식, 공간, 사람을 연결해 새로운 외식의 기준을 만듭니다.
               각 브랜드가 독립된 철학과 세계관을 갖춘 멀티 브랜드 그룹입니다.
             </p>
             <p className="mt-4 text-xs text-stone-500">
-              (주)넥스트다이닝 | 대표이사 정호상<br />
+              (주)넥스트다이닝 | 대표이사 장경훈<br />
               서울특별시 | next-dining.com
             </p>
           </div>

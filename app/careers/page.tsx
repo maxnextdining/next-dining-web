@@ -114,7 +114,7 @@ export default function CareersPage() {
             좋은 음식과 공간을<br />함께 만들 분을 찾습니다
           </h1>
           <p className="text-stone-400 max-w-xl leading-relaxed text-lg">
-            넥스트다이닝은 9개 프리미엄 외식 브랜드를 운영하며 한국 외식의 기준을 높이고 있습니다.
+            넥스트다이닝은 10개 프리미엄 외식 브랜드를 운영하며 한국 외식의 기준을 높이고 있습니다.
             음식, 서비스, 공간, 경영 — 각자의 자리에서 최고를 지향하는 분들과 함께합니다.
           </p>
         </div>
@@ -149,7 +149,7 @@ export default function CareersPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: "운영 브랜드", value: "9개" },
+              { label: "운영 브랜드", value: "10개" },
               { label: "직영 매장", value: "15+" },
               { label: "연 매출(2024)", value: "~250억" },
               { label: "해외 법인", value: "USA Inc." },
@@ -262,10 +262,10 @@ export default function CareersPage() {
           </div>
 
           <a
-            href="mailto:careers@next-dining.com"
+            href="mailto:hr@next-dining.com"
             className="inline-block bg-white text-stone-900 px-10 py-4 rounded-xl font-semibold text-sm hover:bg-stone-100 transition-colors"
           >
-            careers@next-dining.com 으로 지원하기
+            hr@next-dining.com 으로 지원하기
           </a>
         </div>
       </section>

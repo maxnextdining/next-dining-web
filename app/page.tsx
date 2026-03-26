@@ -5,11 +5,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "NEXT DINING — 넥스트다이닝",
   description:
-    "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 9개 프리미엄 외식 브랜드를 운영합니다. 서울 한남동, 강남, 명동, 잠실 등 전국 15개 매장.",
+    "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영합니다. 서울 한남동, 강남, 명동, 잠실 등 전국 15개 매장.",
 };
 
 const STATS = [
-  { label: "운영 브랜드", value: "9개" },
+  { label: "운영 브랜드", value: "10개" },
   { label: "전국 직영 매장", value: "15+" },
   { label: "연 매출(2024)", value: "약 250억" },
   { label: "해외 법인", value: "USA Inc." },
@@ -25,6 +25,7 @@ const VALUES = [
 const CATEGORY_LABEL: Record<string, string> = {
   japanese: "일식",
   korean: "한식",
+  american: "양식",
   cafe: "카페",
 };
 
@@ -39,7 +40,7 @@ function OrganizationJsonLd() {
     alternateName: "NEXT DINING",
     url: "https://next-dining.com",
     description:
-      "봉우리 한정식, 진가와, 분지로, 다이센스시 등 9개 프리미엄 외식 브랜드를 운영하는 한국 멀티 브랜드 외식 그룹",
+      "봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영하는 한국 멀티 브랜드 외식 그룹",
     foundingLocation: { "@type": "Place", name: "서울, 대한민국" },
     areaServed: "대한민국",
   };
@@ -100,7 +101,7 @@ export default function HomePage() {
           <p className="mt-8 text-lg sm:text-xl text-stone-400 max-w-xl leading-relaxed">
             봉우리 한정식부터 나가사키 장인 돈카츠까지.
             <br className="hidden sm:block" />
-            9개 브랜드가 각자의 철학과 이야기로 한국 외식의 수준을 높입니다.
+            10개 브랜드가 각자의 철학과 이야기로 한국 외식의 수준을 높입니다.
           </p>
           <div className="mt-12 flex flex-wrap gap-4">
             <Link href="/brands" className="bg-white text-stone-900 px-8 py-4 rounded-xl text-sm font-semibold hover:bg-stone-100 transition-colors">
@@ -147,7 +148,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between mb-12">
           <div>
             <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">Our Restaurants</p>
-            <h2 className="text-3xl sm:text-4xl font-bold">9개의 이야기</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold">10개의 이야기</h2>
           </div>
           <Link href="/brands" className="text-sm text-stone-500 hover:text-stone-900 transition-colors hidden sm:block">
             전체 보기 →

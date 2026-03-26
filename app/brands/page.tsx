@@ -5,12 +5,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "레스토랑",
   description:
-    "넥스트다이닝의 9개 프리미엄 외식 브랜드 — 봉우리 한정식, 진가와, 분지로, 다이센스시, 타쿠미나가사키, 카페르상스 등. 서울 한남동, 강남, 명동, 잠실, 부산 각 지점 안내.",
+    "넥스트다이닝의 10개 프리미엄 외식 브랜드 — 봉우리 한정식, 진가와, 분지로, 다이센스시, 타쿠미나가사키, 카페르상스 등. 서울 한남동, 강남, 명동, 잠실, 부산 각 지점 안내.",
 };
 
 const CATEGORY_LABEL: Record<string, string> = {
   japanese: "일식",
   korean: "한식",
+  american: "양식",
   cafe: "카페",
 };
 
@@ -18,12 +19,14 @@ const TABS = [
   { key: "all", label: "전체" },
   { key: "japanese", label: "일식" },
   { key: "korean", label: "한식" },
+  { key: "american", label: "양식" },
   { key: "cafe", label: "카페" },
 ];
 
 export default function BrandsPage() {
   const japanese = brands.filter((b) => b.category === "japanese");
   const korean = brands.filter((b) => b.category === "korean");
+  const american = brands.filter((b) => b.category === "american");
   const cafe = brands.filter((b) => b.category === "cafe");
 
   return (
@@ -31,7 +34,7 @@ export default function BrandsPage() {
       {/* 헤더 */}
       <div className="mb-14">
         <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Our Restaurants</p>
-        <h1 className="text-4xl font-bold mb-4">9개의 브랜드, 각자의 이야기</h1>
+        <h1 className="text-4xl font-bold mb-4">10개의 브랜드, 각자의 이야기</h1>
         <p className="text-stone-500 max-w-2xl leading-relaxed">
           넥스트다이닝의 각 브랜드는 독립된 철학과 세계관을 가집니다.
           정통 일식부터 프리미엄 한정식, 세련된 카페까지 — 모두 본질을 먼저 생각합니다.
@@ -59,6 +62,19 @@ export default function BrandsPage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {korean.map((brand) => (
+            <BrandCard key={brand.id} brand={brand} />
+          ))}
+        </div>
+      </section>
+
+      {/* 양식 */}
+      <section className="mb-16">
+        <h2 className="text-xl font-bold text-stone-800 mb-6 flex items-center gap-3">
+          양식
+          <span className="text-sm font-normal text-stone-400">{american.length}개 브랜드</span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {american.map((brand) => (
             <BrandCard key={brand.id} brand={brand} />
           ))}
         </div>

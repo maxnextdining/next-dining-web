@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const CATEGORY_LABEL: Record<string, string> = {
   japanese: "일식",
   korean: "한식",
+  american: "양식",
   cafe: "카페",
 };
 
