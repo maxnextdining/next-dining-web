@@ -30,6 +30,7 @@ export interface Brand {
   keywords: string[]; // GEO 최적화용 키워드
   priceRange?: string;
   cuisine?: string;
+  website?: string;
 }
 
 export const brands: Brand[] = [
@@ -267,22 +268,25 @@ export const brands: Brand[] = [
     name: '노플렉스 뉴욕',
     nameEn: 'NOFLEX NYC',
     category: 'american',
-    tagline: '뉴욕 스타일, 허세 없는 한 끼',
+    tagline: '뉴욕 최초의 미디어 아트 레스토랑 & 칵테일 바',
     description:
-      '노플렉스 뉴욕(NOFLEX NYC)은 뉴욕의 자유롭고 솔직한 식문화를 서울에 옮겨온 아메리칸 다이닝 브랜드입니다. "No Flex" — 과시 없이, 음식의 본질에 집중합니다. 정직한 재료와 뉴요커의 감성이 만나 새로운 캐주얼 다이닝 경험을 선사합니다.',
+      'NOFLEX NYC는 뉴욕 맨해튼 5번가에 위치한 미디어 아트 레스토랑 & 칵테일 바입니다. 72피트 LED 월에 투사되는 몰입형 디지털 아트와 함께 대담한 칵테일, 심플하면서도 세련된 요리를 즐기는 새로운 다이닝 경험. 예술, 미식, 나이트라이프가 하나로 융합된 감각적 공간입니다.',
     story:
-      '뉴욕이 사랑하는 건 화려함이 아니라 진짜. NOFLEX NYC는 그 정신 그대로, 허세 없이 맛있는 한 끼를 지향합니다.',
+      '다이닝과 예술의 경계를 허무는 새로운 시도. 72피트 LED 벽이 만들어내는 몰입형 공간에서 음식, 음악, 빛이 하나로 어우러집니다.',
     storyElements: {
-      originStory: '뉴욕의 다이닝 씬에서 영감을 받아 탄생. "No Flex" — 과시를 덜어내고 음식 본연의 맛과 즐거움에 집중하자는 철학을 담았습니다.',
-      ingredientPhilosophy: '정직한 재료, 심플한 조리. 뉴욕 스타일 특유의 대담한 풍미를 위해 신선한 재료를 아끼지 않습니다.',
-      signatureMenu: '뉴욕 스타일 버거, 스테이크, 브런치 — 겉은 캐주얼하지만 재료와 조리에는 타협 없는 아메리칸 컴포트 푸드.',
-      spaceExperience: '뉴욕 브루클린의 자유로운 에너지를 담은 인테리어. 편안하면서도 세련된 분위기에서 부담 없이 즐기는 식사.',
+      originStory: '넥스트다이닝의 첫 해외 직영 브랜드. 뉴욕 맨해튼 5번가에 "미디어 아트 레스토랑"이라는 새로운 카테고리를 열며, K-다이닝의 글로벌 확장을 시작했습니다.',
+      ingredientPhilosophy: '신선하고 건강한 재료를 심플하면서도 세련되게 조리합니다. 예상 밖의 재료와 대담한 풍미 조합으로 만든 시그니처 칵테일이 다이닝 경험을 완성합니다.',
+      signatureMenu: '시그니처 칵테일과 모던 다이닝 — 예상 밖의 재료로 만든 대담한 칵테일과 심플하면서도 깊은 맛의 퓨전 요리.',
+      spaceExperience: '72피트 LED 월이 만드는 몰입형 미디어 아트 공간. 시간이 흐르면서 변하는 비주얼, 음악, 조명이 감각을 깨우는 뉴욕에서 유일무이한 경험.',
     },
-    locations: [],
+    locations: [
+      { name: '뉴욕 맨해튼', address: '286 5th Avenue, New York, NY 10001', status: 'active' },
+    ],
     image: '/images/noflex-nyc.jpg',
-    keywords: ['노플렉스뉴욕', '뉴욕 버거 서울', '아메리칸 다이닝', '캐주얼 다이닝 서울', 'NOFLEX NYC'],
-    priceRange: '₩₩',
-    cuisine: '아메리칸',
+    keywords: ['NOFLEX NYC', '노플렉스뉴욕', '뉴욕 한국 레스토랑', 'media art restaurant NYC', 'immersive dining NYC', '맨해튼 칵테일바', '넥스트다이닝 미국'],
+    priceRange: '$$$',
+    cuisine: '모던 다이닝 & 칵테일 바',
+    website: 'https://noflex.nyc',
   },
 ];
 

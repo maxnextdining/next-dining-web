@@ -21,7 +21,7 @@ export default function Header() {
         {/* 로고 */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <Image
-            src="/images/next-dining-logo.svg"
+            src="/images/next-dining-logo.png"
             alt="NEXT DINING"
             width={140}
             height={32}

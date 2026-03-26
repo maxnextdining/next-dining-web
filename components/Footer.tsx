@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Image
-                src="/images/next-dining-logo.svg"
+                src="/images/next-dining-logo.png"
                 alt="NEXT DINING"
                 width={140}
                 height={32}
@@ -32,7 +32,7 @@ export default function Footer() {
               각 브랜드가 독립된 철학과 세계관을 갖춘 멀티 브랜드 그룹입니다.
             </p>
             <p className="mt-4 text-xs text-stone-500">
-              (주)넥스트다이닝 | 대표이사 장경훈<br />
+              (주)넥스트다이닝 | 대표이사 장경훈, 정호상<br />
               서울특별시 | next-dining.com
             </p>
           </div>

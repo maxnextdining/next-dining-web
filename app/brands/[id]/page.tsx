@@ -126,6 +126,16 @@ export default async function BrandDetailPage({ params }: Props) {
           <blockquote className="mt-8 border-l-2 border-stone-900 pl-6">
             <p className="text-stone-600 leading-relaxed italic">{brand.story}</p>
           </blockquote>
+          {brand.website && (
+            <a
+              href={brand.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 bg-stone-900 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-stone-800 transition-colors"
+            >
+              공식 웹사이트 방문 →
+            </a>
+          )}
         </div>
       </section>
 
