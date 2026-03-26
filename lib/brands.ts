@@ -131,6 +131,9 @@ export const brands: Brand[] = [
       { name: '손만두술국', price: '19,000원' },
       { name: '어복쟁반 (대)', price: '103,000원' },
     ],
+    reservationLinks: [
+      { location: '시청점', url: 'https://app.catchtable.co.kr/ct/shop/jinjinmanducityhall' },
+    ],
   },
   {
     id: 'jinkawa',
