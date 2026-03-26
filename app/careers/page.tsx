@@ -101,9 +101,56 @@ const VALUES = [
   },
 ];
 
+function JobPostingJsonLd() {
+  const postings = OPEN_POSITIONS.flatMap((group) =>
+    group.positions.map((pos) => ({
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      title: pos.title,
+      description: pos.description,
+      datePosted: "2026-03-01",
+      employmentType: pos.type.includes("정규직") ? "FULL_TIME" : "PART_TIME",
+      hiringOrganization: {
+        "@type": "Organization",
+        name: "넥스트다이닝 (Next Dining Corp)",
+        sameAs: "https://next-dining.com",
+      },
+      jobLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: pos.location,
+          addressCountry: "KR",
+        },
+      },
+      industry: "외식업 (Food & Beverage)",
+      applicantLocationRequirements: {
+        "@type": "Country",
+        name: "대한민국",
+      },
+    }))
+  );
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(postings) }}
+    />
+  );
+}
+
+const BENEFITS = [
+  { title: "식사 제공", desc: "근무 중 자사 브랜드 식사 무료 제공" },
+  { title: "일본 현지 연수", desc: "장인 브랜드 본사 방문 및 기술 연수 기회 (주방 직군)" },
+  { title: "자기개발 지원", desc: "외식업 관련 자격증·교육 비용 지원" },
+  { title: "경조사 지원", desc: "경조금 및 경조 휴가 제공" },
+  { title: "장기근속 보상", desc: "근속 연수에 따른 포상 및 추가 휴가" },
+  { title: "직원 할인", desc: "자사 전 브랜드 매장 직원 할인 혜택" },
+];
+
 export default function CareersPage() {
   return (
     <div>
+      <JobPostingJsonLd />
       {/* 헤더 */}
       <section className="bg-stone-950 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
@@ -187,6 +234,22 @@ export default function CareersPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 복리후생 */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-12">
+          <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">Benefits</p>
+          <h2 className="text-3xl font-bold">함께하면 드리는 것들</h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {BENEFITS.map((b) => (
+            <div key={b.title} className="rounded-2xl border border-stone-100 p-6 hover:border-stone-300 transition-all">
+              <h3 className="font-bold text-stone-900 mb-2">{b.title}</h3>
+              <p className="text-sm text-stone-500 leading-relaxed">{b.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -42,7 +42,30 @@ function OrganizationJsonLd() {
     description:
       "봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영하는 한국 멀티 브랜드 외식 그룹",
     foundingLocation: { "@type": "Place", name: "서울, 대한민국" },
-    areaServed: "대한민국",
+    areaServed: ["대한민국", "미국"],
+    numberOfEmployees: { "@type": "QuantitativeValue", minValue: 100 },
+    knowsAbout: ["프리미엄 외식", "일식", "한정식", "멀티 브랜드 외식 운영", "해외 브랜드 수입"],
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
   };
   return (
     <script
@@ -53,6 +76,10 @@ function OrganizationJsonLd() {
 }
 
 const FAQ_ITEMS = [
+  {
+    q: "넥스트다이닝은 어떤 회사인가요?",
+    a: "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시, NOFLEX NYC 등 10개 프리미엄 외식 브랜드를 운영하는 멀티 브랜드 외식 그룹입니다. 서울·수원·부산·여주 등 전국 15개 이상 직영 매장과 뉴욕 맨해튼 매장을 운영하며, 검증된 장인의 브랜드를 발굴·운영하는 것이 핵심 역량입니다.",
+  },
   {
     q: "한남동에서 데이트하기 좋은 식당은?",
     a: "분지로 사운즈한남점과 다이센스시 한남점을 추천합니다. 분지로는 나가사키 장인의 프리미엄 돈카츠를, 다이센스시는 셰프 카운터 오마카세 스시를 제공합니다. 두 매장 모두 사운즈한남 복합공간에 위치해 산책과 함께 즐기기 좋습니다.",
@@ -70,8 +97,16 @@ const FAQ_ITEMS = [
     a: "롯데월드몰에는 진가와(정통 소바)와 분지로(나가사키 돈카츠) 두 매장이 있습니다. 진가와는 100% 메밀 소바, 분지로는 장인의 돈카츠를 선보입니다.",
   },
   {
-    q: "넥스트다이닝 채용 문의는 어떻게 하나요?",
-    a: "채용 페이지에서 공개 채용 공고를 확인하시고 온라인으로 지원하실 수 있습니다. 홀·주방·본사(경영지원, 마케팅) 등 다양한 포지션이 있습니다.",
+    q: "넥스트다이닝에 브랜드 입점이나 사업 제휴를 제안하려면?",
+    a: "백화점·아울렛·복합몰 등 입점 제안이나 광고·제휴 협업 문의는 communication@next-dining.com으로 보내주세요. 회사 소개 및 제안 내용을 포함해 주시면 담당자가 검토 후 연락드립니다.",
+  },
+  {
+    q: "넥스트다이닝 채용은 어떻게 지원하나요?",
+    a: "채용 페이지에서 현재 공개 채용 포지션을 확인하시고 hr@next-dining.com으로 지원하실 수 있습니다. 홀 서비스, 주방(소바 장인 수련생 포함), 본사(마케팅, 경영지원, 브랜드 기획) 등 다양한 포지션이 있으며, 일본 현지 연수 기회도 제공합니다.",
+  },
+  {
+    q: "뉴욕에 있는 넥스트다이닝 레스토랑은?",
+    a: "NOFLEX NYC는 뉴욕 맨해튼 5번가(286 5th Avenue)에 위치한 미디어 아트 레스토랑 & 칵테일 바입니다. 72피트 LED 월에 투사되는 몰입형 디지털 아트와 함께 대담한 칵테일과 모던 다이닝을 즐길 수 있습니다.",
   },
 ];
 
@@ -85,6 +120,7 @@ export default function HomePage() {
   return (
     <>
       <OrganizationJsonLd />
+      <FaqJsonLd items={FAQ_ITEMS} />
 
       {/* 히어로 — 몰입형 풀스크린 */}
       <section className="relative min-h-screen bg-stone-950 text-white overflow-hidden flex items-center">
@@ -230,6 +266,58 @@ export default function HomePage() {
           <Link href="/careers" className="shrink-0 bg-white text-stone-900 px-8 py-4 rounded-xl font-semibold text-sm hover:bg-stone-100 transition-colors">
             채용 공고 보기
           </Link>
+        </div>
+      </section>
+
+      {/* 파트너·입점 제안 — 바이어/MD 타겟 */}
+      <section className="bg-stone-50 py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">Partnership</p>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">검증된 브랜드로<br />공간의 가치를 높입니다</h2>
+              <p className="text-stone-600 leading-relaxed mb-8">
+                넥스트다이닝은 일본·미국의 검증된 장인 브랜드를 한국에서 직영 운영합니다.
+                백화점, 복합몰, 아울렛 등 10개 브랜드 × 15개+ 직영 매장의 운영 실적과 연 250억 규모의 매출이
+                입점 파트너로서의 안정성을 증명합니다.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { label: "브랜드 포트폴리오", value: "일식·한식·양식·카페 10개" },
+                  { label: "입점 실적", value: "롯데월드몰, 신세계, 아이파크몰 등" },
+                  { label: "해외 직영", value: "뉴욕 맨해튼 5th Ave" },
+                  { label: "운영 안정성", value: "연 매출 ~250억, 전 매장 직영" },
+                ].map((item) => (
+                  <div key={item.label} className="bg-white rounded-xl p-4 border border-stone-100">
+                    <p className="text-xs text-stone-400 mb-1">{item.label}</p>
+                    <p className="text-sm font-semibold text-stone-900">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+              <Link href="/contact" className="inline-block bg-stone-900 text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-stone-800 transition-colors">
+                입점·제휴 문의하기
+              </Link>
+            </div>
+            <div className="bg-white rounded-2xl border border-stone-100 p-8">
+              <h3 className="font-bold text-stone-900 mb-6">넥스트다이닝이 선택받는 이유</h3>
+              <div className="space-y-5">
+                {[
+                  { title: "검증된 원본 브랜드", desc: "370년 전통 수연면, 큐슈 1위 스시야, 나가사키 장인 돈카츠 — 스토리가 있는 브랜드만 운영합니다." },
+                  { title: "전 매장 직영 운영", desc: "프랜차이즈가 아닌 직영 체제로 품질과 서비스를 직접 관리합니다." },
+                  { title: "다업태 포트폴리오", desc: "한정식부터 소바, 돈카츠, 오마카세, 카페, 미디어아트 다이닝까지 — 공간에 맞는 최적의 브랜드를 제안합니다." },
+                  { title: "글로벌 확장 역량", desc: "뉴욕 맨해튼 직영 매장 운영으로 검증된 해외 사업 역량을 보유하고 있습니다." },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-4">
+                    <div className="w-2 h-2 rounded-full bg-stone-900 mt-2 shrink-0" />
+                    <div>
+                      <p className="font-semibold text-stone-900 text-sm mb-1">{item.title}</p>
+                      <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

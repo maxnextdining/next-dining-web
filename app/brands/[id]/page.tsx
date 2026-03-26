@@ -238,6 +238,36 @@ export default async function BrandDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {/* 예약/문의 CTA 배너 */}
+      {activeLocations.length > 0 && (
+        <section className="bg-stone-900 text-white py-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">{brand.name}을(를) 직접 경험해 보세요</h2>
+              <p className="text-stone-400 text-sm">캐치테이블에서 바로 예약하거나, 문의 페이지에서 상세 안내를 확인하세요.</p>
+            </div>
+            <div className="flex gap-3">
+              <Link
+                href="/contact"
+                className="bg-white text-stone-900 px-6 py-3 rounded-xl text-sm font-semibold hover:bg-stone-100 transition-colors"
+              >
+                예약·문의하기
+              </Link>
+              {brand.website && (
+                <a
+                  href={brand.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-stone-600 text-stone-300 px-6 py-3 rounded-xl text-sm font-semibold hover:border-stone-400 hover:text-white transition-colors"
+                >
+                  공식 사이트 →
+                </a>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 다른 브랜드 */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
