@@ -70,6 +70,8 @@ export default async function BrandDetailPage({ params }: Props) {
         description: brand.description,
         servesCuisine: brand.cuisine || CATEGORY_LABEL[brand.category],
         priceRange: brand.priceRange,
+        ...(loc.phone && { telephone: loc.phone }),
+        ...(loc.hours && { openingHours: loc.hours }),
         address: {
           "@type": "PostalAddress",
           streetAddress: loc.address,
@@ -249,6 +251,14 @@ export default async function BrandDetailPage({ params }: Props) {
                         </span>
                       </div>
                       <p className="text-sm text-stone-500">{loc.address}</p>
+                      {loc.phone && (
+                        <p className="text-sm text-stone-500 mt-1">
+                          <a href={`tel:${loc.phone.replace(/[^0-9+()-]/g, '')}`} className="hover:text-stone-900 transition-colors">{loc.phone}</a>
+                        </p>
+                      )}
+                      {loc.hours && (
+                        <p className="text-xs text-stone-400 mt-1">{loc.hours}</p>
+                      )}
                       {reservationLink && loc.status === 'active' && (
                         <a
                           href={reservationLink.url}

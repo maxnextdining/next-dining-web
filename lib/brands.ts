@@ -5,6 +5,8 @@ export interface BrandLocation {
   name: string;
   address: string;
   status: LocationStatus;
+  phone?: string;
+  hours?: string;
 }
 
 /** 브랜드 페이지 5대 스토리텔링 요소 (벤치마킹 도출) */
@@ -64,16 +66,16 @@ export const brands: Brand[] = [
       spaceExperience: '비즈니스 미팅과 접대에 최적화된 격조 있는 공간. 프라이빗 룸에서 조용하게 식사를 즐기며 중요한 대화를 나눌 수 있습니다.',
     },
     locations: [
-      { name: '역삼점', address: '서울 강남구 역삼동', status: 'active' },
-      { name: '을지로점', address: '서울 중구 을지로', status: 'active' },
+      { name: '역삼 본점', address: '서울 강남구 논현로94길 25-3, 2층', status: 'active', phone: '0507-1402-8551', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
+      { name: '을지로점', address: '서울 중구 을지로5길 26, 미래에셋 센터원 B1', status: 'active', phone: '02-6030-8960', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
+      { name: '판교점', address: '경기 성남시 분당구 판교역로146번길 20, 현대백화점 판교점 9층', status: 'active', phone: '031-5170-1936', hours: '매일 11:00~21:00 (BT 15:00~17:00)' },
     ],
     image: '/images/bongwoori.jpg',
-    keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
+    keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '판교 한정식', '서울 한정식 추천', '기업 접대 식당'],
     priceRange: '₩₩₩₩',
     cuisine: '한정식',
     menuHighlights: [
-      { name: '런치반상', price: '45,000원~55,000원' },
-      { name: '상견례 정식', price: '68,000원' },
+      { name: '봉우리 정식', price: '65,000원' },
       { name: '식객 정식', price: '78,000원' },
       { name: '명인 정식', price: '150,000원' },
     ],
@@ -94,7 +96,7 @@ export const brands: Brand[] = [
       spaceExperience: '여주 신세계아울렛 내 위치. 쇼핑 후 가족과 함께 편안하게 즐기는 고품격 한식 공간.',
     },
     locations: [
-      { name: '여주신세계아울렛점', address: '경기도 여주시 신세계아울렛', status: 'active' },
+      { name: '여주신세계아울렛점', address: '경기 여주시 명품로 360, 여주 신세계 프리미엄아울렛', status: 'active' },
     ],
     image: '/images/bongwoori-soban.jpg',
     keywords: ['여주 맛집', '여주신세계 식당', '아울렛 한식', '경기도 한정식'],
@@ -119,15 +121,17 @@ export const brands: Brand[] = [
       spaceExperience: '시청 인근 소박하지만 정겨운 공간. 바쁜 도심 속 따뜻한 한 끼를 나누는 동네 만두집의 정서를 간직하고 있습니다.',
     },
     locations: [
-      { name: '시청점', address: '서울 중구 시청 인근', status: 'active' },
+      { name: '여의도 본점', address: '서울 영등포구 국제금융로8길 34, 오륜빌딩 3층', status: 'active', phone: '02-780-7867', hours: '평일 11:00~21:00 (BT 15:00~17:00) / 토·일 휴무' },
+      { name: '국회점', address: '서울 영등포구 국회대로72길 11, 프린스텔빌딩', status: 'active', phone: '0507-1318-5454', hours: '월~목 11:00~21:00 / 금·토 ~20:30 / 일 휴무' },
     ],
     image: '/images/jinjin-mandu.jpg',
-    keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점'],
+    keywords: ['여의도 만두', '여의도 점심 맛집', '수제만두 서울', '국회의사당 맛집', '만두 전문점', '황해도식 만두'],
     priceRange: '₩₩',
     cuisine: '한식',
     menuHighlights: [
-      { name: '손만두떡국', price: '18,000원~19,000원' },
-      { name: '어복쟁반', price: '89,000원~103,000원' },
+      { name: '손만두떡국', price: '18,000원' },
+      { name: '손만두술국', price: '19,000원' },
+      { name: '어복쟁반 (대)', price: '103,000원' },
     ],
   },
   {
@@ -148,20 +152,22 @@ export const brands: Brand[] = [
       spaceExperience: '일본 전통 소바야의 단정함을 재현한 공간. 나무와 돌의 자연 소재가 조화를 이루며, 면을 늘이는 장인의 모습을 가까이에서 감상할 수 있습니다.',
     },
     locations: [
-      { name: '역삼점', address: '서울 강남구 역삼동', status: 'active' },
-      { name: '잠실롯데월드몰점', address: '서울 송파구 잠실 롯데월드몰', status: 'active' },
-      { name: '부산본점', address: '부산', status: 'active' },
+      { name: '역삼점 (한국본점)', address: '서울 강남구 논현로94길 25-3, B1', status: 'active', phone: '0507-1421-8853', hours: '평일 11:30~22:30 (BT 14:30~17:30) / 주말 12:00~21:30' },
+      { name: '잠실롯데월드몰점', address: '서울 송파구 올림픽로 300, 롯데월드몰 6층', status: 'active', phone: '0507-1349-4625', hours: '매일 10:30~22:00 (BT 15:00~17:00)' },
+      { name: '부산 롯데백화점점', address: '부산 부산진구 가야대로 772, 롯데백화점 부산본점 9층', status: 'active', phone: '051-810-3997', hours: '매일 10:30~20:30' },
     ],
     image: '/images/jinkawa.jpg',
     keywords: ['진가와', '역삼 소바', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
     priceRange: '₩₩₩',
     cuisine: '소바',
     menuHighlights: [
-      { name: '진가와 코스', price: '49,000원~79,000원' },
-      { name: '사시미 정식', price: '26,000원~78,000원' },
+      { name: '스키야키 나베 코스', price: '49,000원' },
+      { name: '가이세키 코스', price: '59,000원' },
+      { name: '셰프 스페셜 코스', price: '79,000원' },
+      { name: '사시미 & 스시 정식', price: '37,000원~49,000원' },
     ],
     reservationLinks: [
-      { location: '역삼점', url: 'https://app.catchtable.co.kr/ct/shop/jkwyud' },
+      { location: '역삼점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/jkwyud' },
     ],
   },
   {
@@ -182,10 +188,10 @@ export const brands: Brand[] = [
       spaceExperience: '사운즈한남의 세련된 외관과 명동 본점의 정통 일본 돈카츠야 분위기. 오픈 키친에서 장인의 기술을 직접 보며 즐기는 라이브 다이닝 경험.',
     },
     locations: [
-      { name: '명동점 (한국본점)', address: '서울 중구 명동', status: 'active' },
-      { name: '사운즈한남점', address: '서울 용산구 한남동 사운즈한남', status: 'active' },
-      { name: '수원점', address: '경기도 수원시', status: 'active' },
-      { name: '롯데월드몰점', address: '서울 송파구 잠실 롯데월드몰', status: 'active' },
+      { name: '명동점 (한국본점)', address: '서울 중구 남대문로 81, 롯데백화점 본점 13층', status: 'active', phone: '02-726-4337', hours: '매일 10:30~21:00 (LO 20:00)' },
+      { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', phone: '02-794-2648', hours: '매일 11:00~22:00 (BT 15:00~17:00)' },
+      { name: '타임빌라스 수원점', address: '경기 수원시 권선구 세화로 134, 타임빌라스 수원 3층', status: 'active', phone: '0507-1361-8572', hours: '매일 10:30~22:00 (LO 21:00)' },
+      { name: '롯데월드몰점', address: '서울 송파구 올림픽로 300, 롯데월드몰 5층', status: 'active', phone: '02-3213-4581', hours: '매일 10:30~22:00' },
       { name: '잠실롯백점', address: '서울 송파구 잠실 롯데백화점', status: 'coming-soon' },
     ],
     image: '/images/bunjiro.jpg',
@@ -219,8 +225,8 @@ export const brands: Brand[] = [
       spaceExperience: '나가사키 항구도시의 이국적 분위기를 현대적으로 재해석한 인테리어. 고속터미널과 용산아이파크몰에서 일상 속 작은 여행을 선사합니다.',
     },
     locations: [
-      { name: '고속터미널점', address: '서울 서초구 고속터미널', status: 'active' },
-      { name: '용산아이파크몰점', address: '서울 용산구 아이파크몰', status: 'active' },
+      { name: '고속터미널점', address: '서울 서초구 신반포로 194, 서울고속버스터미널 경부선 1층', status: 'active', phone: '0507-1350-8553', hours: '매일 10:00~21:00 (LO 20:30)' },
+      { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
     ],
     image: '/images/takumi-nagasaki.jpg',
     keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
@@ -249,18 +255,21 @@ export const brands: Brand[] = [
       spaceExperience: '한남동 프라이빗 공간, 카운터 7석. 셰프와 마주 앉아 대화하며 스시를 즐기는 친밀한 오마카세 경험. 일본 현지 스시야의 분위기 그대로.',
     },
     locations: [
-      { name: '한남점 (한국본점)', address: '서울 용산구 한남동', status: 'active' },
+      { name: '한남점 (한국본점)', address: '서울 용산구 대사관로 35, 사운즈한남 야외 2층', status: 'active', hours: '매일 11:30~22:30 (BT 15:00~17:30)' },
     ],
     image: '/images/daisen.jpg',
     keywords: [
       '다이센스시', '한남 오마카세', '한남동 스시', '서울 오마카세 추천',
-      '프리미엄 스시 서울', '한남 데이트 코스', '특별한 날 식당 서울',
+      '프리미엄 스시 서울', '한남 데이트 코스', '특별한 날 식당 서울', '사운즈한남 오마카세',
     ],
     priceRange: '₩₩₩₩',
     cuisine: '스시 오마카세',
     menuHighlights: [
-      { name: '런치 코스', price: '35,000원~73,000원' },
+      { name: '런치 코스', price: '50,000원~' },
       { name: '디너 코스', price: '77,000원~150,000원' },
+    ],
+    reservationLinks: [
+      { location: '한남점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/daisensushi' },
     ],
   },
   {
@@ -279,7 +288,7 @@ export const brands: Brand[] = [
       spaceExperience: '사운즈한남 복합문화공간 내 위치. 높은 천장과 자연광이 만드는 개방감, 갤러리처럼 큐레이팅된 공간에서 일상의 작은 사치를 즐깁니다.',
     },
     locations: [
-      { name: '한남점', address: '서울 용산구 한남동 사운즈한남', status: 'active' },
+      { name: '한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', hours: '매일 10:00~22:00 (LO 21:30)' },
     ],
     image: '/images/cafe-le-sens.jpg',
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
@@ -330,13 +339,16 @@ export const brands: Brand[] = [
       spaceExperience: '72피트 LED 월이 만드는 몰입형 미디어 아트 공간. 시간이 흐르면서 변하는 비주얼, 음악, 조명이 감각을 깨우는 뉴욕에서 유일무이한 경험.',
     },
     locations: [
-      { name: '뉴욕 맨해튼', address: '286 5th Avenue, New York, NY 10001', status: 'active' },
+      { name: '뉴욕 맨해튼', address: '286 5th Avenue, 1st Floor, New York, NY 10001', status: 'active', phone: '(347) 572-1027', hours: '화~일 17:00~02:00 (금·토 ~04:00) / 월 휴무' },
     ],
     image: '/images/noflex-nyc.jpg',
     keywords: ['NOFLEX NYC', '노플렉스뉴욕', '뉴욕 한국 레스토랑', 'media art restaurant NYC', 'immersive dining NYC', '맨해튼 칵테일바', '넥스트다이닝 미국'],
     priceRange: '$$$',
     cuisine: '모던 다이닝 & 칵테일 바',
     website: 'https://noflex.nyc',
+    reservationLinks: [
+      { location: '뉴욕 맨해튼', url: 'https://resy.com/cities/new-york-ny/venues/noflex-nyc' },
+    ],
   },
 ];
 
