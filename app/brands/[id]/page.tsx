@@ -40,13 +40,24 @@ const STATUS_LABEL: Record<string, { label: string; color: string }> = {
   closed: { label: "폐점", color: "bg-stone-50 text-stone-400 border-stone-200" },
 };
 
+const STORY_SECTIONS = [
+  { key: "originStory", title: "탄생 이야기", titleEn: "Origin Story", icon: "📖" },
+  { key: "chefOrArtisan", title: "장인의 길", titleEn: "The Artisan", icon: "👨‍🍳" },
+  { key: "ingredientPhilosophy", title: "식재료 철학", titleEn: "Ingredients", icon: "🌿" },
+  { key: "signatureMenu", title: "시그니처", titleEn: "Signature", icon: "⭐" },
+  { key: "spaceExperience", title: "공간 경험", titleEn: "Space & Experience", icon: "🏛" },
+] as const;
+
 export default async function BrandDetailPage({ params }: Props) {
   const { id } = await params;
   const brand = getBrandById(id);
   if (!brand) notFound();
 
   const activeLocations = brand.locations.filter((l) => l.status === "active");
-  const comingSoon = brand.locations.filter((l) => l.status === "coming-soon");
+  const elements = brand.storyElements;
+  const storyEntries = elements
+    ? STORY_SECTIONS.filter((s) => elements[s.key as keyof typeof elements])
+    : [];
 
   // Schema.org Restaurant JSON-LD
   const jsonLd = activeLocations.length > 0
@@ -82,118 +93,153 @@ export default async function BrandDetailPage({ params }: Props) {
         />
       )}
 
-      {/* 히어로 */}
-      <section className="bg-stone-950 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <Link href="/brands" className="inline-flex items-center gap-1.5 text-sm text-stone-400 hover:text-white transition-colors mb-8">
+      {/* 풀스크린 히어로 */}
+      <section className="relative min-h-[70vh] bg-stone-950 text-white flex items-end overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-950/60 to-stone-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-stone-800 to-stone-950" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-32 lg:pb-24 lg:pt-48 w-full">
+          <Link href="/brands" className="inline-flex items-center gap-1.5 text-sm text-stone-400 hover:text-white transition-colors mb-10">
             ← 레스토랑 전체 보기
           </Link>
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs bg-white/10 px-2 py-1 rounded-full text-stone-300">
-                  {CATEGORY_LABEL[brand.category]}
-                </span>
-                {brand.priceRange && (
-                  <span className="text-xs text-stone-500">{brand.priceRange}</span>
-                )}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-xs bg-white/10 backdrop-blur px-3 py-1 rounded-full text-stone-300 border border-white/10">
+              {CATEGORY_LABEL[brand.category]}
+            </span>
+            {brand.priceRange && (
+              <span className="text-xs text-stone-500">{brand.priceRange}</span>
+            )}
+          </div>
+          <p className="text-sm font-medium tracking-[0.2em] text-stone-500 mb-3">{brand.nameEn}</p>
+          <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-6">{brand.name}</h1>
+          <p className="text-xl sm:text-2xl text-stone-300 max-w-2xl leading-relaxed font-light">
+            {brand.tagline}
+          </p>
+        </div>
+      </section>
+
+      {/* 브랜드 소개 */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-3xl">
+          <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">About</p>
+          <p className="text-lg text-stone-700 leading-relaxed">{brand.description}</p>
+          <blockquote className="mt-8 border-l-2 border-stone-900 pl-6">
+            <p className="text-stone-600 leading-relaxed italic">{brand.story}</p>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* 5대 스토리 요소 — 교차 레이아웃 */}
+      {storyEntries.length > 0 && (
+        <section className="bg-stone-50">
+          {storyEntries.map((section, idx) => {
+            const content = elements![section.key as keyof typeof elements]!;
+            const isEven = idx % 2 === 0;
+
+            return (
+              <div key={section.key} className={`${isEven ? 'bg-white' : 'bg-stone-50'}`}>
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+                  <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+                    {/* 이미지 영역 */}
+                    <div className="w-full lg:w-1/2">
+                      <div className="aspect-[4/3] bg-stone-100 rounded-2xl overflow-hidden relative">
+                        <div className={`absolute inset-0 bg-gradient-to-br ${isEven ? 'from-stone-200 to-stone-300' : 'from-stone-150 to-stone-250'}`} />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-4xl">{section.icon}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 텍스트 영역 */}
+                    <div className="w-full lg:w-1/2">
+                      <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">
+                        {section.titleEn}
+                      </p>
+                      <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 mb-6">
+                        {section.title}
+                      </h2>
+                      <p className="text-stone-600 leading-relaxed text-[15px]">{content}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="text-sm font-medium tracking-widest text-stone-400 mb-2">{brand.nameEn}</p>
-              <h1 className="text-4xl sm:text-5xl font-bold mb-4">{brand.name}</h1>
-              <p className="text-lg text-stone-300 max-w-xl">{brand.tagline}</p>
-            </div>
+            );
+          })}
+        </section>
+      )}
+
+      {/* 지점 안내 */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+        <div className="flex flex-col lg:flex-row gap-12">
+          <div className="lg:w-1/2">
+            <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Locations</p>
+            <h2 className="text-3xl font-bold text-stone-900 mb-4">지점 안내</h2>
+            <p className="text-stone-500 leading-relaxed">
+              {brand.name}을(를) 가까운 지점에서 만나보세요.
+            </p>
+            {activeLocations.length > 0 && (
+              <Link
+                href="/contact"
+                className="mt-8 inline-block bg-stone-900 text-white px-8 py-3.5 rounded-xl text-sm font-medium hover:bg-stone-800 transition-colors"
+              >
+                예약·문의하기
+              </Link>
+            )}
+          </div>
+
+          <div className="lg:w-1/2">
+            {brand.locations.length > 0 ? (
+              <div className="space-y-4">
+                {brand.locations.map((loc) => {
+                  const status = STATUS_LABEL[loc.status];
+                  return (
+                    <div key={loc.name} className="bg-stone-50 rounded-xl p-5 border border-stone-100">
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="font-semibold text-stone-900">{loc.name}</p>
+                        <span className={`text-xs px-2.5 py-0.5 rounded-full border ${status.color}`}>
+                          {status.label}
+                        </span>
+                      </div>
+                      <p className="text-sm text-stone-500">{loc.address}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="bg-stone-50 rounded-xl p-8 border border-stone-100 text-center">
+                <p className="text-stone-500">지점 오픈 준비 중입니다.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* 이미지 플레이스홀더 */}
-      <div className="aspect-[21/9] bg-stone-100 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <p className="text-stone-400 text-sm">대표 이미지 (준비 중)</p>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* 메인 콘텐츠 */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* 브랜드 소개 */}
-            <section>
-              <h2 className="text-xl font-bold mb-4">브랜드 소개</h2>
-              <p className="text-stone-600 leading-relaxed text-[15px]">{brand.description}</p>
-            </section>
-
-            {/* 브랜드 스토리 */}
-            <section>
-              <h2 className="text-xl font-bold mb-4">브랜드 스토리</h2>
-              <blockquote className="border-l-2 border-stone-900 pl-6">
-                <p className="text-stone-700 leading-relaxed italic text-[15px]">{brand.story}</p>
-              </blockquote>
-            </section>
-
-            {/* 키워드 (검색 노출용) */}
-            <section>
-              <h2 className="text-xl font-bold mb-4">이런 분께 추천합니다</h2>
-              <div className="flex flex-wrap gap-2">
-                {brand.keywords.map((kw) => (
-                  <span key={kw} className="text-sm bg-stone-50 border border-stone-200 px-3 py-1 rounded-full text-stone-600">
-                    #{kw}
-                  </span>
-                ))}
-              </div>
-            </section>
-          </div>
-
-          {/* 사이드: 지점 정보 */}
-          <div>
-            <div className="bg-stone-50 rounded-2xl p-6 border border-stone-100 sticky top-20">
-              <h2 className="font-bold text-stone-900 mb-5">지점 안내</h2>
-
-              {brand.locations.length > 0 ? (
-                <div className="space-y-4">
-                  {brand.locations.map((loc) => {
-                    const status = STATUS_LABEL[loc.status];
-                    return (
-                      <div key={loc.name} className="pb-4 border-b border-stone-200 last:border-0 last:pb-0">
-                        <div className="flex items-center justify-between mb-1">
-                          <p className="font-medium text-stone-900 text-sm">{loc.name}</p>
-                          <span className={`text-xs px-2 py-0.5 rounded-full border ${status.color}`}>
-                            {status.label}
-                          </span>
-                        </div>
-                        <p className="text-xs text-stone-500">{loc.address}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <p className="text-sm text-stone-500">지점 오픈 준비 중입니다.</p>
-              )}
-
-              {activeLocations.length > 0 && (
-                <Link
-                  href="/contact"
-                  className="mt-6 block w-full text-center bg-stone-900 text-white py-3 rounded-xl text-sm font-medium hover:bg-stone-800 transition-colors"
-                >
-                  예약·문의하기
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 넥스트다이닝 다른 브랜드 */}
+      {/* 키워드 (SEO) */}
       <section className="bg-stone-50 py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-lg font-bold">넥스트다이닝의 다른 브랜드</h2>
+          <h2 className="text-lg font-bold mb-6">이런 분께 추천합니다</h2>
+          <div className="flex flex-wrap gap-2">
+            {brand.keywords.map((kw) => (
+              <span key={kw} className="text-sm bg-white border border-stone-200 px-3.5 py-1.5 rounded-full text-stone-600">
+                #{kw}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 다른 브랜드 */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">More Brands</p>
+              <h2 className="text-2xl font-bold">넥스트다이닝의 다른 브랜드</h2>
+            </div>
             <Link href="/brands" className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
               전체 보기 →
             </Link>
           </div>
-          <div className="flex gap-4 overflow-x-auto pb-2">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {brands
               .filter((b) => b.id !== brand.id)
               .slice(0, 4)
@@ -201,11 +247,16 @@ export default async function BrandDetailPage({ params }: Props) {
                 <Link
                   key={b.id}
                   href={`/brands/${b.id}`}
-                  className="shrink-0 w-52 rounded-xl border border-stone-200 bg-white hover:border-stone-400 transition-colors p-4"
+                  className="group block rounded-xl border border-stone-100 hover:border-stone-300 hover:shadow-md transition-all overflow-hidden"
                 >
-                  <div className="aspect-square bg-stone-100 rounded-lg mb-3" />
-                  <p className="text-xs text-stone-400 mb-1">{b.nameEn}</p>
-                  <p className="text-sm font-semibold text-stone-900">{b.name}</p>
+                  <div className="aspect-[4/3] bg-stone-100 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300 group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-xs text-stone-400 tracking-wider mb-0.5">{b.nameEn}</p>
+                    <p className="text-sm font-semibold text-stone-900">{b.name}</p>
+                    <p className="text-xs text-stone-500 mt-1 line-clamp-1">{b.tagline}</p>
+                  </div>
                 </Link>
               ))}
           </div>
