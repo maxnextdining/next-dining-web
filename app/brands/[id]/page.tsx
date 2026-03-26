@@ -77,6 +77,24 @@ export default async function BrandDetailPage({ params }: Props) {
           addressCountry: "KR",
         },
         url: `https://next-dining.com/brands/${brand.id}`,
+        ...(brand.menuHighlights && brand.menuHighlights.length > 0 && {
+          hasMenu: {
+            "@type": "Menu",
+            hasMenuSection: {
+              "@type": "MenuSection",
+              name: "대표 메뉴",
+              hasMenuItem: brand.menuHighlights.map((item) => ({
+                "@type": "MenuItem",
+                name: item.name,
+                offers: {
+                  "@type": "Offer",
+                  price: item.price,
+                  priceCurrency: "KRW",
+                },
+              })),
+            },
+          },
+        }),
         parentOrganization: {
           "@type": "Organization",
           name: "넥스트다이닝 (Next Dining Corp)",
@@ -178,6 +196,23 @@ export default async function BrandDetailPage({ params }: Props) {
         </section>
       )}
 
+      {/* 메뉴 & 가격 */}
+      {brand.menuHighlights && brand.menuHighlights.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+          <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Menu & Price</p>
+          <h2 className="text-3xl font-bold text-stone-900 mb-8">대표 메뉴</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {brand.menuHighlights.map((item) => (
+              <div key={item.name} className="flex items-center justify-between bg-stone-50 rounded-xl p-5 border border-stone-100">
+                <span className="font-semibold text-stone-900">{item.name}</span>
+                <span className="text-sm text-stone-500 ml-4 shrink-0">{item.price}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-stone-400">* 가격은 매장 및 시기에 따라 변동될 수 있습니다.</p>
+        </section>
+      )}
+
       {/* 지점 안내 */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex flex-col lg:flex-row gap-12">
@@ -202,6 +237,9 @@ export default async function BrandDetailPage({ params }: Props) {
               <div className="space-y-4">
                 {brand.locations.map((loc) => {
                   const status = STATUS_LABEL[loc.status];
+                  const reservationLink = brand.reservationLinks?.find(
+                    (r) => r.location === loc.name || (!r.location && brand.reservationLinks!.length === 1)
+                  );
                   return (
                     <div key={loc.name} className="bg-stone-50 rounded-xl p-5 border border-stone-100">
                       <div className="flex items-center justify-between mb-2">
@@ -211,6 +249,16 @@ export default async function BrandDetailPage({ params }: Props) {
                         </span>
                       </div>
                       <p className="text-sm text-stone-500">{loc.address}</p>
+                      {reservationLink && loc.status === 'active' && (
+                        <a
+                          href={reservationLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 inline-block text-xs font-semibold text-stone-700 bg-white border border-stone-200 px-3 py-1.5 rounded-lg hover:border-stone-400 transition-colors"
+                        >
+                          캐치테이블 예약 →
+                        </a>
+                      )}
                     </div>
                   );
                 })}

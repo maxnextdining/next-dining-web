@@ -16,6 +16,16 @@ export interface BrandStoryElements {
   spaceExperience?: string;   // 공간·경험 설계
 }
 
+export interface MenuItem {
+  name: string;
+  price: string;
+}
+
+export interface ReservationLink {
+  location?: string;
+  url: string;
+}
+
 export interface Brand {
   id: string;
   name: string;
@@ -31,6 +41,8 @@ export interface Brand {
   priceRange?: string;
   cuisine?: string;
   website?: string;
+  menuHighlights?: MenuItem[];
+  reservationLinks?: ReservationLink[];
 }
 
 export const brands: Brand[] = [
@@ -59,6 +71,12 @@ export const brands: Brand[] = [
     keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
     priceRange: '₩₩₩₩',
     cuisine: '한정식',
+    menuHighlights: [
+      { name: '런치반상', price: '45,000원~55,000원' },
+      { name: '상견례 정식', price: '68,000원' },
+      { name: '식객 정식', price: '78,000원' },
+      { name: '명인 정식', price: '150,000원' },
+    ],
   },
   {
     id: 'bongwoori-soban',
@@ -107,6 +125,10 @@ export const brands: Brand[] = [
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점'],
     priceRange: '₩₩',
     cuisine: '한식',
+    menuHighlights: [
+      { name: '손만두떡국', price: '18,000원~19,000원' },
+      { name: '어복쟁반', price: '89,000원~103,000원' },
+    ],
   },
   {
     id: 'jinkawa',
@@ -134,6 +156,13 @@ export const brands: Brand[] = [
     keywords: ['진가와', '역삼 소바', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
     priceRange: '₩₩₩',
     cuisine: '소바',
+    menuHighlights: [
+      { name: '진가와 코스', price: '49,000원~79,000원' },
+      { name: '사시미 정식', price: '26,000원~78,000원' },
+    ],
+    reservationLinks: [
+      { location: '역삼점', url: 'https://app.catchtable.co.kr/ct/shop/jkwyud' },
+    ],
   },
   {
     id: 'bunjiro',
@@ -166,6 +195,12 @@ export const brands: Brand[] = [
     ],
     priceRange: '₩₩₩',
     cuisine: '돈카츠',
+    menuHighlights: [
+      { name: '장인 로스카츠', price: '16,000원~29,000원' },
+    ],
+    reservationLinks: [
+      { location: '사운즈한남점', url: 'https://app.catchtable.co.kr/ct/shop/bunjiro_soundshannam' },
+    ],
   },
   {
     id: 'takumi-nagasaki',
@@ -191,6 +226,10 @@ export const brands: Brand[] = [
     keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
     priceRange: '₩₩₩',
     cuisine: '일식',
+    menuHighlights: [
+      { name: '등심돈카츠', price: '14,000원~19,000원' },
+      { name: '카게우동', price: '14,000원' },
+    ],
   },
   {
     id: 'daisen',
@@ -219,6 +258,10 @@ export const brands: Brand[] = [
     ],
     priceRange: '₩₩₩₩',
     cuisine: '스시 오마카세',
+    menuHighlights: [
+      { name: '런치 코스', price: '35,000원~73,000원' },
+      { name: '디너 코스', price: '77,000원~150,000원' },
+    ],
   },
   {
     id: 'cafe-le-sens',
@@ -242,6 +285,13 @@ export const brands: Brand[] = [
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
     priceRange: '₩₩',
     cuisine: '카페',
+    menuHighlights: [
+      { name: '커피', price: '5,500원~8,000원' },
+      { name: '시그니처 브런치 세트', price: '15,000원~' },
+    ],
+    reservationLinks: [
+      { location: '한남점', url: 'https://app.catchtable.co.kr/ct/shop/cafelesens' },
+    ],
   },
   {
     id: 'menya-always',
