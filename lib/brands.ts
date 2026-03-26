@@ -120,7 +120,7 @@ export const brands: Brand[] = [
       spaceExperience: '시청 인근 소박하지만 정겨운 공간. 바쁜 도심 속 따뜻한 한 끼를 나누는 동네 만두집의 정서를 간직하고 있습니다.',
     },
     locations: [
-      { name: '시청점', address: '서울 중구 시청 인근', status: 'active' },
+      { name: '시청점', address: '서울 중구 을지로 6, JEI재능교육빌딩 1층', status: 'active', phone: '0507-1387-8573' },
     ],
     image: '/images/jinjin-mandu.jpg',
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
