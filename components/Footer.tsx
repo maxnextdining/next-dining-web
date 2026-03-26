@@ -56,7 +56,7 @@ export default function Footer() {
             <h3 className="text-xs font-semibold text-stone-400 uppercase tracking-widest mb-4">Company</h3>
             <ul className="space-y-2.5">
               {[
-                { href: '/about', label: '브랜드 스토리' },
+                { href: '/about', label: '회사 소개' },
                 { href: '/happenings', label: '새소식' },
                 { href: '/careers', label: '채용 안내' },
                 { href: '/contact', label: '문의하기' },

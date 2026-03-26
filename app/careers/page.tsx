@@ -189,7 +189,7 @@ export default function CareersPage() {
                 고객이 최고의 경험을 할 수 있는 공간과 서비스를 만드는 것입니다.
               </p>
               <p>
-                현재 전국 15개 이상 직영 매장, 연 매출 약 250억 규모로 운영되며 미국 법인
+                현재 전국 15개 이상 직영 매장, 연 매출 약 350억 규모로 운영되며 미국 법인
                 (USA Inc.)도 함께 운영 중입니다.
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function CareersPage() {
             {[
               { label: "운영 브랜드", value: "10개" },
               { label: "직영 매장", value: "15+" },
-              { label: "연 매출(2024)", value: "~250억" },
+              { label: "연 매출(2024)", value: "~350억" },
               { label: "해외 법인", value: "USA Inc." },
             ].map((stat) => (
               <div

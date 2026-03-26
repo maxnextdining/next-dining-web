@@ -3,7 +3,7 @@ import { brands } from "@/lib/brands";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "레스토랑",
+  title: "브랜드",
   description:
     "넥스트다이닝의 10개 프리미엄 외식 브랜드 — 봉우리 한정식, 진가와, 분지로, 다이센스시, 타쿠미나가사키, 카페르상스 등. 서울 한남동, 강남, 명동, 잠실, 부산 각 지점 안내.",
 };

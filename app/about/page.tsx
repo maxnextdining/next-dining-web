@@ -3,7 +3,7 @@ import { brands } from "@/lib/brands";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "브랜드 스토리",
+  title: "회사 소개",
   description:
     "넥스트다이닝은 이하연 김치 명인의 봉우리, 370년 전통 진가와, 나가사키 장인 분지로, 큐슈 1위 다이센스시 등 검증된 외식 브랜드를 한국에서 운영하는 프리미엄 외식 그룹입니다.",
 };
@@ -77,13 +77,13 @@ export default function AboutPage() {
       {/* 헤더 */}
       <section className="bg-stone-950 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <p className="text-xs font-semibold tracking-[0.25em] text-stone-400 uppercase mb-5">Brand Story</p>
+          <p className="text-xs font-semibold tracking-[0.25em] text-stone-400 uppercase mb-5">About Next Dining</p>
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight max-w-2xl mb-6">
-            브랜드가 곧<br />이야기입니다
+            검증된 장인의 브랜드를<br />한국에서 운영합니다
           </h1>
           <p className="text-stone-400 max-w-xl leading-relaxed text-lg">
-            넥스트다이닝의 각 브랜드 뒤에는 수십 년, 혹은 수백 년의 이야기가 있습니다.
-            우리는 그 이야기와 철학을 한국 식탁 위에 옮깁니다.
+            넥스트다이닝은 수십 년, 수백 년 역사를 가진 장인의 브랜드를 발굴하고
+            한국과 해외에서 직영 운영하는 프리미엄 외식 그룹입니다.
           </p>
         </div>
       </section>
@@ -176,7 +176,7 @@ export default function AboutPage() {
             {[
               { value: "10개", label: "프리미엄 브랜드", sub: "일식·한식·양식·카페" },
               { value: "15+", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
-              { value: "~250억", label: "연 매출 규모", sub: "2024년 기준, 전 매장 직영" },
+              { value: "~350억", label: "연 매출 규모", sub: "2024년 기준, 전 매장 직영" },
             ].map((s) => (
               <div key={s.label} className="bg-white rounded-2xl p-7 border border-stone-100 text-center">
                 <p className="text-4xl font-bold text-stone-900 mb-2">{s.value}</p>

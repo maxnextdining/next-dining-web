@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const NAV = [
-  { href: '/about', label: '브랜드 스토리' },
-  { href: '/brands', label: '레스토랑' },
+  { href: '/brands', label: '브랜드' },
+  { href: '/about', label: '회사 소개' },
   { href: '/happenings', label: '새소식' },
   { href: '/careers', label: '채용' },
   { href: '/contact', label: '문의' },

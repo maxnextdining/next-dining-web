@@ -8,20 +8,6 @@ export const metadata: Metadata = {
     "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영합니다. 서울 한남동, 강남, 명동, 잠실 등 전국 15개 매장.",
 };
 
-const STATS = [
-  { label: "운영 브랜드", value: "10개" },
-  { label: "전국 직영 매장", value: "15+" },
-  { label: "연 매출(2024)", value: "약 250억" },
-  { label: "해외 법인", value: "USA Inc." },
-];
-
-const VALUES = [
-  { title: "장인정신", titleEn: "Craftsmanship", desc: "타카다 유지 장인의 50년 노하우, 매일 새로 뽑는 소바. 정성은 기술보다 강합니다." },
-  { title: "브랜드 경험", titleEn: "Experience", desc: "맛·공간·서비스를 하나의 이야기로 설계해 고객이 오래 기억하는 경험을 만듭니다." },
-  { title: "사람 중심", titleEn: "People First", desc: "직원이 행복해야 고객의 경험도 따뜻해집니다. 함께 성장하는 팀을 만들어갑니다." },
-  { title: "본질의 가치", titleEn: "Authenticity", desc: "보이는 화려함보다 음식 본연의 깊이를 먼저 생각합니다." },
-];
-
 const CATEGORY_LABEL: Record<string, string> = {
   japanese: "일식",
   korean: "한식",
@@ -141,10 +127,10 @@ export default function HomePage() {
           </p>
           <div className="mt-12 flex flex-wrap gap-4">
             <Link href="/brands" className="bg-white text-stone-900 px-8 py-4 rounded-xl text-sm font-semibold hover:bg-stone-100 transition-colors">
-              레스토랑 보기
+              브랜드 보기
             </Link>
-            <Link href="/about" className="border border-stone-600 text-stone-300 px-8 py-4 rounded-xl text-sm font-semibold hover:border-stone-400 hover:text-white transition-colors">
-              브랜드 스토리
+            <Link href="/contact" className="border border-stone-600 text-stone-300 px-8 py-4 rounded-xl text-sm font-semibold hover:border-stone-400 hover:text-white transition-colors">
+              문의하기
             </Link>
           </div>
 
@@ -162,20 +148,6 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 지표 */}
-      <section className="bg-stone-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {STATS.map((s) => (
-              <div key={s.label} className="text-center">
-                <dt className="text-xs text-stone-500 uppercase tracking-widest">{s.label}</dt>
-                <dd className="mt-1 text-3xl font-bold text-stone-900">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </section>
 
@@ -234,25 +206,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 가치관 */}
-      <section className="bg-stone-50 py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">Our Philosophy</p>
-            <h2 className="text-3xl sm:text-4xl font-bold">넥스트다이닝이 지키는 것</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VALUES.map((v) => (
-              <div key={v.title} className="bg-white rounded-2xl p-7 border border-stone-100 hover:shadow-md transition-shadow">
-                <p className="text-xs tracking-widest text-stone-400 uppercase mb-3">{v.titleEn}</p>
-                <h3 className="font-bold text-stone-900 text-lg mb-3">{v.title}</h3>
-                <p className="text-sm text-stone-500 leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 채용 CTA */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
         <div className="bg-stone-900 text-white rounded-3xl p-10 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
@@ -266,58 +219,6 @@ export default function HomePage() {
           <Link href="/careers" className="shrink-0 bg-white text-stone-900 px-8 py-4 rounded-xl font-semibold text-sm hover:bg-stone-100 transition-colors">
             채용 공고 보기
           </Link>
-        </div>
-      </section>
-
-      {/* 파트너·입점 제안 — 바이어/MD 타겟 */}
-      <section className="bg-stone-50 py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2">Partnership</p>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">검증된 브랜드로<br />공간의 가치를 높입니다</h2>
-              <p className="text-stone-600 leading-relaxed mb-8">
-                넥스트다이닝은 일본·미국의 검증된 장인 브랜드를 한국에서 직영 운영합니다.
-                백화점, 복합몰, 아울렛 등 10개 브랜드 × 15개+ 직영 매장의 운영 실적과 연 250억 규모의 매출이
-                입점 파트너로서의 안정성을 증명합니다.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {[
-                  { label: "브랜드 포트폴리오", value: "일식·한식·양식·카페 10개" },
-                  { label: "입점 실적", value: "롯데월드몰, 신세계, 아이파크몰 등" },
-                  { label: "해외 직영", value: "뉴욕 맨해튼 5th Ave" },
-                  { label: "운영 안정성", value: "연 매출 ~250억, 전 매장 직영" },
-                ].map((item) => (
-                  <div key={item.label} className="bg-white rounded-xl p-4 border border-stone-100">
-                    <p className="text-xs text-stone-400 mb-1">{item.label}</p>
-                    <p className="text-sm font-semibold text-stone-900">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-              <Link href="/contact" className="inline-block bg-stone-900 text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-stone-800 transition-colors">
-                입점·제휴 문의하기
-              </Link>
-            </div>
-            <div className="bg-white rounded-2xl border border-stone-100 p-8">
-              <h3 className="font-bold text-stone-900 mb-6">넥스트다이닝이 선택받는 이유</h3>
-              <div className="space-y-5">
-                {[
-                  { title: "검증된 원본 브랜드", desc: "370년 전통 수연면, 큐슈 1위 스시야, 나가사키 장인 돈카츠 — 스토리가 있는 브랜드만 운영합니다." },
-                  { title: "전 매장 직영 운영", desc: "프랜차이즈가 아닌 직영 체제로 품질과 서비스를 직접 관리합니다." },
-                  { title: "다업태 포트폴리오", desc: "한정식부터 소바, 돈카츠, 오마카세, 카페, 미디어아트 다이닝까지 — 공간에 맞는 최적의 브랜드를 제안합니다." },
-                  { title: "글로벌 확장 역량", desc: "뉴욕 맨해튼 직영 매장 운영으로 검증된 해외 사업 역량을 보유하고 있습니다." },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-4">
-                    <div className="w-2 h-2 rounded-full bg-stone-900 mt-2 shrink-0" />
-                    <div>
-                      <p className="font-semibold text-stone-900 text-sm mb-1">{item.title}</p>
-                      <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
