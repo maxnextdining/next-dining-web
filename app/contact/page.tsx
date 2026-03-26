@@ -54,7 +54,7 @@ const BRAND_RESERVATIONS: {
   {
     brandId: "daisen",
     locations: [
-      { name: "한남점 (한국본점)", reservationUrl: "https://app.catchtable.co.kr/ct/shop/daisen_hannam", reservationPlatform: "캐치테이블", note: "사전 예약 필수 (프라이빗 룸 운영)" },
+      { name: "사운즈한남점 (한국본점)", reservationUrl: "https://app.catchtable.co.kr/ct/shop/daisen_hannam", reservationPlatform: "캐치테이블", note: "사전 예약 필수 (프라이빗 룸 운영)" },
     ],
   },
   {
@@ -96,7 +96,7 @@ const BRAND_RESERVATIONS: {
   {
     brandId: "cafe-le-sens",
     locations: [
-      { name: "한남점", note: "현장 방문" },
+      { name: "사운즈한남점", note: "현장 방문" },
     ],
   },
 ];

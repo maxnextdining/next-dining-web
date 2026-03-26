@@ -261,7 +261,7 @@ export const brands: Brand[] = [
       spaceExperience: '한남동 사운즈한남의 프라이빗 룸. 접대, 기념일, 소규모 모임에 최적화된 독립 공간에서 셰프의 정성이 담긴 스시를 즐기는 격조 있는 다이닝 경험.',
     },
     locations: [
-      { name: '한남점 (한국본점)', address: '서울 용산구 대사관로 35, 사운즈한남 야외 2층', status: 'active', hours: '매일 11:30~22:30 (BT 15:00~17:30)' },
+      { name: '사운즈한남점 (한국본점)', address: '서울 용산구 대사관로 35, 사운즈한남 야외 2층', status: 'active', hours: '매일 11:30~22:30 (BT 15:00~17:30)' },
     ],
     image: '/images/daisen.jpg',
     keywords: [
@@ -275,7 +275,7 @@ export const brands: Brand[] = [
       { name: '디너 코스', price: '77,000원~150,000원' },
     ],
     reservationLinks: [
-      { location: '한남점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/daisensushi' },
+      { location: '사운즈한남점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/daisensushi' },
     ],
   },
   {
@@ -294,7 +294,7 @@ export const brands: Brand[] = [
       spaceExperience: '사운즈한남 복합문화공간 내 위치. 높은 천장과 자연광이 만드는 개방감, 갤러리처럼 큐레이팅된 공간에서 일상의 작은 사치를 즐깁니다.',
     },
     locations: [
-      { name: '한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', hours: '매일 10:00~22:00 (LO 21:30)' },
+      { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', hours: '매일 10:00~22:00 (LO 21:30)' },
     ],
     image: '/images/cafe-le-sens.jpg',
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
@@ -305,7 +305,7 @@ export const brands: Brand[] = [
       { name: '시그니처 브런치 세트', price: '15,000원~' },
     ],
     reservationLinks: [
-      { location: '한남점', url: 'https://app.catchtable.co.kr/ct/shop/cafelesens' },
+      { location: '사운즈한남점', url: 'https://app.catchtable.co.kr/ct/shop/cafelesens' },
     ],
   },
   {
