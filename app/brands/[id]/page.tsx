@@ -2,8 +2,12 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { brands, getBrandById } from "@/lib/brands";
+import { fetchBrandMenu } from "@/lib/menu-sheets";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
+
+/** ISR: 1시간마다 재생성 — Google Sheets 메뉴 반영 */
+export const revalidate = 3600;
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -63,6 +67,12 @@ export default async function BrandDetailPage({ params }: Props) {
     : [];
   const accentColor = brand.accentColor || '#1c1917';
 
+  // Google Sheets 메뉴 fetch (fallback: 하드코딩 데이터)
+  const sheetMenu = await fetchBrandMenu(id);
+  const menuItems = sheetMenu.length > 0
+    ? sheetMenu.map((m) => ({ name: m.menuName, price: m.price }))
+    : (brand.menuHighlights ?? []);
+
   // Schema.org Restaurant JSON-LD
   const jsonLd = activeLocations.length > 0
     ? activeLocations.map((loc) => ({
@@ -82,13 +92,13 @@ export default async function BrandDetailPage({ params }: Props) {
           addressCountry: loc.address.includes('NY') || loc.address.includes('New York') || loc.address.includes('Manhattan') ? 'US' : 'KR',
         },
         url: `https://next-dining.com/brands/${brand.id}`,
-        ...(brand.menuHighlights && brand.menuHighlights.length > 0 && {
+        ...(menuItems.length > 0 && {
           hasMenu: {
             "@type": "Menu",
             hasMenuSection: {
               "@type": "MenuSection",
               name: "대표 메뉴",
-              hasMenuItem: brand.menuHighlights.map((item) => ({
+              hasMenuItem: menuItems.map((item) => ({
                 "@type": "MenuItem",
                 name: item.name,
                 offers: {
@@ -262,8 +272,8 @@ export default async function BrandDetailPage({ params }: Props) {
         </section>
       )}
 
-      {/* ===== 메뉴 & 가격 (Stitch Menu Grid) ===== */}
-      {brand.menuHighlights && brand.menuHighlights.length > 0 && (
+      {/* ===== 메뉴 & 가격 (Google Sheets CMS 연동) ===== */}
+      {menuItems.length > 0 && (
         <section className="bg-white py-32 px-6 sm:px-10 lg:px-20">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
@@ -273,7 +283,7 @@ export default async function BrandDetailPage({ params }: Props) {
               </div>
             </ScrollReveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {brand.menuHighlights.map((item, idx) => (
+              {menuItems.map((item, idx) => (
                 <ScrollReveal key={item.name} delay={idx * 80}>
                   <div className="group p-8 border border-stone-200 hover:border-stone-300 transition-all">
                     <div className="flex justify-between items-start">
