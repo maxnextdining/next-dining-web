@@ -1,4 +1,5 @@
 export type BrandCategory = 'japanese' | 'korean' | 'cafe' | 'american';
+export type BrandFormat = 'dining' | 'casual' | 'foodcourt' | 'lounge' | 'pub';
 export type LocationStatus = 'active' | 'coming-soon' | 'closed';
 
 export interface BrandLocation {
@@ -34,6 +35,7 @@ export interface Brand {
   name: string;
   nameEn: string;
   category: BrandCategory;
+  format: BrandFormat;
   tagline: string;
   description: string;
   story: string;
@@ -57,6 +59,7 @@ export const brands: Brand[] = [
     name: '봉우리 한정식',
     nameEn: 'BONGWOORI',
     category: 'korean',
+    format: 'dining',
     tagline: '김치 명인이 빚어낸 한국 전통의 정수',
     description:
       '봉우리 한정식은 대한민국 국가 공인 김치 명인 이하연 명인이 창립한 프리미엄 한정식 브랜드입니다. 수십 년 발효 연구의 결정체인 김치와 장류, 제철 식재료로 구성한 코스 한정식은 한국 전통 식문화의 깊이를 현대적 감성으로 재해석합니다. 비즈니스 미팅부터 특별한 기념일까지 품격 있는 자리를 완성합니다.',
@@ -95,6 +98,7 @@ export const brands: Brand[] = [
     name: '봉우리 소반',
     nameEn: 'BONGWOORI SOBAN',
     category: 'korean',
+    format: 'foodcourt',
     tagline: '소박하지만 진정성 있는 한 상',
     description:
       '봉우리 소반은 봉우리 한정식의 정신을 이어받아 보다 가볍고 편안한 형태로 즐길 수 있는 한식 다이닝입니다. 여주신세계아울렛에서 쇼핑 후 들를 수 있는 고품격 한식을 선보입니다.',
@@ -121,6 +125,7 @@ export const brands: Brand[] = [
     name: '진진만두',
     nameEn: 'JINJIN MANDU',
     category: 'korean',
+    format: 'casual',
     tagline: '30년 전통, 손맛으로 완성한 만두와 어복쟁반',
     description:
       '진진만두는 여의도에서 30년간 한자리를 지켜온 남승욱 대표가 창립한 만두 전문 브랜드입니다. 직접 빚는 수제 만두와 전통 한식을 중심으로 \'건강하고 믿을 수 있는 맛\'을 추구하며, 13년 연속 블루리본에 선정된 검증된 브랜드 파워를 갖추고 있습니다. 현재 시청점에서 운영 중이며 전국 확장 가능한 안정적 모델로 평가받고 있습니다.',
@@ -157,6 +162,7 @@ export const brands: Brand[] = [
     name: '진가와',
     nameEn: 'JINKAWA',
     category: 'japanese',
+    format: 'dining',
     tagline: '370년 전통, 나가사키 수연면의 계보',
     description:
       '진가와(陣川)는 일본 나가사키 현 미나미 시마바라에서 약 360~370년의 역사를 이어온 전통 수연면(手延麺) 브랜드의 한국 상륙입니다. 장인이 손으로 늘여 만드는 수연면 특유의 쫄깃한 식감과 깊은 육수는 수백 년의 역사가 한 그릇에 담긴 경험을 선사합니다. 역삼, 잠실, 부산에서 만날 수 있습니다.',
@@ -205,6 +211,7 @@ export const brands: Brand[] = [
     name: '분지로',
     nameEn: 'BUNJIRO',
     category: 'japanese',
+    format: 'dining',
     tagline: '타카다 유지 장인의 돈카츠 철학',
     description:
       '분지로는 일본 나가사키의 돈카츠 장인 타카다 유지(高田祐治)가 직접 만든 브랜드입니다. 장인이 직접 개발한 특수 빵가루, 저온 숙성 돼지고기, 수십 년에 걸쳐 완성한 소스 레시피가 한국에 그대로 이식되었습니다. 명동(한국본점), 사운즈한남, 수원, 롯데월드몰에서 만날 수 있으며 잠실롯데백화점 신규 오픈을 앞두고 있습니다.',
@@ -249,6 +256,7 @@ export const brands: Brand[] = [
     name: '타쿠미나가사키',
     nameEn: 'TAKUMI NAGASAKI',
     category: 'japanese',
+    format: 'foodcourt',
     tagline: '나가사키 전통 일식의 세련된 재현',
     description:
       '타쿠미나가사키는 나가사키 지역의 독특한 일식 문화를 현대적 감성으로 담아낸 Fine Casual 다이닝입니다. 일본과 서양이 교차한 나가사키의 역사적 식문화를 모티브로, 섬세하게 설계된 메뉴와 공간이 특별한 식사 경험을 완성합니다.',
@@ -281,6 +289,7 @@ export const brands: Brand[] = [
     name: '다이센스시',
     nameEn: 'DAISEN SUSHI',
     category: 'japanese',
+    format: 'dining',
     tagline: '큐슈 1위 와카타케마루, 서울에서',
     description:
       '다이센스시는 큐슈 지방에서 압도적 1위를 달리는 정통 스시 브랜드 와카타케마루(若竹丸)를 한국에 들여온 프리미엄 스시 레스토랑입니다. 한남동 사운즈한남의 프라이빗 룸에서 셰프가 직접 내어주는 큐슈산 제철 생선과 숙성 기술이 집약된 스시는 일본 현지를 방불케 하는 경험을 선사합니다.',
@@ -319,6 +328,7 @@ export const brands: Brand[] = [
     name: '카페 르상스',
     nameEn: 'CAFÉ LE SENS',
     category: 'cafe',
+    format: 'lounge',
     tagline: '감각을 깨우는 유럽형 라이프스타일 베이커리 카페',
     description:
       '카페 르상스(Le Sens — 감각)는 미식과 공간 경험을 결합한 감각 중심 카페입니다. 베이커리, 차, 공간 디자인까지 통합된 라이프스타일을 제안하며, SNS 자발적 바이럴 중심으로 빠른 인지도를 확보했습니다. 전시·브랜드 협업을 통해 카페 이상의 목적 방문형 공간으로 자리잡았습니다.',
@@ -354,6 +364,7 @@ export const brands: Brand[] = [
     name: '멘야올웨이즈',
     nameEn: 'MENYA ALWAYS',
     category: 'japanese',
+    format: 'casual',
     tagline: '언제 방문해도 변함없는 최고의 한 그릇',
     description:
       '멘야올웨이즈는 육수와 면을 직접 제조하는 장인형 라멘 브랜드입니다. 전통과 현대적 해석을 결합해 맛의 \'재현성\'과 \'중독성\'을 강화한 것이 특징입니다. 2026년 말 성수에 1호점 론칭을 앞두고 있으며, 높은 재방문율 기반의 충성도 구조로 확장을 준비하고 있습니다.',
@@ -382,6 +393,7 @@ export const brands: Brand[] = [
     name: '노플렉스 뉴욕',
     nameEn: 'NOFLEX NYC',
     category: 'american',
+    format: 'pub',
     tagline: '미디어와 음악, 다이닝이 결합된 글로벌 라운지',
     description:
       'NOFLEX NYC는 뉴욕 맨해튼 5번가에 위치한 미디어 아트 레스토랑 & 칵테일 바입니다. 20m LED 미디어월 기반 몰입형 공간에서 K-FOOD, MUSIC, ART가 결합된 "경험 소비형 다이닝"의 극대화를 추구합니다. 뉴욕 맨해튼에 성공적으로 안착하며 글로벌 콘텐츠 기반 확장 가능성을 입증한 해외 타겟 유입형 브랜드입니다.',
