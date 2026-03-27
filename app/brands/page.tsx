@@ -30,7 +30,7 @@ export default function BrandsPage() {
   const cafe = brands.filter((b) => b.category === "cafe");
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 pt-28">
       {/* 헤더 */}
       <div className="mb-14">
         <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Our Restaurants</p>

@@ -75,7 +75,7 @@ export default function AboutPage() {
   return (
     <div>
       {/* 헤더 */}
-      <section className="bg-stone-950 text-white">
+      <section className="bg-stone-950 text-white pt-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <p className="text-xs font-semibold tracking-[0.25em] text-stone-400 uppercase mb-5">About Next Dining</p>
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight max-w-2xl mb-6">
