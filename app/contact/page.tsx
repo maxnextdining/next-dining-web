@@ -34,72 +34,24 @@ const CONTACT_TYPES = [
   },
 ];
 
-// 브랜드별 예약 링크 (캐치테이블 등 외부 예약 페이지)
-const BRAND_RESERVATIONS: {
-  brandId: string;
-  locations: {
-    name: string;
-    reservationUrl?: string;
-    reservationPlatform?: string;
-    note?: string;
-  }[];
-}[] = [
-  {
-    brandId: "bongwoori",
-    locations: [
-      { name: "역삼점", reservationUrl: "https://app.catchtable.co.kr/ct/shop/bongwoori_yeoksam", reservationPlatform: "캐치테이블", note: "코스 예약 권장 (최소 하루 전)" },
-      { name: "을지로점", reservationUrl: "https://app.catchtable.co.kr/ct/shop/bongwoori_euljiro", reservationPlatform: "캐치테이블", note: "코스 예약 권장" },
-    ],
-  },
-  {
-    brandId: "daisen",
-    locations: [
-      { name: "사운즈한남점 (한국본점)", reservationUrl: "https://app.catchtable.co.kr/ct/shop/daisen_hannam", reservationPlatform: "캐치테이블", note: "사전 예약 필수 (프라이빗 룸 운영)" },
-    ],
-  },
-  {
-    brandId: "jinkawa",
-    locations: [
-      { name: "역삼점", reservationUrl: "https://app.catchtable.co.kr/ct/shop/jinkawa_yeoksam", reservationPlatform: "캐치테이블" },
-      { name: "잠실롯데월드몰점", note: "현장 대기" },
-      { name: "부산본점", note: "전화 예약" },
-    ],
-  },
-  {
-    brandId: "bunjiro",
-    locations: [
-      { name: "명동점 (한국본점)", reservationUrl: "https://app.catchtable.co.kr/ct/shop/bunjiro_myeongdong", reservationPlatform: "캐치테이블" },
-      { name: "사운즈한남점", reservationUrl: "https://app.catchtable.co.kr/ct/shop/bunjiro_hannam", reservationPlatform: "캐치테이블" },
-      { name: "수원점", note: "현장 대기" },
-      { name: "롯데월드몰점", note: "현장 대기" },
-    ],
-  },
-  {
-    brandId: "takumi-nagasaki",
-    locations: [
-      { name: "고속터미널점", note: "현장 대기" },
-      { name: "용산아이파크몰점", note: "현장 대기" },
-    ],
-  },
-  {
-    brandId: "bongwoori-soban",
-    locations: [
-      { name: "여주신세계아울렛점", note: "현장 대기" },
-    ],
-  },
-  {
-    brandId: "jinjin-mandu",
-    locations: [
-      { name: "시청점", note: "현장 방문" },
-    ],
-  },
-  {
-    brandId: "cafe-le-sens",
-    locations: [
-      { name: "사운즈한남점", note: "현장 방문" },
-    ],
-  },
-];
+// brands.ts의 reservationLinks + locations 기반으로 자동 생성
+const BRAND_RESERVATIONS = brands
+  .filter((b) => b.locations.some((l) => l.status === 'active'))
+  .map((brand) => ({
+    brandId: brand.id,
+    locations: brand.locations
+      .filter((loc) => loc.status === 'active')
+      .map((loc) => {
+        const link = brand.reservationLinks?.find(
+          (r) => r.location === loc.name || (!r.location && brand.reservationLinks!.length === 1)
+        );
+        return {
+          name: loc.name,
+          reservationUrl: link?.url,
+          note: link?.note,
+        };
+      }),
+  }));
 
 export default function ContactPage() {
   return (
@@ -170,11 +122,11 @@ export default function ContactPage() {
                           rel="noopener noreferrer"
                           className="shrink-0 bg-stone-900 text-white px-5 py-2 rounded-lg text-xs font-medium hover:bg-stone-800 transition-colors"
                         >
-                          {loc.reservationPlatform || "예약하기"} →
+                          예약하기 →
                         </a>
                       ) : (
                         <span className="shrink-0 text-xs text-stone-400 bg-stone-50 px-4 py-2 rounded-lg border border-stone-200">
-                          {loc.note || "현장 방문"}
+                          {loc.note || "현장 대기"}
                         </span>
                       )}
                     </div>
