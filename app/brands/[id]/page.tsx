@@ -184,7 +184,7 @@ export default async function BrandDetailPage({ params }: Props) {
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-20 items-start">
           <ScrollReveal className="md:col-span-7">
             <h2 className="font-headline text-4xl md:text-5xl mb-10 leading-tight" style={{ color: accentColor }}>
-              {brand.storyElements?.originStory ? '일본 장인 정신의 정점에 서다' : brand.name}
+              {brand.tagline}
             </h2>
             <div className="space-y-8 text-stone-600 text-lg leading-relaxed font-body">
               <p>{brand.description}</p>
@@ -287,6 +287,38 @@ export default async function BrandDetailPage({ params }: Props) {
               ))}
             </div>
             <p className="mt-8 text-xs text-stone-400 font-body">* 가격은 매장 및 시기에 따라 변동될 수 있습니다.</p>
+          </div>
+        </section>
+      )}
+
+      {/* ===== 포토 갤러리 ===== */}
+      {brand.gallery && brand.gallery.length > 0 && (
+        <section className="bg-white py-32 px-6 sm:px-10 lg:px-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <ScrollReveal>
+              <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-8">
+                <h2 className="font-headline text-4xl lg:text-5xl" style={{ color: accentColor }}>Gallery</h2>
+                <span className="font-body text-sm tracking-widest text-stone-400 uppercase">공간과 메뉴</span>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+              {brand.gallery.map((src, idx) => (
+                <ScrollReveal key={src} delay={idx * 80}>
+                  <div className={`relative overflow-hidden group ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}>
+                    <div className={`relative ${idx === 0 ? 'aspect-square' : 'aspect-[4/3]'}`}>
+                      <Image
+                        src={src}
+                        alt={`${brand.name} 사진 ${idx + 1}`}
+                        fill
+                        sizes={idx === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
       )}

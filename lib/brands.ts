@@ -48,6 +48,7 @@ export interface Brand {
   menuHighlights?: MenuItem[];
   reservationLinks?: ReservationLink[];
   accentColor?: string; // hex color for visual theming
+  gallery?: string[]; // 갤러리 이미지 경로
 }
 
 export const brands: Brand[] = [
@@ -77,6 +78,7 @@ export const brands: Brand[] = [
     keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
     priceRange: '₩₩₩₩',
     accentColor: '#8B6914',
+    gallery: ['/images/brands/gallery/bongwoori/store-1.jpg', '/images/brands/gallery/bongwoori/store-2.jpg', '/images/brands/gallery/bongwoori/menu-1.jpg', '/images/brands/gallery/bongwoori/menu-2.jpg'],
     cuisine: '한정식',
     menuHighlights: [
       { name: '봉우리 정식', price: '65,000원' },
@@ -111,6 +113,7 @@ export const brands: Brand[] = [
     keywords: ['여주 맛집', '여주신세계 식당', '아울렛 한식', '경기도 한정식'],
     priceRange: '₩₩₩',
     accentColor: '#A0522D',
+    gallery: ['/images/brands/gallery/bongwoori-soban/store-1.jpg', '/images/brands/gallery/bongwoori-soban/store-2.jpg', '/images/brands/gallery/bongwoori-soban/menu-1.jpg', '/images/brands/gallery/bongwoori-soban/menu-2.jpg'],
     cuisine: '한식',
   },
   {
@@ -138,6 +141,7 @@ export const brands: Brand[] = [
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
     priceRange: '₩₩',
     accentColor: '#B91C1C',
+    gallery: ['/images/brands/gallery/jinjin-mandu/store-1.jpg', '/images/brands/gallery/jinjin-mandu/store-2.jpg', '/images/brands/gallery/jinjin-mandu/menu-1.jpg', '/images/brands/gallery/jinjin-mandu/menu-2.jpg'],
     cuisine: '한식',
     menuHighlights: [
       { name: '손만두떡국', price: '18,000원' },
@@ -179,6 +183,7 @@ export const brands: Brand[] = [
     keywords: ['진가와', '역삼 소바', '여의도 일식', '을지로 소바', '광화문 맛집', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
     priceRange: '₩₩₩',
     accentColor: '#1B2A4A',
+    gallery: ['/images/brands/gallery/jinkawa/store-1.jpg', '/images/brands/gallery/jinkawa/store-2.jpg', '/images/brands/gallery/jinkawa/menu-1.jpg', '/images/brands/gallery/jinkawa/menu-2.jpg'],
     cuisine: '소바',
     menuHighlights: [
       { name: '스키야키 나베 코스', price: '49,000원' },
@@ -227,6 +232,7 @@ export const brands: Brand[] = [
     ],
     priceRange: '₩₩₩',
     accentColor: '#5C4033',
+    gallery: ['/images/brands/gallery/bunjiro/store-1.jpg', '/images/brands/gallery/bunjiro/store-2.jpg', '/images/brands/gallery/bunjiro/menu-1.jpg', '/images/brands/gallery/bunjiro/menu-2.jpg'],
     cuisine: '돈카츠',
     menuHighlights: [
       { name: '장인 로스카츠', price: '16,000원~29,000원' },
@@ -263,6 +269,7 @@ export const brands: Brand[] = [
     keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
     priceRange: '₩₩₩',
     accentColor: '#2A6B6B',
+    gallery: ['/images/brands/gallery/takumi-nagasaki/store-1.jpg', '/images/brands/gallery/takumi-nagasaki/store-2.jpg', '/images/brands/gallery/takumi-nagasaki/menu-1.jpg', '/images/brands/gallery/takumi-nagasaki/menu-2.jpg'],
     cuisine: '일식',
     menuHighlights: [
       { name: '등심돈카츠', price: '14,000원~19,000원' },
@@ -297,6 +304,7 @@ export const brands: Brand[] = [
     ],
     priceRange: '₩₩₩₩',
     accentColor: '#2D3436',
+    gallery: ['/images/brands/gallery/daisen/store-1.jpg', '/images/brands/gallery/daisen/store-2.jpg', '/images/brands/gallery/daisen/menu-1.jpg', '/images/brands/gallery/daisen/menu-2.jpg'],
     cuisine: '프리미엄 스시',
     menuHighlights: [
       { name: '런치 코스', price: '50,000원~' },
@@ -329,6 +337,7 @@ export const brands: Brand[] = [
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
     priceRange: '₩₩',
     accentColor: '#6B705C',
+    gallery: ['/images/brands/gallery/cafe-le-sens/store-1.jpg', '/images/brands/gallery/cafe-le-sens/store-2.jpg', '/images/brands/gallery/cafe-le-sens/menu-1.jpg', '/images/brands/gallery/cafe-le-sens/menu-2.jpg'],
     cuisine: '카페',
     menuHighlights: [
       { name: '시즌 케이크', price: '8,000원~' },
@@ -392,6 +401,7 @@ export const brands: Brand[] = [
     keywords: ['NOFLEX NYC', '노플렉스뉴욕', '뉴욕 한국 레스토랑', 'media art restaurant NYC', 'immersive dining NYC', '맨해튼 칵테일바', '넥스트다이닝 미국'],
     priceRange: '$$$',
     accentColor: '#5B21B6',
+    gallery: ['/images/brands/gallery/noflex-nyc/store-1.jpg', '/images/brands/gallery/noflex-nyc/menu-1.jpg', '/images/brands/gallery/noflex-nyc/menu-2.jpg', '/images/brands/gallery/noflex-nyc/menu-3.jpg'],
     cuisine: '모던 다이닝 & 칵테일 바',
     menuHighlights: [
       { name: 'K-모던 한식 플레이트', price: '$25~' },
