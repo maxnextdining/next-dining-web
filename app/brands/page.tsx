@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { brands } from "@/lib/brands";
 import type { Metadata } from "next";
 
@@ -107,9 +108,12 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
     >
       {/* 이미지 */}
       <div className="aspect-[4/3] bg-stone-100 relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-          style={{ backgroundImage: `url(${brand.image})` }}
+        <Image
+          src={brand.image}
+          alt={brand.name}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900/20 to-transparent" />
         <div className="absolute top-3 left-3">
@@ -119,7 +123,7 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
           </span>
         </div>
         <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/90 backdrop-blur rounded-lg p-1.5 shadow-sm">
-          <img src={brand.logo} alt={`${brand.name} 로고`} className="w-full h-full object-contain" />
+          <Image src={brand.logo} alt={`${brand.name} 로고`} width={28} height={28} className="w-full h-full object-contain" />
         </div>
         {hasComingSoon && (
           <div className="absolute top-3 right-3">

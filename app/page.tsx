@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { brands } from "@/lib/brands";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -207,15 +208,18 @@ export default function HomePage() {
                       }}
                     >
                       {/* Brand image background */}
-                      <div
-                        className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
-                        style={{ backgroundImage: `url(${brand.image})` }}
+                      <Image
+                        src={brand.image}
+                        alt={brand.name}
+                        fill
+                        sizes={isLarge ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
+                        className="object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent" />
 
                       {/* Brand logo */}
-                      <div className={`absolute top-8 right-8 ${isLarge ? 'w-20 h-20' : 'w-14 h-14'} opacity-80 group-hover:opacity-100 transition-opacity duration-300`}>
-                        <img src={brand.logo} alt={`${brand.name} 로고`} className="w-full h-full object-contain drop-shadow-lg" />
+                      <div className={`absolute top-8 right-8 ${isLarge ? 'w-20 h-20' : 'w-14 h-14'} opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-10`}>
+                        <Image src={brand.logo} alt={`${brand.name} 로고`} width={80} height={80} className="w-full h-full object-contain drop-shadow-lg" />
                       </div>
 
                       {/* Content */}

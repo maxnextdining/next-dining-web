@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { brands } from "@/lib/brands";
 import type { Metadata } from "next";
 
@@ -128,7 +129,7 @@ export default function AboutPage() {
                 className="group bg-white rounded-2xl p-7 border border-stone-100 hover:border-stone-300 hover:shadow-md transition-all"
               >
                 <div className="w-12 h-12 mb-5">
-                  <img src={`/images/brands/logos/${item.id}.png`} alt={`${item.title} 로고`} className="w-full h-full object-contain" />
+                  <Image src={`/images/brands/logos/${item.id}.png`} alt={`${item.title} 로고`} width={48} height={48} className="w-full h-full object-contain" />
                 </div>
                 <h3 className="font-bold text-stone-900 text-lg mb-2">{item.title}</h3>
                 <p className="text-xs text-stone-400 mb-3">{item.origin}</p>
@@ -158,7 +159,7 @@ export default function AboutPage() {
               className="group text-center p-5 rounded-xl border border-stone-100 hover:border-stone-300 transition-all"
             >
               <div className="aspect-square bg-stone-50 rounded-xl mb-3 group-hover:bg-stone-100 transition-colors flex items-center justify-center p-4">
-                <img src={brand.logo} alt={`${brand.name} 로고`} className="w-full h-full object-contain" />
+                <Image src={brand.logo} alt={`${brand.name} 로고`} width={120} height={120} className="w-full h-full object-contain" />
               </div>
               <p className="text-xs text-stone-400 mb-0.5">{brand.nameEn}</p>
               <p className="text-sm font-semibold text-stone-900">{brand.name}</p>
@@ -215,13 +216,17 @@ export default function AboutPage() {
         <h2 className="text-3xl font-bold mb-12">4대 핵심 가치</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { title: "Originality", desc: "검증된 장인의 전통과 오리지널리티를 발굴하고 보존합니다" },
-            { title: "Premium Quality", desc: "최상의 식재료와 조리법으로 타협 없는 품질을 추구합니다" },
-            { title: "고객 중심 혁신", desc: "고객 경험을 최우선에 두고 서비스와 공간을 설계합니다" },
-            { title: "운영 전문성", desc: "데이터 기반 시스템으로 다업태 직영 매장을 안정적으로 운영합니다" },
+            { title: "Originality", desc: "검증된 장인의 전통과 오리지널리티를 발굴하고 보존합니다", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
+            { title: "Premium Quality", desc: "최상의 식재료와 조리법으로 타협 없는 품질을 추구합니다", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
+            { title: "고객 중심 혁신", desc: "고객 경험을 최우선에 두고 서비스와 공간을 설계합니다", icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" },
+            { title: "운영 전문성", desc: "데이터 기반 시스템으로 다업태 직영 매장을 안정적으로 운영합니다", icon: "M12 20V10M18 20V4M6 20v-4" },
           ].map((v) => (
             <div key={v.title} className="bg-stone-50 rounded-2xl p-7 border border-stone-100">
-              <div className="w-10 h-10 bg-stone-900 rounded-xl mb-5" />
+              <div className="w-10 h-10 bg-stone-900 rounded-xl mb-5 flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+                  <path d={v.icon} />
+                </svg>
+              </div>
               <h3 className="font-bold text-stone-900 text-lg mb-2">{v.title}</h3>
               <p className="text-sm text-stone-600 leading-relaxed">{v.desc}</p>
             </div>

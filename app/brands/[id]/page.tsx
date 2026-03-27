@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { brands, getBrandById } from "@/lib/brands";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -125,9 +126,13 @@ export default async function BrandDetailPage({ params }: Props) {
           }}
         />
         {/* Brand hero image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url(${brand.image})` }}
+        <Image
+          src={brand.image}
+          alt={brand.name}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-30"
         />
         <div className="noise-overlay absolute inset-0 z-[1] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
@@ -158,7 +163,7 @@ export default async function BrandDetailPage({ params }: Props) {
 
           <ScrollReveal delay={200}>
             <div className="flex items-end gap-6">
-              <img src={brand.logo} alt={`${brand.name} 로고`} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain drop-shadow-xl" />
+              <Image src={brand.logo} alt={`${brand.name} 로고`} width={96} height={96} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain drop-shadow-xl" />
               <div className="space-y-2">
                 <span className="block text-white/40 font-body tracking-[0.4em] text-sm font-bold uppercase">{brand.nameEn}</span>
                 <h1 className="text-white font-headline font-bold text-6xl sm:text-7xl lg:text-[8rem] leading-none tracking-tighter">{brand.name}</h1>
