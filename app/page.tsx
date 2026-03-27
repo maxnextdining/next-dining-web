@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 export const metadata: Metadata = {
   title: "NEXT DINING — 넥스트다이닝",
   description:
-    "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영합니다. 서울 한남동, 강남, 명동, 잠실 등 전국 15개 매장.",
+    "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 9개 프리미엄 외식 브랜드를 운영합니다. 서울 한남동, 강남, 명동, 잠실, 부산, 뉴욕 등 전국·해외 17개 매장.",
 };
 
 function OrganizationJsonLd() {
@@ -17,7 +17,7 @@ function OrganizationJsonLd() {
     alternateName: "NEXT DINING",
     url: "https://next-dining.com",
     description:
-      "봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영하는 한국 멀티 브랜드 외식 그룹",
+      "봉우리 한정식, 진가와, 분지로, 다이센스시 등 9개 프리미엄 외식 브랜드 17개 직영 매장을 운영하는 한국 멀티 브랜드 외식 그룹",
     foundingLocation: { "@type": "Place", name: "서울, 대한민국" },
     areaServed: ["대한민국", "미국"],
     numberOfEmployees: { "@type": "QuantitativeValue", minValue: 100 },
@@ -55,7 +55,7 @@ function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
 const FAQ_ITEMS = [
   {
     q: "넥스트다이닝은 어떤 회사인가요?",
-    a: "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시, NOFLEX NYC 등 10개 프리미엄 외식 브랜드를 운영하는 멀티 브랜드 외식 그룹입니다. 서울·수원·부산·여주 등 전국 15개 이상 직영 매장과 뉴욕 맨해튼 매장을 운영하며, 검증된 장인의 브랜드를 발굴·운영하는 것이 핵심 역량입니다.",
+    a: "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시, NOFLEX NYC 등 9개 프리미엄 외식 브랜드를 운영하는 멀티 브랜드 외식 그룹입니다. 서울·수원·부산·여주·뉴욕 등 전국·해외 17개 직영 매장을 운영하며, 검증된 장인의 브랜드를 발굴·운영하는 것이 핵심 역량입니다.",
   },
   {
     q: "한남동에서 데이트하기 좋은 식당은?",
@@ -88,9 +88,9 @@ const FAQ_ITEMS = [
 ];
 
 const STATS = [
-  { value: "10", label: "브랜드" },
-  { value: "15+", label: "직영 매장" },
-  { value: "4", label: "도시" },
+  { value: "9", label: "브랜드" },
+  { value: "17", label: "직영 매장" },
+  { value: "5", label: "도시" },
 ];
 
 // Bento grid layout: alternating 8+4 and 4+4+4 rows

@@ -85,6 +85,9 @@ export default function AboutPage() {
             넥스트다이닝은 수십 년, 수백 년 역사를 가진 장인의 브랜드를 발굴하고
             한국과 해외에서 직영 운영하는 프리미엄 외식 그룹입니다.
           </p>
+          <p className="text-stone-500 text-sm mt-4">
+            대표이사 장경훈 · 정호상 &nbsp;|&nbsp; 서울시 용산구 대사관로 35, 사운즈 한남 B1
+          </p>
         </div>
       </section>
 
@@ -102,7 +105,7 @@ export default function AboutPage() {
               국가 공인 김치 명인이 창립한 봉우리 한정식, 370년 전통의 나가사키 수연면 진가와,
               나가사키 장인 타카다 유지의 돈카츠 분지로, 큐슈 지방 1위 스시야 와카타케마루의
               한국 법인 다이센스시, 뉴욕 맨해튼의 미디어 아트 다이닝 NOFLEX NYC까지
-              — 넥스트다이닝이 운영하는 10개 브랜드 뒤에는 반드시 검증된 이야기가 있습니다.
+              — 넥스트다이닝이 운영하는 9개 브랜드 뒤에는 반드시 검증된 이야기가 있습니다.
             </p>
             <p>
               우리의 역할은 그 본질을 해치지 않으면서, 한국 고객이 최고의 경험을 할 수 있는
@@ -174,8 +177,8 @@ export default function AboutPage() {
           </div>
           <div className="grid sm:grid-cols-3 gap-6 mb-10">
             {[
-              { value: "10개", label: "프리미엄 브랜드", sub: "일식·한식·양식·카페" },
-              { value: "15+", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
+              { value: "9개", label: "프리미엄 브랜드", sub: "일식·한식·양식·카페" },
+              { value: "17", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
               { value: "~350억", label: "연 매출 규모", sub: "2024년 기준, 전 매장 직영" },
             ].map((s) => (
               <div key={s.label} className="bg-white rounded-2xl p-7 border border-stone-100 text-center">
@@ -199,6 +202,26 @@ export default function AboutPage() {
               브랜드 포트폴리오 보기
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Vision & Philosophy */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+        <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Vision & Philosophy</p>
+        <h2 className="text-3xl font-bold mb-12">4대 핵심 가치</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { title: "Originality", desc: "검증된 장인의 전통과 오리지널리티를 발굴하고 보존합니다" },
+            { title: "Premium Quality", desc: "최상의 식재료와 조리법으로 타협 없는 품질을 추구합니다" },
+            { title: "고객 중심 혁신", desc: "고객 경험을 최우선에 두고 서비스와 공간을 설계합니다" },
+            { title: "운영 전문성", desc: "데이터 기반 시스템으로 다업태 직영 매장을 안정적으로 운영합니다" },
+          ].map((v) => (
+            <div key={v.title} className="bg-stone-50 rounded-2xl p-7 border border-stone-100">
+              <div className="w-10 h-10 bg-stone-900 rounded-xl mb-5" />
+              <h3 className="font-bold text-stone-900 text-lg mb-2">{v.title}</h3>
+              <p className="text-sm text-stone-600 leading-relaxed">{v.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
