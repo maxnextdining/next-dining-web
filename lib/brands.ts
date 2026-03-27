@@ -71,7 +71,7 @@ export const brands: Brand[] = [
       { name: '역삼 본점', address: '서울 강남구 논현로94길 25-3, 2층', status: 'active', phone: '0507-1402-8551', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
       { name: '을지로점', address: '서울 중구 을지로5길 26, 미래에셋 센터원 B1', status: 'active', phone: '02-6030-8960', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
     ],
-    image: '/images/bongwoori.jpg',
+    image: '/images/brands/bongwoori.jpg',
     keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
     priceRange: '₩₩₩₩',
     accentColor: '#8B6914',
@@ -104,7 +104,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '여주신세계아울렛점', address: '경기 여주시 명품로 360, 여주 신세계 프리미엄아울렛', status: 'active' },
     ],
-    image: '/images/bongwoori-soban.jpg',
+    image: '/images/brands/bongwoori-soban.jpg',
     keywords: ['여주 맛집', '여주신세계 식당', '아울렛 한식', '경기도 한정식'],
     priceRange: '₩₩₩',
     accentColor: '#A0522D',
@@ -130,7 +130,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '시청점', address: '서울 중구 을지로 6, JEI재능교육빌딩 1층', status: 'active', phone: '0507-1387-8573' },
     ],
-    image: '/images/jinjin-mandu.jpg',
+    image: '/images/brands/jinjin-mandu.jpg',
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
     priceRange: '₩₩',
     accentColor: '#B91C1C',
@@ -170,7 +170,7 @@ export const brands: Brand[] = [
       { name: '부산 롯데백화점점', address: '부산 부산진구 가야대로 772, 롯데백화점 부산본점 9층', status: 'active', phone: '051-810-3997', hours: '매일 10:30~20:30' },
       { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active' },
     ],
-    image: '/images/jinkawa.jpg',
+    image: '/images/brands/jinkawa.jpg',
     keywords: ['진가와', '역삼 소바', '여의도 일식', '을지로 소바', '광화문 맛집', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바', '용산 아이파크몰 일식'],
     priceRange: '₩₩₩',
     accentColor: '#1B2A4A',
@@ -215,7 +215,7 @@ export const brands: Brand[] = [
       { name: '롯데월드몰점', address: '서울 송파구 올림픽로 300, 롯데월드몰 5층', status: 'active', phone: '02-3213-4581', hours: '매일 10:30~22:00' },
       { name: '잠실롯백점', address: '서울 송파구 잠실 롯데백화점', status: 'coming-soon' },
     ],
-    image: '/images/bunjiro.jpg',
+    image: '/images/brands/bunjiro.jpg',
     keywords: [
       '분지로', '나가사키 돈카츠', '명동 돈카츠', '한남 맛집', '사운즈한남 식당',
       '롯데월드몰 돈카츠', '데이트 코스 한남', '서울 돈카츠 맛집', '일본 장인 돈카츠',
@@ -253,7 +253,7 @@ export const brands: Brand[] = [
       { name: '고속터미널점', address: '서울 서초구 신반포로 194, 서울고속버스터미널 경부선 1층', status: 'active', phone: '0507-1350-8553', hours: '매일 10:00~21:00 (LO 20:30)' },
       { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
     ],
-    image: '/images/takumi-nagasaki.jpg',
+    image: '/images/brands/takumi-nagasaki.jpg',
     keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
     priceRange: '₩₩₩',
     accentColor: '#2A6B6B',
@@ -283,7 +283,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '사운즈한남점 (한국본점)', address: '서울 용산구 대사관로 35, 사운즈한남 야외 2층', status: 'active', hours: '매일 11:30~22:30 (BT 15:00~17:30)' },
     ],
-    image: '/images/daisen.jpg',
+    image: '/images/brands/daisen.jpg',
     keywords: [
       '다이센스시', '한남 프라이빗 스시', '한남동 스시', '서울 프리미엄 스시',
       '프리미엄 스시 서울', '한남 데이트 코스', '특별한 날 식당 서울', '사운즈한남 스시',
@@ -317,7 +317,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', hours: '매일 10:00~22:00 (LO 21:30)' },
     ],
-    image: '/images/cafe-le-sens.jpg',
+    image: '/images/brands/cafe-le-sens.jpg',
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
     priceRange: '₩₩',
     accentColor: '#6B705C',
@@ -349,7 +349,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '성수점 (1호점)', address: '서울 성동구 (2026년 말 오픈 예정)', status: 'coming-soon' },
     ],
-    image: '/images/menya-always.jpg',
+    image: '/images/brands/menya-always.jpg',
     keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울', '성수 라멘', '돈코츠 라멘'],
     priceRange: '₩₩',
     accentColor: '#C2410C',
@@ -378,7 +378,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '뉴욕 맨해튼', address: '286 5th Avenue, 1st Floor, New York, NY 10001', status: 'active', phone: '(347) 572-1027', hours: '화~일 17:00~02:00 (금·토 ~04:00) / 월 휴무' },
     ],
-    image: '/images/noflex-nyc.jpg',
+    image: '/images/brands/noflex-nyc.jpg',
     keywords: ['NOFLEX NYC', '노플렉스뉴욕', '뉴욕 한국 레스토랑', 'media art restaurant NYC', 'immersive dining NYC', '맨해튼 칵테일바', '넥스트다이닝 미국'],
     priceRange: '$$$',
     accentColor: '#5B21B6',

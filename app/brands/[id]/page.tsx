@@ -124,8 +124,13 @@ export default async function BrandDetailPage({ params }: Props) {
             background: `radial-gradient(circle at 50% 0%, ${accentColor}cc 0%, ${accentColor} 50%, #0c0c0c 100%)`,
           }}
         />
+        {/* Brand hero image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-30"
+          style={{ backgroundImage: `url(${brand.image})` }}
+        />
         <div className="noise-overlay absolute inset-0 z-[1] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
 
         {/* Decorative background element */}
         <div

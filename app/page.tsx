@@ -135,7 +135,7 @@ export default function HomePage() {
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-[#c5c6cb] font-body font-light leading-relaxed mb-12">
               봉우리 한정식부터 나가사키 장인 돈카츠, 뉴욕 맨해튼까지.
               <br className="hidden sm:block" />
-              10개 브랜드가 각자의 철학과 이야기로 한국 외식의 수준을 높입니다.
+              9개 브랜드가 각자의 철학과 이야기로 한국 외식의 수준을 높입니다.
             </p>
           </ScrollReveal>
 
@@ -206,6 +206,13 @@ export default function HomePage() {
                         background: `linear-gradient(135deg, ${brand.accentColor || '#231600'} 0%, #131313 100%)`,
                       }}
                     >
+                      {/* Brand image background */}
+                      <div
+                        className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
+                        style={{ backgroundImage: `url(${brand.image})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent" />
+
                       {/* Initial letter watermark */}
                       <div className={`absolute top-10 right-10 font-serif select-none pointer-events-none ${isLarge ? 'text-[12rem]' : 'text-[8rem]'} opacity-[0.05] text-[#e9c176]`}>
                         {brand.nameEn.charAt(0)}

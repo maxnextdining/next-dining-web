@@ -107,7 +107,11 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
     >
       {/* 이미지 */}
       <div className="aspect-[4/3] bg-stone-100 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300 group-hover:scale-105 transition-transform duration-500" />
+        <div
+          className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+          style={{ backgroundImage: `url(${brand.image})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/20 to-transparent" />
         <div className="absolute top-3 left-3">
           <span className="text-xs bg-white/80 backdrop-blur px-2 py-1 rounded-full text-stone-600 font-medium">
             {CATEGORY_LABEL[brand.category]}
