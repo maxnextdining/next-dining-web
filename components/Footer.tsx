@@ -22,11 +22,11 @@ export default function Footer() {
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 mb-4">
             <Image
-              src="/images/next-dining-logo.png"
+              src="/images/next-dining-logo-white.png"
               alt="NEXT DINING"
               width={140}
               height={32}
-              className="h-7 w-auto brightness-0 invert"
+              className="h-7 w-auto"
             />
           </div>
           <p className="text-[#b8c8dc] max-w-sm mb-8 leading-loose font-body">
@@ -35,13 +35,13 @@ export default function Footer() {
           </p>
           <p className="text-xs text-[#b8c8dc]/50">
             (주)넥스트다이닝 | 대표이사 장경훈, 정호상<br />
-            서울특별시 | next-dining.com
+            서울시 용산구 대사관로 35, 사운즈 한남 B1 | next-dining.com
           </p>
         </div>
 
         {/* 브랜드 */}
         <div>
-          <h3 className="text-[#e9c176] font-bold mb-6 uppercase tracking-widest text-xs font-body">Restaurants</h3>
+          <h3 className="text-[#e9c176] font-bold mb-6 uppercase tracking-widest text-xs font-body">Brands</h3>
           <ul className="space-y-3">
             {BRAND_LINKS.map((b) => (
               <li key={b.href}>

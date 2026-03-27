@@ -45,11 +45,11 @@ export default function Header() {
         {/* 로고 */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <Image
-            src="/images/next-dining-logo.png"
+            src={isDark ? '/images/next-dining-logo-white.png' : '/images/next-dining-logo.png'}
             alt="NEXT DINING"
             width={140}
             height={32}
-            className={`h-7 lg:h-8 w-auto transition-all ${isDark ? 'brightness-0 invert' : ''}`}
+            className="h-7 lg:h-8 w-auto transition-all"
             priority
           />
         </Link>

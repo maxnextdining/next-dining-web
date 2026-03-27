@@ -34,7 +34,7 @@ export default function BrandsPage() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 pt-28">
       {/* 헤더 */}
       <div className="mb-14">
-        <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Our Restaurants</p>
+        <p className="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Our Brands</p>
         <h1 className="text-4xl font-bold mb-4">10개의 브랜드, 각자의 이야기</h1>
         <p className="text-stone-500 max-w-2xl leading-relaxed">
           넥스트다이닝의 각 브랜드는 독립된 철학과 세계관을 가집니다.
