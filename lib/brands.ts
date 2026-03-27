@@ -40,6 +40,7 @@ export interface Brand {
   storyElements?: BrandStoryElements;
   locations: BrandLocation[];
   image: string;
+  logo: string;
   keywords: string[]; // GEO 최적화용 키워드
   priceRange?: string;
   cuisine?: string;
@@ -72,6 +73,7 @@ export const brands: Brand[] = [
       { name: '을지로점', address: '서울 중구 을지로5길 26, 미래에셋 센터원 B1', status: 'active', phone: '02-6030-8960', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
     ],
     image: '/images/brands/bongwoori.jpg',
+    logo: '/images/brands/logos/bongwoori.png',
     keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
     priceRange: '₩₩₩₩',
     accentColor: '#8B6914',
@@ -105,6 +107,7 @@ export const brands: Brand[] = [
       { name: '여주신세계아울렛점', address: '경기 여주시 명품로 360, 여주 신세계 프리미엄아울렛', status: 'active' },
     ],
     image: '/images/brands/bongwoori-soban.jpg',
+    logo: '/images/brands/logos/bongwoori-soban.png',
     keywords: ['여주 맛집', '여주신세계 식당', '아울렛 한식', '경기도 한정식'],
     priceRange: '₩₩₩',
     accentColor: '#A0522D',
@@ -131,6 +134,7 @@ export const brands: Brand[] = [
       { name: '시청점', address: '서울 중구 을지로 6, JEI재능교육빌딩 1층', status: 'active', phone: '0507-1387-8573' },
     ],
     image: '/images/brands/jinjin-mandu.jpg',
+    logo: '/images/brands/logos/jinjin-mandu.png',
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
     priceRange: '₩₩',
     accentColor: '#B91C1C',
@@ -171,6 +175,7 @@ export const brands: Brand[] = [
       { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'closed' },
     ],
     image: '/images/brands/jinkawa.jpg',
+    logo: '/images/brands/logos/jinkawa.png',
     keywords: ['진가와', '역삼 소바', '여의도 일식', '을지로 소바', '광화문 맛집', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
     priceRange: '₩₩₩',
     accentColor: '#1B2A4A',
@@ -215,6 +220,7 @@ export const brands: Brand[] = [
       { name: '잠실롯백점', address: '서울 송파구 잠실 롯데백화점', status: 'coming-soon' },
     ],
     image: '/images/brands/bunjiro.jpg',
+    logo: '/images/brands/logos/bunjiro.png',
     keywords: [
       '분지로', '나가사키 돈카츠', '명동 돈카츠', '한남 맛집', '사운즈한남 식당',
       '롯데월드몰 돈카츠', '데이트 코스 한남', '서울 돈카츠 맛집', '일본 장인 돈카츠',
@@ -253,6 +259,7 @@ export const brands: Brand[] = [
       { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
     ],
     image: '/images/brands/takumi-nagasaki.jpg',
+    logo: '/images/brands/logos/takumi-nagasaki.png',
     keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
     priceRange: '₩₩₩',
     accentColor: '#2A6B6B',
@@ -283,6 +290,7 @@ export const brands: Brand[] = [
       { name: '사운즈한남점 (한국본점)', address: '서울 용산구 대사관로 35, 사운즈한남 야외 2층', status: 'active', hours: '매일 11:30~22:30 (BT 15:00~17:30)' },
     ],
     image: '/images/brands/daisen.jpg',
+    logo: '/images/brands/logos/daisen.png',
     keywords: [
       '다이센스시', '한남 프라이빗 스시', '한남동 스시', '서울 프리미엄 스시',
       '프리미엄 스시 서울', '한남 데이트 코스', '특별한 날 식당 서울', '사운즈한남 스시',
@@ -317,6 +325,7 @@ export const brands: Brand[] = [
       { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', hours: '매일 10:00~22:00 (LO 21:30)' },
     ],
     image: '/images/brands/cafe-le-sens.jpg',
+    logo: '/images/brands/logos/cafe-le-sens.png',
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
     priceRange: '₩₩',
     accentColor: '#6B705C',
@@ -349,6 +358,7 @@ export const brands: Brand[] = [
       { name: '성수점 (1호점)', address: '서울 성동구 (2026년 말 오픈 예정)', status: 'coming-soon' },
     ],
     image: '/images/brands/menya-always.jpg',
+    logo: '/images/brands/logos/menya-always.png',
     keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울', '성수 라멘', '돈코츠 라멘'],
     priceRange: '₩₩',
     accentColor: '#C2410C',
@@ -378,6 +388,7 @@ export const brands: Brand[] = [
       { name: '뉴욕 맨해튼', address: '286 5th Avenue, 1st Floor, New York, NY 10001', status: 'active', phone: '(347) 572-1027', hours: '화~일 17:00~02:00 (금·토 ~04:00) / 월 휴무' },
     ],
     image: '/images/brands/noflex-nyc.jpg',
+    logo: '/images/brands/logos/noflex-nyc.png',
     keywords: ['NOFLEX NYC', '노플렉스뉴욕', '뉴욕 한국 레스토랑', 'media art restaurant NYC', 'immersive dining NYC', '맨해튼 칵테일바', '넥스트다이닝 미국'],
     priceRange: '$$$',
     accentColor: '#5B21B6',

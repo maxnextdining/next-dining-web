@@ -118,6 +118,9 @@ function BrandCard({ brand }: { brand: (typeof brands)[0] }) {
             {brand.priceRange && ` · ${brand.priceRange}`}
           </span>
         </div>
+        <div className="absolute bottom-3 right-3 w-10 h-10 bg-white/90 backdrop-blur rounded-lg p-1.5 shadow-sm">
+          <img src={brand.logo} alt={`${brand.name} 로고`} className="w-full h-full object-contain" />
+        </div>
         {hasComingSoon && (
           <div className="absolute top-3 right-3">
             <span className="text-xs bg-amber-400/90 px-2 py-1 rounded-full text-amber-900 font-medium">

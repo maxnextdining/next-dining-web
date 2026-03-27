@@ -127,7 +127,9 @@ export default function AboutPage() {
                 href={`/brands/${item.id}`}
                 className="group bg-white rounded-2xl p-7 border border-stone-100 hover:border-stone-300 hover:shadow-md transition-all"
               >
-                <div className="w-10 h-10 bg-stone-900 rounded-xl mb-5 group-hover:bg-stone-800 transition-colors" />
+                <div className="w-12 h-12 mb-5">
+                  <img src={`/images/brands/logos/${item.id}.png`} alt={`${item.title} 로고`} className="w-full h-full object-contain" />
+                </div>
                 <h3 className="font-bold text-stone-900 text-lg mb-2">{item.title}</h3>
                 <p className="text-xs text-stone-400 mb-3">{item.origin}</p>
                 <p className="text-sm text-stone-600 leading-relaxed">{item.highlight}</p>
@@ -155,7 +157,9 @@ export default function AboutPage() {
               href={`/brands/${brand.id}`}
               className="group text-center p-5 rounded-xl border border-stone-100 hover:border-stone-300 transition-all"
             >
-              <div className="aspect-square bg-stone-100 rounded-xl mb-3 group-hover:bg-stone-200 transition-colors" />
+              <div className="aspect-square bg-stone-50 rounded-xl mb-3 group-hover:bg-stone-100 transition-colors flex items-center justify-center p-4">
+                <img src={brand.logo} alt={`${brand.name} 로고`} className="w-full h-full object-contain" />
+              </div>
               <p className="text-xs text-stone-400 mb-0.5">{brand.nameEn}</p>
               <p className="text-sm font-semibold text-stone-900">{brand.name}</p>
             </Link>

@@ -157,9 +157,12 @@ export default async function BrandDetailPage({ params }: Props) {
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="space-y-2">
-              <span className="block text-white/40 font-body tracking-[0.4em] text-sm font-bold uppercase">{brand.nameEn}</span>
-              <h1 className="text-white font-headline font-bold text-6xl sm:text-7xl lg:text-[8rem] leading-none tracking-tighter">{brand.name}</h1>
+            <div className="flex items-end gap-6">
+              <img src={brand.logo} alt={`${brand.name} 로고`} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain drop-shadow-xl" />
+              <div className="space-y-2">
+                <span className="block text-white/40 font-body tracking-[0.4em] text-sm font-bold uppercase">{brand.nameEn}</span>
+                <h1 className="text-white font-headline font-bold text-6xl sm:text-7xl lg:text-[8rem] leading-none tracking-tighter">{brand.name}</h1>
+              </div>
             </div>
           </ScrollReveal>
 

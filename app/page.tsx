@@ -213,9 +213,9 @@ export default function HomePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent" />
 
-                      {/* Initial letter watermark */}
-                      <div className={`absolute top-10 right-10 font-serif select-none pointer-events-none ${isLarge ? 'text-[12rem]' : 'text-[8rem]'} opacity-[0.05] text-[#e9c176]`}>
-                        {brand.nameEn.charAt(0)}
+                      {/* Brand logo */}
+                      <div className={`absolute top-8 right-8 ${isLarge ? 'w-20 h-20' : 'w-14 h-14'} opacity-80 group-hover:opacity-100 transition-opacity duration-300`}>
+                        <img src={brand.logo} alt={`${brand.name} 로고`} className="w-full h-full object-contain drop-shadow-lg" />
                       </div>
 
                       {/* Content */}
