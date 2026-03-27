@@ -158,9 +158,9 @@ export const brands: Brand[] = [
     },
     locations: [
       { name: '역삼점 (한국본점)', address: '서울 강남구 논현로94길 25-3, B1', status: 'active', phone: '0507-1421-8853', hours: '평일 11:30~22:30 (BT 14:30~17:30) / 주말 12:00~21:30' },
-      { name: '여의도점', address: '서울 영등포구 여의도', status: 'active' },
-      { name: '을지로점', address: '서울 중구 을지로', status: 'active' },
-      { name: '광화문점', address: '서울 종로구 광화문', status: 'active' },
+      { name: '여의도점', address: '서울 영등포구 국제금융로2길 17 씨티플라자 3층', status: 'active' },
+      { name: '을지로점', address: '서울 중구 을지로5길 19 페럼타워 지하1층', status: 'active' },
+      { name: '광화문점', address: '서울 종로구 종로1길 50 더케이트윈타워 지하1층', status: 'active' },
       { name: '잠실롯데월드몰점', address: '서울 송파구 올림픽로 300, 롯데월드몰 6층', status: 'active', phone: '0507-1349-4625', hours: '매일 10:30~22:00 (BT 15:00~17:00)' },
       { name: '부산 롯데백화점점', address: '부산 부산진구 가야대로 772, 롯데백화점 부산본점 9층', status: 'active', phone: '051-810-3997', hours: '매일 10:30~20:30' },
     ],
@@ -176,9 +176,9 @@ export const brands: Brand[] = [
       { name: '사시미 & 스시 정식', price: '37,000원~49,000원' },
     ],
     reservationLinks: [
-      { location: '여의도점', url: 'https://app.catchtable.co.kr/ct/shop/jkwyud' },
-      { location: '을지로점', url: 'https://app.catchtable.co.kr/ct/shop/jkwjr' },
-      { location: '광화문점', url: 'https://app.catchtable.co.kr/ct/shop/jinkawagwm' },
+      { location: '여의도점', url: 'https://map.naver.com/p/entry/place/1974070800?placePath=/booking' },
+      { location: '을지로점', url: 'https://pcmap.place.naver.com/restaurant/1266313632/booking' },
+      { location: '광화문점', url: 'https://pcmap.place.naver.com/restaurant/1951174994/booking' },
     ],
   },
   {

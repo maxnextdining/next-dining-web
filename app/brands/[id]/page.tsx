@@ -317,7 +317,7 @@ export default async function BrandDetailPage({ params }: Props) {
                           className="w-full text-center text-white py-4 font-body text-sm tracking-widest transition-opacity hover:opacity-80"
                           style={{ backgroundColor: accentColor }}
                         >
-                          캐치테이블 예약
+                          예약하기
                         </a>
                       )}
                     </div>
