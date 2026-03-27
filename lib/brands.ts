@@ -80,6 +80,9 @@ export const brands: Brand[] = [
       { name: '식객 정식', price: '78,000원' },
       { name: '명인 정식', price: '150,000원' },
     ],
+    reservationLinks: [
+      { location: '역삼 본점', url: 'https://app.catchtable.co.kr/ct/shop/bongwooriyeoksam' },
+    ],
   },
   {
     id: 'bongwoori-soban',
@@ -176,6 +179,7 @@ export const brands: Brand[] = [
       { name: '사시미 & 스시 정식', price: '37,000원~49,000원' },
     ],
     reservationLinks: [
+      { location: '역삼점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/jinkawa_yeoksam' },
       { location: '여의도점', url: 'https://map.naver.com/p/entry/place/1974070800?placePath=/booking' },
       { location: '을지로점', url: 'https://pcmap.place.naver.com/restaurant/1266313632/booking' },
       { location: '광화문점', url: 'https://pcmap.place.naver.com/restaurant/1951174994/booking' },
