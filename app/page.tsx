@@ -83,7 +83,7 @@ const FAQ_ITEMS = [
     a: "채용 페이지에서 현재 공개 채용 포지션을 확인하시고 hr@next-dining.com으로 지원하실 수 있습니다. 홀 서비스, 주방(소바 장인 수련생 포함), 본사(마케팅, 경영지원, 브랜드 기획) 등 다양한 포지션이 있으며, 일본 현지 연수 기회도 제공합니다.",
   },
   {
-    q: "뉴욕에 있는 넥스트다이닝 레스토랑은?",
+    q: "뉴욕에 있는 넥스트다이닝 브랜드는?",
     a: "NOFLEX NYC는 뉴욕 맨해튼 5번가(286 5th Avenue)에 위치한 미디어 아트 레스토랑 & 칵테일 바입니다. 72피트 LED 월에 투사되는 몰입형 디지털 아트와 함께 대담한 칵테일과 모던 다이닝을 즐길 수 있습니다.",
   },
 ];
@@ -152,7 +152,7 @@ export default function HomePage() {
                 href="/contact"
                 className="w-full sm:w-auto px-10 py-4 border border-[#44474b]/30 glass-card text-[#e5e2e1] font-medium tracking-widest hover:border-[#e9c176] transition-colors duration-300 text-sm"
               >
-                입점 문의
+                문의하기
               </Link>
             </div>
           </ScrollReveal>
@@ -219,7 +219,7 @@ export default function HomePage() {
 
                       {/* Brand logo */}
                       <div className={`absolute top-8 right-8 ${isLarge ? 'w-20 h-20' : 'w-14 h-14'} opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-10`}>
-                        <Image src={brand.logo} alt={`${brand.name} 로고`} width={80} height={80} className="w-full h-full object-contain drop-shadow-lg" />
+                        <Image src={brand.logo} alt={`${brand.name} 로고`} width={80} height={80} className="w-full h-full object-contain drop-shadow-lg brightness-0 invert" />
                       </div>
 
                       {/* Content */}
@@ -272,7 +272,7 @@ export default function HomePage() {
       <section className="py-40 bg-[#0e0e0e]">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <ScrollReveal>
-            <div className="text-[#e9c176] text-5xl mb-12 font-serif">&ldquo;</div>
+            <div className="text-[#e9c176] text-5xl mb-12 font-headline">&ldquo;</div>
             <p className="font-headline text-3xl md:text-4xl italic font-light leading-relaxed text-[#e5e2e1] mb-12">
               우리는 단순한 음식을 넘어,<br className="hidden md:block" />
               그릇에 담긴 철학과 공간이 주는 영감을<br className="hidden md:block" />

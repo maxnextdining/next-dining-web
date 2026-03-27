@@ -146,7 +146,7 @@ export default async function BrandDetailPage({ params }: Props) {
         <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-20 pb-16 pt-32 lg:pb-24 lg:pt-48 w-full">
           <ScrollReveal>
             <Link href="/brands" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors mb-12 font-body uppercase tracking-widest text-xs">
-              ← 레스토랑 전체 보기
+              ← 브랜드 전체 보기
             </Link>
           </ScrollReveal>
 
@@ -163,7 +163,7 @@ export default async function BrandDetailPage({ params }: Props) {
 
           <ScrollReveal delay={200}>
             <div className="flex items-end gap-6">
-              <Image src={brand.logo} alt={`${brand.name} 로고`} width={96} height={96} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain drop-shadow-xl" />
+              <Image src={brand.logo} alt={`${brand.name} 로고`} width={96} height={96} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain drop-shadow-xl brightness-0 invert" />
               <div className="space-y-2">
                 <span className="block text-white/40 font-body tracking-[0.4em] text-sm font-bold uppercase">{brand.nameEn}</span>
                 <h1 className="text-white font-headline font-bold text-6xl sm:text-7xl lg:text-[8rem] leading-none tracking-tighter">{brand.name}</h1>

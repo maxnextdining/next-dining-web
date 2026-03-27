@@ -1,28 +1,14 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Noto_Serif, Manrope } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const notoSansKr = Noto_Sans_KR({
+const sora = Sora({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-noto-sans-kr",
-});
-
-const notoSerif = Noto_Serif({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
-  display: "swap",
-  variable: "--font-noto-serif",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  display: "swap",
-  variable: "--font-manrope",
+  variable: "--font-sora",
 });
 
 export const metadata: Metadata = {
@@ -54,7 +40,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${notoSansKr.variable} ${notoSerif.variable} ${manrope.variable} font-sans bg-white text-stone-900 antialiased`}>
+      <body className={`${sora.variable} font-sans bg-white text-stone-900 antialiased`}>
         <Header />
         <main>{children}</main>
         <Footer />

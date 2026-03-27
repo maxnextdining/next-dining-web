@@ -81,7 +81,7 @@ export default function Header() {
                 : 'bg-stone-900 text-white rounded-lg hover:bg-stone-800'
             }`}
           >
-            입점 문의
+            예약하기
           </Link>
         </div>
 
@@ -129,7 +129,7 @@ export default function Header() {
             }`}
             onClick={() => setOpen(false)}
           >
-            입점 문의
+            예약하기
           </Link>
         </div>
       )}
