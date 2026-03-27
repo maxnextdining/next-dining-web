@@ -178,7 +178,7 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-3 gap-6 mb-10">
             {[
               { value: "9개", label: "프리미엄 브랜드", sub: "일식·한식·양식·카페" },
-              { value: "17", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
+              { value: "19", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
               { value: "~350억", label: "연 매출 규모", sub: "2024년 기준, 전 매장 직영" },
             ].map((s) => (
               <div key={s.label} className="bg-white rounded-2xl p-7 border border-stone-100 text-center">
