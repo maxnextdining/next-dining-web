@@ -310,15 +310,24 @@ export default async function BrandDetailPage({ params }: Props) {
                         <p className="text-xs text-stone-400 mb-6 font-body">{loc.hours}</p>
                       )}
                       {reservationLink && loc.status === 'active' && (
-                        <a
-                          href={reservationLink.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full text-center text-white py-4 font-body text-sm tracking-widest transition-opacity hover:opacity-80"
-                          style={{ backgroundColor: accentColor }}
-                        >
-                          예약하기
-                        </a>
+                        reservationLink.url ? (
+                          <a
+                            href={reservationLink.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full text-center text-white py-4 font-body text-sm tracking-widest transition-opacity hover:opacity-80"
+                            style={{ backgroundColor: accentColor }}
+                          >
+                            예약하기
+                          </a>
+                        ) : reservationLink.note ? (
+                          <div
+                            className="w-full text-center py-4 font-body text-sm tracking-widest border"
+                            style={{ color: accentColor, borderColor: accentColor }}
+                          >
+                            {reservationLink.note}
+                          </div>
+                        ) : null
                       )}
                     </div>
                   </ScrollReveal>

@@ -198,12 +198,10 @@ export default function HomePage() {
                 const activeLocCount = brand.locations.filter((l) => l.status === "active").length;
 
                 return (
-                  <ScrollReveal key={brand.id} delay={colIdx * 120}>
+                  <ScrollReveal key={brand.id} delay={colIdx * 120} className={span === 8 ? 'md:col-span-8' : 'md:col-span-4'}>
                     <Link
                       href={`/brands/${brand.id}`}
-                      className={`brand-card group relative block overflow-hidden ${isLarge ? 'h-[500px]' : 'h-[400px]'} rounded-lg ${
-                        span === 8 ? 'md:col-span-8' : 'md:col-span-4'
-                      }`}
+                      className={`brand-card group relative block overflow-hidden ${isLarge ? 'h-[500px]' : 'h-[400px]'} rounded-lg`}
                       style={{
                         background: `linear-gradient(135deg, ${brand.accentColor || '#231600'} 0%, #131313 100%)`,
                       }}

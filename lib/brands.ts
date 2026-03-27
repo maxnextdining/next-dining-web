@@ -25,7 +25,8 @@ export interface MenuItem {
 
 export interface ReservationLink {
   location?: string;
-  url: string;
+  url?: string;
+  note?: string; // '전화예약', '현장 대기' 등 온라인 예약 불가 시
 }
 
 export interface Brand {
@@ -82,6 +83,7 @@ export const brands: Brand[] = [
     ],
     reservationLinks: [
       { location: '역삼 본점', url: 'https://app.catchtable.co.kr/ct/shop/bongwooriyeoksam' },
+      { location: '을지로점', url: 'https://app.catchtable.co.kr/ct/shop/bonguri_euljiro' },
     ],
   },
   {
@@ -183,6 +185,8 @@ export const brands: Brand[] = [
       { location: '여의도점', url: 'https://map.naver.com/p/entry/place/1974070800?placePath=/booking' },
       { location: '을지로점', url: 'https://pcmap.place.naver.com/restaurant/1266313632/booking' },
       { location: '광화문점', url: 'https://pcmap.place.naver.com/restaurant/1951174994/booking' },
+      { location: '잠실롯데월드몰점', note: '전화예약' },
+      { location: '부산 롯데백화점점', note: '전화예약' },
     ],
   },
   {
@@ -221,7 +225,10 @@ export const brands: Brand[] = [
       { name: '장인 로스카츠', price: '16,000원~29,000원' },
     ],
     reservationLinks: [
+      { location: '명동점 (한국본점)', note: '전화예약' },
       { location: '사운즈한남점', url: 'https://app.catchtable.co.kr/ct/shop/bunjiro_soundshannam' },
+      { location: '타임빌라스 수원점', note: '전화예약' },
+      { location: '롯데월드몰점', note: '현장 대기' },
     ],
   },
   {
