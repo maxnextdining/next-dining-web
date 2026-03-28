@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { existsSync } from "fs";
+import path from "path";
 import { brands, getBrandById } from "@/lib/brands";
 import { fetchBrandMenu } from "@/lib/menu-sheets";
 import { fetchBrandInfoById, fetchBrandStories } from "@/lib/sheets-cms";
@@ -63,11 +65,11 @@ const STATUS_CONFIG: Record<string, { label: string; dotColor: string; textColor
 };
 
 const STORY_SECTIONS = [
-  { key: "originStory",           title: "탄생 이야기", titleEn: "THE ORIGIN",       icon: "01" },
-  { key: "chefOrArtisan",         title: "장인의 길",   titleEn: "CRAFTSMANSHIP",    icon: "02" },
-  { key: "ingredientPhilosophy",  title: "식재료 철학", titleEn: "INGREDIENTS",      icon: "03" },
-  { key: "signatureMenu",         title: "시그니처",    titleEn: "SIGNATURE",        icon: "04" },
-  { key: "spaceExperience",       title: "공간 경험",   titleEn: "ATMOSPHERE",       icon: "05" },
+  { key: "originStory",           title: "탄생 이야기", titleEn: "THE ORIGIN",       icon: "01", imageFile: "origin.jpg" },
+  { key: "chefOrArtisan",         title: "장인의 길",   titleEn: "CRAFTSMANSHIP",    icon: "02", imageFile: "chef.jpg" },
+  { key: "ingredientPhilosophy",  title: "식재료 철학", titleEn: "INGREDIENTS",      icon: "03", imageFile: "ingredient.jpg" },
+  { key: "signatureMenu",         title: "시그니처",    titleEn: "SIGNATURE",        icon: "04", imageFile: "signature.jpg" },
+  { key: "spaceExperience",       title: "공간 경험",   titleEn: "ATMOSPHERE",       icon: "05", imageFile: "space.jpg" },
 ] as const;
 
 export default async function BrandDetailPage({ params }: Props) {
@@ -77,6 +79,9 @@ export default async function BrandDetailPage({ params }: Props) {
 
   const activeLocations = brand.locations.filter((l) => l.status === "active");
   const accentColor = brand.accentColor ?? "#C8A96E";
+
+  const storyImageExists = (imageFile: string): boolean =>
+    existsSync(path.join(process.cwd(), "public", "images", "brands", "story", id, imageFile));
 
   // Google Sheets 데이터 fetch (브랜드 기본정보 + 스토리 + 메뉴)
   const [sheetBrandInfo, sheetStories, sheetMenu] = await Promise.all([
@@ -366,28 +371,55 @@ export default async function BrandDetailPage({ params }: Props) {
                       !isEven ? "md:[direction:rtl]" : ""
                     }`}
                   >
-                    {/* Decorative block */}
+                    {/* Story image (이미지 없으면 장식 블록 fallback) */}
                     <ScrollReveal
                       direction={isEven ? "left" : "right"}
                       className={!isEven ? "md:[direction:ltr]" : ""}
                     >
                       <div
-                        className="relative h-80 lg:h-96 overflow-hidden flex items-center justify-center"
+                        className="relative h-80 lg:h-96 overflow-hidden"
                         style={{
                           background: `linear-gradient(135deg, ${accentColor}20 0%, ${accentColor}08 100%)`,
                           borderLeft: `2px solid ${accentColor}30`,
                         }}
                       >
-                        <span
-                          className="font-display font-bold select-none pointer-events-none leading-none"
-                          style={{ fontSize: "clamp(6rem, 14vw, 10rem)", color: accentColor, opacity: 0.12 }}
-                        >
-                          {section.icon}
-                        </span>
-                        <div
-                          className="absolute bottom-6 left-6 w-16 h-px"
-                          style={{ backgroundColor: `${accentColor}50` }}
-                        />
+                        {storyImageExists(section.imageFile) ? (
+                          <>
+                            <Image
+                              src={`/images/brands/story/${brand.id}/${section.imageFile}`}
+                              alt={`${brand.name} — ${section.title}`}
+                              fill
+                              sizes="(min-width: 768px) 50vw, 100vw"
+                              className="object-cover"
+                            />
+                            {/* 이미지 위 그래디언트 오버레이 */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                            {/* 코너 번호 */}
+                            <div className="absolute top-4 left-4">
+                              <span
+                                className="font-display text-4xl font-bold select-none"
+                                style={{ color: accentColor, opacity: 0.6 }}
+                              >
+                                {section.icon}
+                              </span>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span
+                                className="font-display font-bold select-none pointer-events-none leading-none"
+                                style={{ fontSize: "clamp(6rem, 14vw, 10rem)", color: accentColor, opacity: 0.12 }}
+                              >
+                                {section.icon}
+                              </span>
+                            </div>
+                            <div
+                              className="absolute bottom-6 left-6 w-16 h-px"
+                              style={{ backgroundColor: `${accentColor}50` }}
+                            />
+                          </>
+                        )}
                       </div>
                     </ScrollReveal>
 
