@@ -138,30 +138,6 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Instagram */}
-            <div className="mt-6">
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/10 text-[#8A8A8A] hover:text-[#EDEDED] hover:border-[#C8A96E]/40 hover:scale-110 transition-all duration-300"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-                </svg>
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -173,7 +149,6 @@ export default function Footer() {
           <div className="text-[10px] text-white/30 leading-relaxed space-y-0.5">
             <p>(주)넥스트다이닝 | 대표이사 장경훈, 정호상</p>
             <p>사업자등록번호: 211-88-02389</p>
-            <p>통신판매업신고: 등록 준비 중</p>
           </div>
 
           {/* Copyright + tagline */}
