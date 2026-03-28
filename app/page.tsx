@@ -116,13 +116,6 @@ const BENTO_LAYOUT: { ids: string[]; spans: number[]; heights: string[] }[] = [
   },
 ];
 
-const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
-  korean: { label: "한식", color: "bg-[#C8A96E]/20 text-[#C8A96E]" },
-  japanese: { label: "일식", color: "bg-[#6B8CAE]/20 text-[#6B8CAE]" },
-  cafe: { label: "카페", color: "bg-[#A3A88B]/20 text-[#A3A88B]" },
-  american: { label: "양식", color: "bg-[#8B5CF6]/20 text-[#C4B5FD]" },
-};
-
 function getColSpanClass(span: number): string {
   switch (span) {
     case 4: return "md:col-span-4";
@@ -288,10 +281,6 @@ export default function HomePage() {
                 if (!brand) return null;
                 const span = row.spans[colIdx];
                 const height = row.heights[colIdx];
-                const catInfo = CATEGORY_LABELS[brand.category] ?? CATEGORY_LABELS.japanese;
-                const activeLocCount = brand.locations.filter((l) => l.status === "active").length;
-                const hasComingSoon = brand.locations.some((l) => l.status === "coming-soon");
-                const isComingSoonBrand = brand.id === "menya-always";
 
                 return (
                   <ScrollReveal
@@ -324,27 +313,6 @@ export default function HomePage() {
                       {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent" />
 
-                      {/* Category badge — top left */}
-                      <div className="absolute top-6 left-6 z-10 flex gap-2 flex-wrap">
-                        <span className={`px-3 py-1 ${catInfo.color} text-[10px] tracking-widest rounded-full font-body backdrop-blur-sm`}>
-                          {catInfo.label}
-                        </span>
-                        {activeLocCount > 0 && (
-                          <span className="px-3 py-1 bg-white/8 text-[#8A8A8A] text-[10px] tracking-widest rounded-full font-body backdrop-blur-sm">
-                            {activeLocCount}개 매장
-                          </span>
-                        )}
-                        {isComingSoonBrand && (
-                          <span className="px-3 py-1 bg-[#C8A96E]/20 text-[#C8A96E] text-[10px] tracking-widest rounded-full font-body backdrop-blur-sm">
-                            오픈 예정
-                          </span>
-                        )}
-                        {!isComingSoonBrand && hasComingSoon && (
-                          <span className="px-3 py-1 bg-amber-400/20 text-amber-300 text-[10px] tracking-widest rounded-full font-body backdrop-blur-sm">
-                            신규 오픈
-                          </span>
-                        )}
-                      </div>
 
                       {/* Brand logo — top right */}
                       <div className={`absolute top-6 right-6 z-10 ${span >= 7 ? "w-16 h-16" : "w-12 h-12"} opacity-70 group-hover:opacity-100 transition-opacity duration-300`}>
