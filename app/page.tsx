@@ -180,7 +180,7 @@ export default function HomePage() {
               staggerDelay={0}
               className="block"
             >
-              {"검증된 장인의 맛을"}
+              {"다음 세대를 여는"}
             </TextReveal>
             <TextReveal
               as="span"
@@ -189,7 +189,7 @@ export default function HomePage() {
               staggerDelay={0}
               className="block gold-gradient-text"
             >
-              {"새로운 기준으로"}
+              {"글로벌 외식 문화기업"}
             </TextReveal>
           </h1>
 
@@ -203,9 +203,9 @@ export default function HomePage() {
           {/* Subtitle */}
           <ScrollReveal delay={650}>
             <p className="max-w-[65ch] mx-auto text-lg md:text-xl text-[#8A8A8A] font-body font-light leading-relaxed mb-12">
-              봉우리 한정식부터 나가사키 장인 돈카츠, 뉴욕 맨해튼까지.
+              검증된 맛을 새로운 기준으로.
               <br className="hidden sm:block" />
-              10개 브랜드가 각자의 철학과 이야기로 한국 외식의 수준을 높입니다.
+              장인의 철학을 담은 브랜드들이 각자의 이야기로 한국 외식의 수준을 높입니다.
             </p>
           </ScrollReveal>
 

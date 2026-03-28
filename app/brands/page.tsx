@@ -77,28 +77,6 @@ export default function BrandsPage() {
         </div>
       </section>
 
-      {/* ── Category Filter Pills (visual only) ─────────── */}
-      <section className="px-6 lg:px-12 pb-12">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal direction="up" delay={100}>
-            <div className="flex flex-wrap gap-2">
-              {["전체", "한식", "일식", "양식", "카페"].map((label) => (
-                <span
-                  key={label}
-                  className={`text-xs px-4 py-1.5 rounded-full border font-medium transition-colors ${
-                    label === "전체"
-                      ? "bg-[#C8A96E]/20 text-[#C8A96E] border-[#C8A96E]/30"
-                      : "bg-white/5 text-[#8A8A8A] border-white/10"
-                  }`}
-                >
-                  {label}
-                </span>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* ── Brand Gallery Grid ───────────────────────────── */}
       <section className="px-6 lg:px-12 pb-24">
         <div className="max-w-7xl mx-auto">

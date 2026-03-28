@@ -109,10 +109,7 @@ const VALUES = [
 ];
 
 const BENEFITS = [
-  { icon: "🍱", title: "식사 제공", desc: "근무 중 자사 브랜드 식사 무료 제공. 봉우리 한정식부터 분지로 돈카츠까지 매일 다른 메뉴." },
   { icon: "✈️", title: "일본 현지 연수", desc: "나가사키·큐슈 장인 브랜드 본사 방문 및 기술 연수 기회 제공 (주방 직군)." },
-  { icon: "🏠", title: "주택자금 지원", desc: "직원 대출 및 주택자금 지원 제도 운영." },
-  { icon: "🛡️", title: "4대보험 · 퇴직연금", desc: "국민연금, 건강보험, 고용보험, 산재보험 완비. 퇴직연금(DC형) 가입." },
   { icon: "🎁", title: "경조사 지원", desc: "경조금 지급 및 경조 휴가 제공. 명절 선물/상여 지원." },
   { icon: "⭐", title: "장기근속 보상", desc: "근속 연수에 따른 장기근속수당 및 포상, 추가 리프레시 휴가 부여." },
   { icon: "👶", title: "육아 지원", desc: "출산휴가, 육아휴직 보장. 산전·산후 휴가 제도 운영." },
@@ -211,10 +208,10 @@ export default function CareersPage() {
                   className="text-xs font-semibold tracking-[0.3em] uppercase mb-4"
                   style={{ color: "#C8A96E" }}
                 >
-                  WHY WE DO
+                  OUR STORY
                 </p>
                 <h2 className="font-display text-3xl sm:text-4xl mb-8" style={{ color: "#EDEDED" }}>
-                  Why We Do
+                  우리의 이야기
                 </h2>
                 <div className="space-y-5 leading-relaxed text-[15px]" style={{ color: "#8A8A8A" }}>
                   <p>

@@ -207,7 +207,7 @@ export default function AboutPage() {
                               alt={`${brand.name} 로고`}
                               width={48}
                               height={48}
-                              className="w-full h-full object-contain"
+                              className="w-full h-full object-contain brightness-0 invert"
                             />
                           </div>
                           <div className="min-w-0 flex-1">

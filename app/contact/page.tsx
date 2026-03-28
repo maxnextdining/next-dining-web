@@ -1,7 +1,8 @@
 'use client';
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { brands } from "@/lib/brands";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -68,8 +69,16 @@ const BRAND_RESERVATIONS = brands
       }),
   }));
 
-export default function ContactPage() {
+function ContactContent() {
   const [activeTab, setActiveTab] = useState<TabKey>('reservation');
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab === 'reservation' || tab === 'partnership') {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
 
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
@@ -242,5 +251,13 @@ export default function ContactPage() {
         </section>
       )}
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense>
+      <ContactContent />
+    </Suspense>
   );
 }

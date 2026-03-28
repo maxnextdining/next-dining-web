@@ -117,13 +117,13 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <Link
-              href="/contact"
+              href="/contact?tab=partnership"
               className="cta-outline text-sm tracking-wide px-5 py-2 rounded-full border border-white/20 text-white/70 bg-transparent hover:border-white/40 hover:text-white"
             >
               제휴·입점
             </Link>
             <Link
-              href="/contact#reservation"
+              href="/contact?tab=reservation"
               className="cta-primary text-sm tracking-wide px-5 py-2 rounded-full bg-[#C8A96E] text-[#0A0A0A] font-semibold hover:bg-[#E8D5B0] hover:shadow-[0_0_20px_rgba(200,169,110,0.25)]"
             >
               예약하기
@@ -247,14 +247,14 @@ export default function Header() {
           style={{ transitionDelay: open ? '520ms' : '0ms' }}
         >
           <Link
-            href="/contact#reservation"
+            href="/contact?tab=reservation"
             onClick={() => setOpen(false)}
             className="cta-primary block w-full text-center text-sm tracking-widest py-4 rounded-full bg-[#C8A96E] text-[#0A0A0A] font-semibold hover:bg-[#E8D5B0]"
           >
             예약하기
           </Link>
           <Link
-            href="/contact"
+            href="/contact?tab=partnership"
             onClick={() => setOpen(false)}
             className="cta-outline block w-full text-center text-sm tracking-widest py-4 rounded-full border border-white/20 text-white/70 bg-transparent hover:border-white/40 hover:text-white"
           >

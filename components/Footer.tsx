@@ -51,7 +51,7 @@ export default function Footer() {
               className="h-8 w-auto"
             />
             <p className="font-display font-bold text-[#C8A96E] text-base leading-snug">
-              검증된 장인의 맛을<br />새로운 기준으로
+              다음 세대를 여는<br />글로벌 외식 문화기업
             </p>
             <p className="text-[#8A8A8A] text-sm leading-relaxed max-w-[220px]">
               음식, 공간, 사람을 연결해<br />새로운 외식의 기준을 만듭니다.
