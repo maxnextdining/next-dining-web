@@ -129,7 +129,7 @@ export default function Footer() {
           {/* Business info */}
           <div className="text-[10px] text-white/30 leading-relaxed space-y-0.5">
             <p>(주)넥스트다이닝 | 대표이사 장경훈, 정호상</p>
-            <p>사업자등록번호: 211-88-02389</p>
+            <p>사업자등록번호: 220-88-64891</p>
           </div>
 
           {/* Copyright + tagline */}
