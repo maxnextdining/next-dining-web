@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
+import { fetchNews } from "@/lib/sheets-cms";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "새소식",
@@ -11,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-const NEWS_ITEMS = [
+const FALLBACK_NEWS = [
   {
     date: "2026.03",
     category: "회사 소식",
@@ -68,7 +71,10 @@ const CATEGORY_STYLES: Record<string, string> = {
   "회사 소식": "bg-white/5 text-[#8A8A8A] border-white/10",
 };
 
-export default function HappeningsPage() {
+export default async function HappeningsPage() {
+  const sheetNews = await fetchNews();
+  const NEWS_ITEMS = sheetNews.length > 0 ? sheetNews : FALLBACK_NEWS;
+
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
       {/* 헤더 */}

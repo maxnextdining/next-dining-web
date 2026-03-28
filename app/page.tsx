@@ -7,6 +7,9 @@ import TextReveal from "@/components/TextReveal";
 import ParallaxImage from "@/components/ParallaxImage";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import FaqAccordion from "@/components/FaqAccordion";
+import { fetchPageContent } from "@/lib/sheets-cms";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "NEXT DINING — 넥스트다이닝",
@@ -126,7 +129,27 @@ function getColSpanClass(span: number): string {
   }
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const content = await fetchPageContent();
+  const hero = content?.home?.hero;
+  const stats = content?.home?.stats;
+  const philosophy = content?.home?.philosophy;
+
+  const heroHeading1 = hero?.heading_1 || "다음 세대를 여는";
+  const heroHeading2 = hero?.heading_2 || "글로벌 외식 문화기업";
+  const heroSubtitle = hero?.subtitle || "검증된 맛을 새로운 기준으로.\n장인의 철학을 담은 브랜드들이 각자의 이야기로 한국 외식의 수준을 높입니다.";
+  const ctaPrimary = hero?.cta_primary || "브랜드 보기";
+  const ctaSecondary = hero?.cta_secondary || "문의하기";
+
+  const stat1Value = parseInt(stats?.stat_1_value ?? "") || 10;
+  const stat1Label = stats?.stat_1_label || "브랜드";
+  const stat2Value = parseInt(stats?.stat_2_value ?? "") || 19;
+  const stat2Label = stats?.stat_2_label || "직영 매장";
+  const stat3Value = parseInt(stats?.stat_3_value ?? "") || 5;
+  const stat3Label = stats?.stat_3_label || "도시";
+
+  const philosophyQuote = philosophy?.quote || "우리는 단순한 음식을 넘어,\n그릇에 담긴 철학과 공간이 주는 영감을\n새로운 기준으로 큐레이션합니다.";
+
   return (
     <div className="bg-[#0A0A0A] text-[#EDEDED]">
       <OrganizationJsonLd />
@@ -167,8 +190,8 @@ export default function HomePage() {
           {/* Main headline */}
           <ScrollReveal delay={200}>
             <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] tracking-tight mb-6 text-hero-shadow">
-              <span className="block">다음 세대를 여는</span>
-              <span className="block gold-gradient-text">글로벌 외식 문화기업</span>
+              <span className="block">{heroHeading1}</span>
+              <span className="block gold-gradient-text">{heroHeading2}</span>
             </h1>
           </ScrollReveal>
 
@@ -181,10 +204,8 @@ export default function HomePage() {
 
           {/* Subtitle */}
           <ScrollReveal delay={650}>
-            <p className="max-w-[65ch] mx-auto text-lg md:text-xl text-[#8A8A8A] font-body font-light leading-relaxed mb-12">
-              검증된 맛을 새로운 기준으로.
-              <br className="hidden sm:block" />
-              장인의 철학을 담은 브랜드들이 각자의 이야기로 한국 외식의 수준을 높입니다.
+            <p className="max-w-[65ch] mx-auto text-lg md:text-xl text-[#8A8A8A] font-body font-light leading-relaxed mb-12 whitespace-pre-line">
+              {heroSubtitle}
             </p>
           </ScrollReveal>
 
@@ -195,13 +216,13 @@ export default function HomePage() {
                 href="#brands"
                 className="cta-primary w-full sm:w-auto px-10 py-4 bg-[#C8A96E] text-[#0A0A0A] font-bold tracking-widest hover:bg-[#E8D5B0] text-sm font-body"
               >
-                브랜드 보기
+                {ctaPrimary}
               </Link>
               <Link
                 href="/contact"
                 className="cta-outline w-full sm:w-auto px-10 py-4 border border-[#C8A96E]/50 text-[#C8A96E] font-medium tracking-widest hover:border-[#C8A96E] hover:bg-[#C8A96E]/10 text-sm font-body"
               >
-                문의하기
+                {ctaSecondary}
               </Link>
             </div>
           </ScrollReveal>
@@ -211,21 +232,21 @@ export default function HomePage() {
             <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto border-t border-white/8 pt-12">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-display text-[#C8A96E] mb-2">
-                  <AnimatedCounter value={10} suffix="+" />
+                  <AnimatedCounter value={stat1Value} suffix="+" />
                 </div>
-                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">브랜드</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">{stat1Label}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-display text-[#C8A96E] mb-2">
-                  <AnimatedCounter value={19} />
+                  <AnimatedCounter value={stat2Value} />
                 </div>
-                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">직영 매장</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">{stat2Label}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-display text-[#C8A96E] mb-2">
-                  <AnimatedCounter value={5} />
+                  <AnimatedCounter value={stat3Value} />
                 </div>
-                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">도시</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">{stat3Label}</div>
               </div>
             </div>
           </ScrollReveal>
@@ -379,7 +400,7 @@ export default function HomePage() {
             staggerDelay={140}
             className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold leading-relaxed text-[#1A1A1A]"
           >
-            {"우리는 단순한 음식을 넘어,\n그릇에 담긴 철학과 공간이 주는 영감을\n새로운 기준으로 큐레이션합니다."}
+            {philosophyQuote}
           </TextReveal>
 
           <ScrollReveal delay={600}>

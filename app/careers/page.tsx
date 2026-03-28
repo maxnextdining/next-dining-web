@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import TextReveal from "@/components/TextReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import { fetchCareers } from "@/lib/sheets-cms";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "채용",
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-const OPEN_POSITIONS = [
+const FALLBACK_POSITIONS = [
   {
     category: "홀 서비스",
     positions: [
@@ -117,8 +120,19 @@ const BENEFITS = [
   { icon: "💳", title: "직원 할인", desc: "자사 전 브랜드(10개) 매장 직원 할인 혜택. 가족 동반 시에도 적용." },
 ];
 
-function JobPostingJsonLd() {
-  const postings = OPEN_POSITIONS.flatMap((group) =>
+type PositionGroup = {
+  category: string;
+  positions: {
+    title: string;
+    brand: string;
+    location: string;
+    type: string;
+    description: string;
+  }[];
+};
+
+function JobPostingJsonLd({ positions }: { positions: PositionGroup[] }) {
+  const postings = positions.flatMap((group) =>
     group.positions.map((pos) => ({
       "@context": "https://schema.org",
       "@type": "JobPosting",
@@ -154,10 +168,25 @@ function JobPostingJsonLd() {
   );
 }
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const sheetData = await fetchCareers();
+  const positions =
+    sheetData.length > 0
+      ? sheetData.map((group) => ({
+          category: group.category,
+          positions: group.positions.map((p) => ({
+            title: p.position,
+            brand: p.brand,
+            location: p.location,
+            type: p.type,
+            description: p.description,
+          })),
+        }))
+      : FALLBACK_POSITIONS;
+
   return (
     <div style={{ backgroundColor: "#0A0A0A", color: "#EDEDED" }}>
-      <JobPostingJsonLd />
+      <JobPostingJsonLd positions={positions} />
 
       {/* Hero */}
       <section style={{ backgroundColor: "#0A0A0A" }} className="pt-32 pb-24">
@@ -353,7 +382,7 @@ export default function CareersPage() {
           </ScrollReveal>
 
           <div className="space-y-14">
-            {OPEN_POSITIONS.map((group) => (
+            {positions.map((group) => (
               <div key={group.category}>
                 <ScrollReveal direction="up">
                   <h3

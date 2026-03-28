@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { brands, getBrandById } from "@/lib/brands";
 import { fetchBrandMenu } from "@/lib/menu-sheets";
+import { fetchBrandInfoById, fetchBrandStories } from "@/lib/sheets-cms";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import ParallaxImage from "@/components/ParallaxImage";
@@ -75,14 +76,34 @@ export default async function BrandDetailPage({ params }: Props) {
   if (!brand) notFound();
 
   const activeLocations = brand.locations.filter((l) => l.status === "active");
-  const elements = brand.storyElements;
+  const accentColor = brand.accentColor ?? "#C8A96E";
+
+  // Google Sheets 데이터 fetch (브랜드 기본정보 + 스토리 + 메뉴)
+  const [sheetBrandInfo, sheetStories, sheetMenu] = await Promise.all([
+    fetchBrandInfoById(id),
+    fetchBrandStories(),
+    fetchBrandMenu(id),
+  ]);
+
+  // 시트 브랜드 정보 오버레이 (비어있지 않은 값만)
+  const brandInfo = {
+    tagline: sheetBrandInfo?.tagline || brand.tagline,
+    description: sheetBrandInfo?.description || brand.description,
+  };
+
+  // 시트 스토리 데이터 오버레이
+  const sheetStory = sheetStories[id];
+  const elements = sheetStory ? {
+    originStory: sheetStory.originStory || brand.storyElements?.originStory,
+    chefOrArtisan: sheetStory.chefOrArtisan || brand.storyElements?.chefOrArtisan,
+    ingredientPhilosophy: sheetStory.ingredientPhilosophy || brand.storyElements?.ingredientPhilosophy,
+    signatureMenu: sheetStory.signatureMenu || brand.storyElements?.signatureMenu,
+    spaceExperience: sheetStory.spaceExperience || brand.storyElements?.spaceExperience,
+  } : brand.storyElements;
+
   const storyEntries = elements
     ? STORY_SECTIONS.filter((s) => elements[s.key as keyof typeof elements])
     : [];
-  const accentColor = brand.accentColor ?? "#C8A96E";
-
-  // Google Sheets 메뉴 fetch (fallback: 하드코딩 데이터)
-  const sheetMenu = await fetchBrandMenu(id);
   const menuItems: { name: string; price: string; photo?: string }[] =
     sheetMenu.length > 0
       ? sheetMenu.map((m) => ({ name: m.menuName, price: m.price }))
@@ -229,7 +250,7 @@ export default async function BrandDetailPage({ params }: Props) {
           {/* Tagline */}
           <ScrollReveal delay={300}>
             <p className="text-xl text-[#EDEDED]/80 font-body leading-relaxed max-w-xl mx-auto mb-10">
-              {brand.tagline}
+              {brandInfo.tagline}
             </p>
           </ScrollReveal>
 
@@ -263,10 +284,10 @@ export default async function BrandDetailPage({ params }: Props) {
                 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight"
                 style={{ color: accentColor }}
               >
-                {brand.tagline}
+                {brandInfo.tagline}
               </h2>
               <p className="text-[#EDEDED]/80 text-lg leading-relaxed font-body">
-                {brand.description}
+                {brandInfo.description}
               </p>
               {brand.story && (
                 <blockquote
