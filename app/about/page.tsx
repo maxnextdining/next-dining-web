@@ -110,7 +110,7 @@ export default function AboutPage() {
           <ScrollReveal direction="left">
             <div className="max-w-3xl">
               <p
-                className="text-xs font-semibold tracking-widest uppercase mb-4"
+                className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
                 style={{ color: "#C8A96E" }}
               >
                 What We Do
@@ -152,7 +152,7 @@ export default function AboutPage() {
             <div className="flex items-center justify-between mb-12">
               <div>
                 <p
-                  className="text-xs font-semibold tracking-widest uppercase mb-4"
+                  className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
                   style={{ color: "#C8A96E" }}
                 >
                   Brand Portfolio
@@ -258,7 +258,7 @@ export default function AboutPage() {
           <ScrollReveal direction="up">
             <div className="max-w-3xl mb-12">
               <p
-                className="text-xs font-semibold tracking-widest uppercase mb-4"
+                className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
                 style={{ color: "#C8A96E" }}
               >
                 For Partners
@@ -304,15 +304,13 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-block px-8 py-3 rounded-xl font-semibold text-sm transition-colors text-center"
-                style={{ background: "#C8A96E", color: "#0A0A0A" }}
+                className="cta-primary inline-block px-8 py-3 rounded-full font-semibold text-sm text-center bg-[#C8A96E] text-[#0A0A0A] hover:bg-[#E8D5B0]"
               >
                 입점·제휴 문의하기
               </Link>
               <Link
                 href="/brands"
-                className="inline-block px-8 py-3 rounded-xl font-semibold text-sm transition-colors text-center border"
-                style={{ borderColor: "rgba(255,255,255,0.15)", color: "#8A8A8A" }}
+                className="cta-outline inline-block px-8 py-3 rounded-full font-semibold text-sm text-center border border-white/15 text-[#8A8A8A] hover:text-[#EDEDED]"
               >
                 브랜드 포트폴리오 보기
               </Link>
@@ -326,7 +324,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up">
             <p
-              className="text-xs font-semibold tracking-widest uppercase mb-4"
+              className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
               style={{ color: "#C8A96E" }}
             >
               Vision &amp; Philosophy
@@ -415,12 +413,7 @@ export default function AboutPage() {
             </h2>
             <Link
               href="/careers"
-              className="inline-block px-8 py-3 rounded-xl font-semibold text-sm transition-colors border"
-              style={{
-                background: "transparent",
-                borderColor: "#C8A96E",
-                color: "#C8A96E",
-              }}
+              className="cta-outline inline-block px-8 py-3 rounded-full font-semibold text-sm border border-[#C8A96E] text-[#C8A96E] hover:bg-[#C8A96E] hover:text-[#0A0A0A]"
             >
               채용 안내 보기
             </Link>

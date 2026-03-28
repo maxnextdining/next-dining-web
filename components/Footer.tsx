@@ -55,7 +55,7 @@ export default function Footer() {
 
           {/* Column 2 — Brands */}
           <div>
-            <h3 className="text-xs tracking-[0.3em] text-[#C8A96E] font-bold uppercase mb-6">
+            <h3 className="text-xs tracking-[0.25em] text-[#C8A96E] font-bold uppercase mb-6">
               BRANDS
             </h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-3">
@@ -82,7 +82,7 @@ export default function Footer() {
 
           {/* Column 3 — Company */}
           <div>
-            <h3 className="text-xs tracking-[0.3em] text-[#C8A96E] font-bold uppercase mb-6">
+            <h3 className="text-xs tracking-[0.25em] text-[#C8A96E] font-bold uppercase mb-6">
               COMPANY
             </h3>
             <ul className="space-y-3 mb-4">
@@ -101,7 +101,7 @@ export default function Footer() {
 
           {/* Column 4 — Contact */}
           <div>
-            <h3 className="text-xs tracking-[0.3em] text-[#C8A96E] font-bold uppercase mb-6">
+            <h3 className="text-xs tracking-[0.25em] text-[#C8A96E] font-bold uppercase mb-6">
               CONTACT
             </h3>
             <ul className="space-y-3 text-[#8A8A8A] text-sm">

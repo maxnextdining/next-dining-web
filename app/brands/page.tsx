@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 const CATEGORY_LABELS: Record<string, { label: string; className: string }> = {
   korean:   { label: "한식",  className: "bg-[#C8A96E]/15 text-[#C8A96E]" },
   japanese: { label: "일식",  className: "bg-[#6B8CAE]/15 text-[#6B8CAE]" },
-  american: { label: "양식",  className: "bg-[#A78BFA]/15 text-[#A78BFA]" },
-  cafe:     { label: "카페",  className: "bg-[#8A9A7B]/15 text-[#8A9A7B]" },
+  american: { label: "양식",  className: "bg-[#6BAE8C]/15 text-[#6BAE8C]" },
+  cafe:     { label: "카페",  className: "bg-[#9B8DC8]/15 text-[#9B8DC8]" },
 };
 
 /**

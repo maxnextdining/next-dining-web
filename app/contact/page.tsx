@@ -167,7 +167,7 @@ function ContactContent() {
                               href={loc.reservationUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="shrink-0 bg-[#C8A96E] text-[#0A0A0A] px-5 py-2 rounded-lg text-xs font-semibold hover:bg-[#d4b87a] transition-colors font-body"
+                              className="shrink-0 bg-[#C8A96E] text-[#0A0A0A] px-5 py-2 rounded-lg text-xs font-semibold hover:bg-[#E8D5B0] transition-colors font-body"
                             >
                               예약하기 →
                             </a>
@@ -229,7 +229,7 @@ function ContactContent() {
                   <p className="text-xs text-[#8A8A8A]/70 mb-3 font-body">보내실 내용: {ct.note}</p>
                   <a
                     href={`mailto:${ct.email}`}
-                    className="inline-block text-sm text-[#C8A96E] font-medium hover:text-[#d4b87a] underline underline-offset-2 transition-colors font-body"
+                    className="inline-block text-sm text-[#C8A96E] font-medium hover:text-[#E8D5B0] underline underline-offset-2 transition-colors font-body"
                   >
                     {ct.email}
                   </a>

@@ -157,16 +157,6 @@ function JobPostingJsonLd() {
 export default function CareersPage() {
   return (
     <div style={{ backgroundColor: "#0A0A0A", color: "#EDEDED" }}>
-      <style>{`
-        .careers-card {
-          background-color: #141414;
-          border: 1px solid rgba(255,255,255,0.05);
-          transition: border-color 0.2s;
-        }
-        .careers-card:hover {
-          border-color: rgba(200,169,110,0.3);
-        }
-      `}</style>
       <JobPostingJsonLd />
 
       {/* Hero */}
@@ -174,7 +164,7 @@ export default function CareersPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up">
             <p
-              className="text-xs font-semibold tracking-[0.3em] uppercase mb-6"
+              className="text-xs font-semibold tracking-[0.25em] uppercase mb-6"
               style={{ color: "#C8A96E" }}
             >
               JOIN US
@@ -205,7 +195,7 @@ export default function CareersPage() {
             <ScrollReveal direction="left">
               <div>
                 <p
-                  className="text-xs font-semibold tracking-[0.3em] uppercase mb-4"
+                  className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
                   style={{ color: "#C8A96E" }}
                 >
                   OUR STORY
@@ -234,7 +224,7 @@ export default function CareersPage() {
 
             <ScrollReveal direction="right">
               <div className="grid grid-cols-2 gap-4">
-                <div className="careers-card rounded-2xl p-6 text-center">
+                <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 text-center">
                   <p className="text-3xl font-bold mb-1" style={{ color: "#C8A96E" }}>
                     <AnimatedCounter value={10} suffix="개" />
                   </p>
@@ -242,7 +232,7 @@ export default function CareersPage() {
                     운영 브랜드
                   </p>
                 </div>
-                <div className="careers-card rounded-2xl p-6 text-center">
+                <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 text-center">
                   <p className="text-3xl font-bold mb-1" style={{ color: "#C8A96E" }}>
                     <AnimatedCounter value={19} />
                   </p>
@@ -250,7 +240,7 @@ export default function CareersPage() {
                     직영 매장
                   </p>
                 </div>
-                <div className="careers-card rounded-2xl p-6 text-center">
+                <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 text-center">
                   <p className="text-3xl font-bold mb-1" style={{ color: "#C8A96E" }}>
                     ~<AnimatedCounter value={350} suffix="억" />
                   </p>
@@ -258,7 +248,7 @@ export default function CareersPage() {
                     연 매출 (2025년 기준)
                   </p>
                 </div>
-                <div className="careers-card rounded-2xl p-6 text-center">
+                <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 text-center">
                   <p className="text-3xl font-bold mb-1" style={{ color: "#C8A96E" }}>
                     USA
                   </p>
@@ -278,7 +268,7 @@ export default function CareersPage() {
           <ScrollReveal direction="up">
             <div className="text-center mb-14">
               <p
-                className="text-xs font-semibold tracking-[0.3em] uppercase mb-3"
+                className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
                 style={{ color: "#C8A96E" }}
               >
                 Culture
@@ -292,7 +282,7 @@ export default function CareersPage() {
             {VALUES.map((v, i) => (
               <ScrollReveal key={v.title} direction="up" delay={i * 80}>
                 <div
-                  className="careers-card rounded-2xl p-6 h-full"
+                  className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 h-full"
                   style={{ borderTop: "2px solid #C8A96E" }}
                 >
                   <h3 className="font-semibold mb-3 text-base" style={{ color: "#EDEDED" }}>
@@ -314,7 +304,7 @@ export default function CareersPage() {
           <ScrollReveal direction="up">
             <div className="text-center mb-14">
               <p
-                className="text-xs font-semibold tracking-[0.3em] uppercase mb-3"
+                className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
                 style={{ color: "#C8A96E" }}
               >
                 Benefits
@@ -327,7 +317,7 @@ export default function CareersPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {BENEFITS.map((b, i) => (
               <ScrollReveal key={b.title} direction="up" delay={i * 50}>
-                <div className="careers-card rounded-2xl p-6 h-full">
+                <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 h-full">
                   <span className="text-2xl mb-3 block">{b.icon}</span>
                   <h3 className="font-semibold mb-2 text-sm" style={{ color: "#EDEDED" }}>
                     {b.title}
@@ -348,7 +338,7 @@ export default function CareersPage() {
           <ScrollReveal direction="up">
             <div className="mb-14">
               <p
-                className="text-xs font-semibold tracking-[0.3em] uppercase mb-3"
+                className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
                 style={{ color: "#C8A96E" }}
               >
                 Open Positions
@@ -379,7 +369,7 @@ export default function CareersPage() {
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {group.positions.map((pos, i) => (
                     <ScrollReveal key={pos.title + pos.brand} direction="up" delay={i * 70}>
-                      <div className="careers-card rounded-2xl p-6 h-full">
+                      <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 h-full">
                         <div className="flex items-start justify-between mb-3">
                           <div>
                             <p className="text-xs mb-1" style={{ color: "#8A8A8A" }}>
@@ -423,7 +413,7 @@ export default function CareersPage() {
         >
           <ScrollReveal direction="up">
             <p
-              className="text-xs font-semibold tracking-[0.3em] uppercase mb-4"
+              className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
               style={{ color: "#C8A96E" }}
             >
               지원하기
@@ -438,7 +428,7 @@ export default function CareersPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={150}>
-            <div className="careers-card rounded-2xl p-8 text-left space-y-4 mb-10">
+            <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-8 text-left space-y-4 mb-10">
               <p className="font-semibold text-sm mb-4" style={{ color: "#EDEDED" }}>
                 이메일 지원 시 포함 내용
               </p>
@@ -469,8 +459,7 @@ export default function CareersPage() {
           <ScrollReveal direction="up" delay={250}>
             <a
               href="mailto:hr@next-dining.com"
-              className="inline-block px-10 py-4 rounded-xl font-semibold text-sm transition-opacity duration-200 hover:opacity-80"
-              style={{ backgroundColor: "#C8A96E", color: "#0A0A0A" }}
+              className="cta-primary inline-block px-10 py-4 rounded-full font-semibold text-sm bg-[#C8A96E] text-[#0A0A0A] hover:bg-[#E8D5B0]"
             >
               hr@next-dining.com 으로 지원하기
             </a>

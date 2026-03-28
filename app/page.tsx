@@ -213,19 +213,19 @@ export default function HomePage() {
                 <div className="text-3xl md:text-4xl font-display text-[#C8A96E] mb-2">
                   <AnimatedCounter value={10} suffix="+" />
                 </div>
-                <div className="text-xs uppercase tracking-[0.2em] text-[#8A8A8A] font-body">브랜드</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">브랜드</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-display text-[#C8A96E] mb-2">
                   <AnimatedCounter value={19} />
                 </div>
-                <div className="text-xs uppercase tracking-[0.2em] text-[#8A8A8A] font-body">직영 매장</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">직영 매장</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-display text-[#C8A96E] mb-2">
                   <AnimatedCounter value={5} />
                 </div>
-                <div className="text-xs uppercase tracking-[0.2em] text-[#8A8A8A] font-body">도시</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-[#8A8A8A] font-body">도시</div>
               </div>
             </div>
           </ScrollReveal>
@@ -264,10 +264,10 @@ export default function HomePage() {
       <section id="brands" className="py-32 px-8 max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="mb-20">
-            <span className="text-[#C8A96E] text-xs font-bold tracking-[0.3em] uppercase mb-4 block font-body">
+            <span className="text-[#C8A96E] text-xs font-bold tracking-[0.25em] uppercase mb-4 block font-body">
               Our Portfolio
             </span>
-            <h2 className="text-4xl md:text-5xl font-display font-light leading-tight">
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
               장인 정신이 깃든<br />독창적인 브랜드 라인업
             </h2>
           </div>
@@ -433,7 +433,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold tracking-[0.25em] text-[#C8A96E] uppercase mb-6 font-body">
               Join Us
             </p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
               넥스트다이닝과 함께<br />성장할 분을 찾습니다
             </h2>
             <p className="text-[#8A8A8A] text-base leading-relaxed max-w-lg mx-auto mb-10 font-body">
@@ -458,7 +458,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold tracking-[0.25em] text-[#C8A96E] uppercase mb-3 font-body">
                 FAQ
               </p>
-              <h2 className="text-3xl md:text-4xl font-display font-light">자주 묻는 질문</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold">자주 묻는 질문</h2>
               <div className="mt-6 mx-auto w-12 h-px bg-[#C8A96E]" />
             </div>
           </ScrollReveal>

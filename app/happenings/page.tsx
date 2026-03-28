@@ -126,7 +126,7 @@ export default function HappeningsPage() {
           </p>
           <a
             href="mailto:hello@next-dining.com?subject=뉴스레터 구독 신청"
-            className="inline-block bg-[#C8A96E] text-[#0A0A0A] px-8 py-3 rounded-xl font-semibold text-sm hover:bg-[#d4b87a] transition-colors font-body"
+            className="cta-primary inline-block bg-[#C8A96E] text-[#0A0A0A] px-8 py-3 rounded-full font-semibold text-sm hover:bg-[#E8D5B0] transition-colors font-body"
           >
             이메일로 구독 신청하기
           </a>
