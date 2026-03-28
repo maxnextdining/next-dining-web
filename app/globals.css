@@ -372,7 +372,7 @@ body {
 
 /* ===== Noise Texture Overlay ===== */
 .noise-overlay {
-  position: relative;
+  /* position inherited from Tailwind class (absolute) */
 }
 
 .noise-overlay::before {

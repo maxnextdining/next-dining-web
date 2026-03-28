@@ -66,7 +66,7 @@ export default function ParallaxImage({
       : null;
 
   return (
-    <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
+    <div ref={containerRef} className={`overflow-hidden ${className}`}>
       <div
         style={{
           position: 'absolute',
