@@ -646,19 +646,17 @@ export default async function BrandDetailPage({ params }: Props) {
                 return (
                   <ScrollReveal key={loc.name} delay={idx * 100}>
                     <div className="bg-[#141414] border border-white/5 p-8 lg:p-10 flex flex-col h-full hover:border-white/10 transition-colors">
-                      {/* Status + name row */}
-                      <div className="flex items-start justify-between mb-6 gap-4">
+                      {/* Name + status row */}
+                      <div className="mb-6">
+                        <h3 className="font-display text-xl lg:text-2xl text-[#EDEDED] mb-2">
+                          {loc.name}
+                        </h3>
                         <div className="flex items-center gap-2">
                           <span className={`w-2 h-2 rounded-full flex-shrink-0 ${status.dotColor}${loc.status === "active" ? " animate-pulse" : ""}`} />
                           <span className={`text-xs font-body tracking-wider ${status.textColor}`}>
                             {status.label}
                           </span>
                         </div>
-                        <h3
-                          className="font-display text-xl lg:text-2xl text-[#EDEDED] text-right"
-                        >
-                          {loc.name}
-                        </h3>
                       </div>
 
                       {/* Address */}
