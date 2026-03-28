@@ -190,7 +190,7 @@ export default async function BrandDetailPage({ params }: Props) {
         </div>
 
         {/* Hero content — centered */}
-        <div className="relative z-30 text-center px-6 sm:px-10 max-w-5xl mx-auto pt-32 pb-24">
+        <div className="relative z-30 w-full text-center px-6 sm:px-10 max-w-5xl mx-auto pt-32 pb-24">
           {/* Badges */}
           <ScrollReveal>
             <div className="flex items-center justify-center gap-3 mb-8">
