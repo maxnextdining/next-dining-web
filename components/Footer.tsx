@@ -21,11 +21,6 @@ const COMPANY_LINKS = [
   { href: '/contact', label: '문의하기' },
 ];
 
-const LEGAL_LINKS = [
-  { href: '/terms', label: '이용약관' },
-  { href: '/privacy', label: '개인정보처리방침' },
-];
-
 const BRAND_COL_LEFT = BRAND_LINKS.slice(0, 5);
 const BRAND_COL_RIGHT = BRAND_LINKS.slice(5);
 
@@ -102,20 +97,6 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <div className="border-t border-white/5 pt-4">
-              <ul className="space-y-3">
-                {LEGAL_LINKS.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="text-xs text-[#8A8A8A]/70 hover:text-[#EDEDED] hover:underline underline-offset-4 transition-colors duration-300"
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
           {/* Column 4 — Contact */}

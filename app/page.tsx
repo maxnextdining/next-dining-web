@@ -258,14 +258,16 @@ export default function HomePage() {
         <style>{`
           @keyframes marquee {
             from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+            to   { transform: translateX(calc(-100% / 3)); }
           }
           .animate-marquee {
+            display: flex;
+            width: max-content;
             animation: marquee 40s linear infinite;
           }
         `}</style>
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...brands, ...brands].map((b, i) => (
+        <div className="animate-marquee">
+          {[...brands, ...brands, ...brands].map((b, i) => (
             <div key={i} className="shrink-0 mx-12 flex items-center">
               <Image
                 src={b.logo}
