@@ -14,74 +14,178 @@ const BRAND_LINKS = [
   { href: '/brands/noflex-nyc', label: 'NOFLEX NYC' },
 ];
 
+const COMPANY_LINKS = [
+  { href: '/about', label: '회사 소개' },
+  { href: '/happenings', label: '새소식' },
+  { href: '/careers', label: '채용 안내' },
+  { href: '/contact', label: '문의하기' },
+];
+
+const LEGAL_LINKS = [
+  { href: '/terms', label: '이용약관' },
+  { href: '/privacy', label: '개인정보처리방침' },
+];
+
+const BRAND_COL_LEFT = BRAND_LINKS.slice(0, 5);
+const BRAND_COL_RIGHT = BRAND_LINKS.slice(5);
+
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#0e0e0e] text-sm tracking-wide leading-relaxed">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto pt-20 pb-12">
-        {/* 회사 */}
-        <div className="md:col-span-2">
-          <div className="flex items-center gap-2 mb-4">
+    <footer className="bg-[#0A0A0A] text-sm leading-relaxed">
+      {/* Top gold accent line */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C8A96E]/30 to-transparent" />
+
+      {/* Main grid */}
+      <div className="max-w-7xl mx-auto px-8 pt-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+          {/* Column 1 — Company */}
+          <div className="flex flex-col gap-5">
             <Image
               src="/images/next-dining-logo-white.png"
               alt="NEXT DINING"
               width={140}
               height={32}
-              className="h-7 w-auto"
+              className="h-8 w-auto"
             />
+            <p className="font-display font-bold text-[#C8A96E] text-base leading-snug">
+              검증된 장인의 맛을<br />새로운 기준으로
+            </p>
+            <p className="text-[#8A8A8A] text-sm leading-relaxed max-w-[220px]">
+              음식, 공간, 사람을 연결해<br />새로운 외식의 기준을 만듭니다.
+            </p>
           </div>
-          <p className="text-[#b8c8dc] max-w-sm mb-8 leading-loose font-body">
-            음식, 공간, 사람을 연결해 새로운 외식의 기준을 만듭니다.
-            각 브랜드가 독립된 철학과 세계관을 갖춘 멀티 브랜드 그룹입니다.
-          </p>
-          <p className="text-xs text-[#b8c8dc]/50">
-            (주)넥스트다이닝 | 대표이사 장경훈, 정호상<br />
-            서울시 용산구 대사관로 35, 사운즈 한남 B1 | next-dining.com
-          </p>
-        </div>
 
-        {/* 브랜드 */}
-        <div>
-          <h3 className="text-[#e9c176] font-bold mb-6 uppercase tracking-widest text-xs font-body">Brands</h3>
-          <ul className="space-y-3">
-            {BRAND_LINKS.map((b) => (
-              <li key={b.href}>
+          {/* Column 2 — Brands */}
+          <div>
+            <h3 className="text-xs tracking-[0.3em] text-[#C8A96E] font-bold uppercase mb-6">
+              BRANDS
+            </h3>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+              {BRAND_COL_LEFT.map((b) => (
                 <Link
+                  key={b.href}
                   href={b.href}
-                  className="text-[#b8c8dc] hover:text-[#e5e2e1] transition-colors underline-offset-4 hover:underline"
+                  className="text-[#8A8A8A] hover:text-[#EDEDED] hover:underline underline-offset-4 hover:translate-x-1 transition-all duration-300 text-sm"
                 >
                   {b.label}
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* 링크 */}
-        <div>
-          <h3 className="text-[#e9c176] font-bold mb-6 uppercase tracking-widest text-xs font-body">Company</h3>
-          <ul className="space-y-3">
-            {[
-              { href: '/about', label: '회사 소개' },
-              { href: '/happenings', label: '새소식' },
-              { href: '/careers', label: '채용 안내' },
-              { href: '/contact', label: '문의하기' },
-            ].map((l) => (
-              <li key={l.href}>
+              ))}
+              {BRAND_COL_RIGHT.map((b) => (
                 <Link
-                  href={l.href}
-                  className="text-[#b8c8dc] hover:text-[#e5e2e1] transition-colors underline-offset-4 hover:underline"
+                  key={b.href}
+                  href={b.href}
+                  className="text-[#8A8A8A] hover:text-[#EDEDED] hover:underline underline-offset-4 hover:translate-x-1 transition-all duration-300 text-sm"
                 >
-                  {l.label}
+                  {b.label}
                 </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 3 — Company */}
+          <div>
+            <h3 className="text-xs tracking-[0.3em] text-[#C8A96E] font-bold uppercase mb-6">
+              COMPANY
+            </h3>
+            <ul className="space-y-3 mb-4">
+              {COMPANY_LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-[#8A8A8A] hover:text-[#EDEDED] hover:underline underline-offset-4 transition-colors duration-300 text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="border-t border-white/5 pt-4">
+              <ul className="space-y-3">
+                {LEGAL_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="text-xs text-[#8A8A8A]/70 hover:text-[#EDEDED] hover:underline underline-offset-4 transition-colors duration-300"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Column 4 — Contact */}
+          <div>
+            <h3 className="text-xs tracking-[0.3em] text-[#C8A96E] font-bold uppercase mb-6">
+              CONTACT
+            </h3>
+            <ul className="space-y-3 text-[#8A8A8A] text-sm">
+              <li>
+                <a
+                  href="mailto:communication@next-dining.com"
+                  className="hover:text-[#EDEDED] transition-colors duration-300"
+                >
+                  communication@next-dining.com
+                </a>
               </li>
-            ))}
-          </ul>
+              <li className="leading-relaxed">
+                서울시 용산구 대사관로 35<br />
+                사운즈 한남 B1
+              </li>
+            </ul>
+
+            {/* Instagram */}
+            <div className="mt-6">
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/10 text-[#8A8A8A] hover:text-[#EDEDED] hover:border-[#C8A96E]/40 hover:scale-110 transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 pb-12">
-        <div className="text-[#b8c8dc]/50">© {new Date().getFullYear()} Next Dining Corp. All rights reserved.</div>
-        <div className="text-xs text-white/20 uppercase tracking-[0.4em] font-body">Crafted for Excellence</div>
+      {/* Bottom bar */}
+      <div className="border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          {/* Business info */}
+          <div className="text-[10px] text-white/30 leading-relaxed space-y-0.5">
+            <p>(주)넥스트다이닝 | 대표이사 장경훈, 정호상</p>
+            <p>사업자등록번호: 211-88-02389</p>
+            <p>통신판매업신고: 등록 준비 중</p>
+          </div>
+
+          {/* Copyright + tagline */}
+          <div className="flex flex-col items-start md:items-end gap-1">
+            <p className="text-xs text-white/30">
+              © {year} Next Dining Corp. All rights reserved.
+            </p>
+            <p className="text-xs tracking-[0.4em] text-white/15 uppercase">
+              Crafted for Excellence
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

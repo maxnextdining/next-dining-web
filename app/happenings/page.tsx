@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "새소식",
   description:
     "넥스트다이닝 브랜드 뉴스 및 새소식. 신규 오픈, 시즌 메뉴, 이벤트 등 최신 소식을 전합니다.",
+  openGraph: {
+    title: "새소식 | NEXT DINING",
+    description: "넥스트다이닝 브랜드 뉴스 — 신규 오픈, 시즌 메뉴, 이벤트 소식",
+  },
 };
 
 const NEWS_ITEMS = [
@@ -57,76 +62,75 @@ const NEWS_ITEMS = [
   },
 ];
 
-const CATEGORY_COLORS: Record<string, string> = {
-  "신규 오픈": "bg-emerald-50 text-emerald-700 border-emerald-200",
-  "브랜드 소식": "bg-sky-50 text-sky-700 border-sky-200",
-  "회사 소식": "bg-stone-50 text-stone-600 border-stone-200",
+const CATEGORY_STYLES: Record<string, string> = {
+  "신규 오픈": "bg-[#C8A96E]/10 text-[#C8A96E] border-[#C8A96E]/20",
+  "브랜드 소식": "bg-white/5 text-[#EDEDED] border-white/10",
+  "회사 소식": "bg-white/5 text-[#8A8A8A] border-white/10",
 };
 
 export default function HappeningsPage() {
   return (
-    <div>
+    <div className="bg-[#0A0A0A] min-h-screen">
       {/* 헤더 */}
-      <section className="bg-stone-950 text-white pt-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <p className="text-xs font-semibold tracking-[0.25em] text-stone-400 uppercase mb-5">
+      <section className="pt-20">
+        <ScrollReveal className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+          <p className="text-xs font-semibold tracking-[0.25em] text-[#C8A96E] uppercase mb-5 font-body">
             Happenings
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight max-w-2xl mb-6">
+          <h1 className="text-4xl sm:text-5xl font-display leading-tight max-w-2xl mb-6 text-[#EDEDED]">
             넥스트다이닝<br />새소식
           </h1>
-          <p className="text-stone-400 max-w-xl leading-relaxed text-lg">
+          <p className="text-[#8A8A8A] max-w-xl leading-relaxed text-lg font-body">
             신규 오픈 소식부터 시즌 메뉴, 브랜드 이야기까지.
             넥스트다이닝의 최신 소식을 전합니다.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* 뉴스 목록 */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-4 lg:grid-cols-2">
           {NEWS_ITEMS.map((item, idx) => (
-            <article
-              key={idx}
-              className="rounded-2xl border border-stone-100 hover:border-stone-300 hover:shadow-md transition-all p-7"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <span
-                  className={`text-xs px-2.5 py-1 rounded-full border font-medium ${
-                    CATEGORY_COLORS[item.category] ?? "bg-stone-50 text-stone-500 border-stone-200"
-                  }`}
-                >
-                  {item.category}
-                </span>
-                <span className="text-xs text-stone-400">{item.brand}</span>
-              </div>
-              <h2 className="font-bold text-stone-900 text-lg mb-3 leading-snug">
-                {item.title}
-              </h2>
-              <p className="text-sm text-stone-500 leading-relaxed mb-4">{item.excerpt}</p>
-              <p className="text-xs text-stone-300">{item.date}</p>
-            </article>
+            <ScrollReveal key={idx} delay={idx * 60}>
+              <article className="rounded-2xl border border-white/5 hover:border-[#C8A96E]/30 transition-all p-7 bg-[#141414] h-full">
+                <div className="flex items-center gap-2 mb-4">
+                  <span
+                    className={`text-xs px-2.5 py-1 rounded-full border font-medium font-body ${
+                      CATEGORY_STYLES[item.category] ?? "bg-white/5 text-[#8A8A8A] border-white/10"
+                    }`}
+                  >
+                    {item.category}
+                  </span>
+                  <span className="text-xs text-[#8A8A8A] font-body">{item.brand}</span>
+                </div>
+                <h2 className="font-display text-[#EDEDED] text-xl mb-3 leading-snug">
+                  {item.title}
+                </h2>
+                <p className="text-sm text-[#8A8A8A] leading-relaxed mb-4 font-body">{item.excerpt}</p>
+                <p className="text-xs text-[#8A8A8A]/50 font-body">{item.date}</p>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       {/* 뉴스레터 / 알림 CTA */}
-      <section className="bg-stone-900 text-white py-16">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-stone-400 text-sm mb-3">소식 받기</p>
-          <h2 className="text-2xl font-bold mb-4">
+      <section className="border-t border-white/5 py-20">
+        <ScrollReveal className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-[#C8A96E] text-xs tracking-[0.2em] uppercase font-body mb-4">소식 받기</p>
+          <h2 className="text-2xl font-display text-[#EDEDED] mb-4">
             새로운 브랜드와 오픈 소식을<br />가장 먼저 받아보세요
           </h2>
-          <p className="text-stone-400 text-sm mb-8">
+          <p className="text-[#8A8A8A] text-sm mb-8 font-body">
             신규 오픈, 시즌 메뉴, 특별 이벤트 소식을 이메일로 보내드립니다.
           </p>
           <a
             href="mailto:hello@next-dining.com?subject=뉴스레터 구독 신청"
-            className="inline-block bg-white text-stone-900 px-8 py-3 rounded-xl font-semibold text-sm hover:bg-stone-100 transition-colors"
+            className="inline-block bg-[#C8A96E] text-[#0A0A0A] px-8 py-3 rounded-xl font-semibold text-sm hover:bg-[#d4b87a] transition-colors font-body"
           >
             이메일로 구독 신청하기
           </a>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   );

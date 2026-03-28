@@ -5,6 +5,7 @@ import { brands, getBrandById } from "@/lib/brands";
 import { fetchBrandMenu } from "@/lib/menu-sheets";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
+import ParallaxImage from "@/components/ParallaxImage";
 
 /** ISR: 1시간마다 재생성 — Google Sheets 메뉴 반영 */
 export const revalidate = 3600;
@@ -31,6 +32,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${brand.name} (${brand.nameEn})`,
     description: `${brand.description} 운영 지점: ${locationNames || "오픈 준비 중"}`,
     keywords: brand.keywords,
+    openGraph: {
+      title: `${brand.name} | NEXT DINING`,
+      description: brand.description,
+      images: [{ url: brand.image, width: 1200, height: 630, alt: brand.name }],
+    },
   };
 }
 
@@ -41,18 +47,26 @@ const CATEGORY_LABEL: Record<string, string> = {
   cafe: "카페",
 };
 
-const STATUS_LABEL: Record<string, { label: string; color: string }> = {
-  active: { label: "운영 중", color: "bg-emerald-50 text-emerald-700 border-emerald-200" },
-  "coming-soon": { label: "오픈 예정", color: "bg-amber-50 text-amber-700 border-amber-200" },
-  closed: { label: "폐점", color: "bg-stone-50 text-stone-400 border-stone-200" },
+const FORMAT_LABEL: Record<string, string> = {
+  dining: "Fine Dining",
+  casual: "Casual",
+  foodcourt: "Food Court",
+  lounge: "Lounge",
+  pub: "Pub",
+};
+
+const STATUS_CONFIG: Record<string, { label: string; dotColor: string; textColor: string }> = {
+  active:       { label: "운영 중",   dotColor: "bg-emerald-400", textColor: "text-emerald-400" },
+  "coming-soon":{ label: "오픈 예정", dotColor: "bg-amber-400",   textColor: "text-amber-400"   },
+  closed:       { label: "폐점",      dotColor: "bg-[#8A8A8A]",   textColor: "text-[#8A8A8A]"   },
 };
 
 const STORY_SECTIONS = [
-  { key: "originStory", title: "탄생 이야기", titleEn: "The Origin", icon: "01" },
-  { key: "chefOrArtisan", title: "장인의 길", titleEn: "Craftsmanship", icon: "02" },
-  { key: "ingredientPhilosophy", title: "식재료 철학", titleEn: "Ingredients", icon: "03" },
-  { key: "signatureMenu", title: "시그니처", titleEn: "Signature", icon: "04" },
-  { key: "spaceExperience", title: "공간 경험", titleEn: "Atmosphere", icon: "05" },
+  { key: "originStory",           title: "탄생 이야기", titleEn: "THE ORIGIN",       icon: "01" },
+  { key: "chefOrArtisan",         title: "장인의 길",   titleEn: "CRAFTSMANSHIP",    icon: "02" },
+  { key: "ingredientPhilosophy",  title: "식재료 철학", titleEn: "INGREDIENTS",      icon: "03" },
+  { key: "signatureMenu",         title: "시그니처",    titleEn: "SIGNATURE",        icon: "04" },
+  { key: "spaceExperience",       title: "공간 경험",   titleEn: "ATMOSPHERE",       icon: "05" },
 ] as const;
 
 export default async function BrandDetailPage({ params }: Props) {
@@ -65,320 +79,629 @@ export default async function BrandDetailPage({ params }: Props) {
   const storyEntries = elements
     ? STORY_SECTIONS.filter((s) => elements[s.key as keyof typeof elements])
     : [];
-  const accentColor = brand.accentColor || '#1c1917';
+  const accentColor = brand.accentColor ?? "#C8A96E";
 
   // Google Sheets 메뉴 fetch (fallback: 하드코딩 데이터)
   const sheetMenu = await fetchBrandMenu(id);
-  const menuItems = sheetMenu.length > 0
-    ? sheetMenu.map((m) => ({ name: m.menuName, price: m.price }))
-    : (brand.menuHighlights ?? []);
+  const menuItems: { name: string; price: string; photo?: string }[] =
+    sheetMenu.length > 0
+      ? sheetMenu.map((m) => ({ name: m.menuName, price: m.price }))
+      : (brand.menuHighlights ?? []);
 
   // Schema.org Restaurant JSON-LD
-  const jsonLd = activeLocations.length > 0
-    ? activeLocations.map((loc) => ({
-        "@context": "https://schema.org",
-        "@type": "Restaurant",
-        name: brand.name,
-        alternateName: brand.nameEn,
-        description: brand.description,
-        servesCuisine: brand.cuisine || CATEGORY_LABEL[brand.category],
-        priceRange: brand.priceRange,
-        ...(loc.phone && { telephone: loc.phone }),
-        ...(loc.hours && { openingHours: loc.hours }),
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: loc.address,
-          addressLocality: loc.address.startsWith('서울') ? '서울' : loc.address.startsWith('경기') ? '경기' : loc.address.startsWith('부산') ? '부산' : loc.address.split(' ')[0],
-          addressCountry: loc.address.includes('NY') || loc.address.includes('New York') || loc.address.includes('Manhattan') ? 'US' : 'KR',
-        },
-        url: `https://next-dining.com/brands/${brand.id}`,
-        ...(menuItems.length > 0 && {
-          hasMenu: {
-            "@type": "Menu",
-            hasMenuSection: {
-              "@type": "MenuSection",
-              name: "대표 메뉴",
-              hasMenuItem: menuItems.map((item) => ({
-                "@type": "MenuItem",
-                name: item.name,
-                offers: {
-                  "@type": "Offer",
-                  price: item.price,
-                  priceCurrency: "KRW",
-                },
-              })),
-            },
+  const jsonLd =
+    activeLocations.length > 0
+      ? activeLocations.map((loc) => ({
+          "@context": "https://schema.org",
+          "@type": "Restaurant",
+          name: brand.name,
+          alternateName: brand.nameEn,
+          description: brand.description,
+          servesCuisine: brand.cuisine || CATEGORY_LABEL[brand.category],
+          priceRange: brand.priceRange,
+          ...(loc.phone && { telephone: loc.phone }),
+          ...(loc.hours && { openingHours: loc.hours }),
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: loc.address,
+            addressLocality: loc.address.startsWith("서울")
+              ? "서울"
+              : loc.address.startsWith("경기")
+              ? "경기"
+              : loc.address.startsWith("부산")
+              ? "부산"
+              : loc.address.split(" ")[0],
+            addressCountry:
+              loc.address.includes("NY") ||
+              loc.address.includes("New York") ||
+              loc.address.includes("Manhattan")
+                ? "US"
+                : "KR",
           },
-        }),
-        parentOrganization: {
-          "@type": "Organization",
-          name: "넥스트다이닝 (Next Dining Corp)",
-          url: "https://next-dining.com",
-        },
-      }))
-    : null;
+          url: `https://next-dining.com/brands/${brand.id}`,
+          ...(menuItems.length > 0 && {
+            hasMenu: {
+              "@type": "Menu",
+              hasMenuSection: {
+                "@type": "MenuSection",
+                name: "대표 메뉴",
+                hasMenuItem: menuItems.map((item) => ({
+                  "@type": "MenuItem",
+                  name: item.name,
+                  offers: {
+                    "@type": "Offer",
+                    price: item.price,
+                    priceCurrency: "KRW",
+                  },
+                })),
+              },
+            },
+          }),
+          parentOrganization: {
+            "@type": "Organization",
+            name: "넥스트다이닝 (Next Dining Corp)",
+            url: "https://next-dining.com",
+          },
+        }))
+      : null;
 
   return (
     <>
       {jsonLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd.length === 1 ? jsonLd[0] : jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd.length === 1 ? jsonLd[0] : jsonLd),
+          }}
         />
       )}
 
-      {/* ===== 풀스크린 히어로 (Stitch Pattern) ===== */}
-      <section className="relative min-h-[85vh] text-white flex items-end overflow-hidden">
+      {/* ===== 1. HERO — Immersive brand landing ===== */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Parallax background */}
+        <ParallaxImage
+          src={brand.heroImage ?? brand.image}
+          alt={brand.name}
+          overlay="gradient"
+          priority
+          speed={0.2}
+          className="absolute inset-0 w-full h-full"
+        />
+        {/* Additional gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-transparent to-[#0A0A0A] z-20 pointer-events-none" />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-20 pointer-events-none"
           style={{
-            background: `radial-gradient(circle at 50% 0%, ${accentColor}cc 0%, ${accentColor} 50%, #0c0c0c 100%)`,
+            background: `radial-gradient(ellipse at center, ${accentColor}22 0%, transparent 65%)`,
           }}
         />
-        {/* Brand hero image */}
-        <Image
-          src={brand.image}
-          alt={brand.name}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-30"
-        />
-        <div className="noise-overlay absolute inset-0 z-[1] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
+        <div className="noise-overlay absolute inset-0 z-20 pointer-events-none" />
 
-        {/* Decorative background element */}
-        <div
-          className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none"
-          style={{ background: `radial-gradient(circle, ${accentColor}, transparent 70%)` }}
-        />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-20 pb-16 pt-32 lg:pb-24 lg:pt-48 w-full">
+        {/* Back link */}
+        <div className="absolute top-28 left-6 sm:left-10 lg:left-20 z-30">
           <ScrollReveal>
-            <Link href="/brands" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors mb-12 font-body uppercase tracking-widest text-xs">
-              ← 브랜드 전체 보기
+            <Link
+              href="/brands"
+              className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors font-body text-xs tracking-widest uppercase"
+            >
+              ← 모든 브랜드
             </Link>
           </ScrollReveal>
+        </div>
 
-          <ScrollReveal delay={100}>
-            <div className="flex items-center gap-4 mb-6">
-              <span className="px-4 py-1 bg-white/10 backdrop-blur-xl border border-white/10 text-white text-xs tracking-widest uppercase font-body">
+        {/* Hero content — centered */}
+        <div className="relative z-30 text-center px-6 sm:px-10 max-w-5xl mx-auto pt-32 pb-24">
+          {/* Badges */}
+          <ScrollReveal>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <span className="px-4 py-1 border border-white/20 backdrop-blur-sm text-white/80 text-xs tracking-widest uppercase font-body">
                 {CATEGORY_LABEL[brand.category]}
               </span>
-              {brand.priceRange && (
-                <span className="text-white/50 font-body tracking-widest text-xs">{brand.priceRange}</span>
-              )}
+              <span className="px-4 py-1 border border-white/10 backdrop-blur-sm text-white/50 text-xs tracking-widest uppercase font-body">
+                {FORMAT_LABEL[brand.format]}
+              </span>
             </div>
           </ScrollReveal>
 
+          {/* Logo */}
+          <ScrollReveal delay={100}>
+            <div className="flex justify-center mb-8">
+              <Image
+                src={brand.logo}
+                alt={`${brand.name} 로고`}
+                width={96}
+                height={96}
+                className="w-20 h-20 md:w-24 md:h-24 object-contain brightness-0 invert drop-shadow-2xl"
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* Brand name */}
           <ScrollReveal delay={200}>
-            <div className="flex items-end gap-6">
-              <Image src={brand.logo} alt={`${brand.name} 로고`} width={96} height={96} className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain drop-shadow-xl brightness-0 invert" />
-              <div className="space-y-2">
-                <span className="block text-white/40 font-body tracking-[0.4em] text-sm font-bold uppercase">{brand.nameEn}</span>
-                <h1 className="text-white font-headline font-bold text-6xl sm:text-7xl lg:text-[8rem] leading-none tracking-tighter">{brand.name}</h1>
-              </div>
-            </div>
+            <h1 className="font-display text-5xl md:text-7xl text-white leading-none tracking-tight mb-3 text-hero-shadow">
+              {brand.name}
+            </h1>
+            <p className="text-[#8A8A8A] font-body tracking-[0.4em] text-sm uppercase mb-6">
+              {brand.nameEn}
+            </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={350}>
-            <p className="text-white/70 font-headline text-lg md:text-2xl font-light tracking-tight mt-6 max-w-2xl">
+          {/* Tagline */}
+          <ScrollReveal delay={300}>
+            <p className="text-xl text-[#EDEDED]/80 font-body leading-relaxed max-w-xl mx-auto mb-10">
               {brand.tagline}
             </p>
           </ScrollReveal>
+
+          {/* Price + store count pills */}
+          <ScrollReveal delay={380}>
+            <div className="flex items-center justify-center gap-4 mb-10">
+              {brand.priceRange && (
+                <span className="px-5 py-2 bg-white/5 border border-white/10 text-white/70 text-sm font-body tracking-widest rounded-full">
+                  {brand.priceRange}
+                </span>
+              )}
+              {activeLocations.length > 0 && (
+                <span className="px-5 py-2 bg-white/5 border border-white/10 text-white/70 text-sm font-body rounded-full">
+                  {activeLocations.length}개 매장 운영 중
+                </span>
+              )}
+            </div>
+          </ScrollReveal>
+
+          {/* Accent line */}
+          <ScrollReveal delay={460}>
+            <div className="flex justify-center">
+              <span className="accent-line animate" />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== 브랜드 소개 (Stitch About Section) ===== */}
-      <section className="bg-white py-32 px-6 sm:px-10 lg:px-20 overflow-hidden">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-20 items-start">
-          <ScrollReveal className="md:col-span-7">
-            <h2 className="font-headline text-4xl md:text-5xl mb-10 leading-tight" style={{ color: accentColor }}>
-              {brand.tagline}
-            </h2>
-            <div className="space-y-8 text-stone-600 text-lg leading-relaxed font-body">
-              <p>{brand.description}</p>
+      {/* ===== 2. ABOUT — Brand story introduction ===== */}
+      <section className="bg-[#0A0A0A] py-32 lg:py-40 px-6 sm:px-10 lg:px-20 overflow-hidden">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-24 items-center">
+          {/* Left: text */}
+          <ScrollReveal direction="left" className="md:col-span-7">
+            <div className="space-y-8">
+              <h2
+                className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight"
+                style={{ color: accentColor }}
+              >
+                {brand.tagline}
+              </h2>
+              <p className="text-[#EDEDED]/80 text-lg leading-relaxed font-body">
+                {brand.description}
+              </p>
               {brand.story && (
-                <blockquote className="border-l-4 pl-8 py-4 italic font-headline text-xl" style={{ borderColor: accentColor, color: accentColor }}>
+                <blockquote
+                  className="border-l-4 pl-8 py-4 font-display text-xl font-semibold text-[#C8A96E] leading-relaxed"
+                  style={{ borderColor: "#C8A96E" }}
+                >
                   &ldquo;{brand.story}&rdquo;
                 </blockquote>
               )}
+              {brand.website && (
+                <a
+                  href={brand.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-body tracking-widest uppercase border border-white/20 text-[#EDEDED]/80 hover:text-white hover:border-white/40 px-8 py-4 transition-colors"
+                >
+                  공식 웹사이트 방문 →
+                </a>
+              )}
             </div>
-            {brand.website && (
-              <a
-                href={brand.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-10 inline-flex items-center gap-2 text-white px-8 py-4 text-sm font-medium font-body tracking-widest uppercase transition-opacity hover:opacity-80"
-                style={{ backgroundColor: accentColor }}
-              >
-                공식 웹사이트 방문 →
-              </a>
-            )}
           </ScrollReveal>
-          <ScrollReveal delay={200} className="md:col-span-5">
-            <div className="aspect-[4/5] relative overflow-hidden" style={{ backgroundColor: `${accentColor}15` }}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-headline text-[12rem] font-bold opacity-[0.06] select-none" style={{ color: accentColor }}>
-                  {brand.nameEn.charAt(0)}
-                </span>
-              </div>
+
+          {/* Right: decorative element */}
+          <ScrollReveal direction="right" delay={150} className="md:col-span-5">
+            <div
+              className="relative aspect-[4/5] overflow-hidden flex items-center justify-center"
+              style={{ background: `linear-gradient(135deg, ${accentColor}18 0%, ${accentColor}08 100%)` }}
+            >
+              <span
+                className="font-display font-bold select-none pointer-events-none leading-none"
+                style={{
+                  fontSize: "clamp(8rem, 18vw, 14rem)",
+                  color: accentColor,
+                  opacity: 0.07,
+                }}
+              >
+                {brand.nameEn.charAt(0)}
+              </span>
+              {/* Corner accent */}
+              <div
+                className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2"
+                style={{ borderColor: accentColor }}
+              />
+              <div
+                className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2"
+                style={{ borderColor: accentColor }}
+              />
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== 5대 스토리 (Stitch Alternating Sections) ===== */}
+      {/* ===== 3. FIVE STORY CHAPTERS ===== */}
       {storyEntries.length > 0 && (
-        <section className="bg-stone-50 py-32">
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 space-y-32 lg:space-y-40">
-            {storyEntries.map((section, idx) => {
-              const content = elements![section.key as keyof typeof elements]!;
-              const isReversed = idx % 2 !== 0;
+        <section>
+          {storyEntries.map((section, idx) => {
+            const content = elements![section.key as keyof typeof elements]!;
+            const isEven = idx % 2 === 0;
+            const bgColor = isEven ? "#0A0A0A" : "#0F0F0F";
 
-              return (
-                <div key={section.key} className={`grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20 items-center`}>
-                  {/* Visual block */}
-                  <ScrollReveal
-                    direction={isReversed ? 'right' : 'left'}
-                    className={isReversed ? 'order-2 md:order-2' : ''}
-                  >
-                    <div className="relative h-[400px] lg:h-[500px] overflow-hidden" style={{ backgroundColor: accentColor }}>
-                      <div className="noise-overlay absolute inset-0 z-10 pointer-events-none" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white/10 font-headline text-[12rem] lg:text-[15rem] font-bold select-none">{section.icon}</span>
-                      </div>
-                      <div className={`absolute bottom-10 ${isReversed ? 'right-10' : 'left-10'} w-24 h-px bg-white/30 z-20`} />
-                    </div>
-                  </ScrollReveal>
-
-                  {/* Text block */}
-                  <ScrollReveal
-                    direction={isReversed ? 'left' : 'right'}
-                    className={isReversed ? 'order-1 md:order-1' : ''}
-                  >
-                    <div className="space-y-6">
-                      <span className="font-body text-xs tracking-widest uppercase text-stone-400">{section.titleEn}</span>
-                      <h3 className="font-headline text-3xl lg:text-4xl" style={{ color: accentColor }}>
-                        {section.icon} {section.title}
-                      </h3>
-                      <p className="text-stone-600 leading-relaxed text-lg font-body">{content}</p>
-                    </div>
-                  </ScrollReveal>
+            return (
+              <div key={section.key} style={{ backgroundColor: bgColor }} className="relative overflow-hidden">
+                {/* Decorative chapter number background */}
+                <div className="absolute top-0 right-0 text-[12rem] md:text-[16rem] font-display leading-none opacity-[0.03] select-none pointer-events-none">
+                  {section.icon}
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
 
-      {/* ===== 메뉴 & 가격 (Google Sheets CMS 연동) ===== */}
-      {menuItems.length > 0 && (
-        <section className="bg-white py-32 px-6 sm:px-10 lg:px-20">
-          <div className="max-w-7xl mx-auto">
-            <ScrollReveal>
-              <div className="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-8">
-                <h2 className="font-headline text-4xl lg:text-5xl" style={{ color: accentColor }}>Premium Menu</h2>
-                <span className="font-body text-sm tracking-widest text-stone-400 uppercase">Artisan Crafted Selection</span>
-              </div>
-            </ScrollReveal>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {menuItems.map((item, idx) => (
-                <ScrollReveal key={item.name} delay={idx * 80}>
-                  <div className="group p-8 border border-stone-200 hover:border-stone-300 transition-all">
-                    <div className="flex justify-between items-start">
-                      <div className="space-y-2">
-                        <h4 className="font-headline text-xl" style={{ color: accentColor }}>{item.name}</h4>
+                {/* Chapter divider (not first) */}
+                {idx > 0 && (
+                  <div className="section-divider mx-6 sm:mx-10 lg:mx-20" />
+                )}
+
+                <div className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 max-w-7xl mx-auto">
+                  <div
+                    className={`grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center ${
+                      !isEven ? "md:[direction:rtl]" : ""
+                    }`}
+                  >
+                    {/* Decorative block */}
+                    <ScrollReveal
+                      direction={isEven ? "left" : "right"}
+                      className={!isEven ? "md:[direction:ltr]" : ""}
+                    >
+                      <div
+                        className="relative h-80 lg:h-96 overflow-hidden flex items-center justify-center"
+                        style={{
+                          background: `linear-gradient(135deg, ${accentColor}20 0%, ${accentColor}08 100%)`,
+                          borderLeft: `2px solid ${accentColor}30`,
+                        }}
+                      >
+                        <span
+                          className="font-display font-bold select-none pointer-events-none leading-none"
+                          style={{ fontSize: "clamp(6rem, 14vw, 10rem)", color: accentColor, opacity: 0.12 }}
+                        >
+                          {section.icon}
+                        </span>
+                        <div
+                          className="absolute bottom-6 left-6 w-16 h-px"
+                          style={{ backgroundColor: `${accentColor}50` }}
+                        />
                       </div>
-                      <span className="font-bold font-body" style={{ color: accentColor }}>{item.price}</span>
-                    </div>
+                    </ScrollReveal>
+
+                    {/* Text block */}
+                    <ScrollReveal
+                      direction={isEven ? "right" : "left"}
+                      delay={150}
+                      className={!isEven ? "md:[direction:ltr]" : ""}
+                    >
+                      <div className="space-y-5">
+                        <div className="flex items-center gap-4">
+                          <span
+                            className="font-display text-6xl leading-none"
+                            style={{ color: accentColor, opacity: 0.2 }}
+                          >
+                            {section.icon}
+                          </span>
+                          <div>
+                            <p className="text-xs tracking-widest uppercase text-[#8A8A8A] font-body mb-1">
+                              {section.titleEn}
+                            </p>
+                            <h3 className="font-display text-2xl text-[#EDEDED]">
+                              {section.title}
+                            </h3>
+                          </div>
+                        </div>
+                        <div
+                          className="w-10 h-px"
+                          style={{ backgroundColor: accentColor }}
+                        />
+                        <p className="text-[#EDEDED]/70 leading-relaxed text-base lg:text-lg font-body">
+                          {content}
+                        </p>
+                      </div>
+                    </ScrollReveal>
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
-            <p className="mt-8 text-xs text-stone-400 font-body">* 가격은 매장 및 시기에 따라 변동될 수 있습니다.</p>
-          </div>
+                </div>
+              </div>
+            );
+          })}
         </section>
       )}
 
-      {/* ===== 포토 갤러리 ===== */}
-      {brand.gallery && brand.gallery.length > 0 && (
-        <section className="bg-white py-32 px-6 sm:px-10 lg:px-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto">
+      {/* ===== 4. CHEF/ARTISAN PROFILE ===== */}
+      {elements?.chefOrArtisan && (
+        <section className="bg-[#0A0A0A] py-32 px-6 sm:px-10 lg:px-20">
+          <div className="max-w-5xl mx-auto">
+            {/* Section label */}
             <ScrollReveal>
-              <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-8">
-                <h2 className="font-headline text-4xl lg:text-5xl" style={{ color: accentColor }}>Gallery</h2>
-                <span className="font-body text-sm tracking-widest text-stone-400 uppercase">공간과 메뉴</span>
+              <div className="flex items-center gap-4 mb-16">
+                <span className="text-xs tracking-[0.3em] uppercase text-[#8A8A8A] font-body">
+                  Artisan
+                </span>
+                <div className="flex-1 h-px bg-white/5" />
               </div>
             </ScrollReveal>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
-              {brand.gallery.map((src, idx) => (
-                <ScrollReveal key={src} delay={idx * 80}>
-                  <div className={`relative overflow-hidden group ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}>
-                    <div className={`relative ${idx === 0 ? 'aspect-square' : 'aspect-[4/3]'}`}>
-                      <Image
-                        src={src}
-                        alt={`${brand.name} 사진 ${idx + 1}`}
-                        fill
-                        sizes={idx === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              {/* Photo / placeholder */}
+              <ScrollReveal direction="left">
+                <div
+                  className="relative aspect-[3/4] overflow-hidden flex items-center justify-center"
+                  style={{ backgroundColor: "#141414" }}
+                >
+                  {brand.chefPhoto ? (
+                    <Image
+                      src={brand.chefPhoto}
+                      alt={brand.chefName ?? `${brand.name} 장인`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="text-center space-y-2">
+                      <span
+                        className="font-display text-[8rem] leading-none select-none"
+                        style={{ color: accentColor, opacity: 0.08 }}
+                      >
+                        匠
+                      </span>
+                      <p className="text-[#8A8A8A] text-xs font-body tracking-widest">
+                        사진 준비 중
+                      </p>
                     </div>
+                  )}
+                  {/* Accent border accent */}
+                  <div
+                    className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 z-10"
+                    style={{ borderColor: accentColor }}
+                  />
+                </div>
+              </ScrollReveal>
+
+              {/* Bio text */}
+              <ScrollReveal direction="right" delay={150}>
+                <div className="space-y-6">
+                  <div>
+                    <span
+                      className="text-xs tracking-[0.3em] uppercase font-body"
+                      style={{ color: accentColor }}
+                    >
+                      Master Artisan
+                    </span>
+                    {brand.chefName && (
+                      <h3
+                        className="font-display text-3xl lg:text-4xl mt-2 text-[#EDEDED]"
+                        style={{ color: accentColor }}
+                      >
+                        {brand.chefName}
+                      </h3>
+                    )}
+                    {brand.chefTitle && (
+                      <p className="text-[#8A8A8A] font-body mt-2 text-sm">
+                        {brand.chefTitle}
+                      </p>
+                    )}
                   </div>
-                </ScrollReveal>
-              ))}
+                  <div className="w-10 h-px" style={{ backgroundColor: accentColor }} />
+                  <p className="text-[#EDEDED]/70 leading-relaxed text-lg font-body">
+                    {elements.chefOrArtisan}
+                  </p>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
       )}
 
-      {/* ===== 지점 안내 (Stitch Location Cards) ===== */}
-      <section className="bg-stone-50 py-32 px-6 sm:px-10">
+      {/* ===== 5. MENU & PRICING ===== */}
+      {menuItems.length > 0 && (
+        <section className="bg-[#0F0F0F] py-32 px-6 sm:px-10 lg:px-20">
+          <div className="max-w-7xl mx-auto">
+            {/* Section header */}
+            <ScrollReveal>
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-xs tracking-[0.3em] uppercase text-[#8A8A8A] font-body">
+                  MENU
+                </span>
+                <div className="flex-1 h-px bg-white/5" />
+              </div>
+              <h2 className="font-display text-4xl lg:text-5xl text-[#EDEDED] mb-16">
+                시그니처 메뉴
+              </h2>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {menuItems.map((item, idx) => (
+                <ScrollReveal key={item.name} delay={idx * 60}>
+                  <div className="group bg-[#141414] border border-white/5 hover:border-[#C8A96E]/20 hover:border-t-[#C8A96E]/50 transition-all duration-300 overflow-hidden">
+                    {/* Photo area placeholder / actual photo */}
+                    {item.photo ? (
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={item.photo}
+                          alt={item.name}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className="relative aspect-[4/3] overflow-hidden flex items-center justify-center"
+                        style={{
+                          background: `linear-gradient(135deg, ${accentColor}12 0%, #141414 100%)`,
+                        }}
+                      >
+                        <span
+                          className="font-display text-5xl select-none"
+                          style={{ color: accentColor, opacity: 0.15 }}
+                        >
+                          {item.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex justify-between items-start gap-4">
+                        <h4 className="font-display text-lg text-[#EDEDED] leading-tight">
+                          {item.name}
+                        </h4>
+                        <span className="text-[#C8A96E] text-sm font-body font-medium whitespace-nowrap flex-shrink-0">
+                          {item.price}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+            <p className="mt-8 text-xs text-[#8A8A8A] font-body">
+              * 가격은 매장 및 시기에 따라 변동될 수 있습니다.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ===== 6. PHOTO GALLERY ===== */}
+      {brand.gallery && brand.gallery.length > 0 && (
+        <section className="bg-[#0A0A0A] py-32 px-6 sm:px-10 lg:px-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <ScrollReveal>
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-xs tracking-[0.3em] uppercase text-[#8A8A8A] font-body">
+                  GALLERY
+                </span>
+                <div className="flex-1 h-px bg-white/5" />
+              </div>
+              <h2 className="font-display text-4xl lg:text-5xl text-[#EDEDED] mb-16">
+                공간과 메뉴
+              </h2>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-auto gap-3 lg:gap-4">
+              {brand.gallery.map((src, idx) => {
+                const isHero = idx === 0;
+                const isWide = idx === 4 && brand.gallery!.length > 5;
+                return (
+                  <ScrollReveal key={src} delay={Math.min(idx, 8) * 70}>
+                    <div
+                      className={`img-premium relative overflow-hidden rounded-lg group ${
+                        isHero ? "col-span-2 row-span-2" : isWide ? "col-span-2" : ""
+                      }`}
+                    >
+                      <div
+                        className={`relative ${
+                          isHero ? "aspect-square" : isWide ? "aspect-[2/1]" : "aspect-[4/3]"
+                        }`}
+                      >
+                        <Image
+                          src={src}
+                          alt={`${brand.name} ${idx + 1}`}
+                          fill
+                          sizes={
+                            isHero
+                              ? "(max-width: 1024px) 100vw, 50vw"
+                              : isWide
+                              ? "(max-width: 1024px) 100vw, 50vw"
+                              : "(max-width: 1024px) 50vw, 25vw"
+                          }
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ===== 7. LOCATIONS ===== */}
+      <section className="bg-[#0F0F0F] py-32 px-6 sm:px-10 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <h2 className="font-headline text-4xl mb-16 text-center" style={{ color: accentColor }}>Locations</h2>
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-xs tracking-[0.3em] uppercase text-[#8A8A8A] font-body">
+                LOCATIONS
+              </span>
+              <div className="flex-1 h-px bg-white/5" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl text-[#EDEDED] mb-16">
+              매장 안내
+            </h2>
           </ScrollReveal>
+
           {brand.locations.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {brand.locations.map((loc, idx) => {
-                const status = STATUS_LABEL[loc.status];
+                const status = STATUS_CONFIG[loc.status];
                 const reservationLink = brand.reservationLinks?.find(
-                  (r) => r.location === loc.name || (!r.location && brand.reservationLinks!.length === 1)
+                  (r) =>
+                    r.location === loc.name ||
+                    (!r.location && brand.reservationLinks!.length === 1)
                 );
                 return (
                   <ScrollReveal key={loc.name} delay={idx * 100}>
-                    <div className="bg-white p-10 lg:p-12 flex flex-col h-full border border-stone-200">
-                      <div className="flex justify-between items-start mb-8">
-                        <span className={`text-[10px] tracking-widest px-3 py-1 font-body uppercase border rounded-full ${status.color}`}>
-                          {status.label}
-                        </span>
-                        <h3 className="font-headline text-xl lg:text-2xl" style={{ color: accentColor }}>{loc.name}</h3>
+                    <div className="bg-[#141414] border border-white/5 p-8 lg:p-10 flex flex-col h-full hover:border-white/10 transition-colors">
+                      {/* Status + name row */}
+                      <div className="flex items-start justify-between mb-6 gap-4">
+                        <div className="flex items-center gap-2">
+                          <span className={`w-2 h-2 rounded-full flex-shrink-0 ${status.dotColor}${loc.status === "active" ? " animate-pulse" : ""}`} />
+                          <span className={`text-xs font-body tracking-wider ${status.textColor}`}>
+                            {status.label}
+                          </span>
+                        </div>
+                        <h3
+                          className="font-display text-xl lg:text-2xl text-[#EDEDED] text-right"
+                        >
+                          {loc.name}
+                        </h3>
                       </div>
-                      <p className="text-stone-500 text-sm leading-relaxed mb-4 flex-grow font-body">{loc.address}</p>
+
+                      {/* Address */}
+                      <p className="text-[#8A8A8A] text-sm leading-relaxed mb-4 flex-grow font-body">
+                        {loc.address}
+                      </p>
+
+                      {/* Contact */}
                       {loc.phone && (
-                        <p className="text-sm text-stone-500 mb-2 font-body">
-                          <a href={`tel:${loc.phone.replace(/[^0-9+()-]/g, '')}`} className="hover:text-stone-900 transition-colors">{loc.phone}</a>
+                        <p className="text-sm text-[#EDEDED]/60 mb-2 font-body">
+                          <a
+                            href={`tel:${loc.phone.replace(/[^0-9+()-]/g, "")}`}
+                            className="hover:text-[#EDEDED] transition-colors"
+                          >
+                            {loc.phone}
+                          </a>
                         </p>
                       )}
                       {loc.hours && (
-                        <p className="text-xs text-stone-400 mb-6 font-body">{loc.hours}</p>
+                        <p className="text-xs text-[#8A8A8A] mb-6 font-body">{loc.hours}</p>
                       )}
-                      {reservationLink && loc.status === 'active' && (
+
+                      {/* Reservation */}
+                      {reservationLink && loc.status === "active" && (
                         reservationLink.url ? (
                           <a
                             href={reservationLink.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full text-center text-white py-4 font-body text-sm tracking-widest transition-opacity hover:opacity-80"
+                            className="w-full text-center text-white py-4 font-body text-xs tracking-widest uppercase transition-opacity hover:opacity-80 mt-auto"
                             style={{ backgroundColor: accentColor }}
                           >
                             예약하기
                           </a>
                         ) : reservationLink.note ? (
                           <div
-                            className="w-full text-center py-4 font-body text-sm tracking-widest border"
-                            style={{ color: accentColor, borderColor: accentColor }}
+                            className="w-full text-center py-4 font-body text-xs tracking-widest uppercase border mt-auto"
+                            style={{ color: accentColor, borderColor: `${accentColor}40` }}
                           >
                             {reservationLink.note}
                           </div>
@@ -390,21 +713,26 @@ export default async function BrandDetailPage({ params }: Props) {
               })}
             </div>
           ) : (
-            <div className="bg-white p-10 border border-stone-200 text-center">
-              <p className="text-stone-500 font-body">지점 오픈 준비 중입니다.</p>
+            <div className="bg-[#141414] border border-white/5 p-10 text-center">
+              <p className="text-[#8A8A8A] font-body">지점 오픈 준비 중입니다.</p>
             </div>
           )}
         </div>
       </section>
 
-      {/* ===== 키워드 (SEO) ===== */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10">
+      {/* ===== 8. SEO KEYWORDS ===== */}
+      <section className="bg-[#0A0A0A] py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10">
           <ScrollReveal>
-            <h2 className="text-lg font-bold font-headline mb-6">이런 분께 추천합니다</h2>
+            <p className="text-xs tracking-[0.3em] uppercase text-[#8A8A8A] font-body mb-6">
+              이런 분께 추천합니다
+            </p>
             <div className="flex flex-wrap gap-2">
               {brand.keywords.map((kw) => (
-                <span key={kw} className="text-sm bg-stone-50 border border-stone-200 px-4 py-2 rounded-full text-stone-600 hover:border-stone-300 transition-colors font-body">
+                <span
+                  key={kw}
+                  className="px-4 py-2 bg-[#141414] border border-white/5 text-[#8A8A8A] text-sm font-body rounded-full hover:border-white/10 hover:text-[#EDEDED] transition-colors"
+                >
                   #{kw}
                 </span>
               ))}
@@ -413,24 +741,37 @@ export default async function BrandDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ===== CTA 배너 (Stitch Pattern) ===== */}
+      {/* ===== 9. BRAND CTA ===== */}
       {activeLocations.length > 0 && (
-        <section className="relative py-32 lg:py-40 px-6 sm:px-10 overflow-hidden" style={{ backgroundColor: accentColor }}>
+        <section
+          className="relative py-32 lg:py-40 px-6 sm:px-10 overflow-hidden"
+          style={{
+            background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColor}cc 60%, #0A0A0A 100%)`,
+          }}
+        >
           <div className="noise-overlay absolute inset-0 z-[1] pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-30 blur-3xl pointer-events-none"
-            style={{ background: `radial-gradient(circle, ${accentColor}, transparent 70%)` }}
+          {/* Radial light */}
+          <div
+            className="absolute inset-0 z-[1] pointer-events-none"
+            style={{
+              background: `radial-gradient(circle at 50% 50%, ${accentColor}40, transparent 70%)`,
+            }}
           />
+
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <ScrollReveal>
-              <h2 className="font-headline text-4xl md:text-6xl text-white mb-12 leading-tight">
-                {brand.name}을(를) 직접<br />경험해 보세요.
+              <h2 className="font-display text-4xl md:text-6xl text-white mb-6 leading-tight">
+                직접 경험해 보세요
               </h2>
+              <p className="text-white/60 font-body text-lg mb-12">
+                {brand.name}의 특별한 식경험이 기다립니다.
+              </p>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <div className="flex flex-col md:flex-row gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/contact"
-                  className="bg-white px-12 py-5 font-bold tracking-widest uppercase text-sm hover:bg-stone-100 transition-colors font-body"
+                  className="inline-flex items-center justify-center gap-2 bg-white px-10 py-5 font-body text-sm font-semibold tracking-widest uppercase hover:bg-[#EDEDED] transition-colors"
                   style={{ color: accentColor }}
                 >
                   예약·문의하기
@@ -440,7 +781,7 @@ export default async function BrandDetailPage({ params }: Props) {
                     href={brand.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-white/20 text-white px-12 py-5 font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-colors font-body"
+                    className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-10 py-5 font-body text-sm font-semibold tracking-widest uppercase hover:bg-white/10 transition-colors"
                   >
                     공식 사이트 →
                   </a>
@@ -451,42 +792,56 @@ export default async function BrandDetailPage({ params }: Props) {
         </section>
       )}
 
-      {/* ===== 다른 브랜드 ===== */}
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10">
+      {/* ===== 10. RELATED BRANDS ===== */}
+      <section className="bg-[#0A0A0A] py-24 px-6 sm:px-10">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex items-end justify-between mb-12 gap-6">
               <div>
-                <p className="text-xs font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2 font-body">More Brands</p>
-                <h2 className="text-2xl font-bold font-headline">넥스트다이닝의 다른 브랜드</h2>
+                <p className="text-xs tracking-[0.3em] uppercase text-[#8A8A8A] font-body mb-2">
+                  More Brands
+                </p>
+                <h2 className="font-display text-2xl lg:text-3xl text-[#EDEDED]">
+                  다른 브랜드 둘러보기
+                </h2>
               </div>
-              <Link href="/brands" className="text-sm text-stone-500 hover:text-stone-900 transition-colors font-body">
+              <Link
+                href="/brands"
+                className="text-sm text-[#8A8A8A] hover:text-[#EDEDED] transition-colors font-body whitespace-nowrap"
+              >
                 전체 보기 →
               </Link>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {brands
               .filter((b) => b.id !== brand.id)
               .slice(0, 4)
               .map((b, idx) => (
-                <ScrollReveal key={b.id} delay={idx * 100}>
+                <ScrollReveal key={b.id} delay={idx * 80}>
                   <Link
                     href={`/brands/${b.id}`}
-                    className="brand-card group block overflow-hidden border border-stone-100"
+                    className="brand-card group block overflow-hidden border border-white/5 bg-[#141414]"
                   >
                     <div className="aspect-[4/3] relative overflow-hidden">
                       <div className={`brand-image absolute inset-0 brand-gradient-${b.id}`} />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white/20 text-[80px] font-bold leading-none select-none font-headline">
+                        <span className="text-white/15 text-[80px] font-bold leading-none select-none font-display">
                           {b.nameEn.charAt(0)}
                         </span>
                       </div>
                     </div>
-                    <div className="p-4 bg-white">
-                      <p className="text-[10px] text-stone-400 tracking-wider uppercase mb-0.5 font-body">{b.nameEn}</p>
-                      <p className="text-sm font-semibold text-stone-900 group-hover:text-stone-700 transition-colors font-headline">{b.name}</p>
-                      <p className="text-xs text-stone-500 mt-1 line-clamp-1 font-body">{b.tagline}</p>
+                    <div className="p-4">
+                      <p className="text-[10px] text-[#8A8A8A] tracking-wider uppercase mb-0.5 font-body">
+                        {b.nameEn}
+                      </p>
+                      <p className="text-sm font-semibold text-[#EDEDED] group-hover:text-white transition-colors font-display">
+                        {b.name}
+                      </p>
+                      <p className="text-xs text-[#8A8A8A] mt-1 line-clamp-1 font-body">
+                        {b.tagline}
+                      </p>
                     </div>
                   </Link>
                 </ScrollReveal>

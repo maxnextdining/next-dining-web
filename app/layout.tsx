@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-sora",
-});
+import CursorGlow from "@/components/CursorGlow";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://next-dining.com"),
@@ -18,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | NEXT DINING",
   },
   description:
-    "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 9개 프리미엄 외식 브랜드를 운영하는 멀티 브랜드 그룹입니다. 서울·수원·부산·여주·뉴욕 19개 직영 매장에서 정통 일식·한식의 진수를 선보입니다.",
+    "넥스트다이닝은 봉우리 한정식, 진가와, 분지로, 다이센스시 등 10개 프리미엄 외식 브랜드를 운영하는 멀티 브랜드 그룹입니다. 서울·수원·부산·여주·뉴욕 19개 직영 매장에서 정통 일식·한식의 진수를 선보입니다.",
   keywords: [
     "넥스트다이닝", "Next Dining", "봉우리 한정식", "진가와", "분지로", "다이센스시",
     "타쿠미나가사키", "카페르상스", "NOFLEX NYC", "노플렉스뉴욕", "멘야올웨이즈",
@@ -31,7 +25,7 @@ export const metadata: Metadata = {
     url: "https://next-dining.com",
     siteName: "NEXT DINING",
     title: "NEXT DINING — 넥스트다이닝",
-    description: "9개 프리미엄 외식 브랜드, 서울·수원·부산·여주·뉴욕 19개 직영 매장",
+    description: "10개 프리미엄 외식 브랜드, 서울·수원·부산·여주·뉴욕 19개 직영 매장",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "NEXT DINING" }],
   },
   robots: { index: true, follow: true },
@@ -39,10 +33,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
-      <body className={`${sora.variable} font-sans bg-white text-stone-900 antialiased`}>
+    <html lang="ko" className="scroll-smooth">
+      <body className="bg-[#0A0A0A] text-[#EDEDED] antialiased grain-overlay">
+        <CursorGlow />
         <Header />
-        <main>{children}</main>
+        <PageTransition>
+          <main>{children}</main>
+        </PageTransition>
         <Footer />
       </body>
     </html>

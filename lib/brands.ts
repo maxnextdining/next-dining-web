@@ -22,6 +22,7 @@ export interface BrandStoryElements {
 export interface MenuItem {
   name: string;
   price: string;
+  photo?: string;
 }
 
 export interface ReservationLink {
@@ -51,6 +52,11 @@ export interface Brand {
   reservationLinks?: ReservationLink[];
   accentColor?: string; // hex color for visual theming
   gallery?: string[]; // 갤러리 이미지 경로
+  heroImage?: string;  // 히어로 풀스크린용 고해상도 이미지
+  chefPhoto?: string;  // 장인/셰프 인물 사진
+  chefName?: string;   // 장인/셰프 이름
+  chefTitle?: string;  // 장인/셰프 직함/소개
+  menuPhotos?: { name: string; photo: string; price: string }[]; // 메뉴 사진 포함
 }
 
 export const brands: Brand[] = [
