@@ -227,11 +227,6 @@ function BrandCard({
               {activeCount}개 매장
             </span>
           )}
-          {brand.priceRange && (
-            <span className="text-xs bg-white/10 text-[#EDEDED] px-3 py-1 rounded-full border border-white/15 backdrop-blur-sm">
-              {brand.priceRange}
-            </span>
-          )}
         </div>
       </div>
 

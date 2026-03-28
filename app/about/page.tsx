@@ -226,7 +226,6 @@ export default function AboutPage() {
                             </p>
                             <div className="flex items-center gap-3 text-xs" style={{ color: "#8A8A8A" }}>
                               {activeCount > 0 && <span>{activeCount}개 매장</span>}
-                              {brand.priceRange && <span>{brand.priceRange}</span>}
                             </div>
                           </div>
                         </Link>

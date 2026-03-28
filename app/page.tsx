@@ -313,6 +313,19 @@ export default function HomePage() {
                       {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent" />
 
+                      {/* Category badge — top left */}
+                      <div className="absolute top-6 left-6 z-10 flex gap-2 flex-wrap">
+                        {brand.locations.filter((l) => l.status === "active").length > 0 && (
+                          <span className="px-3 py-1 bg-white/8 text-[#8A8A8A] text-[10px] tracking-widest rounded-full font-body backdrop-blur-sm">
+                            {brand.locations.filter((l) => l.status === "active").length}개 매장
+                          </span>
+                        )}
+                        {brand.id === "menya-always" && (
+                          <span className="px-3 py-1 bg-[#C8A96E]/20 text-[#C8A96E] text-[10px] tracking-widest rounded-full font-body backdrop-blur-sm">
+                            오픈 예정
+                          </span>
+                        )}
+                      </div>
 
                       {/* Brand logo — top right */}
                       <div className={`absolute top-6 right-6 z-10 ${span >= 7 ? "w-16 h-16" : "w-12 h-12"} opacity-70 group-hover:opacity-100 transition-opacity duration-300`}>
@@ -339,11 +352,6 @@ export default function HomePage() {
                           {brand.nameEn}
                         </p>
 
-                        {brand.priceRange && (
-                          <span className="inline-block glass text-xs text-[#C8A96E] px-3 py-1 rounded-full w-fit">
-                            {brand.priceRange}
-                          </span>
-                        )}
                       </div>
 
                       {/* Hover: gold border-bottom + subtle overlay */}

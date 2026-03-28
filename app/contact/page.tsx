@@ -149,9 +149,6 @@ function ContactContent() {
                         </Link>
                         <span className="ml-2 text-xs text-[#8A8A8A] font-body">{brand.nameEn}</span>
                       </div>
-                      {brand.priceRange && (
-                        <span className="text-xs text-[#8A8A8A] font-body">{brand.priceRange}</span>
-                      )}
                     </div>
                     <div className="divide-y divide-white/5">
                       {br.locations.map((loc) => (

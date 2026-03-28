@@ -236,11 +236,6 @@ export default async function BrandDetailPage({ params }: Props) {
           {/* Price + store count pills */}
           <ScrollReveal delay={380}>
             <div className="flex items-center justify-center gap-4 mb-10">
-              {brand.priceRange && (
-                <span className="px-5 py-2 bg-white/5 border border-white/10 text-white/70 text-sm font-body tracking-widest rounded-full">
-                  {brand.priceRange}
-                </span>
-              )}
               {activeLocations.length > 0 && (
                 <span className="px-5 py-2 bg-white/5 border border-white/10 text-white/70 text-sm font-body rounded-full">
                   {activeLocations.length}개 매장 운영 중
