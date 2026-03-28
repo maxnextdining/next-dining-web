@@ -171,27 +171,13 @@ export default function HomePage() {
         <div className="noise-overlay absolute inset-0 z-[13] pointer-events-none" />
 
         <div className="relative z-[20] max-w-7xl mx-auto px-8 w-full text-center">
-          {/* Main headline — two-line reveal with gold on second line */}
-          <h1 className="font-display text-6xl md:text-7xl lg:text-[6.5rem] font-light leading-[1.1] tracking-tight mb-6 text-hero-shadow">
-            <TextReveal
-              as="span"
-              mode="line"
-              delay={200}
-              staggerDelay={0}
-              className="block"
-            >
-              {"다음 세대를 여는"}
-            </TextReveal>
-            <TextReveal
-              as="span"
-              mode="line"
-              delay={340}
-              staggerDelay={0}
-              className="block gold-gradient-text"
-            >
-              {"글로벌 외식 문화기업"}
-            </TextReveal>
-          </h1>
+          {/* Main headline */}
+          <ScrollReveal delay={200}>
+            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] tracking-tight mb-6 text-hero-shadow">
+              <span className="block">다음 세대를 여는</span>
+              <span className="block gold-gradient-text">글로벌 외식 문화기업</span>
+            </h1>
+          </ScrollReveal>
 
           {/* Gold accent line */}
           <ScrollReveal delay={500}>
