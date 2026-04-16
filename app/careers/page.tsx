@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import TextReveal from "@/components/TextReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import { fetchCareers } from "@/lib/sheets-cms";
+import { fetchCareers, fetchPageContent } from "@/lib/sheets-cms";
 
 export const revalidate = 3600;
 
@@ -169,7 +169,12 @@ function JobPostingJsonLd({ positions }: { positions: PositionGroup[] }) {
 }
 
 export default async function CareersPage() {
-  const sheetData = await fetchCareers();
+  const [sheetData, content] = await Promise.all([
+    fetchCareers(),
+    fetchPageContent(),
+  ]);
+  const cms = content?.careers ?? {};
+
   const positions =
     sheetData.length > 0
       ? sheetData.map((group) => ({
@@ -206,12 +211,12 @@ export default async function CareersPage() {
             delay={100}
             staggerDelay={100}
           >
-            {"좋은 음식과 공간을\n함께 만들 분을 찾습니다"}
+            {cms?.hero?.heading || "좋은 음식과 공간을\n함께 만들 분을 찾습니다"}
           </TextReveal>
           <ScrollReveal direction="up" delay={300}>
             <p className="max-w-xl leading-relaxed text-lg" style={{ color: "#8A8A8A" }}>
-              넥스트다이닝은 10개 프리미엄 외식 브랜드를 운영하며 한국 외식의 기준을 높이고 있습니다.
-              음식, 서비스, 공간, 경영 — 각자의 자리에서 최고를 지향하는 분들과 함께합니다.
+              {cms?.hero?.subtitle ||
+                "넥스트다이닝은 10개 프리미엄 외식 브랜드를 운영하며 한국 외식의 기준을 높이고 있습니다. 음식, 서비스, 공간, 경영 — 각자의 자리에서 최고를 지향하는 분들과 함께합니다."}
             </p>
           </ScrollReveal>
         </div>
@@ -234,18 +239,16 @@ export default async function CareersPage() {
                 </h2>
                 <div className="space-y-5 leading-relaxed text-[15px]" style={{ color: "#8A8A8A" }}>
                   <p>
-                    넥스트다이닝은 이미 검증된 장인의 브랜드를 한국에서 운영하는 프리미엄 외식
-                    그룹입니다. 직접 브랜드를 만들기보다, 수십 년 혹은 수백 년의 역사와 철학을
-                    가진 이야기를 발굴해 한국 식탁에 올려놓습니다.
+                    {cms?.story?.paragraph_1 ||
+                      "넥스트다이닝은 이미 검증된 장인의 브랜드를 한국에서 운영하는 프리미엄 외식 그룹입니다. 직접 브랜드를 만들기보다, 수십 년 혹은 수백 년의 역사와 철학을 가진 이야기를 발굴해 한국 식탁에 올려놓습니다."}
                   </p>
                   <p>
-                    봉우리 한정식, 진가와, 분지로, 다이센스시 — 각 브랜드 뒤에는 반드시 검증된
-                    사람의 이야기가 있습니다. 우리의 역할은 그 본질을 훼손하지 않으면서 한국
-                    고객이 최고의 경험을 할 수 있는 공간과 서비스를 만드는 것입니다.
+                    {cms?.story?.paragraph_2 ||
+                      "봉우리 한정식, 진가와, 분지로, 다이센스시 — 각 브랜드 뒤에는 반드시 검증된 사람의 이야기가 있습니다. 우리의 역할은 그 본질을 훼손하지 않으면서 한국 고객이 최고의 경험을 할 수 있는 공간과 서비스를 만드는 것입니다."}
                   </p>
                   <p>
-                    현재 전국·해외 19개 직영 매장, 연 매출 약 350억 규모로 운영되며 미국 법인
-                    (USA Inc.)도 함께 운영 중입니다.
+                    {cms?.story?.paragraph_3 ||
+                      "현재 전국·해외 19개 직영 매장, 연 매출 약 350억 규모로 운영되며 미국 법인 (USA Inc.)도 함께 운영 중입니다."}
                   </p>
                 </div>
               </div>
@@ -308,21 +311,26 @@ export default async function CareersPage() {
             </div>
           </ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {VALUES.map((v, i) => (
-              <ScrollReveal key={v.title} direction="up" delay={i * 80}>
-                <div
-                  className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 h-full"
-                  style={{ borderTop: "2px solid #C8A96E" }}
-                >
-                  <h3 className="font-semibold mb-3 text-base" style={{ color: "#EDEDED" }}>
-                    {v.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#8A8A8A" }}>
-                    {v.desc}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
+            {VALUES.map((v, i) => {
+              const idx = i + 1;
+              const title = cms?.values?.[`value${idx}_title`] || v.title;
+              const desc = cms?.values?.[`value${idx}_desc`] || v.desc;
+              return (
+                <ScrollReveal key={v.title} direction="up" delay={i * 80}>
+                  <div
+                    className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 h-full"
+                    style={{ borderTop: "2px solid #C8A96E" }}
+                  >
+                    <h3 className="font-semibold mb-3 text-base" style={{ color: "#EDEDED" }}>
+                      {title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "#8A8A8A" }}>
+                      {desc}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -344,19 +352,24 @@ export default async function CareersPage() {
             </div>
           </ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BENEFITS.map((b, i) => (
-              <ScrollReveal key={b.title} direction="up" delay={i * 50}>
-                <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 h-full">
-                  <span className="text-2xl mb-3 block">{b.icon}</span>
-                  <h3 className="font-semibold mb-2 text-sm" style={{ color: "#EDEDED" }}>
-                    {b.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#8A8A8A" }}>
-                    {b.desc}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
+            {BENEFITS.map((b, i) => {
+              const idx = i + 1;
+              const title = cms?.benefits?.[`benefit${idx}_title`] || b.title;
+              const desc = cms?.benefits?.[`benefit${idx}_desc`] || b.desc;
+              return (
+                <ScrollReveal key={b.title} direction="up" delay={i * 50}>
+                  <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 h-full">
+                    <span className="text-2xl mb-3 block">{b.icon}</span>
+                    <h3 className="font-semibold mb-2 text-sm" style={{ color: "#EDEDED" }}>
+                      {title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "#8A8A8A" }}>
+                      {desc}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>

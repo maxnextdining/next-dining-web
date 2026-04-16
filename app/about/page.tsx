@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { brands } from "@/lib/brands";
 import type { BrandCategory, BrandFormat } from "@/lib/brands";
-import { fetchBrandInfo } from "@/lib/sheets-cms";
+import { fetchBrandInfo, fetchPageContent } from "@/lib/sheets-cms";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import TextReveal from "@/components/TextReveal";
@@ -66,8 +66,47 @@ const ORIGIN_LINE: Record<string, string> = {
   "noflex-nyc": "넥스트다이닝 첫 해외 직영 — 뉴욕 맨해튼 5th Ave",
 };
 
+/** "value | label | sub" 형식의 stat 문자열 파싱 */
+function parseStatString(
+  raw: string,
+  fallback: { value: number; suffix: string; label: string; sub: string }
+): { value: number; suffix: string; label: string; sub: string } {
+  if (!raw) return fallback;
+  const parts = raw.split("|").map((s) => s.trim());
+  if (parts.length < 3) return fallback;
+  // value 파트에서 숫자와 suffix 분리 ("~300억" → value=300, suffix="억")
+  const rawValue = parts[0].replace(/^~/, "");
+  const numMatch = rawValue.match(/^(\d+(?:\.\d+)?)(.*)/);
+  if (!numMatch) return fallback;
+  return {
+    value: parseFloat(numMatch[1]),
+    suffix: numMatch[2].trim(),
+    label: parts[1],
+    sub: parts[2],
+  };
+}
+
+/** "title | desc" 형식의 vision value 문자열 파싱 */
+function parseVisionValue(
+  raw: string,
+  fallback: { title: string; desc: string; icon: string }
+): { title: string; desc: string; icon: string } {
+  if (!raw) return fallback;
+  const sepIdx = raw.indexOf("|");
+  if (sepIdx === -1) return fallback;
+  return {
+    title: raw.slice(0, sepIdx).trim(),
+    desc: raw.slice(sepIdx + 1).trim(),
+    icon: fallback.icon,
+  };
+}
+
 export default async function AboutPage() {
-  const sheetBrandInfoList = await fetchBrandInfo();
+  const [sheetBrandInfoList, cmsContent] = await Promise.all([
+    fetchBrandInfo(),
+    fetchPageContent(),
+  ]);
+  const content = cmsContent ?? {};
   const originLineMap: Record<string, string> = {};
   for (const info of sheetBrandInfoList) {
     if (info.originLine) originLineMap[info.brandId] = info.originLine;
@@ -95,16 +134,17 @@ export default async function AboutPage() {
             delay={100}
             staggerDelay={120}
           >
-            {"다음 세대를 여는\n글로벌 외식 문화 기업"}
+            {content?.about?.hero?.heading || "검증된 장인의 브랜드를\n한국에서 운영합니다"}
           </TextReveal>
 
           <ScrollReveal direction="up" delay={300}>
             <p className="max-w-xl leading-relaxed text-lg mb-4 font-body" style={{ color: "#8A8A8A" }}>
-              넥스트다이닝은 수십 년, 수백 년 역사를 가진 장인의 브랜드를 발굴하고
-              한국과 해외에서 직영 운영하는 프리미엄 외식 그룹입니다.
+              {content?.about?.hero?.subtitle ||
+                "넥스트다이닝은 수십 년, 수백 년 역사를 가진 장인의 브랜드를 발굴하고 한국과 해외에서 직영 운영하는 프리미엄 외식 그룹입니다."}
             </p>
             <p className="text-sm font-body" style={{ color: "#8A8A8A" }}>
-              대표이사 장경훈 · 정호상 &nbsp;|&nbsp; 서울시 용산구 대사관로 35, 사운즈 한남 B1
+              {content?.about?.hero?.company_info ||
+                "대표이사 장경훈 · 정호상 | 서울시 용산구 대사관로 35, 사운즈 한남 B1"}
             </p>
           </ScrollReveal>
         </div>
@@ -136,18 +176,16 @@ export default async function AboutPage() {
               style={{ color: "#8A8A8A", borderColor: "#C8A96E33" }}
             >
               <p>
-                넥스트다이닝은 외식 브랜드를 직접 만들기보다, 이미 수십 년 이상의 역사와 철학을 가진
-                장인의 브랜드를 발굴하고 한국에서 운영하는 것을 핵심으로 합니다.
+                {content?.about?.what_we_do?.paragraph_1 ||
+                  "넥스트다이닝은 외식 브랜드를 직접 만들기보다, 이미 수십 년 이상의 역사와 철학을 가진 장인의 브랜드를 발굴하고 한국에서 운영하는 것을 핵심으로 합니다."}
               </p>
               <p>
-                국가 공인 김치 명인이 창립한 봉우리 한정식, 370년 전통의 나가사키 수연면 진가와,
-                나가사키 장인 타카다 유지의 돈카츠 분지로, 큐슈 지방 1위 스시야 와카타케마루의
-                한국 법인 다이센스시, 뉴욕 맨해튼의 미디어 아트 다이닝 NOFLEX NYC까지
-                — 넥스트다이닝이 운영하는 10개 브랜드 뒤에는 반드시 검증된 이야기가 있습니다.
+                {content?.about?.what_we_do?.paragraph_2 ||
+                  "국가 공인 김치 명인이 창립한 봉우리 한정식, 370년 전통의 나가사키 수연면 진가와, 나가사키 장인 타카다 유지의 돈카츠 분지로, 큐슈 지방 1위 스시야 와카타케마루의 한국 법인 다이센스시, 뉴욕 맨해튼의 미디어 아트 다이닝 NOFLEX NYC까지 — 넥스트다이닝이 운영하는 10개 브랜드 뒤에는 반드시 검증된 이야기가 있습니다."}
               </p>
               <p>
-                우리의 역할은 그 본질을 해치지 않으면서, 한국 고객이 최고의 경험을 할 수 있는
-                공간과 서비스를 만드는 것입니다.
+                {content?.about?.what_we_do?.paragraph_3 ||
+                  "우리의 역할은 그 본질을 해치지 않으면서, 한국 고객이 최고의 경험을 할 수 있는 공간과 서비스를 만드는 것입니다."}
               </p>
             </div>
           </ScrollReveal>
@@ -283,31 +321,42 @@ export default async function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-3 gap-6 mb-10">
-            {[
+          {(() => {
+            const RAW_STATS = [
+              content?.about?.partner_stats?.stat_1 || "10개 | 프리미엄 브랜드 | 일식·한식·양식·카페",
+              content?.about?.partner_stats?.stat_2 || "19 | 전국 직영 매장 | 서울·수원·부산·여주·뉴욕",
+              content?.about?.partner_stats?.stat_3 || "~300억 | 연 매출 규모 | 2025년 기준, 전 매장 직영",
+            ];
+            const STAT_FALLBACKS = [
               { value: 10, suffix: "개", label: "프리미엄 브랜드", sub: "일식·한식·양식·카페" },
               { value: 19, suffix: "", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
-              { value: 350, suffix: "억", label: "연 매출 규모", sub: "2025년 기준, 전 매장 직영" },
-            ].map((s, i) => (
-              <ScrollReveal key={s.label} direction="scale" delay={i * 100}>
-                <div
-                  className="glass-dark rounded-2xl p-7 text-center"
-                  style={{ border: "1px solid rgba(200,169,110,0.15)" }}
-                >
-                  <p className="text-4xl font-bold mb-2" style={{ color: "#C8A96E" }}>
-                    {s.label === "연 매출 규모" && "~"}
-                    <AnimatedCounter value={s.value} suffix={s.suffix} duration={1800} />
-                  </p>
-                  <p className="text-sm font-semibold mb-1" style={{ color: "#EDEDED" }}>
-                    {s.label}
-                  </p>
-                  <p className="text-xs font-body" style={{ color: "#8A8A8A" }}>
-                    {s.sub}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              { value: 300, suffix: "억", label: "연 매출 규모", sub: "2025년 기준, 전 매장 직영" },
+            ];
+            const stats = RAW_STATS.map((raw, idx) => parseStatString(raw, STAT_FALLBACKS[idx]));
+            return (
+              <div className="grid sm:grid-cols-3 gap-6 mb-10">
+                {stats.map((s, i) => (
+                  <ScrollReveal key={s.label} direction="scale" delay={i * 100}>
+                    <div
+                      className="glass-dark rounded-2xl p-7 text-center"
+                      style={{ border: "1px solid rgba(200,169,110,0.15)" }}
+                    >
+                      <p className="text-4xl font-bold mb-2" style={{ color: "#C8A96E" }}>
+                        {s.label === "연 매출 규모" && "~"}
+                        <AnimatedCounter value={s.value} suffix={s.suffix} duration={1800} />
+                      </p>
+                      <p className="text-sm font-semibold mb-1" style={{ color: "#EDEDED" }}>
+                        {s.label}
+                      </p>
+                      <p className="text-xs font-body" style={{ color: "#8A8A8A" }}>
+                        {s.sub}
+                      </p>
+                    </div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            );
+          })()}
 
           <ScrollReveal direction="up" delay={200}>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -344,28 +393,40 @@ export default async function AboutPage() {
           </ScrollReveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Originality",
-                desc: "검증된 장인의 전통과 오리지널리티를 발굴하고 보존합니다",
-                icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
-              },
-              {
-                title: "Premium Quality",
-                desc: "최상의 식재료와 조리법으로 타협 없는 품질을 추구합니다",
-                icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z",
-              },
-              {
-                title: "고객 중심 혁신",
-                desc: "고객 경험을 최우선에 두고 서비스와 공간을 설계합니다",
-                icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
-              },
-              {
-                title: "운영 전문성",
-                desc: "데이터 기반 시스템으로 다업태 직영 매장을 안정적으로 운영합니다",
-                icon: "M12 20V10M18 20V4M6 20v-4",
-              },
-            ].map((v, i) => (
+            {(() => {
+              const VALUE_FALLBACKS = [
+                {
+                  title: "Originality",
+                  desc: "검증된 장인의 전통과 오리지널리티를 발굴하고 보존합니다",
+                  icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
+                },
+                {
+                  title: "Premium Quality",
+                  desc: "최상의 식재료와 조리법으로 타협 없는 품질을 추구합니다",
+                  icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z",
+                },
+                {
+                  title: "고객 중심 혁신",
+                  desc: "고객 경험을 최우선에 두고 서비스와 공간을 설계합니다",
+                  icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
+                },
+                {
+                  title: "운영 전문성",
+                  desc: "데이터 기반 시스템으로 다업태 직영 매장을 안정적으로 운영합니다",
+                  icon: "M12 20V10M18 20V4M6 20v-4",
+                },
+              ];
+              const RAW_VALUES = [
+                content?.about?.vision?.value_1,
+                content?.about?.vision?.value_2,
+                content?.about?.vision?.value_3,
+                content?.about?.vision?.value_4,
+              ];
+              const values = RAW_VALUES.map((raw, idx) =>
+                parseVisionValue(raw ?? "", VALUE_FALLBACKS[idx])
+              );
+              return values;
+            })().map((v, i) => (
               <ScrollReveal key={v.title} direction="up" delay={i * 80}>
                 <div
                   className="rounded-2xl p-7 h-full border transition-colors"

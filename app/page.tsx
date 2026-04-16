@@ -142,6 +142,20 @@ export default async function HomePage() {
   const hero = content?.home?.hero;
   const stats = content?.home?.stats;
   const philosophy = content?.home?.philosophy;
+  const recruit = content?.home?.recruit;
+
+  // FAQ CMS 오버레이
+  const faqItems = (() => {
+    const faq = content?.home?.faq;
+    if (!faq) return FAQ_ITEMS;
+    const items: { q: string; a: string }[] = [];
+    for (let i = 1; i <= 20; i++) {
+      const q = faq[`q${i}`];
+      const a = faq[`a${i}`];
+      if (q && a) items.push({ q, a });
+    }
+    return items.length > 0 ? items : FAQ_ITEMS;
+  })();
 
   const heroHeading1 = hero?.heading_1 || "다음 세대를 여는";
   const heroHeading2 = hero?.heading_2 || "글로벌 외식 문화기업";
@@ -161,7 +175,7 @@ export default async function HomePage() {
   return (
     <div className="bg-[#0A0A0A] text-[#EDEDED]">
       <OrganizationJsonLd />
-      <FaqJsonLd items={FAQ_ITEMS} />
+      <FaqJsonLd items={faqItems} />
 
       {/* ===== 1. HERO — Cinematic Fullscreen ===== */}
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden gradient-mesh">
@@ -463,17 +477,16 @@ export default async function HomePage() {
               Join Us
             </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              넥스트다이닝과 함께<br />성장할 분을 찾습니다
+              {recruit?.heading || "넥스트다이닝과 함께"}<br />{recruit?.heading2 || "성장할 분을 찾습니다"}
             </h2>
-            <p className="text-[#8A8A8A] text-base leading-relaxed max-w-lg mx-auto mb-10 font-body">
-              요리사, 서비스 스태프, 경영지원팀까지.<br />
-              좋은 음식과 좋은 공간을 만들고 싶은 분들의 지원을 기다립니다.
+            <p className="text-[#8A8A8A] text-base leading-relaxed max-w-lg mx-auto mb-10 font-body whitespace-pre-line">
+              {recruit?.description || "요리사, 서비스 스태프, 경영지원팀까지.\n좋은 음식과 좋은 공간을 만들고 싶은 분들의 지원을 기다립니다."}
             </p>
             <Link
               href="/careers"
               className="cta-primary inline-block px-10 py-4 bg-[#C8A96E] text-[#0A0A0A] font-bold tracking-widest hover:bg-[#E8D5B0] text-sm font-body"
             >
-              채용 공고 보기
+              {recruit?.cta || "채용 공고 보기"}
             </Link>
           </ScrollReveal>
         </div>
@@ -493,7 +506,7 @@ export default async function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={150}>
-            <FaqAccordion items={FAQ_ITEMS} />
+            <FaqAccordion items={faqItems} />
           </ScrollReveal>
         </div>
       </section>

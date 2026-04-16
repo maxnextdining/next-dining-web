@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
-import { fetchNews } from "@/lib/sheets-cms";
+import { fetchNews, fetchPageContent } from "@/lib/sheets-cms";
 
 export const revalidate = 3600;
 
@@ -72,8 +72,9 @@ const CATEGORY_STYLES: Record<string, string> = {
 };
 
 export default async function HappeningsPage() {
-  const sheetNews = await fetchNews();
+  const [sheetNews, content] = await Promise.all([fetchNews(), fetchPageContent()]);
   const NEWS_ITEMS = sheetNews.length > 0 ? sheetNews : FALLBACK_NEWS;
+  const h = content?.happenings?.hero;
 
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
@@ -84,11 +85,10 @@ export default async function HappeningsPage() {
             Happenings
           </p>
           <h1 className="text-4xl sm:text-5xl font-display leading-tight max-w-2xl mb-6 text-[#EDEDED]">
-            넥스트다이닝<br />새소식
+            {h?.heading ?? <>넥스트다이닝<br />새소식</>}
           </h1>
           <p className="text-[#8A8A8A] max-w-xl leading-relaxed text-lg font-body">
-            신규 오픈 소식부터 시즌 메뉴, 브랜드 이야기까지.
-            넥스트다이닝의 최신 소식을 전합니다.
+            {h?.subtitle ?? "신규 오픈 소식부터 시즌 메뉴, 브랜드 이야기까지. 넥스트다이닝의 최신 소식을 전합니다."}
           </p>
         </ScrollReveal>
       </section>

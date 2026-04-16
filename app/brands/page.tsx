@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { brands } from "@/lib/brands";
-import { fetchBrandInfo } from "@/lib/sheets-cms";
+import { fetchBrandInfo, fetchPageContent } from "@/lib/sheets-cms";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -55,7 +55,10 @@ const COL_SPAN: Record<number, string> = {
 };
 
 export default async function BrandsPage() {
-  const sheetBrandInfoList = await fetchBrandInfo();
+  const [sheetBrandInfoList, content] = await Promise.all([
+    fetchBrandInfo(),
+    fetchPageContent(),
+  ]);
   const sheetBrandInfoMap: Record<string, { tagline: string; description: string }> = {};
   for (const info of sheetBrandInfoList) {
     sheetBrandInfoMap[info.brandId] = { tagline: info.tagline, description: info.description };
@@ -76,11 +79,11 @@ export default async function BrandsPage() {
               OUR BRANDS
             </p>
             <h1 className="font-display text-5xl md:text-6xl text-[#EDEDED] mb-4 leading-tight">
-              10개의 독창적인 브랜드
+              {content?.brands?.header?.heading ?? "10개의 독창적인 브랜드"}
             </h1>
             <span className="accent-line block mb-6" />
             <p className="text-[#8A8A8A] text-lg max-w-xl leading-relaxed">
-              각자의 철학과 이야기로 한국 외식의 수준을 높입니다
+              {content?.brands?.header?.subtitle ?? "각자의 철학과 이야기로 한국 외식의 수준을 높입니다"}
             </p>
           </ScrollReveal>
         </div>
@@ -135,12 +138,11 @@ export default async function BrandsPage() {
                 PARTNERSHIP
               </p>
               <h2 className="font-display text-3xl md:text-4xl text-[#EDEDED] mb-4">
-                브랜드 입점·제휴 문의
+                {content?.brands?.partnership?.heading ?? "브랜드 입점·제휴 문의"}
               </h2>
               <span className="accent-line mx-auto block mb-6" />
               <p className="text-[#8A8A8A] text-base max-w-lg mx-auto mb-8 leading-relaxed">
-                넥스트다이닝과 함께 성장할 파트너를 찾습니다. 입점, 제휴, 프랜차이즈 등
-                다양한 협력 방식에 대해 언제든지 문의해주세요.
+                {content?.brands?.partnership?.subtitle ?? "넥스트다이닝과 함께 성장할 파트너를 찾습니다. 입점, 제휴, 프랜차이즈 등 다양한 협력 방식에 대해 언제든지 문의해주세요."}
               </p>
               <Link
                 href="/contact"
