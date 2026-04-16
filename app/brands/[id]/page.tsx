@@ -259,7 +259,7 @@ export default async function BrandDetailPage({ params }: Props) {
 
           {/* Tagline */}
           <ScrollReveal delay={300}>
-            <p className="text-xl text-[#EDEDED]/80 font-body leading-relaxed max-w-xl mx-auto mb-10">
+            <p className="text-xl text-[#EDEDED]/80 font-body leading-relaxed max-w-xl mx-auto mb-10 whitespace-pre-line">
               {brandInfo.tagline}
             </p>
           </ScrollReveal>
@@ -291,7 +291,7 @@ export default async function BrandDetailPage({ params }: Props) {
           <ScrollReveal direction="left" className="md:col-span-7">
             <div className="space-y-8">
               <h2
-                className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight"
+                className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight whitespace-pre-line"
                 style={{ color: accentColor }}
               >
                 {brandInfo.tagline}
