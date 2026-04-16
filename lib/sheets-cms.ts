@@ -10,6 +10,34 @@
 
 const SHEET_ID = '1d_c97pg1fn5MWJV0d460BW-NYwV1hXK5XlMdABBpcQM';
 
+/** CSV 텍스트를 줄 단위로 분리 — 쌍따옴표 안의 줄바꿈은 무시 */
+export function splitCSVRows(text: string): string[] {
+  const rows: string[] = [];
+  let current = '';
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '"') {
+      if (inQuotes && text[i + 1] === '"') {
+        current += '""';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      current += ch;
+    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+      if (ch === '\r' && text[i + 1] === '\n') i++; // CRLF
+      if (current.trim()) rows.push(current);
+      current = '';
+    } else {
+      current += ch;
+    }
+  }
+  if (current.trim()) rows.push(current);
+  return rows;
+}
+
 /** CSV 한 줄 파싱 — 쌍따옴표 내 쉼표 처리 */
 export function parseCSVLine(line: string): string[] {
   const result: string[] = [];
@@ -50,7 +78,7 @@ export async function fetchSheetTab<T>(
     }
 
     const text = await res.text();
-    const lines = text.split('\n').filter((l) => l.trim());
+    const lines = splitCSVRows(text);
 
     // 첫 줄은 헤더 — skip
     const rows = lines.slice(1);

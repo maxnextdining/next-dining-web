@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { brands } from "@/lib/brands";
+import { fetchBrandInfo } from "@/lib/sheets-cms";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "브랜드 — NEXT DINING",
@@ -51,7 +54,13 @@ const COL_SPAN: Record<number, string> = {
   7: "col-span-7",
 };
 
-export default function BrandsPage() {
+export default async function BrandsPage() {
+  const sheetBrandInfoList = await fetchBrandInfo();
+  const sheetBrandInfoMap: Record<string, { tagline: string; description: string }> = {};
+  for (const info of sheetBrandInfoList) {
+    sheetBrandInfoMap[info.brandId] = { tagline: info.tagline, description: info.description };
+  }
+
   const rows: [typeof brands[0], typeof brands[0] | undefined][] = [];
   for (let i = 0; i < brands.length; i += 2) {
     rows.push([brands[i], brands[i + 1]]);
@@ -97,7 +106,7 @@ export default function BrandsPage() {
                     delay={rowIdx * 60}
                     className={`${COL_SPAN[leftSpan] ?? "col-span-6"} col-span-12 md:${COL_SPAN[leftSpan] ?? "col-span-6"}`}
                   >
-                    <BrandCard brand={left} height={leftH} />
+                    <BrandCard brand={left} height={leftH} sheetTagline={sheetBrandInfoMap[left.id]?.tagline} />
                   </ScrollReveal>
 
                   {/* Right card */}
@@ -107,7 +116,7 @@ export default function BrandsPage() {
                       delay={rowIdx * 60 + 80}
                       className={`${COL_SPAN[rightSpan] ?? "col-span-6"} col-span-12 md:${COL_SPAN[rightSpan] ?? "col-span-6"}`}
                     >
-                      <BrandCard brand={right} height={rightH} />
+                      <BrandCard brand={right} height={rightH} sheetTagline={sheetBrandInfoMap[right.id]?.tagline} />
                     </ScrollReveal>
                   )}
                 </div>
@@ -152,9 +161,11 @@ export default function BrandsPage() {
 function BrandCard({
   brand,
   height,
+  sheetTagline,
 }: {
   brand: (typeof brands)[0];
   height: string;
+  sheetTagline?: string;
 }) {
   const activeCount = brand.locations.filter((l) => l.status === "active").length;
   const hasComingSoon = brand.locations.some((l) => l.status === "coming-soon");
@@ -217,7 +228,7 @@ function BrandCard({
           {brand.name}
         </h3>
         <p className="text-[#EDEDED]/80 text-sm max-w-md leading-relaxed mb-4 line-clamp-2">
-          {brand.tagline}
+          {sheetTagline || brand.tagline}
         </p>
 
         {/* Bottom pills */}

@@ -2,10 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { brands } from "@/lib/brands";
 import type { BrandCategory, BrandFormat } from "@/lib/brands";
+import { fetchBrandInfo } from "@/lib/sheets-cms";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import TextReveal from "@/components/TextReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "회사 소개",
@@ -63,7 +66,13 @@ const ORIGIN_LINE: Record<string, string> = {
   "noflex-nyc": "넥스트다이닝 첫 해외 직영 — 뉴욕 맨해튼 5th Ave",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const sheetBrandInfoList = await fetchBrandInfo();
+  const originLineMap: Record<string, string> = {};
+  for (const info of sheetBrandInfoList) {
+    if (info.originLine) originLineMap[info.brandId] = info.originLine;
+  }
+
   return (
     <div style={{ background: "#0A0A0A", color: "#EDEDED" }}>
 
@@ -222,7 +231,7 @@ export default function AboutPage() {
                               </span>
                             </div>
                             <p className="text-xs mb-2 font-body" style={{ color: "#8A8A8A" }}>
-                              {ORIGIN_LINE[brand.id] ?? brand.tagline}
+                              {originLineMap[brand.id] || ORIGIN_LINE[brand.id] || brand.tagline}
                             </p>
                             <div className="flex items-center gap-3 text-xs" style={{ color: "#8A8A8A" }}>
                               {activeCount > 0 && <span>{activeCount}개 매장</span>}

@@ -8,6 +8,8 @@
  * - ISR revalidate로 주기적 자동 반영
  */
 
+import { splitCSVRows } from './sheets-cms';
+
 const SHEET_ID = '1d_c97pg1fn5MWJV0d460BW-NYwV1hXK5XlMdABBpcQM';
 const SHEET_NAME = '메뉴';
 const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
@@ -57,7 +59,7 @@ export async function fetchMenuData(): Promise<SheetMenuItem[]> {
     }
 
     const text = await res.text();
-    const lines = text.split('\n').filter((l) => l.trim());
+    const lines = splitCSVRows(text);
 
     // 첫 줄은 헤더 — skip
     const rows = lines.slice(1);

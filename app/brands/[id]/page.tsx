@@ -26,6 +26,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const brand = getBrandById(id);
   if (!brand) return {};
 
+  const sheetBrandInfo = await fetchBrandInfoById(id);
+  const description = sheetBrandInfo?.description || brand.description;
+  const tagline = sheetBrandInfo?.tagline || brand.tagline;
+
   const locationNames = brand.locations
     .filter((l) => l.status === "active")
     .map((l) => l.name)
@@ -33,11 +37,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${brand.name} (${brand.nameEn})`,
-    description: `${brand.description} 운영 지점: ${locationNames || "오픈 준비 중"}`,
+    description: `${description} 운영 지점: ${locationNames || "오픈 준비 중"}`,
     keywords: brand.keywords,
     openGraph: {
       title: `${brand.name} | NEXT DINING`,
-      description: brand.description,
+      description: tagline,
       images: [{ url: brand.image, width: 1200, height: 630, alt: brand.name }],
     },
   };
@@ -90,14 +94,15 @@ export default async function BrandDetailPage({ params }: Props) {
     fetchBrandMenu(id),
   ]);
 
+  // 시트 스토리 데이터 오버레이
+  const sheetStory = sheetStories[id];
+
   // 시트 브랜드 정보 오버레이 (비어있지 않은 값만)
   const brandInfo = {
     tagline: sheetBrandInfo?.tagline || brand.tagline,
     description: sheetBrandInfo?.description || brand.description,
+    story: sheetStory?.storyShort || brand.story,
   };
-
-  // 시트 스토리 데이터 오버레이
-  const sheetStory = sheetStories[id];
   const elements = sheetStory ? {
     originStory: sheetStory.originStory || brand.storyElements?.originStory,
     chefOrArtisan: sheetStory.chefOrArtisan || brand.storyElements?.chefOrArtisan,
@@ -122,7 +127,7 @@ export default async function BrandDetailPage({ params }: Props) {
           "@type": "Restaurant",
           name: brand.name,
           alternateName: brand.nameEn,
-          description: brand.description,
+          description: brandInfo.description,
           servesCuisine: brand.cuisine || CATEGORY_LABEL[brand.category],
           priceRange: brand.priceRange,
           ...(loc.phone && { telephone: loc.phone }),
@@ -294,12 +299,12 @@ export default async function BrandDetailPage({ params }: Props) {
               <p className="text-[#EDEDED]/80 text-lg leading-relaxed font-body">
                 {brandInfo.description}
               </p>
-              {brand.story && (
+              {brandInfo.story && (
                 <blockquote
                   className="border-l-4 pl-8 py-4 font-display text-xl font-semibold text-[#C8A96E] leading-relaxed"
                   style={{ borderColor: "#C8A96E" }}
                 >
-                  &ldquo;{brand.story}&rdquo;
+                  &ldquo;{brandInfo.story}&rdquo;
                 </blockquote>
               )}
               {brand.website && (

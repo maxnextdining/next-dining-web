@@ -7,7 +7,7 @@ import TextReveal from "@/components/TextReveal";
 import ParallaxImage from "@/components/ParallaxImage";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import FaqAccordion from "@/components/FaqAccordion";
-import { fetchPageContent } from "@/lib/sheets-cms";
+import { fetchPageContent, fetchBrandInfo } from "@/lib/sheets-cms";
 
 export const revalidate = 3600;
 
@@ -130,7 +130,15 @@ function getColSpanClass(span: number): string {
 }
 
 export default async function HomePage() {
-  const content = await fetchPageContent();
+  const [content, sheetBrandInfoList] = await Promise.all([
+    fetchPageContent(),
+    fetchBrandInfo(),
+  ]);
+  const sheetBrandInfoMap: Record<string, { tagline: string }> = {};
+  for (const info of sheetBrandInfoList) {
+    sheetBrandInfoMap[info.brandId] = { tagline: info.tagline };
+  }
+
   const hero = content?.home?.hero;
   const stats = content?.home?.stats;
   const philosophy = content?.home?.philosophy;
@@ -363,7 +371,7 @@ export default async function HomePage() {
                       <div className="absolute inset-0 p-8 lg:p-10 flex flex-col justify-end z-10">
                         {/* Tagline — slides up on hover */}
                         <p className="text-[#8A8A8A] text-sm font-body font-light mb-3 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400 ease-out">
-                          {brand.tagline}
+                          {sheetBrandInfoMap[brand.id]?.tagline || brand.tagline}
                         </p>
 
                         <h3 className={`font-display font-bold leading-tight mb-1 ${span >= 7 ? "text-3xl md:text-4xl" : "text-2xl"}`}>
