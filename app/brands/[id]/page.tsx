@@ -394,15 +394,6 @@ export default async function BrandDetailPage({ params }: Props) {
                             />
                             {/* 이미지 위 그래디언트 오버레이 */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                            {/* 코너 번호 */}
-                            <div className="absolute top-4 left-4">
-                              <span
-                                className="font-display text-4xl font-bold select-none"
-                                style={{ color: accentColor, opacity: 0.6 }}
-                              >
-                                {section.icon}
-                              </span>
-                            </div>
                           </>
                         ) : (
                           <>
