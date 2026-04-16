@@ -82,6 +82,8 @@ export const brands: Brand[] = [
       { name: '역삼 본점', address: '서울 강남구 논현로94길 25-3, 2층', status: 'active', phone: '0507-1402-8551', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
       { name: '을지로점', address: '서울 중구 을지로5길 26, 미래에셋 센터원 B1', status: 'active', phone: '02-6030-8960', hours: '매일 11:30~21:20 (BT 15:00~17:30)' },
     ],
+    chefPhoto: '/images/brands/story/bongwoori/artisan.jpg',
+    chefName: '이하연 명인',
     image: '/images/brands/bongwoori.jpg',
     logo: '/images/brands/logos/bongwoori.png',
     keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
