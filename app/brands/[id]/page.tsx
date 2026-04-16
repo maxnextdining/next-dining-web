@@ -320,22 +320,32 @@ export default async function BrandDetailPage({ params }: Props) {
             </div>
           </ScrollReveal>
 
-          {/* Right: decorative element */}
+          {/* Right: summary image or decorative element */}
           <ScrollReveal direction="right" delay={150} className="md:col-span-5">
             <div
               className="relative aspect-[4/5] overflow-hidden flex items-center justify-center"
               style={{ background: `linear-gradient(135deg, ${accentColor}18 0%, ${accentColor}08 100%)` }}
             >
-              <span
-                className="font-display font-bold select-none pointer-events-none leading-none"
-                style={{
-                  fontSize: "clamp(8rem, 18vw, 14rem)",
-                  color: accentColor,
-                  opacity: 0.07,
-                }}
-              >
-                {brand.nameEn.charAt(0)}
-              </span>
+              {storyImageExists("summary.jpg") ? (
+                <Image
+                  src={`/images/brands/story/${brand.id}/summary.jpg`}
+                  alt={`${brand.name} — 브랜드 소개`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              ) : (
+                <span
+                  className="font-display font-bold select-none pointer-events-none leading-none"
+                  style={{
+                    fontSize: "clamp(8rem, 18vw, 14rem)",
+                    color: accentColor,
+                    opacity: 0.07,
+                  }}
+                >
+                  {brand.nameEn.charAt(0)}
+                </span>
+              )}
               {/* Corner accent */}
               <div
                 className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2"
