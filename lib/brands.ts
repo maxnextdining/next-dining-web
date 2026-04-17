@@ -262,39 +262,6 @@ export const brands: Brand[] = [
     ],
   },
   {
-    id: 'takumi-nagasaki',
-    name: '타쿠미나가사키',
-    nameEn: 'TAKUMI NAGASAKI',
-    category: 'japanese',
-    format: 'foodcourt',
-    tagline: '나가사키 전통 일식의 세련된 재현',
-    description:
-      '타쿠미나가사키는 나가사키 지역의 독특한 일식 문화를 현대적 감성으로 담아낸 Fine Casual 다이닝입니다. 일본과 서양이 교차한 나가사키의 역사적 식문화를 모티브로, 섬세하게 설계된 메뉴와 공간이 특별한 식사 경험을 완성합니다.',
-    story:
-      '무역항 나가사키에서 탄생한 독자적인 식문화 — 일식과 서양식이 조화를 이루는 그 특별한 맛을 서울에서 재현합니다.',
-    storyElements: {
-      originStory: '16세기 무역항 나가사키 — 일본과 서양이 만나 독자적인 식문화가 탄생한 곳. 타쿠미나가사키는 그 역사적 교차점의 맛을 현대적으로 재해석합니다.',
-      ingredientPhilosophy: '나가사키 지역의 신선한 해산물과 서양 조리법의 융합. 짬뽕, 카스테라 등 나가사키 특유의 크로스오버 요리를 정통 레시피로 재현합니다.',
-      signatureMenu: '나가사키 짬뽕, 사라우동, 카스테라 — 일본과 서양의 교차점에서 탄생한 나가사키 대표 요리를 파인 캐주얼로 즐길 수 있습니다.',
-      spaceExperience: '나가사키 항구도시의 이국적 분위기를 현대적으로 재해석한 인테리어. 고속터미널과 용산아이파크몰에서 일상 속 작은 여행을 선사합니다.',
-    },
-    locations: [
-      { name: '고속터미널점', address: '서울 서초구 신반포로 194, 서울고속버스터미널 경부선 1층', status: 'active', phone: '0507-1350-8553', hours: '매일 10:00~21:00 (LO 20:30)' },
-      { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
-    ],
-    image: '/images/brands/takumi-nagasaki.jpg',
-    logo: '/images/brands/logos/takumi-nagasaki.png',
-    keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
-    priceRange: '₩₩₩',
-    accentColor: '#2A6B6B',
-    gallery: ['/images/brands/gallery/takumi-nagasaki/store-1.jpg', '/images/brands/gallery/takumi-nagasaki/store-2.jpg', '/images/brands/gallery/takumi-nagasaki/store-3.jpg', '/images/brands/gallery/takumi-nagasaki/menu-1.jpg', '/images/brands/gallery/takumi-nagasaki/menu-2.jpg', '/images/brands/gallery/takumi-nagasaki/menu-3.jpg'],
-    cuisine: '일식',
-    menuHighlights: [
-      { name: '등심돈카츠', price: '14,000원~19,000원' },
-      { name: '카게우동', price: '14,000원' },
-    ],
-  },
-  {
     id: 'daisen',
     name: '다이센스시',
     nameEn: 'DAISEN SUSHI',
@@ -334,6 +301,68 @@ export const brands: Brand[] = [
     ],
   },
   {
+    id: 'takumi-nagasaki',
+    name: '타쿠미나가사키',
+    nameEn: 'TAKUMI NAGASAKI',
+    category: 'japanese',
+    format: 'foodcourt',
+    tagline: '나가사키 전통 일식의 세련된 재현',
+    description:
+      '타쿠미나가사키는 나가사키 지역의 독특한 일식 문화를 현대적 감성으로 담아낸 Fine Casual 다이닝입니다. 일본과 서양이 교차한 나가사키의 역사적 식문화를 모티브로, 섬세하게 설계된 메뉴와 공간이 특별한 식사 경험을 완성합니다.',
+    story:
+      '무역항 나가사키에서 탄생한 독자적인 식문화 — 일식과 서양식이 조화를 이루는 그 특별한 맛을 서울에서 재현합니다.',
+    storyElements: {
+      originStory: '16세기 무역항 나가사키 — 일본과 서양이 만나 독자적인 식문화가 탄생한 곳. 타쿠미나가사키는 그 역사적 교차점의 맛을 현대적으로 재해석합니다.',
+      ingredientPhilosophy: '나가사키 지역의 신선한 해산물과 서양 조리법의 융합. 짬뽕, 카스테라 등 나가사키 특유의 크로스오버 요리를 정통 레시피로 재현합니다.',
+      signatureMenu: '나가사키 짬뽕, 사라우동, 카스테라 — 일본과 서양의 교차점에서 탄생한 나가사키 대표 요리를 파인 캐주얼로 즐길 수 있습니다.',
+      spaceExperience: '나가사키 항구도시의 이국적 분위기를 현대적으로 재해석한 인테리어. 고속터미널과 용산아이파크몰에서 일상 속 작은 여행을 선사합니다.',
+    },
+    locations: [
+      { name: '고속터미널점', address: '서울 서초구 신반포로 194, 서울고속버스터미널 경부선 1층', status: 'active', phone: '0507-1350-8553', hours: '매일 10:00~21:00 (LO 20:30)' },
+      { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
+    ],
+    image: '/images/brands/takumi-nagasaki.jpg',
+    logo: '/images/brands/logos/takumi-nagasaki.png',
+    keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
+    priceRange: '₩₩₩',
+    accentColor: '#2A6B6B',
+    gallery: ['/images/brands/gallery/takumi-nagasaki/store-1.jpg', '/images/brands/gallery/takumi-nagasaki/store-2.jpg', '/images/brands/gallery/takumi-nagasaki/store-3.jpg', '/images/brands/gallery/takumi-nagasaki/menu-1.jpg', '/images/brands/gallery/takumi-nagasaki/menu-2.jpg', '/images/brands/gallery/takumi-nagasaki/menu-3.jpg'],
+    cuisine: '일식',
+    menuHighlights: [
+      { name: '등심돈카츠', price: '14,000원~19,000원' },
+      { name: '카게우동', price: '14,000원' },
+    ],
+  },
+  {
+    id: 'menya-always',
+    name: '멘야올웨이즈',
+    nameEn: 'MENYA ALWAYS',
+    category: 'japanese',
+    format: 'casual',
+    tagline: '언제 방문해도 변함없는 최고의 한 그릇',
+    description:
+      '멘야올웨이즈는 육수와 면을 직접 제조하는 장인형 라멘 브랜드입니다. 전통과 현대적 해석을 결합해 맛의 \'재현성\'과 \'중독성\'을 강화한 것이 특징입니다. 2026년 말 성수에 1호점 론칭을 앞두고 있으며, 높은 재방문율 기반의 충성도 구조로 확장을 준비하고 있습니다.',
+    story: '언제나(Always) 한결같은 맛. 매일 우려낸 진국 육수 한 그릇이 주는 위안.',
+    storyElements: {
+      originStory: '육수·면 직접 제조하는 장인형 라멘 브랜드. 전통과 현대적 해석을 결합해 일본 라멘의 정통성을 지키면서도 한국인의 입맛에 맞는 깊은 맛을 연구해 탄생했습니다.',
+      ingredientPhilosophy: '매일 12시간 이상 우려낸 진국 육수. 면은 라멘 전용 제면기로 매일 뽑아 최적의 식감을 유지합니다. 맛의 재현성과 중독성을 핵심 가치로 둡니다.',
+      signatureMenu: '레몬 돈코츠 라멘 — 진한 돈코츠 육수에 상큼한 레몬이 더해진 시그니처. 특제 츠케멘과 함께 멘야올웨이즈만의 정통 라멘을 경험할 수 있습니다.',
+    },
+    locations: [
+      { name: '성수점 (1호점)', address: '서울 성동구 (2026년 말 오픈 예정)', status: 'coming-soon' },
+    ],
+    image: '/images/brands/menya-always.jpg',
+    logo: '/images/brands/logos/menya-always.png',
+    keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울', '성수 라멘', '돈코츠 라멘'],
+    priceRange: '₩₩',
+    accentColor: '#C2410C',
+    cuisine: '라멘',
+    menuHighlights: [
+      { name: '레몬 돈코츠 라멘', price: '가격 미정' },
+      { name: '특제 츠케멘', price: '가격 미정' },
+    ],
+  },
+  {
     id: 'cafe-le-sens',
     name: '카페 르상스',
     nameEn: 'CAFÉ LE SENS',
@@ -367,35 +396,6 @@ export const brands: Brand[] = [
     ],
     reservationLinks: [
       { location: '사운즈한남점', url: 'https://app.catchtable.co.kr/ct/shop/cafelesens' },
-    ],
-  },
-  {
-    id: 'menya-always',
-    name: '멘야올웨이즈',
-    nameEn: 'MENYA ALWAYS',
-    category: 'japanese',
-    format: 'casual',
-    tagline: '언제 방문해도 변함없는 최고의 한 그릇',
-    description:
-      '멘야올웨이즈는 육수와 면을 직접 제조하는 장인형 라멘 브랜드입니다. 전통과 현대적 해석을 결합해 맛의 \'재현성\'과 \'중독성\'을 강화한 것이 특징입니다. 2026년 말 성수에 1호점 론칭을 앞두고 있으며, 높은 재방문율 기반의 충성도 구조로 확장을 준비하고 있습니다.',
-    story: '언제나(Always) 한결같은 맛. 매일 우려낸 진국 육수 한 그릇이 주는 위안.',
-    storyElements: {
-      originStory: '육수·면 직접 제조하는 장인형 라멘 브랜드. 전통과 현대적 해석을 결합해 일본 라멘의 정통성을 지키면서도 한국인의 입맛에 맞는 깊은 맛을 연구해 탄생했습니다.',
-      ingredientPhilosophy: '매일 12시간 이상 우려낸 진국 육수. 면은 라멘 전용 제면기로 매일 뽑아 최적의 식감을 유지합니다. 맛의 재현성과 중독성을 핵심 가치로 둡니다.',
-      signatureMenu: '레몬 돈코츠 라멘 — 진한 돈코츠 육수에 상큼한 레몬이 더해진 시그니처. 특제 츠케멘과 함께 멘야올웨이즈만의 정통 라멘을 경험할 수 있습니다.',
-    },
-    locations: [
-      { name: '성수점 (1호점)', address: '서울 성동구 (2026년 말 오픈 예정)', status: 'coming-soon' },
-    ],
-    image: '/images/brands/menya-always.jpg',
-    logo: '/images/brands/logos/menya-always.png',
-    keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울', '성수 라멘', '돈코츠 라멘'],
-    priceRange: '₩₩',
-    accentColor: '#C2410C',
-    cuisine: '라멘',
-    menuHighlights: [
-      { name: '레몬 돈코츠 라멘', price: '가격 미정' },
-      { name: '특제 츠케멘', price: '가격 미정' },
     ],
   },
   {
