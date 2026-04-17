@@ -116,7 +116,11 @@ export default async function BrandDetailPage({ params }: Props) {
     : [];
   const menuItems: { name: string; price: string; photo?: string }[] =
     sheetMenu.length > 0
-      ? sheetMenu.map((m) => ({ name: m.menuName, price: m.price }))
+      ? sheetMenu.map((m, i) => ({
+          name: m.menuName,
+          price: m.price,
+          photo: brand.menuHighlights?.[i]?.photo,
+        }))
       : (brand.menuHighlights ?? []);
 
   // Schema.org Restaurant JSON-LD
