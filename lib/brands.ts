@@ -201,10 +201,10 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/jinkawa/store-1.jpg', '/images/brands/gallery/jinkawa/store-2.jpg', '/images/brands/gallery/jinkawa/store-3.jpg', '/images/brands/gallery/jinkawa/menu-1.jpg', '/images/brands/gallery/jinkawa/menu-2.jpg', '/images/brands/gallery/jinkawa/menu-3.jpg', '/images/brands/gallery/jinkawa/menu-4.jpg'],
     cuisine: '소바',
     menuHighlights: [
-      { name: '스키야키 나베 코스', price: '49,000원' },
-      { name: '가이세키 코스', price: '59,000원' },
-      { name: '셰프 스페셜 코스', price: '79,000원' },
-      { name: '사시미 & 스시 정식', price: '37,000원~49,000원' },
+      { name: '스키야키 나�� 코스', price: '49,000원', photo: '/images/brands/story/jinkawa/menu1.jpg' },
+      { name: '가이세키 코스', price: '59,000원', photo: '/images/brands/story/jinkawa/menu2.jpg' },
+      { name: '셰프 스페셜 코스', price: '79,000원', photo: '/images/brands/story/jinkawa/menu3.jpg' },
+      { name: '사시미 & 스시 정식', price: '37,000원~49,000원', photo: '/images/brands/story/jinkawa/menu4.jpg' },
     ],
     reservationLinks: [
       { location: '역삼점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/jinkawa_yeoksam' },
