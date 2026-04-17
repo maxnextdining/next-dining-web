@@ -335,7 +335,7 @@ export default async function HomePage() {
                       href={`/brands/${brand.id}`}
                       className={`brand-card border-shimmer group relative block overflow-hidden rounded-lg ${height}`}
                       style={{
-                        background: `linear-gradient(135deg, ${brand.accentColor ?? "#1A1A1A"} 0%, #0A0A0A 100%)`,
+                        background: "#0A0A0A",
                       }}
                     >
                       {/* Background image */}
@@ -350,11 +350,11 @@ export default async function HomePage() {
                             ? "(min-width: 768px) 41vw, 100vw"
                             : "(min-width: 768px) 33vw, 100vw"
                         }
-                        className="object-cover opacity-45 group-hover:opacity-60 group-hover:scale-[1.08] transition-all duration-700 ease-out"
+                        className="object-cover group-hover:scale-[1.08] transition-all duration-700 ease-out"
                       />
 
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent" />
+                      {/* Gradient overlay — text readability only */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
 
                       {/* Category badge — top left */}
                       <div className="absolute top-6 left-6 z-10 flex gap-2 flex-wrap">
@@ -397,8 +397,7 @@ export default async function HomePage() {
 
                       </div>
 
-                      {/* Hover: gold border-bottom + subtle overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-500" />
+                      {/* Hover: subtle scale only, no color overlay */}
                     </Link>
                   </ScrollReveal>
                 );
