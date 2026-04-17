@@ -252,7 +252,7 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/bunjiro/store-1.jpg', '/images/brands/gallery/bunjiro/store-2.jpg', '/images/brands/gallery/bunjiro/store-3.jpg', '/images/brands/gallery/bunjiro/store-4.jpg', '/images/brands/gallery/bunjiro/menu-1.jpg', '/images/brands/gallery/bunjiro/menu-2.jpg', '/images/brands/gallery/bunjiro/menu-3.jpg', '/images/brands/gallery/bunjiro/menu-4.jpg', '/images/brands/gallery/bunjiro/menu-5.jpg', '/images/brands/gallery/bunjiro/menu-6.jpg'],
     cuisine: '돈카츠',
     menuHighlights: [
-      { name: '장인 로스카츠', price: '16,000원~29,000원' },
+      { name: '장인 로스카츠', price: '16,000원~29,000원', photo: '/images/brands/story/bunjiro/menu1.jpg' },
     ],
     reservationLinks: [
       { location: '명동점 (한국본점)', note: '전화예약' },
