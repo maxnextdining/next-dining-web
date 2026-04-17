@@ -41,9 +41,9 @@ export default function Footer() {
             <Image
               src="/images/next-dining-logo-white.png"
               alt="NEXT DINING"
-              width={207}
-              height={32}
-              className="h-7 w-auto object-contain"
+              width={104}
+              height={16}
+              className="h-3.5 w-auto object-contain"
             />
             <p className="font-display font-bold text-[#C8A96E] text-base leading-snug">
               다음 세대를 여는<br />글로벌 외식 문화기업

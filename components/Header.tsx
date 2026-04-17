@@ -82,9 +82,9 @@ export default function Header() {
             <Image
               src="/images/next-dining-logo-white.png"
               alt="NEXT DINING"
-              width={140}
-              height={32}
-              className="h-7 lg:h-8 w-auto"
+              width={70}
+              height={16}
+              className="h-3.5 lg:h-4 w-auto"
               priority
             />
           </Link>
@@ -179,9 +179,9 @@ export default function Header() {
             <Image
               src="/images/next-dining-logo-white.png"
               alt="NEXT DINING"
-              width={120}
-              height={28}
-              className="h-7 w-auto"
+              width={60}
+              height={14}
+              className="h-3.5 w-auto"
             />
           </Link>
           <button
