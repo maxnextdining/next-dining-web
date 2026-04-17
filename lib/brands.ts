@@ -92,9 +92,9 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/bongwoori/store-1.jpg', '/images/brands/gallery/bongwoori/store-2.jpg', '/images/brands/gallery/bongwoori/menu-1.jpg', '/images/brands/gallery/bongwoori/menu-2.jpg'],
     cuisine: '한정식',
     menuHighlights: [
-      { name: '봉우리 정식', price: '65,000원' },
-      { name: '식객 정식', price: '78,000원' },
-      { name: '명인 정식', price: '150,000원' },
+      { name: '봉우리 정식', price: '65,000원', photo: '/images/brands/story/bongwoori/menu1.jpg' },
+      { name: '식객 정식', price: '78,000원', photo: '/images/brands/story/bongwoori/menu2.jpg' },
+      { name: '명인 정식', price: '150,000원', photo: '/images/brands/story/bongwoori/menu3.jpg' },
     ],
     reservationLinks: [
       { location: '역삼 본점', url: 'https://app.catchtable.co.kr/ct/shop/bongwooriyeoksam' },
