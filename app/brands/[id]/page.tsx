@@ -880,12 +880,13 @@ export default async function BrandDetailPage({ params }: Props) {
                     className="brand-card group block overflow-hidden border border-white/5 bg-[#141414]"
                   >
                     <div className="aspect-[4/3] relative overflow-hidden">
-                      <div className={`brand-image absolute inset-0 brand-gradient-${b.id}`} />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white/15 text-[80px] font-bold leading-none select-none font-display">
-                          {b.nameEn.charAt(0)}
-                        </span>
-                      </div>
+                      <Image
+                        src={b.image}
+                        alt={b.name}
+                        fill
+                        sizes="(max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
                     </div>
                     <div className="p-4">
                       <p className="text-[10px] text-[#8A8A8A] tracking-wider uppercase mb-0.5 font-body">
