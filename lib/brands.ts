@@ -66,7 +66,7 @@ export const brands: Brand[] = [
     nameEn: 'BONGWOORI',
     category: 'korean',
     format: 'dining',
-    tagline: '김치 명인이 빚어낸 한국 전통의 정수',
+    tagline: "허영만 화백의 '식객'에 소개된\n이하연 김치 명인의 한정식",
     description:
       '봉우리 한정식은 대한민국 국가 공인 김치 명인 이하연 명인이 창립한 프리미엄 한정식 브랜드입니다. 수십 년 발효 연구의 결정체인 김치와 장류, 제철 식재료로 구성한 코스 한정식은 한국 전통 식문화의 깊이를 현대적 감성으로 재해석합니다. 비즈니스 미팅부터 특별한 기념일까지 품격 있는 자리를 완성합니다.',
     story:
