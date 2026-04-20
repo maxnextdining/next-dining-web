@@ -433,8 +433,8 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/noflex-nyc/store-1.jpg', '/images/brands/gallery/noflex-nyc/store-2.jpg', '/images/brands/gallery/noflex-nyc/menu-1.jpg', '/images/brands/gallery/noflex-nyc/menu-2.jpg', '/images/brands/gallery/noflex-nyc/menu-3.jpg', '/images/brands/gallery/noflex-nyc/menu-4.jpg'],
     cuisine: '모던 다이닝 & 칵테일 바',
     menuHighlights: [
-      { name: 'K-모던 한식 플레이트', price: '$25~' },
-      { name: '시그니처 칵테일', price: '$18~' },
+      { name: 'K-모던 한식 플레이트', price: '$25~', photo: '/images/brands/story/noflex-nyc/menu1.jpg' },
+      { name: '시그니처 칵테일', price: '$18~', photo: '/images/brands/story/noflex-nyc/menu2.jpg' },
     ],
     website: 'https://noflex.nyc',
     reservationLinks: [
