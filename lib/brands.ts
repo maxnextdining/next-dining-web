@@ -1,5 +1,5 @@
 export type BrandCategory = 'japanese' | 'korean' | 'cafe' | 'american';
-export type BrandFormat = 'dining' | 'casual' | 'foodcourt' | 'lounge' | 'pub';
+export type BrandFormat = 'dining' | 'casual' | 'foodcourt' | 'lounge' | 'lounge club' | 'pub';
 export type LocationStatus = 'active' | 'coming-soon' | 'closed';
 
 export interface BrandLocation {
@@ -106,7 +106,7 @@ export const brands: Brand[] = [
     name: '봉우리 소반',
     nameEn: 'BONGWOORI SOBAN',
     category: 'korean',
-    format: 'foodcourt',
+    format: 'casual',
     tagline: '명인의 맛을 일상으로, 정갈한 한 그릇의 미학',
     description:
       '봉우리 소반은 봉우리 한정식의 정신을 이어받아 보다 가볍고 편안한 형태로 즐길 수 있는 한식 다이닝입니다.',
@@ -273,7 +273,7 @@ export const brands: Brand[] = [
     format: 'dining',
     tagline: '최상의 식재료와 장인의 손길로 완성한 정통 스시 다이닝',
     description:
-      '압도적인 품질과 합리적인 가격 경쟁력을 바탕으로, 나만을 위한 프라이빗하고 고품격인 식문화를 경험하고자 하는 고객들에게 최고의 선택지를 제안합니다.',
+      '다이센 스시는 일본 나가사키에서 시작된 정통 스시 브랜드로, 1997년부터 이어온 장인의 철학과 특제 샤리초·전용 간장의 비법으로 압도적인 품질의 스시를 합리적인 가격에 제공합니다.',
     story:
       '다이센 스시는 규슈 지역을 대표하는 스시 전문 브랜드로, 신선한 회와 특제 샤리초, 간장이 어우러진 정통 장인의 초밥을 제공합니다.',
     storyElements: {
@@ -293,7 +293,7 @@ export const brands: Brand[] = [
       '프리미엄 스시 서울', '한남 데이트 코스', '특별한 날 식당 서울', '사운즈한남 스시',
     ],
     priceRange: '₩₩₩₩',
-    accentColor: '#2D3436',
+    accentColor: '#1a1a2e',
     gallery: ['/images/brands/gallery/daisen/store-1.jpg', '/images/brands/gallery/daisen/store-2.jpg', '/images/brands/gallery/daisen/store-3.jpg', '/images/brands/gallery/daisen/store-4.jpg', '/images/brands/gallery/daisen/store-5.jpg', '/images/brands/gallery/daisen/menu-1.jpg', '/images/brands/gallery/daisen/menu-2.jpg', '/images/brands/gallery/daisen/menu-3.jpg', '/images/brands/gallery/daisen/menu-4.jpg', '/images/brands/gallery/daisen/menu-5.jpg'],
     cuisine: '프리미엄 스시',
     chefPhoto: '/images/brands/story/daisen/artisan.jpg',
@@ -310,10 +310,10 @@ export const brands: Brand[] = [
     name: '타쿠미나가사키',
     nameEn: 'TAKUMI NAGASAKI',
     category: 'japanese',
-    format: 'foodcourt',
-    tagline: '나가사키 미식의 정수를 담은 파인 캐주얼 다이닝',
+    format: 'casual',
+    tagline: '나가사키 장인의 정교한 기술로 완성한 캐주얼 일식의 기준',
     description:
-      '타쿠미나가사키는 나가사키 지역의 독특한 일식 문화를 현대적 감성으로 담아낸 Fine Casual 다이닝입니다. 일본과 서양이 교차한 나가사키의 역사적 식문화를 모티브로, 섬세하게 설계된 메뉴와 공간이 특별한 식사 경험을 완성합니다.',
+      '타쿠미 나가사키는 미식의 고장 나가사키 장인들이 지켜온 깊은 손맛을 합리적인 가치로 전하며, 일상의 식사 시간을 격조 높은 경험으로 치환하는 프리미엄 면·카츠 전문 브랜드입니다.',
     story:
       '나가사키 미식의 정수를 담은 파인 캐주얼 다이닝',
     storyElements: {
@@ -330,7 +330,7 @@ export const brands: Brand[] = [
     logo: '/images/brands/logos/takumi-nagasaki.png',
     keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
     priceRange: '₩₩₩',
-    accentColor: '#2A6B6B',
+    accentColor: '#2C3E50',
     gallery: ['/images/brands/gallery/takumi-nagasaki/store-1.jpg', '/images/brands/gallery/takumi-nagasaki/store-2.jpg', '/images/brands/gallery/takumi-nagasaki/store-3.jpg', '/images/brands/gallery/takumi-nagasaki/menu-1.jpg', '/images/brands/gallery/takumi-nagasaki/menu-2.jpg', '/images/brands/gallery/takumi-nagasaki/menu-3.jpg'],
     cuisine: '일식',
     menuHighlights: [
@@ -409,10 +409,10 @@ export const brands: Brand[] = [
     name: '노플렉스 뉴욕',
     nameEn: 'NOFLEX NYC',
     category: 'american',
-    format: 'pub',
+    format: 'lounge club',
     tagline: '미디어와 음악, 다이닝이 결합된 글로벌 라운지',
     description:
-      'NOFLEX NYC는 뉴욕 맨해튼 5번가에 위치한 미디어 아트 레스토랑 & 칵테일 바입니다. 20m LED 미디어월 기반 몰입형 공간에서 K-FOOD, MUSIC, ART가 결합된 "경험 소비형 다이닝"의 극대화를 추구합니다. 뉴욕 맨해튼에 성공적으로 안착하며 글로벌 콘텐츠 기반 확장 가능성을 입증한 해외 타겟 유입형 브랜드입니다.',
+      'NOFLEX NYC는 뉴욕 맨해튼 5번가에 위치한 미디어 아트 레스토랑 & 칵테일 바로, 20m LED 미디어월 기반 몰입형 공간에서 K-FOOD, MUSIC, ART가 결합된 경험 소비형 다이닝의 극대화를 추구합니다.',
     story:
       '다이닝과 예술의 경계를 허무는 새로운 시도. 72피트 LED 벽이 만들어내는 몰입형 공간에서 음식, 음악, 빛이 하나로 어우러집니다.',
     storyElements: {
