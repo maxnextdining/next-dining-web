@@ -325,6 +325,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '고속터미널점', address: '서울 서초구 신반포로 194, 서울고속버스터미널 경부선 1층', status: 'active', phone: '0507-1350-8553', hours: '매일 10:00~21:00 (LO 20:30)' },
       { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
+      { name: '부산 롯데백화점 광복점', address: '부산 중구 중앙대로 2, 롯데백화점 광복점', status: 'active' },
     ],
     image: '/images/brands/takumi-nagasaki.jpg',
     logo: '/images/brands/logos/takumi-nagasaki.png',
