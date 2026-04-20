@@ -152,6 +152,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '시청점', address: '서울 중구 을지로 6, JEI재능교육빌딩 1층', status: 'active', phone: '0507-1387-8573' },
     ],
+    chefPhoto: '/images/brands/story/jinjin-mandu/artisan.jpg',
     image: '/images/brands/jinjin-mandu.jpg',
     logo: '/images/brands/logos/jinjin-mandu.png',
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
@@ -160,9 +161,9 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/jinjin-mandu/store-1.jpg', '/images/brands/gallery/jinjin-mandu/store-2.jpg', '/images/brands/gallery/jinjin-mandu/store-3.jpg', '/images/brands/gallery/jinjin-mandu/store-4.jpg', '/images/brands/gallery/jinjin-mandu/store-5.jpg', '/images/brands/gallery/jinjin-mandu/store-6.jpg', '/images/brands/gallery/jinjin-mandu/menu-1.jpg', '/images/brands/gallery/jinjin-mandu/menu-2.jpg', '/images/brands/gallery/jinjin-mandu/menu-3.jpg', '/images/brands/gallery/jinjin-mandu/menu-4.jpg', '/images/brands/gallery/jinjin-mandu/menu-5.jpg'],
     cuisine: '한식',
     menuHighlights: [
-      { name: '손만두떡국', price: '18,000원' },
-      { name: '손만두술국', price: '19,000원' },
-      { name: '어복쟁반 (대)', price: '103,000원' },
+      { name: '손만두떡국', price: '18,000원', photo: '/images/brands/story/jinjin-mandu/menu1.jpg' },
+      { name: '손만두술국', price: '19,000원', photo: '/images/brands/story/jinjin-mandu/menu2.jpg' },
+      { name: '어복쟁반 (대)', price: '103,000원', photo: '/images/brands/story/jinjin-mandu/menu3.jpg' },
     ],
     reservationLinks: [
       { location: '시청점', url: 'https://app.catchtable.co.kr/ct/shop/jinjinmanducityhall' },
