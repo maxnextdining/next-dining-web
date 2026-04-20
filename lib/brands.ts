@@ -373,15 +373,16 @@ export const brands: Brand[] = [
     nameEn: 'CAFÉ LE SENS',
     category: 'cafe',
     format: 'lounge',
-    tagline: '감각을 깨우는 유럽형 라이프스타일 베이커리 카페',
+    tagline: '머무는 모든 순간이 휴식이 되는 감각적인 베이커리 카페',
     description:
-      '카페 르상스(Le Sens — 감각)는 미식과 공간 경험을 결합한 감각 중심 카페입니다. 베이커리, 차, 공간 디자인까지 통합된 라이프스타일을 제안하며, SNS 자발적 바이럴 중심으로 빠른 인지도를 확보했습니다. 전시·브랜드 협업을 통해 카페 이상의 목적 방문형 공간으로 자리잡았습니다.',
-    story: '카페는 단순히 커피를 마시는 곳이 아닙니다. 감각을 깨우고 잠시 숨을 고르는, 머무르는 소비를 만드는 체류형 공간.',
+      '카페 르상스는 바쁜 일상에서 잠시 벗어나고자 하는 이들에게 따뜻한 위로와 세련된 미식의 경험을 동시에 제공하는 프리미엄 베이커리 카페입니다.',
+    story:
+      '감각을 깨우고 잠시 숨을 고르는 체류형 공간.',
     storyElements: {
-      originStory: 'Le Sens — 프랑스어로 \'감각\'. 사운즈한남의 문화적 에너지와 한남동의 세련된 감성이 만나 탄생한 스페셜티 카페.',
-      ingredientPhilosophy: '엄선된 싱글 오리진 원두와 시즌 디저트. 커피 한 잔에도 산지와 로스팅 프로파일을 고려한 정성이 담깁니다.',
-      signatureMenu: '시그니처 브런치 세트와 시즌 디저트 — 커피와 음식이 조화를 이루는 르상스만의 페어링 경험.',
-      spaceExperience: '사운즈한남 복합문화공간 내 위치. 높은 천장과 자연광이 만드는 개방감, 갤러리처럼 큐레이팅된 공간에서 일상의 작은 사치를 즐깁니다.',
+      originStory: '프랑스 정통 베이커리가 지닌 본질적인 가치 위에 동시대적인 감각을 유연하게 더하며 브랜드의 여정을 시작하였습니다. 단순한 카페의 역할을 넘어, 유럽 특유의 낭만과 여유로운 삶의 방식을 한국의 도심 속에서도 온전히 향유할 수 있는 미식과 문화의 접점을 만들어가고 있습니다.',
+      ingredientPhilosophy: '현지의 오리지널리티를 재현하기 위해 최고급 원재료만을 고집하며 재료가 가진 본연의 풍미를 극대화하는 조리법을 엄격히 준수합니다. 갓 구운 빵의 향기와 엄선된 주류, 그리고 공간을 채우는 음악이 어우러지는 순간을 만나보세요.',
+      signatureMenu: '프랑스 정통 레시피로 구워내어 바삭한 식감과 진한 버터의 풍미가 입안 가득 퍼지는 프렌치 베이커리는 브랜드의 자부심을 상징하는 대표적인 메뉴입니다. 이와 함께 맑고 깊은 향으로 마음의 평온을 돕는 \'오가와 티(Ogawa Tea)\'는 베이커리의 풍미를 차분하게 감싸 안으며 진정한 휴식의 시간을 완성합니다.',
+      spaceExperience: '유럽의 노천 카페를 떠올리게 하는 야외 테라스와 감각적인 인테리어는 방문객에게 시각적인 편안함과 정서적인 휴식을 동시에 제공합니다. 재즈 음악이 흐르는 이 공간에서 즐기는 커피와 티, 와인은 단순한 취식을 넘어선 예술적 영감을 얻는 특별한 경험이 되어, 일상의 작은 순간을 더욱 풍요롭게 채워줍니다.',
     },
     locations: [
       { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', hours: '매일 10:00~22:00 (LO 21:30)' },
@@ -390,7 +391,7 @@ export const brands: Brand[] = [
     logo: '/images/brands/logos/cafe-le-sens.png',
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
     priceRange: '₩₩',
-    accentColor: '#6B705C',
+    accentColor: '#6B4C3B',
     gallery: ['/images/brands/gallery/cafe-le-sens/store-1.jpg', '/images/brands/gallery/cafe-le-sens/store-2.jpg', '/images/brands/gallery/cafe-le-sens/store-3.jpg', '/images/brands/gallery/cafe-le-sens/menu-1.jpg', '/images/brands/gallery/cafe-le-sens/menu-2.jpg', '/images/brands/gallery/cafe-le-sens/menu-3.jpg', '/images/brands/gallery/cafe-le-sens/menu-4.jpg'],
     cuisine: '카페',
     menuHighlights: [
