@@ -359,6 +359,7 @@ export const brands: Brand[] = [
     locations: [
       { name: '성수점 (1호점)', address: '서울 성동구 (2026년 말 오픈 예정)', status: 'coming-soon' },
     ],
+    chefPhoto: '/images/brands/story/menya-always/artisan.jpg',
     image: '/images/brands/menya-always.jpg',
     logo: '/images/brands/logos/menya-always.png',
     keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울', '성수 라멘', '돈코츠 라멘'],
@@ -366,8 +367,8 @@ export const brands: Brand[] = [
     accentColor: '#C2410C',
     cuisine: '라멘',
     menuHighlights: [
-      { name: '레몬 돈코츠 라멘', price: '가격 미정' },
-      { name: '특제 츠케멘', price: '가격 미정' },
+      { name: '레몬 돈코츠 라멘', price: '가격 미정', photo: '/images/brands/story/menya-always/menu1.jpg' },
+      { name: '특제 츠케멘', price: '가격 미정', photo: '/images/brands/story/menya-always/menu2.jpg' },
     ],
   },
   {
