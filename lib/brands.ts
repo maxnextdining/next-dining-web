@@ -110,7 +110,7 @@ export const brands: Brand[] = [
     tagline: '명인의 맛을 일상으로, 정갈한 한 그릇의 미학',
     description:
       '봉우리 소반은 봉우리 한정식의 정신을 이어받아 보다 가볍고 편안한 형태로 즐길 수 있는 한식 다이닝입니다.',
-    story: '소반(小盤)처럼 소박하지만 정성으로 가득한 한 끼.',
+    story: '건강한 식재료가 주는 에너지와 품격 있는 다이닝의 가치를 고객의 일상에 전달하고자 합니다.',
     storyElements: {
       originStory: '명인의 손맛을 더 많은 사람이 더 자주 경험할 수 있도록 \'소반 문화\'의 현대적 계승을 목표로 시작되었습니다. 복잡한 코스 요리 대신 음식 본연의 깊은 맛과 정갈한 담음새에 집중하여, 바쁜 현대인의 일상 속에 한식의 새로운 표준을 제시합니다.',
       ingredientPhilosophy: '나물, 김치, 만두 등 한식의 핵심 요소를 각 분야 명장들의 엄선된 레시피로 완성하여 맛의 깊이와 안정성을 동시에 확보했습니다. 신선한 제철 식자재를 기반으로 표준화된 조리 시스템을 구축하여, 언제 어디서나 명인의 손맛을 동일한 퀄리티로 경험할 수 있도록 운영합니다.',
@@ -124,7 +124,7 @@ export const brands: Brand[] = [
     logo: '/images/brands/logos/bongwoori-soban.png',
     keywords: ['여주 맛집', '여주신세계 식당', '아울렛 한식', '경기도 한정식'],
     priceRange: '₩₩₩',
-    accentColor: '#A0522D',
+    accentColor: '#8B6914',
     gallery: ['/images/brands/gallery/bongwoori-soban/store-1.jpg', '/images/brands/gallery/bongwoori-soban/store-2.jpg', '/images/brands/gallery/bongwoori-soban/store-3.jpg', '/images/brands/gallery/bongwoori-soban/store-4.jpg', '/images/brands/gallery/bongwoori-soban/menu-1.jpg', '/images/brands/gallery/bongwoori-soban/menu-2.jpg', '/images/brands/gallery/bongwoori-soban/menu-3.jpg', '/images/brands/gallery/bongwoori-soban/menu-4.jpg'],
     cuisine: '한식',
   },
