@@ -251,7 +251,6 @@ export default async function AboutPage() {
                         >
                           <div
                             className="w-14 h-14 shrink-0 rounded-xl flex items-center justify-center p-2"
-                            style={{ background: "#1A1A1A" }}
                           >
                             <Image
                               src={brand.logo}
