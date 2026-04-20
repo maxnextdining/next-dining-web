@@ -59,6 +59,7 @@ const FORMAT_LABEL: Record<string, string> = {
   casual: "Casual",
   foodcourt: "Food Court",
   lounge: "Lounge",
+  cafe: "Café",
   pub: "Pub",
 };
 

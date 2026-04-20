@@ -42,6 +42,7 @@ const FORMAT_LABEL: Record<BrandFormat, string> = {
   foodcourt: "푸드코트",
   lounge: "카페라운지",
   'lounge club': "라운지 클럽",
+  cafe: "카페",
   pub: "펍·라운지",
 };
 
@@ -51,6 +52,7 @@ const FORMAT_COLOR: Record<BrandFormat, string> = {
   foodcourt: "bg-[#6B8CAE]/15 text-[#6B8CAE]",
   lounge: "bg-[#9B8DC8]/15 text-[#9B8DC8]",
   'lounge club': "bg-[#6BAE8C]/15 text-[#6BAE8C]",
+  cafe: "bg-[#D4A574]/15 text-[#D4A574]",
   pub: "bg-[#6BAE8C]/15 text-[#6BAE8C]",
 };
 

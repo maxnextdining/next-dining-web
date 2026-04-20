@@ -1,5 +1,5 @@
 export type BrandCategory = 'japanese' | 'korean' | 'cafe' | 'american';
-export type BrandFormat = 'dining' | 'casual' | 'foodcourt' | 'lounge' | 'lounge club' | 'pub';
+export type BrandFormat = 'dining' | 'casual' | 'foodcourt' | 'lounge' | 'lounge club' | 'cafe' | 'pub';
 export type LocationStatus = 'active' | 'coming-soon' | 'closed';
 
 export interface BrandLocation {
@@ -376,7 +376,7 @@ export const brands: Brand[] = [
     name: '카페 르상스',
     nameEn: 'CAFÉ LE SENS',
     category: 'cafe',
-    format: 'lounge',
+    format: 'cafe',
     tagline: '머무는 모든 순간이 휴식이 되는 감각적인 베이커리 카페',
     description:
       '카페 르상스는 바쁜 일상에서 잠시 벗어나고자 하는 이들에게 따뜻한 위로와 세련된 미식의 경험을 동시에 제공하는 프리미엄 베이커리 카페입니다.',
