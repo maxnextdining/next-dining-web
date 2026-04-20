@@ -127,6 +127,9 @@ export const brands: Brand[] = [
     accentColor: '#8B6914',
     gallery: ['/images/brands/gallery/bongwoori-soban/store-1.jpg', '/images/brands/gallery/bongwoori-soban/store-2.jpg', '/images/brands/gallery/bongwoori-soban/store-3.jpg', '/images/brands/gallery/bongwoori-soban/store-4.jpg', '/images/brands/gallery/bongwoori-soban/menu-1.jpg', '/images/brands/gallery/bongwoori-soban/menu-2.jpg', '/images/brands/gallery/bongwoori-soban/menu-3.jpg', '/images/brands/gallery/bongwoori-soban/menu-4.jpg'],
     cuisine: '한식',
+    menuHighlights: [
+      { name: '산나물 비빔밥', price: '16,000원', photo: '/images/brands/story/bongwoori-soban/menu1.jpg' },
+    ],
   },
   {
     id: 'jinjin-mandu',
