@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&amp;family=Manrope:wght@300;400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e7e2d6",
+              "on-secondary-fixed": "#1d1c14",
+              "surface-container-high": "#ece7e2",
+              "on-tertiary": "#ffffff",
+              "outline-variant": "#c5c6cf",
+              "on-error-container": "#93000a",
+              "surface": "#fdf9f3",
+              "on-secondary-container": "#656359",
+              "tertiary-container": "#352816",
+              "inverse-primary": "#b7c6ee",
+              "outline": "#75777f",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede8",
+              "surface-variant": "#e6e2dd",
+              "on-tertiary-fixed-variant": "#544430",
+              "surface-bright": "#fdf9f3",
+              "tertiary-fixed": "#f6dfc3",
+              "primary-fixed": "#d9e2ff",
+              "on-background": "#1c1c19",
+              "tertiary-fixed-dim": "#d9c3a8",
+              "surface-container-highest": "#e6e2dd",
+              "surface-tint": "#4f5e81",
+              "on-primary-fixed-variant": "#384668",
+              "on-surface": "#1c1c19",
+              "primary-fixed-dim": "#b7c6ee",
+              "secondary-container": "#e4dfd3",
+              "on-tertiary-fixed": "#251908",
+              "on-primary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#45464e",
+              "tertiary": "#1f1404",
+              "on-error": "#ffffff",
+              "on-tertiary-container": "#a28f76",
+              "background": "#fdf9f3",
+              "primary": "#041534",
+              "on-primary-container": "#8392b7",
+              "primary-container": "#1b2a4a",
+              "surface-dim": "#ddd9d4",
+              "on-secondary-fixed-variant": "#49473e",
+              "secondary-fixed-dim": "#cbc6ba",
+              "on-secondary": "#ffffff",
+              "surface-container-low": "#f7f3ee",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#0a1a3a",
+              "inverse-on-surface": "#f4f0eb",
+              "secondary": "#615e55",
+              "inverse-surface": "#31302d"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif KR", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.noise-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCiVzJbj48fm5MCTGP_YYcApZ_b4sM63y4eBTerp7wWCqFn8D6bohnoElX1fwQ0TmrA5cxd3N4GbhIIDfzG3HCiSBIrj7RDBWem8LmjLp56SJxKfQDNGYBRnY7UkjpP8eRRW6Uwfl-nK4_N_8HsprT5kOMNyRbIq7vGudaO-yj2kfY7HWkFTEd5G4HkgbR9XPenj6WFU1pV73uqcWljycMGnG2STi-CEosWBBtq9CB-oUMUrm0IjgmtMowrVT_CQGy4-On6KqegMHw);
+    opacity: 0.03;
+    pointer-events: none
+    }
+.hero-gradient {
+    background: radial-gradient(circle at 50% 0%, #384668 0%, #1B2A4A 100%)
+    }
+.text-justified {
+    text-align: justify;
+    text-justify: inter-word
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center px-10 py-6 max-w-full mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#041534] dark:text-[#FDF9F3] font-headline">JINKAWA</div>
+<div class="hidden md:flex gap-10">
+<a class="font-['Noto_Serif'] font-medium tracking-tight text-[#041534]/60 dark:text-[#FDF9F3]/60 hover:text-[#041534] dark:hover:text-[#FDF9F3] transition-colors" href="#">Our Brands</a>
+<a class="font-['Noto_Serif'] font-medium tracking-tight text-[#041534]/60 dark:text-[#FDF9F3]/60 hover:text-[#041534] dark:hover:text-[#FDF9F3] transition-colors" href="#">Locations</a>
+<a class="font-['Noto_Serif'] font-medium tracking-tight text-[#041534]/60 dark:text-[#FDF9F3]/60 hover:text-[#041534] dark:hover:text-[#FDF9F3] transition-colors" href="#">About</a>
+<a class="font-['Noto_Serif'] font-medium tracking-tight text-[#041534]/60 dark:text-[#FDF9F3]/60 hover:text-[#041534] dark:hover:text-[#FDF9F3] transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary-container text-white px-8 py-3 font-medium active:scale-95 duration-200 ease-in-out">Inquiry</button>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-[768px] hero-gradient overflow-hidden flex flex-col justify-end pb-20 px-10 md:px-20">
+<div class="absolute inset-0 noise-overlay"></div>
+<div class="relative z-10 max-w-7xl mx-auto w-full">
+<a class="inline-flex items-center gap-2 text-on-primary-container/80 hover:text-on-primary mb-12 transition-colors font-label uppercase tracking-widest text-xs" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                레스토랑 전체 보기
+            </a>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<span class="px-4 py-1 bg-white/10 backdrop-blur-xl border border-white/10 text-white text-xs tracking-widest uppercase font-label">일식</span>
+<span class="text-on-primary-container font-label tracking-widest text-xs">₩₩₩</span>
+</div>
+<div class="space-y-2">
+<span class="block text-on-primary-container font-label tracking-[0.4em] text-sm font-bold opacity-60">JINKAWA</span>
+<h1 class="text-white font-headline font-bold text-7xl md:text-[8rem] leading-none tracking-tighter">진가와</h1>
+</div>
+<p class="text-on-primary-container/80 font-headline text-lg md:text-2xl font-light tracking-tight mt-4">
+                    370년 전통, 나가사키 수연면의 계보
+                </p>
+</div>
+</div>
+<!-- Decorative background element -->
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+<img alt="artistic macro shot of thin japanese noodles" class="w-full h-full object-cover mix-blend-overlay" data-alt="dramatic close-up of traditional japanese white noodles arranged in a swirling pattern with sharp shadows and highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmzwxvk-LVm6g9YIcsJ-JO9c-FZyPh4IN_HW1a5EgRvicBLzt7i9gtSfPAjc8bPb0XUE_EpGJpaOSPHi-CSkf4jJLI2JsAo_SREElCXS3WbZRhkG53yGRUhkLgQXHemWVu1ZDInL9_zoSJ_ofoHIkqUGaxLzH2ICO7YTB_96xo7HeWk5MKKB3im3n_EdcZvPOd_njc_8AkhhSPxMxykpcj2RSyXPSZtp9SnkYW0xRisfJqHXdkzctClsuivh82tpL0-ZvVK2asZo4"/>
+</div>
+</header>
+<!-- About Section -->
+<section class="bg-surface py-32 px-10 md:px-20 overflow-hidden">
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-20 items-center">
+<div class="md:col-span-7">
+<h2 class="font-headline text-4xl md:text-5xl text-primary mb-10 leading-tight">일본 장인 정신의<br/>정점에 서다</h2>
+<div class="space-y-8 text-on-surface-variant text-lg leading-relaxed text-justified font-body">
+<p>
+                        진가와는 일본 큐슈 나가사키현 시마바라시의 370년, 12대를 이어온 '진가와 토시오' 가족의 수연면(Hand-pulled noodles) 전문점입니다. 3일 동안 4번의 숙성을 거쳐 만들어지는 면은 기계면과는 비교할 수 없는 매끄러움과 탄력을 자랑합니다.
+                    </p>
+<blockquote class="border-l-4 border-primary pl-8 py-4 italic font-headline text-2xl text-primary">
+                        "면을 만드는 것은 기다림의 예술입니다. 날씨와 습도에 맞춰 매일 미세하게 배합을 달리하는 것, 그것이 370년 전통을 지키는 유일한 방법입니다."
+                    </blockquote>
+</div>
+</div>
+<div class="md:col-span-5 relative">
+<img alt="chef preparing noodles" class="w-full grayscale brightness-90 hover:grayscale-0 transition-all duration-700" data-alt="monochrome cinematic shot of a master chef's hands delicately pulling thin wheat noodles in a traditional wooden workshop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLWLlcZGBOmV2VhfVxwL1KVna2V-ZiZwMmSs-hTohgQyTpin_M5yK7xx6Op6Ij3z3IdFG9Rd8U1bqACBKL9GjWDljnKo-5pv9Z1X7mnbUf19rBfG9vRDxDKpr2pFJ1eeIKQNkgzsaJIHkEf9MQFyHWFTJmmZ0NVRTDDLC0d_GBPpqxb4wLRBS2QQ6SmTbKeFQSYasxWfqn9vTvFLIhBzdJHtM4nnjvPNE-TGepFb1yR1IAsZ-chwGh3IC6zf64DsWFGKzBh6nxf3Q"/>
+</div>
+</div>
+</section>
+<!-- Story Sections -->
+<section class="bg-surface-container-low py-32">
+<div class="max-w-7xl mx-auto px-10 space-y-40">
+<!-- Story 01 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative group h-[500px] overflow-hidden bg-primary-container">
+<div class="absolute inset-0 noise-overlay z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-white/10 font-headline text-[15rem] font-bold">01</span>
+</div>
+<div class="absolute bottom-10 left-10 w-24 h-px bg-primary z-20"></div>
+<img alt="Japanese landscape" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" data-alt="atmospheric landscape of nagasaki mountains shrouded in mist at dawn with subtle blue and grey tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQDRKm15vTJ4XhlIZ_30xQJCXJqWi84S0CxrllnRq-nsif65VgysDsbjzYddeI9UsiP1WPitABLDZ7uevc-3opkEejxSPOEFKiEcWtwyPQtayYTP9TNCX5T9zCzy1oxa47hvZynbFHxWN3N8IlVkUKYC-pJg7VatjAnmxCOsUYRYxzU0ohF4JBUOJUbKyldAX6l6NFcVFpIIM5Duk3aHhC1JURGucWtRtQavulh34YhxeNcyCYfnwDFfsEYp5_R6XttvZb9kto8f0"/>
+</div>
+<div class="space-y-6">
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant/60">The Origin</span>
+<h3 class="font-headline text-4xl text-primary">01 탄생 이야기</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                        1640년부터 시작된 시마바라의 수연면 전통은 진가와 가문에 의해 현대까지 보존되었습니다. 일본 국가 지정 무형문화재이자 세계 미식 협회(iTQi)에서 3스타를 수상하며 전 세계적으로 그 가치를 인정받고 있습니다.
+                    </p>
+</div>
+</div>
+<!-- Story 02 (Reversed) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="order-2 md:order-1 space-y-6">
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant/60">Craftsmanship</span>
+<h3 class="font-headline text-4xl text-primary">02 장인의 길</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                        진가와 토시오 장인은 홋카이도산 최고급 밀가루와 깨끗한 물, 그리고 천일염만을 사용하여 면을 빚습니다. 인공적인 첨가물 없이 오직 온도와 습도의 조절만으로 완성되는 수연면은 식감의 정수를 보여줍니다.
+                    </p>
+</div>
+<div class="order-1 md:order-2 relative group h-[500px] overflow-hidden bg-primary-container">
+<div class="absolute inset-0 noise-overlay z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-white/10 font-headline text-[15rem] font-bold">02</span>
+</div>
+<div class="absolute bottom-10 right-10 w-24 h-px bg-primary z-20"></div>
+<img alt="chef hands" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" data-alt="extreme close-up of weathered hands dusting flour over wooden surfaces in a dark ambient lighting kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZpqM__OrtaCfXLm3_51NrvImznOVq-NeMKCESmK9ku3WKV4gyBsFSpnd2bbmGdusn-h6K7-N9vXP-CFEURqaGZOdyZWL4ZDijQ-ruaVNsMeS2qwHavPMEJJQE0ZPFkoDcEa7rPaDyAJQFh6diY6SpyYaKdCIL7_mWNh2Sjb2t_Fv5cvw2_Po3ZlyrTDghpqKky2JZHu3o2yZ7WsaOgf4DMCr7z2lOYAOV1md9q2zwcPqAwvXVenxEBh6DMIb3VOTEp-fw3Af3VY4"/>
+</div>
+</div>
+<!-- Story 03 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative group h-[500px] overflow-hidden bg-primary-container">
+<div class="absolute inset-0 noise-overlay z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-white/10 font-headline text-[15rem] font-bold">03</span>
+</div>
+<div class="absolute bottom-10 left-10 w-24 h-px bg-primary z-20"></div>
+<img alt="ingredients" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" data-alt="still life of premium ingredients like japanese flour sacks and organic salts on a stone surface with soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgOr1aX7OpZXVRXbqxMnFlCZ_QXjnT55r572wOH4c9D7BypsWDfPK9KD7xYMg9qnZvLR-ViQXez4wjp18vAC9YPOTZGK2gso_xTH47bH77gSBg8v9z6bhyosNR-ozBZ5GIB0VHasceZxtX8HpgP4ARNgmMI2hKBtgXawSG9xF_c-O8T4F0kdbhzzVk0caC1N6Gn_vH4C2AO5_sGTNV4724U6r543mwiE6CbOFw0ZVZC8JhaKxTVCFZj77JqFALIagGQYu8gVmBVXQ"/>
+</div>
+<div class="space-y-6">
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant/60">Ingredients</span>
+<h3 class="font-headline text-4xl text-primary">03 식재료 철학</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                        면의 맛을 완성하는 것은 비단 면뿐만이 아닙니다. 한국 매장에서는 진가와 본관에서 직수입한 소스와 최고의 식재료를 사용하여 본토의 맛을 그대로 재현합니다.
+                    </p>
+</div>
+</div>
+<!-- Story 04 (Reversed) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="order-2 md:order-1 space-y-6">
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant/60">Signature</span>
+<h3 class="font-headline text-4xl text-primary">04 시그니처</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                        부드러운 면발과 진한 육수가 조화를 이루는 소바와 우동, 그리고 바삭한 식감이 예술인 덴푸라는 진가와를 대표하는 시그니처 메뉴입니다. 면 고유의 풍미를 가장 잘 느낄 수 있는 자루 소바를 추천합니다.
+                    </p>
+</div>
+<div class="order-1 md:order-2 relative group h-[500px] overflow-hidden bg-primary-container">
+<div class="absolute inset-0 noise-overlay z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-white/10 font-headline text-[15rem] font-bold">04</span>
+</div>
+<div class="absolute bottom-10 right-10 w-24 h-px bg-primary z-20"></div>
+<img alt="noodle bowl" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" data-alt="perfectly plated zaru soba on a wooden tray with soy dipping sauce and wasabi bowl in an elegant minimalist setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIWuC5QZ3U6qLRbzYN-XVoKIAOmhn5ShXNf32JZTQfmLSNS9J207ahg6JZSTNakp4qeJg3BtFka7iizvuMR7gj1MUYw6__TkecVZvGX5h1N_ZHQ2jWNwU1RFnUzVwSRmSofQJM18xRRv3qFRfzomxhJY0_lvD6KOEz8ugznwPu8XBHKmwaSIVlO5S3rA36_DWfigiDYqiYi4lEGr8r4n2aTL1HFjVjG_65t9noL1gkNkdZsSpavM0Yb9Wl_zBuoGWat0VBPZFwcnU"/>
+</div>
+</div>
+<!-- Story 05 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative group h-[500px] overflow-hidden bg-primary-container">
+<div class="absolute inset-0 noise-overlay z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-white/10 font-headline text-[15rem] font-bold">05</span>
+</div>
+<div class="absolute bottom-10 left-10 w-24 h-px bg-primary z-20"></div>
+<img alt="restaurant interior" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" data-alt="minimalist modern japanese interior with dark wood furniture and indirect warm lighting creating a calm sanctuary atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjuU_-EFl3tmiHrxRQXsBABjsGzz7JPjj-GUVshkL-mXKXIVCmy8D7EmaZP3qT7hppPZBnv3WXiORvLKW1JJRwXAPA7kiCfogAsuJp1WddO8RKRzn-ruHKmhtboB-ATzB18pgbwquzsoBwMnXd_rPHJrdidqn_74C0gQj1N2L8u2WGRIlFHPIEuYZRx85RrBvJKdwApt-a83q_r7g9NKnpKgKJoPOYpM52Vo1hkPV-GS_D1KLHLqiu-bKmM7qxgpsrgjN3YnUrJfc"/>
+</div>
+<div class="space-y-6">
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant/60">Atmosphere</span>
+<h3 class="font-headline text-4xl text-primary">05 공간 경험</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                        진가와는 단순한 식사 장소를 넘어 일본 특유의 정갈함과 고요함을 담은 공간을 지향합니다. 절제된 미학이 돋보이는 인테리어는 온전히 음식의 맛에 집중할 수 있는 환경을 제공합니다.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Section -->
+<section class="bg-surface py-32 px-10 md:px-20">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-8">
+<h2 class="font-headline text-5xl text-primary">Premium Menu</h2>
+<span class="font-label text-sm tracking-widest text-on-surface-variant uppercase">Artisan Crafted Selection</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12">
+<!-- Menu Item 1 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container-high overflow-hidden mb-8">
+<img alt="Cold Soba" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="chilled zaru soba noodles neatly coiled on a bamboo mat with decorative garnish and dipping sauce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGE7D2ngbEBSObrjI2jpGJpP4wAdU4ISW2Qr45mOeQNVtoJZezu9l-hwMi1oH7-5eNm4cEWY4q03kGOCon-F4WDe37KpD46OhcpFAJDZ03gr8xgtMOz_i1rePX8BcgztvuJ6bmTlncoBI4jYpN9_z_HZMU5CXya7fKCjLpBoQXDLUJ6b7lctMSR2pv1CTvyn5pqBrVX9f4RC395pRWDoboB_OZISiIgx1u_skfGLT2lbSnChHwlYBYQydwwxKLxN1wbjaP9TfizlU"/>
+</div>
+<div class="flex justify-between items-start">
+<div class="space-y-2">
+<h4 class="font-headline text-xl text-primary">냉소바 정식</h4>
+<p class="text-on-surface-variant text-sm font-body">수연면의 매끄러움과 쯔유의 조화</p>
+</div>
+<span class="text-primary font-bold">₩ 22,000</span>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container-high overflow-hidden mb-8">
+<img alt="Tempura" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="crispy golden assorted tempura including large prawns and vegetables presented in a traditional wicker basket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXBHfEccXkiLbfYsTUtPHokm1qtMfr0vHoKVLikCDqILS4bXT5YtXQdDxoCdrD-MgnpvRq7mm7hdbNnxuGWyqnfpJdzx1ByJJnuRWG3q4jWEDy-rBM_16C6-SjP4qF8jJ4wGXe7XrexINlrwSXToPIC8spa7GWfHap1nkOL3lX6DCXFFw82NmT_icG0gr62a7VQCMcIeH8MHcV1ZesRAvArT3oMp8weF5S3iPfIo6LHMABURBv9PWbMGUS4zF-eZsE7-qDeTTYiQw"/>
+</div>
+<div class="flex justify-between items-start">
+<div class="space-y-2">
+<h4 class="font-headline text-xl text-primary">모듬 튀김</h4>
+<p class="text-on-surface-variant text-sm font-body">셰프가 엄선한 계절 식재료 튀김</p>
+</div>
+<span class="text-primary font-bold">₩ 35,000</span>
+</div>
+</div>
+<!-- Menu Item 3 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container-high overflow-hidden mb-8">
+<img alt="Hot Udon" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="warm bowl of udon noodles with sliced scallions and narutomaki in a rich steaming broth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMw0HfryKHid1edpIgfHpKupZI22dSD4EDONq6hWj3Sj3nDKfd9buvTwGOJ1KQRtnxwxsdMhIMwWgB7wCQlPWolxALspnxhNJM3R79pdE1zjwXDbDQZbz7tiM8c7_CZkRnuoyLUamHuy4f6KeVRPhZR85ENM4njZ9AZQqWHKV_mslKGBihA2VFMzSYuDI0OQidhP3SYD2GRkjLfjNobUNkKkfy9HY8-xRKm2STG9IIiqyfa429bej7Fav-nhMHtT1udtPb4gx5q_k"/>
+</div>
+<div class="flex justify-between items-start">
+<div class="space-y-2">
+<h4 class="font-headline text-xl text-primary">온우동</h4>
+<p class="text-on-surface-variant text-sm font-body">370년 비법 육수로 맛을 낸 우동</p>
+</div>
+<span class="text-primary font-bold">₩ 18,000</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Locations Section -->
+<section class="bg-surface-container py-32 px-10">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline text-4xl text-primary mb-16 text-center">Locations</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Location 1 -->
+<div class="bg-surface p-12 flex flex-col h-full border border-outline-variant/10">
+<div class="flex justify-between items-start mb-10">
+<span class="bg-primary/5 text-primary text-[10px] tracking-widest px-3 py-1 font-label uppercase">Open Now</span>
+<h3 class="font-headline text-2xl text-primary">역삼점</h3>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-12 flex-grow">
+                        서울특별시 강남구 테헤란로 25길 15<br/>
+                        (역삼동 642-1)
+                    </p>
+<button class="w-full bg-primary text-white py-4 font-label text-sm tracking-widest hover:bg-primary-container transition-colors">캐치테이블 예약</button>
+</div>
+<!-- Location 2 -->
+<div class="bg-surface p-12 flex flex-col h-full border border-outline-variant/10">
+<div class="flex justify-between items-start mb-10">
+<span class="bg-primary/5 text-primary text-[10px] tracking-widest px-3 py-1 font-label uppercase">Open Now</span>
+<h3 class="font-headline text-2xl text-primary">잠실롯데월드몰점</h3>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-12 flex-grow">
+                        서울특별시 송파구 올림픽로 300<br/>
+                        롯데월드몰 6F
+                    </p>
+<button class="w-full bg-primary text-white py-4 font-label text-sm tracking-widest hover:bg-primary-container transition-colors">캐치테이블 예약</button>
+</div>
+<!-- Location 3 -->
+<div class="bg-surface p-12 flex flex-col h-full border border-outline-variant/10">
+<div class="flex justify-between items-start mb-10">
+<span class="bg-primary/5 text-primary text-[10px] tracking-widest px-3 py-1 font-label uppercase">Open Now</span>
+<h3 class="font-headline text-2xl text-primary">부산점</h3>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-12 flex-grow">
+                        부산광역시 해운대구 센텀4로 15<br/>
+                        신세계백화점 센텀시티점 9F
+                    </p>
+<button class="w-full bg-primary text-white py-4 font-label text-sm tracking-widest hover:bg-primary-container transition-colors">캐치테이블 예약</button>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="relative py-40 px-10 overflow-hidden bg-primary-container">
+<div class="absolute inset-0 noise-overlay"></div>
+<div class="relative z-10 max-w-4xl mx-auto text-center">
+<h2 class="font-headline text-4xl md:text-6xl text-white mb-12 leading-tight">진가와를 직접<br/>경험해 보세요.</h2>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<a class="bg-white text-primary px-12 py-5 font-bold tracking-widest uppercase text-sm hover:bg-surface transition-colors" href="#">Book a Table</a>
+<a class="border border-white/20 text-white px-12 py-5 font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-colors" href="#">View All Menus</a>
+</div>
+</div>
+<!-- Abstract gradient radial -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full hero-gradient opacity-30 blur-3xl pointer-events-none"></div>
+</section>
+<!-- More Brands Section -->
+<section class="bg-surface py-32 px-10">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline text-3xl text-primary mb-16">More Brands</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high mb-4 overflow-hidden relative">
+<img alt="Brand 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="minimalist exterior of a modern upscale restaurant with subtle brand signage and large glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX51J972U0RthbLC1-cA1BtlJIHTG22RNHA9_GMJDwbMj7NnPLqCJedVRVGJe3ig8J-22-j9cp9n_zkBYVRiBqHqVN2EMCX_3wbJP2UrbwjwRAY4b5qPv6eRJtMbIyq277bkFwX2-HLc5_d2cUHHJ2wsR2mEPS6d2drSmXqUR31-Kj6MIWuUUYnsC00mOo7-rAEJsnnUKrqHoE4oIf9ArMmUnt6lpWrlHer5fDNp2b_Y5w4DA3u77JVG_kCuebIJcxkosI56ebXxk"/>
+</div>
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant">Sakagura</span>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high mb-4 overflow-hidden relative">
+<img alt="Brand 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="top-down artistic view of sushi arrangement on a dark slate plate with dramatic spot lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkLVL83jnsF0ZbxZpioH9hWR75eCLhaJttMiPXdzjUgx4KFZK7Q0pxH534s_FMC7AWAiyX7GsdA0EqjN9SvJVvOBYHkIUgiEAU0eF8MBlSPSBrjG-OOeFxEwUwH6wBJn8qqn62au2R3o77bzjp09gLPGndPi3Cduu67g489WLVbgnJO4O0e3QJU6kfHb0O-hnck0cTLwPx4Yl-8LA7n-fcPX7s3YUdXTeltvS2JPdeRyPymjeqvgzFdoztVMFYo8Dv0WgTz19OrLg"/>
+</div>
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant">Takumi</span>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high mb-4 overflow-hidden relative">
+<img alt="Brand 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="macro texture of polished dark wood grains used in premium japanese interior design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-w2x4d0g5F2lfUGY4z6Fcr2Z-qj3UH-pj4GhGAkDBHesB16od2ddJRTlXl-qs_zNRppAF2XN-aF7wqywdYBpb8H4xJKoRLMRjRo5amjVkFbuo_htgh6r7cW4HGV9Ms8IqS7pXIqG-gDs8G7mDt8sv1EsMq7mb0mKjLPmFcZJC2a4aIqhUObnfJ0x6vvVwErKkeTRm9EGdArtGoUDh_PSHxt41Y7_ZeumUxgi98hlM_lNd1SfVLizFok2T2uz42MHK7L0B-FKkKNE"/>
+</div>
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant">Izakaya J</span>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high mb-4 overflow-hidden relative">
+<img alt="Brand 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="abstract architectural lines of a contemporary building with warm glowing lights against a night sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZK5f9go5-G5HZpz7r72HjH5JO2hHSrt0B7r1vHevsWtGFBNaAraUKtp0_y5RJnfzh-9meWx4D3dMqfBA-wkfW4HI-mVwP8YDofMeuI9itVVrrjWmLzc_7RkUqOP2ht0ZLEtpv7ykNXfdiqkbm7sc6pcS6grD9cFyvRALKvOCX_CjPODmLGtsat8cJXmqzosbS_38ZVvHYzJauje39Ko7vy1nzgdS10sDcxBd4R0wDPR1FRxrtZuimtJSR5nndzXZxcXEa0mz8Npg"/>
+</div>
+<span class="font-label text-xs tracking-widest uppercase text-on-surface-variant">Noodle Bar</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#041534] dark:bg-black relative w-full py-20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-10 max-w-7xl mx-auto border-t border-[#1B2A4A]/20 pt-20">
+<div>
+<div class="text-xl font-bold text-[#FDF9F3] mb-8 font-headline">JINKAWA</div>
+<p class="text-[#FDF9F3]/50 text-sm max-w-md leading-relaxed font-body">
+                    진가와는 370년 전통의 일본 나가사키현 무형문화재 수연면을 선보입니다. 
+                    정직한 식재료와 장인의 손길로 완성된 미식의 경험을 약속합니다.
+                </p>
+</div>
+<div class="flex flex-col md:items-end justify-between gap-12">
+<div class="flex gap-10">
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-[#FDF9F3]/50 hover:text-[#FDF9F3] hover:underline decoration-1 underline-offset-8 transition-all" href="#">Privacy Policy</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-[#FDF9F3]/50 hover:text-[#FDF9F3] hover:underline decoration-1 underline-offset-8 transition-all" href="#">Terms of Service</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-[#FDF9F3]/50 hover:text-[#FDF9F3] hover:underline decoration-1 underline-offset-8 transition-all" href="#">Sitemap</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-[#FDF9F3]/50 hover:text-[#FDF9F3] hover:underline decoration-1 underline-offset-8 transition-all" href="#">Brand Story</a>
+</div>
+<div class="text-[#FDF9F3]/30 text-xs tracking-widest font-label">
+                    © 2024 JINKAWA. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+</body></html>

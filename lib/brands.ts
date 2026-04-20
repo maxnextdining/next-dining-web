@@ -395,9 +395,9 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/cafe-le-sens/store-1.jpg', '/images/brands/gallery/cafe-le-sens/store-2.jpg', '/images/brands/gallery/cafe-le-sens/store-3.jpg', '/images/brands/gallery/cafe-le-sens/menu-1.jpg', '/images/brands/gallery/cafe-le-sens/menu-2.jpg', '/images/brands/gallery/cafe-le-sens/menu-3.jpg', '/images/brands/gallery/cafe-le-sens/menu-4.jpg'],
     cuisine: '카페',
     menuHighlights: [
-      { name: '시즌 케이크', price: '8,000원~', photo: '/images/brands/story/cafe-renaissance/menu1.jpg' },
-      { name: '구움과자', price: '4,500원~', photo: '/images/brands/story/cafe-renaissance/menu2.jpg' },
-      { name: '커피', price: '5,500원~8,000원', photo: '/images/brands/story/cafe-renaissance/menu3.jpg' },
+      { name: '시즌 케이크', price: '8,000원~', photo: '/images/brands/story/cafe-le-sens/menu1.jpg' },
+      { name: '구움과자', price: '4,500원~', photo: '/images/brands/story/cafe-le-sens/menu2.jpg' },
+      { name: '커피', price: '5,500원~8,000원', photo: '/images/brands/story/cafe-le-sens/menu3.jpg' },
       { name: '시그니처 브런치 세트', price: '15,000원~' },
     ],
     reservationLinks: [
