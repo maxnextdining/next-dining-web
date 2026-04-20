@@ -195,7 +195,7 @@ export const brands: Brand[] = [
       { name: '광화문점', address: '서울 종로구 종로1길 50 더케이트윈타워 지하1층', status: 'active' },
       { name: '잠실롯데월드몰점', address: '서울 송파구 올림픽로 300, 롯데월드몰 6층', status: 'active', phone: '0507-1349-4625', hours: '매일 10:30~22:00 (BT 15:00~17:00)' },
       { name: '부산 롯데백화점점', address: '부산 부산진구 가야대로 772, 롯데백화점 부산본점 9층', status: 'active', phone: '051-810-3997', hours: '매일 10:30~20:30' },
-      { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'closed' },
+
     ],
     image: '/images/brands/jinkawa.jpg',
     logo: '/images/brands/logos/jinkawa.png',
