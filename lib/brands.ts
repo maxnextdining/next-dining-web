@@ -292,9 +292,10 @@ export const brands: Brand[] = [
     accentColor: '#2D3436',
     gallery: ['/images/brands/gallery/daisen/store-1.jpg', '/images/brands/gallery/daisen/store-2.jpg', '/images/brands/gallery/daisen/store-3.jpg', '/images/brands/gallery/daisen/store-4.jpg', '/images/brands/gallery/daisen/store-5.jpg', '/images/brands/gallery/daisen/menu-1.jpg', '/images/brands/gallery/daisen/menu-2.jpg', '/images/brands/gallery/daisen/menu-3.jpg', '/images/brands/gallery/daisen/menu-4.jpg', '/images/brands/gallery/daisen/menu-5.jpg'],
     cuisine: '프리미엄 스시',
+    chefPhoto: '/images/brands/story/daisen/artisan.jpg',
     menuHighlights: [
-      { name: '런치 코스', price: '50,000원~' },
-      { name: '디너 코스', price: '77,000원~150,000원' },
+      { name: '런치 코스', price: '50,000원~', photo: '/images/brands/story/daisen/menu1.jpg' },
+      { name: '디너 코스', price: '77,000원~150,000원', photo: '/images/brands/story/daisen/menu2.jpg' },
     ],
     reservationLinks: [
       { location: '사운즈한남점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/daisensushi' },
