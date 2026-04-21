@@ -328,12 +328,12 @@ export default async function AboutPage() {
             const RAW_STATS = [
               content?.about?.partner_stats?.stat_1 || "10개 | 프리미엄 브랜드 | 일식·한식·양식·카페",
               content?.about?.partner_stats?.stat_2 || "24 | 전국 직영 매장 | 서울·수원·부산·여주·뉴욕",
-              content?.about?.partner_stats?.stat_3 || "~300억 | 연 매출 규모 | 2025년 기준, 전 매장 직영",
+              content?.about?.partner_stats?.stat_3 || "350억+ | 연 매출 규모 | 2025년 기준, 전 매장 직영",
             ];
             const STAT_FALLBACKS = [
               { value: 10, suffix: "개", label: "프리미엄 브랜드", sub: "일식·한식·양식·카페" },
               { value: 24, suffix: "", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
-              { value: 300, suffix: "억", label: "연 매출 규모", sub: "2025년 기준, 전 매장 직영" },
+              { value: 350, suffix: "억+", label: "연 매출 규모", sub: "2025년 기준, 전 매장 직영" },
             ];
             const stats = RAW_STATS.map((raw, idx) => parseStatString(raw, STAT_FALLBACKS[idx]));
             return (
@@ -345,7 +345,7 @@ export default async function AboutPage() {
                       style={{ border: "1px solid rgba(200,169,110,0.15)" }}
                     >
                       <p className="text-4xl font-bold mb-2" style={{ color: "#C8A96E" }}>
-                        {s.label === "연 매출 규모" && "~"}
+                        {/* 350억+ suffix에 이미 포함 */}
                         <AnimatedCounter value={s.value} suffix={s.suffix} duration={1800} />
                       </p>
                       <p className="text-sm font-semibold mb-1" style={{ color: "#EDEDED" }}>
