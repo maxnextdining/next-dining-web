@@ -159,7 +159,7 @@ export default async function HomePage() {
 
   const heroHeading1 = hero?.heading_1 || "다음 세대를 여는";
   const heroHeading2 = hero?.heading_2 || "글로벌 외식 문화기업";
-  const heroSubtitle = hero?.subtitle || "검증된 맛을 새로운 기준으로.\n장인의 철학을 담은 브랜드들이 각자의 이야기로 한국 외식의 수준을 높입니다.";
+  const heroSubtitle = hero?.subtitle || "장인의 철학을 담은 브랜드로 고객들에게 수준높은 맛과 외식 경험을 제공합니다.";
   const ctaPrimary = hero?.cta_primary || "브랜드 보기";
   const ctaSecondary = hero?.cta_secondary || "문의하기";
 
