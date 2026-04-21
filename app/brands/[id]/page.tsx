@@ -375,12 +375,13 @@ export default async function BrandDetailPage({ params }: Props) {
             const content = elements![section.key as keyof typeof elements]!;
             const isEven = idx % 2 === 0;
             const bgColor = isEven ? "#0A0A0A" : "#0F0F0F";
+            const chapterNum = String(idx + 1).padStart(2, "0");
 
             return (
               <div key={section.key} style={{ backgroundColor: bgColor }} className="relative overflow-hidden">
                 {/* Decorative chapter number background */}
                 <div className="absolute top-0 right-0 text-[12rem] md:text-[16rem] font-display leading-none opacity-[0.03] select-none pointer-events-none">
-                  {section.icon}
+                  {chapterNum}
                 </div>
 
                 {/* Chapter divider (not first) */}
@@ -425,7 +426,7 @@ export default async function BrandDetailPage({ params }: Props) {
                                 className="font-display font-bold select-none pointer-events-none leading-none"
                                 style={{ fontSize: "clamp(6rem, 14vw, 10rem)", color: accentColor, opacity: 0.12 }}
                               >
-                                {section.icon}
+                                {chapterNum}
                               </span>
                             </div>
                             <div
@@ -449,7 +450,7 @@ export default async function BrandDetailPage({ params }: Props) {
                             className="font-display text-6xl leading-none"
                             style={{ color: accentColor, opacity: 0.2 }}
                           >
-                            {section.icon}
+                            {chapterNum}
                           </span>
                           <div>
                             <p className="text-xs tracking-widest uppercase text-[#8A8A8A] font-body mb-1">
