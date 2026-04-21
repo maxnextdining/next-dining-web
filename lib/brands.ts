@@ -50,6 +50,7 @@ export interface Brand {
   website?: string;
   menuHighlights?: MenuItem[];
   reservationLinks?: ReservationLink[];
+  categoryLabel?: string; // 히어로 영문 카테고리 라벨 (커스텀 시)
   accentColor?: string; // hex color for visual theming
   gallery?: string[]; // 갤러리 이미지 경로
   heroImage?: string;  // 히어로 풀스크린용 고해상도 이미지
@@ -377,6 +378,7 @@ export const brands: Brand[] = [
     nameEn: 'CAFÉ LE SENS',
     category: 'cafe',
     format: 'cafe',
+    categoryLabel: 'CAFE. BAKERY. WINE.',
     tagline: '머무는 모든 순간이 휴식이 되는 감각적인 베이커리 카페',
     description:
       '카페 르상스는 바쁜 일상에서 잠시 벗어나고자 하는 이들에게 따뜻한 위로와 세련된 미식의 경험을 동시에 제공하는 프리미엄 베이커리 카페입니다.',
@@ -399,10 +401,9 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/cafe-le-sens/store-1.jpg', '/images/brands/gallery/cafe-le-sens/store-2.jpg', '/images/brands/gallery/cafe-le-sens/store-3.jpg', '/images/brands/gallery/cafe-le-sens/menu-1.jpg', '/images/brands/gallery/cafe-le-sens/menu-2.jpg', '/images/brands/gallery/cafe-le-sens/menu-3.jpg', '/images/brands/gallery/cafe-le-sens/menu-4.jpg'],
     cuisine: '카페',
     menuHighlights: [
-      { name: '시즌 케이크', price: '8,000원~', photo: '/images/brands/story/cafe-le-sens/menu1.jpg' },
-      { name: '구움과자', price: '4,500원~', photo: '/images/brands/story/cafe-le-sens/menu2.jpg' },
-      { name: '커피', price: '5,500원~8,000원', photo: '/images/brands/story/cafe-le-sens/menu3.jpg' },
-      { name: '시그니처 브런치 세트', price: '15,000원~' },
+      { name: '스페셜티 커피 & 티', price: '6,000원~', photo: '/images/brands/story/cafe-le-sens/menu1.jpg' },
+      { name: '아티장 브레드 & 디저트', price: '5,000원~', photo: '/images/brands/story/cafe-le-sens/menu2.jpg' },
+      { name: '주류', price: '9,000원~', photo: '/images/brands/story/cafe-le-sens/menu3.jpg' },
     ],
     reservationLinks: [
       { location: '사운즈한남점', url: 'https://app.catchtable.co.kr/ct/shop/cafelesens' },

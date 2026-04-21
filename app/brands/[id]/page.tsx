@@ -261,7 +261,7 @@ export default async function BrandDetailPage({ params }: Props) {
               {brand.nameEn}
             </p>
             <p className="text-[#8A8A8A]/60 font-body tracking-[0.3em] text-xs uppercase mb-6">
-              {brand.category.toUpperCase()} {FORMAT_LABEL[brand.format]?.toUpperCase() || brand.format.toUpperCase()}
+              {brand.categoryLabel || `${brand.category.toUpperCase()} ${FORMAT_LABEL[brand.format]?.toUpperCase() || brand.format.toUpperCase()}`}
             </p>
           </ScrollReveal>
 
