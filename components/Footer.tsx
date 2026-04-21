@@ -46,7 +46,7 @@ export default function Footer({ hiddenPages = [] }: { hiddenPages?: string[] })
               height={16}
               className="h-3.5 w-auto object-contain object-left"
             />
-            <p className="font-display font-bold text-[#C8A96E] text-base leading-snug">
+            <p className="font-display text-[#C8A96E] text-base leading-snug">
               다음 세대를 여는<br />글로벌 외식 문화기업
             </p>
             <p className="text-[#8A8A8A] text-sm leading-relaxed max-w-[220px]">

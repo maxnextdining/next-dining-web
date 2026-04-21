@@ -211,7 +211,7 @@ export default async function HomePage() {
         <div className="relative z-[20] max-w-7xl mx-auto px-8 w-full text-center">
           {/* Main headline */}
           <ScrollReveal delay={200}>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[1.1] tracking-tight mb-6 text-hero-shadow">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] leading-[1.1] tracking-tight mb-6 text-hero-shadow">
               <span className="block">{heroHeading1}</span>
               <span className="block gold-gradient-text">{heroHeading2}</span>
             </h1>
@@ -310,7 +310,7 @@ export default async function HomePage() {
             <span className="text-[#C8A96E] text-xs font-bold tracking-[0.25em] uppercase mb-4 block font-body">
               Our Portfolio
             </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
+            <h2 className="text-4xl md:text-5xl font-display leading-tight">
               장인 정신이 깃든<br />독창적인 브랜드 라인업
             </h2>
           </div>
@@ -388,7 +388,7 @@ export default async function HomePage() {
                           {sheetBrandInfoMap[brand.id]?.tagline || brand.tagline}
                         </p>
 
-                        <h3 className={`font-display font-bold leading-tight mb-1 ${span >= 7 ? "text-3xl md:text-4xl" : "text-2xl"}`}>
+                        <h3 className={`font-display leading-tight mb-1 ${span >= 7 ? "text-3xl md:text-4xl" : "text-2xl"}`}>
                           {brand.name}
                         </h3>
                         <p className="text-[#8A8A8A] text-sm font-body font-light tracking-wider mb-4">
@@ -419,7 +419,7 @@ export default async function HomePage() {
             mode="line"
             delay={100}
             staggerDelay={140}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold leading-relaxed text-[#1A1A1A]"
+            className="font-display text-3xl md:text-4xl lg:text-5xl leading-relaxed text-[#1A1A1A]"
           >
             {philosophyQuote}
           </TextReveal>
@@ -475,7 +475,7 @@ export default async function HomePage() {
             <p className="text-xs font-semibold tracking-[0.25em] text-[#C8A96E] uppercase mb-6 font-body">
               Join Us
             </p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
               {recruit?.heading || "넥스트다이닝과 함께"}<br />{recruit?.heading2 || "성장할 분을 찾습니다"}
             </h2>
             <p className="text-[#8A8A8A] text-base leading-relaxed max-w-lg mx-auto mb-10 font-body whitespace-pre-line">
@@ -499,7 +499,7 @@ export default async function HomePage() {
               <p className="text-xs font-semibold tracking-[0.25em] text-[#C8A96E] uppercase mb-3 font-body">
                 FAQ
               </p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold">자주 묻는 질문</h2>
+              <h2 className="text-3xl md:text-4xl font-display">자주 묻는 질문</h2>
               <div className="mt-6 mx-auto w-12 h-px bg-[#C8A96E]" />
             </div>
           </ScrollReveal>

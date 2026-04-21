@@ -168,7 +168,7 @@ export default async function AboutPage() {
               >
                 What We Do
               </p>
-              <h2 className="font-display text-3xl font-bold mb-8" style={{ color: "#EDEDED" }}>
+              <h2 className="font-display text-3xl mb-8" style={{ color: "#EDEDED" }}>
                 검증된 장인의 브랜드를<br />한국에서 운영합니다
               </h2>
             </div>
@@ -208,7 +208,7 @@ export default async function AboutPage() {
                 >
                   Brand Portfolio
                 </p>
-                <h2 className="font-display text-3xl font-bold" style={{ color: "#EDEDED" }}>
+                <h2 className="font-display text-3xl" style={{ color: "#EDEDED" }}>
                   10개 브랜드, 4개 업태
                 </h2>
               </div>
@@ -313,7 +313,7 @@ export default async function AboutPage() {
               >
                 For Partners
               </p>
-              <h2 className="font-display text-3xl font-bold mb-6" style={{ color: "#EDEDED" }}>
+              <h2 className="font-display text-3xl mb-6" style={{ color: "#EDEDED" }}>
                 입점·제휴를 검토하고 계신가요?
               </h2>
               <p className="leading-relaxed font-body" style={{ color: "#8A8A8A" }}>
@@ -390,7 +390,7 @@ export default async function AboutPage() {
             >
               Vision &amp; Philosophy
             </p>
-            <h2 className="font-display text-3xl font-bold mb-12" style={{ color: "#EDEDED" }}>
+            <h2 className="font-display text-3xl mb-12" style={{ color: "#EDEDED" }}>
               4대 핵심 가치
             </h2>
           </ScrollReveal>
@@ -481,7 +481,7 @@ export default async function AboutPage() {
             <p className="text-sm mb-3 font-body" style={{ color: "#8A8A8A" }}>
               넥스트다이닝과 함께하고 싶으신가요?
             </p>
-            <h2 className="font-display text-2xl font-bold mb-6" style={{ color: "#EDEDED" }}>
+            <h2 className="font-display text-2xl mb-6" style={{ color: "#EDEDED" }}>
               팀 이야기가 궁금하다면 채용 페이지를 확인하세요
             </h2>
             <Link
