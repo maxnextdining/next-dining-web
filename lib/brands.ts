@@ -398,7 +398,7 @@ export const brands: Brand[] = [
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
     priceRange: '₩₩',
     accentColor: '#6B4C3B',
-    gallery: ['/images/brands/gallery/cafe-le-sens/gallery-01.jpg', '/images/brands/gallery/cafe-le-sens/gallery-02.jpg', '/images/brands/gallery/cafe-le-sens/gallery-03.jpg', '/images/brands/gallery/cafe-le-sens/gallery-04.jpg', '/images/brands/gallery/cafe-le-sens/gallery-05.jpg', '/images/brands/gallery/cafe-le-sens/gallery-06.jpg', '/images/brands/gallery/cafe-le-sens/gallery-07.jpg', '/images/brands/gallery/cafe-le-sens/gallery-08.jpg', '/images/brands/gallery/cafe-le-sens/gallery-09.jpg'],
+    gallery: ['/images/brands/gallery/cafe-le-sens/gallery-01.jpg', '/images/brands/gallery/cafe-le-sens/gallery-02.jpg', '/images/brands/gallery/cafe-le-sens/gallery-03.jpg', '/images/brands/gallery/cafe-le-sens/gallery-04.jpg', '/images/brands/gallery/cafe-le-sens/gallery-05.jpg', '/images/brands/gallery/cafe-le-sens/gallery-06.jpg', '/images/brands/gallery/cafe-le-sens/gallery-07.jpg', '/images/brands/gallery/cafe-le-sens/gallery-08.jpg', '/images/brands/gallery/cafe-le-sens/gallery-09.jpg', '/images/brands/gallery/cafe-le-sens/gallery-10.jpg', '/images/brands/gallery/cafe-le-sens/gallery-11.jpg', '/images/brands/gallery/cafe-le-sens/gallery-12.jpg', '/images/brands/gallery/cafe-le-sens/gallery-13.jpg', '/images/brands/gallery/cafe-le-sens/gallery-14.jpg', '/images/brands/gallery/cafe-le-sens/gallery-15.jpg', '/images/brands/gallery/cafe-le-sens/gallery-16.jpg', '/images/brands/gallery/cafe-le-sens/gallery-17.jpg'],
     cuisine: '카페',
     menuHighlights: [
       { name: '스페셜티 커피 & 티', price: '6,000원~', photo: '/images/brands/story/cafe-le-sens/menu1.jpg' },
