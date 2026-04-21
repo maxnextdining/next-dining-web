@@ -14,7 +14,7 @@ const BRAND_LINKS = [
   { href: '/brands/noflex-nyc', label: 'NOFLEX NYC' },
 ];
 
-const COMPANY_LINKS = [
+const ALL_COMPANY_LINKS = [
   { href: '/about', label: '회사 소개' },
   { href: '/happenings', label: '새소식' },
   { href: '/careers', label: '채용 안내' },
@@ -24,7 +24,8 @@ const COMPANY_LINKS = [
 const BRAND_COL_LEFT = BRAND_LINKS.slice(0, 5);
 const BRAND_COL_RIGHT = BRAND_LINKS.slice(5);
 
-export default function Footer() {
+export default function Footer({ hiddenPages = [] }: { hiddenPages?: string[] }) {
+  const COMPANY_LINKS = ALL_COMPANY_LINKS.filter((l) => !hiddenPages.includes(l.href.slice(1)));
   const year = new Date().getFullYear();
 
   return (

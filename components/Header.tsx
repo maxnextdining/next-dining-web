@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
-const NAV = [
+const ALL_NAV = [
   { href: '/brands', label: '브랜드' },
   { href: '/about', label: '회사 소개' },
   { href: '/happenings', label: '새소식' },
@@ -13,7 +13,8 @@ const NAV = [
   { href: '/contact', label: '문의' },
 ];
 
-export default function Header() {
+export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] }) {
+  const NAV = ALL_NAV.filter((n) => !hiddenPages.includes(n.href.slice(1)));
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);

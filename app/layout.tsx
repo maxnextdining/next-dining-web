@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
 import PageTransition from "@/components/PageTransition";
+import { fetchHiddenPages } from "@/lib/sheets-cms";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://next-dining.com"),
@@ -31,16 +32,18 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const hiddenPages = await fetchHiddenPages();
+
   return (
     <html lang="ko" className="scroll-smooth">
       <body className="bg-[#0A0A0A] text-[#EDEDED] antialiased grain-overlay">
         <CursorGlow />
-        <Header />
+        <Header hiddenPages={hiddenPages} />
         <PageTransition>
           <main>{children}</main>
         </PageTransition>
-        <Footer />
+        <Footer hiddenPages={hiddenPages} />
       </body>
     </html>
   );

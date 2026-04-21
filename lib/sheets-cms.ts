@@ -308,3 +308,21 @@ export async function fetchNews(): Promise<SheetNewsItem[]> {
 
   return rows.sort((a, b) => a.sortOrder - b.sortOrder);
 }
+
+// ─────────────────────────────────────────────
+// 사용안내 탭 — 페이지 노출 설정
+// columns: page_id, visible(Y/N), 설명
+// ─────────────────────────────────────────────
+
+/** 숨겨진 페이지 목록 반환 (visible !== 'Y'인 page_id 배열) */
+export async function fetchHiddenPages(): Promise<string[]> {
+  const rows = await fetchSheetTab<{ pageId: string; visible: boolean }>('사용안내', (cols) => {
+    // page_id 컬럼이 있고 visible 컬럼이 Y/N인 행만 파싱
+    const pageId = cols[0]?.trim();
+    const vis = cols[1]?.trim().toUpperCase();
+    if (!pageId || (vis !== 'Y' && vis !== 'N')) return null;
+    return { pageId, visible: vis === 'Y' };
+  });
+
+  return rows.filter((r) => !r.visible).map((r) => r.pageId);
+}
