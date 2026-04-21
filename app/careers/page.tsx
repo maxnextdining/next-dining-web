@@ -248,7 +248,7 @@ export default async function CareersPage() {
                   </p>
                   <p>
                     {cms?.story?.paragraph_3 ||
-                      "현재 전국·해외 19개 직영 매장, 연 매출 약 350억 규모로 운영되며 미국 법인 (USA Inc.)도 함께 운영 중입니다."}
+                      "현재 전국·해외 24개 직영 매장, 연 매출 약 350억 규모로 운영되며 미국 법인 (USA Inc.)도 함께 운영 중입니다."}
                   </p>
                 </div>
               </div>
