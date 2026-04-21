@@ -211,7 +211,7 @@ export default async function HomePage() {
         <div className="relative z-[20] max-w-7xl mx-auto px-8 w-full text-center">
           {/* Main headline */}
           <ScrollReveal delay={200}>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] tracking-tight mb-6 text-hero-shadow">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[1.1] tracking-tight mb-6 text-hero-shadow">
               <span className="block">{heroHeading1}</span>
               <span className="block gold-gradient-text">{heroHeading2}</span>
             </h1>
