@@ -647,41 +647,23 @@ export default async function BrandDetailPage({ params }: Props) {
               </h2>
             </ScrollReveal>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-auto gap-3 lg:gap-4">
-              {brand.gallery.map((src, idx) => {
-                const isHero = idx === 0;
-                const isWide = idx === 4 && brand.gallery!.length > 5;
-                return (
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+              {brand.gallery.map((src, idx) => (
                   <ScrollReveal key={src} delay={Math.min(idx, 8) * 70}>
-                    <div
-                      className={`img-premium relative overflow-hidden rounded-lg group ${
-                        isHero ? "col-span-2 row-span-2" : isWide ? "col-span-2" : ""
-                      }`}
-                    >
-                      <div
-                        className={`relative ${
-                          isHero ? "aspect-square" : isWide ? "aspect-[2/1]" : "aspect-[4/3]"
-                        }`}
-                      >
+                    <div className="img-premium relative overflow-hidden rounded-lg group">
+                      <div className="relative aspect-[4/3]">
                         <Image
                           src={src}
                           alt={`${brand.name} ${idx + 1}`}
                           fill
-                          sizes={
-                            isHero
-                              ? "(max-width: 1024px) 100vw, 50vw"
-                              : isWide
-                              ? "(max-width: 1024px) 100vw, 50vw"
-                              : "(max-width: 1024px) 50vw, 25vw"
-                          }
+                          sizes="(max-width: 1024px) 50vw, 33vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
                       </div>
                     </div>
                   </ScrollReveal>
-                );
-              })}
+              ))}
             </div>
           </div>
         </section>
