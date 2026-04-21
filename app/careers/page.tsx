@@ -266,7 +266,7 @@ export default async function CareersPage() {
                 </div>
                 <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 text-center">
                   <p className="text-3xl font-bold mb-1" style={{ color: "#C8A96E" }}>
-                    <AnimatedCounter value={19} />
+                    <AnimatedCounter value={24} />
                   </p>
                   <p className="text-xs tracking-widest uppercase" style={{ color: "#8A8A8A" }}>
                     직영 매장
@@ -274,7 +274,7 @@ export default async function CareersPage() {
                 </div>
                 <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 text-center">
                   <p className="text-3xl font-bold mb-1" style={{ color: "#C8A96E" }}>
-                    ~<AnimatedCounter value={350} suffix="억" />
+                    <AnimatedCounter value={350} suffix="억+" />
                   </p>
                   <p className="text-xs tracking-widest uppercase" style={{ color: "#8A8A8A" }}>
                     연 매출 (2025년 기준)
