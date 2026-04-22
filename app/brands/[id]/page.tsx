@@ -13,6 +13,20 @@ import ParallaxImage from "@/components/ParallaxImage";
 /** ISR: 1시간마다 재생성 — Google Sheets 메뉴 반영 */
 export const revalidate = 3600;
 
+/** CMS 텍스트에서 **볼드** 마크다운을 React 엘리먼트로 변환 */
+function renderFormattedText(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={i} className="font-semibold text-[#EDEDED]">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    )
+  );
+}
+
 interface Props {
   params: Promise<{ id: string }>;
 }
@@ -466,8 +480,8 @@ export default async function BrandDetailPage({ params }: Props) {
                           className="w-10 h-px"
                           style={{ backgroundColor: accentColor }}
                         />
-                        <p className="text-[#EDEDED]/70 leading-relaxed text-base lg:text-lg font-body">
-                          {content}
+                        <p className="text-[#EDEDED]/70 leading-relaxed text-base lg:text-lg font-body whitespace-pre-line">
+                          {renderFormattedText(content)}
                         </p>
                       </div>
                     </ScrollReveal>
@@ -555,7 +569,7 @@ export default async function BrandDetailPage({ params }: Props) {
                   </div>
                   <div className="w-10 h-px" style={{ backgroundColor: accentColor }} />
                   <p className="text-[#EDEDED]/70 leading-relaxed text-lg font-body whitespace-pre-line">
-                    {elements?.masterArtisan || elements?.chefOrArtisan}
+                    {renderFormattedText(elements?.masterArtisan || elements?.chefOrArtisan || '')}
                   </p>
                 </div>
               </ScrollReveal>
