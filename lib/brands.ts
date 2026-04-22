@@ -204,7 +204,16 @@ export const brands: Brand[] = [
     keywords: ['진가와', '역삼 소바', '여의도 일식', '을지로 소바', '광화문 맛집', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
     priceRange: '₩₩₩',
     accentColor: '#1B2A4A',
-    gallery: ['/images/brands/gallery/jinkawa/store-1.jpg', '/images/brands/gallery/jinkawa/store-2.jpg', '/images/brands/gallery/jinkawa/store-3.jpg', '/images/brands/gallery/jinkawa/menu-1.jpg', '/images/brands/gallery/jinkawa/menu-2.jpg', '/images/brands/gallery/jinkawa/menu-3.jpg', '/images/brands/gallery/jinkawa/menu-4.jpg'],
+    gallery: [
+      '/images/brands/gallery/jinkawa/store-1.jpg', '/images/brands/gallery/jinkawa/store-2.jpg', '/images/brands/gallery/jinkawa/store-3.jpg',
+      '/images/brands/gallery/jinkawa/store-4.jpg', '/images/brands/gallery/jinkawa/store-5.jpg', '/images/brands/gallery/jinkawa/store-6.jpg',
+      '/images/brands/gallery/jinkawa/store-7.jpg', '/images/brands/gallery/jinkawa/store-8.jpg', '/images/brands/gallery/jinkawa/store-9.jpg',
+      '/images/brands/gallery/jinkawa/store-10.jpg', '/images/brands/gallery/jinkawa/store-11.jpg', '/images/brands/gallery/jinkawa/store-12.jpg',
+      '/images/brands/gallery/jinkawa/store-13.jpg',
+      '/images/brands/gallery/jinkawa/menu-1.jpg', '/images/brands/gallery/jinkawa/menu-2.jpg', '/images/brands/gallery/jinkawa/menu-3.jpg',
+      '/images/brands/gallery/jinkawa/menu-4.jpg', '/images/brands/gallery/jinkawa/menu-5.jpg', '/images/brands/gallery/jinkawa/menu-6.jpg',
+      '/images/brands/gallery/jinkawa/menu-7.jpg', '/images/brands/gallery/jinkawa/menu-8.jpg', '/images/brands/gallery/jinkawa/menu-9.jpg',
+    ],
     cuisine: '소바',
     menuHighlights: [
       { name: '자루 메밀면', price: '14,000원', photo: '/images/brands/story/jinkawa/menu1.jpg' },
