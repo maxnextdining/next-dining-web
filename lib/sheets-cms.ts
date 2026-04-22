@@ -188,7 +188,7 @@ export async function fetchBrandInfoById(
 // ─────────────────────────────────────────────
 // 브랜드_스토리 탭
 // columns: brand_id, story_short, origin_story, chef_artisan,
-//          ingredient_philosophy, signature_menu, space_experience
+//          ingredient_philosophy, signature_menu, space_experience, master_artisan
 // ─────────────────────────────────────────────
 
 export interface SheetBrandStory {
@@ -199,6 +199,7 @@ export interface SheetBrandStory {
   ingredientPhilosophy: string;
   signatureMenu: string;
   spaceExperience: string;
+  masterArtisan: string;
 }
 
 /**
@@ -218,6 +219,7 @@ export async function fetchBrandStories(): Promise<
       ingredientPhilosophy: cols[4] || '',
       signatureMenu: cols[5] || '',
       spaceExperience: cols[6] || '',
+      masterArtisan: cols[7] || '',
     };
   });
 

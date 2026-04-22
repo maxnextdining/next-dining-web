@@ -106,7 +106,7 @@ export default async function BrandDetailPage({ params }: Props) {
   };
   const elements = sheetStory ? {
     originStory: sheetStory.originStory || brand.storyElements?.originStory,
-    chefOrArtisan: sheetStory.chefOrArtisan || brand.storyElements?.chefOrArtisan,
+    chefOrArtisan: sheetStory.masterArtisan || sheetStory.chefOrArtisan || brand.storyElements?.chefOrArtisan,
     ingredientPhilosophy: sheetStory.ingredientPhilosophy || brand.storyElements?.ingredientPhilosophy,
     signatureMenu: sheetStory.signatureMenu || brand.storyElements?.signatureMenu,
     spaceExperience: sheetStory.spaceExperience || brand.storyElements?.spaceExperience,
