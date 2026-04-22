@@ -24,8 +24,8 @@ export function splitCSVRows(text: string): string[] {
         i++;
       } else {
         inQuotes = !inQuotes;
+        current += ch;
       }
-      current += ch;
     } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
       if (ch === '\r' && text[i + 1] === '\n') i++; // CRLF
       if (current.trim()) rows.push(current);
