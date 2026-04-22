@@ -25,7 +25,7 @@ const FALLBACK_POSITIONS = [
         brand: "분지로",
         location: "한남",
         type: "정규직",
-        description: "프리미엄 한정식 홀 서비스 총괄. 게스트 경험을 설계하고 팀을 이끕니다.",
+        description: "한 점의 돈카츠에도 기준을 담는 곳, 분지로에서 당신을 찾습니다.",
       },
       {
         title: "홀 스태프",
