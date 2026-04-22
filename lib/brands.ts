@@ -207,7 +207,7 @@ export const brands: Brand[] = [
     gallery: [
       '/images/brands/gallery/jinkawa/store-1.jpg', '/images/brands/gallery/jinkawa/store-2.jpg', '/images/brands/gallery/jinkawa/store-3.jpg',
       '/images/brands/gallery/jinkawa/store-4.jpg', '/images/brands/gallery/jinkawa/store-5.jpg', '/images/brands/gallery/jinkawa/store-6.jpg',
-      '/images/brands/gallery/jinkawa/store-7.jpg', '/images/brands/gallery/jinkawa/store-8.jpg', '/images/brands/gallery/jinkawa/store-9.jpg',
+      '/images/brands/gallery/jinkawa/store-7.jpg', '/images/brands/gallery/jinkawa/store-9.jpg',
       '/images/brands/gallery/jinkawa/store-10.jpg', '/images/brands/gallery/jinkawa/store-11.jpg', '/images/brands/gallery/jinkawa/store-12.jpg',
       '/images/brands/gallery/jinkawa/store-13.jpg',
       '/images/brands/gallery/jinkawa/menu-1.jpg', '/images/brands/gallery/jinkawa/menu-2.jpg', '/images/brands/gallery/jinkawa/menu-3.jpg',
