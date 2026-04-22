@@ -70,12 +70,11 @@ const STATUS_CONFIG: Record<string, { label: string; dotColor: string; textColor
 };
 
 const STORY_SECTIONS = [
-  { key: "originStory",           title: "탄생 이야기",    titleEn: "THE ORIGIN",       icon: "01", imageFile: "origin.jpg" },
-  { key: "chefOrArtisan",         title: "장인의 길",      titleEn: "CRAFTSMANSHIP",    icon: "02", imageFile: "chef.jpg" },
-  { key: "masterArtisan",         title: "Master Artisan", titleEn: "MASTER ARTISAN",   icon: "03", imageFile: "artisan.jpg" },
-  { key: "ingredientPhilosophy",  title: "식재료 철학",    titleEn: "INGREDIENTS",      icon: "04", imageFile: "ingredient.jpg" },
-  { key: "signatureMenu",         title: "시그니처",       titleEn: "SIGNATURE",        icon: "05", imageFile: "signature.jpg" },
-  { key: "spaceExperience",       title: "공간 경험",      titleEn: "ATMOSPHERE",       icon: "06", imageFile: "space.jpg" },
+  { key: "originStory",           title: "탄생 이야기", titleEn: "THE ORIGIN",       icon: "01", imageFile: "origin.jpg" },
+  { key: "chefOrArtisan",         title: "장인의 길",   titleEn: "CRAFTSMANSHIP",    icon: "02", imageFile: "chef.jpg" },
+  { key: "ingredientPhilosophy",  title: "식재료 철학", titleEn: "INGREDIENTS",      icon: "03", imageFile: "ingredient.jpg" },
+  { key: "signatureMenu",         title: "시그니처",    titleEn: "SIGNATURE",        icon: "04", imageFile: "signature.jpg" },
+  { key: "spaceExperience",       title: "공간 경험",   titleEn: "ATMOSPHERE",       icon: "05", imageFile: "space.jpg" },
 ] as const;
 
 export default async function BrandDetailPage({ params }: Props) {
@@ -481,7 +480,7 @@ export default async function BrandDetailPage({ params }: Props) {
       )}
 
       {/* ===== 4. CHEF/ARTISAN PROFILE ===== */}
-      {elements?.chefOrArtisan && (
+      {(elements?.masterArtisan || elements?.chefOrArtisan) && (
         <section className="bg-[#0A0A0A] py-32 px-6 sm:px-10 lg:px-20">
           <div className="max-w-5xl mx-auto">
             {/* Section label */}
@@ -555,8 +554,8 @@ export default async function BrandDetailPage({ params }: Props) {
                     )}
                   </div>
                   <div className="w-10 h-px" style={{ backgroundColor: accentColor }} />
-                  <p className="text-[#EDEDED]/70 leading-relaxed text-lg font-body">
-                    {elements.chefOrArtisan}
+                  <p className="text-[#EDEDED]/70 leading-relaxed text-lg font-body whitespace-pre-line">
+                    {elements?.masterArtisan || elements?.chefOrArtisan}
                   </p>
                 </div>
               </ScrollReveal>
