@@ -327,12 +327,12 @@ export default async function AboutPage() {
           {(() => {
             const RAW_STATS = [
               content?.about?.partner_stats?.stat_1 || "10개 | 프리미엄 브랜드 | 일식·한식·양식·카페",
-              content?.about?.partner_stats?.stat_2 || "24 | 전국 직영 매장 | 서울·수원·부산·여주·뉴욕",
+              content?.about?.partner_stats?.stat_2 || "21 | 전국 직영 매장 | 서울·수원·부산·여주·뉴욕",
               content?.about?.partner_stats?.stat_3 || "350억+ | 연 매출 규모 | 2025년 기준, 전 매장 직영",
             ];
             const STAT_FALLBACKS = [
               { value: 10, suffix: "개", label: "프리미엄 브랜드", sub: "일식·한식·양식·카페" },
-              { value: 24, suffix: "", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
+              { value: 21, suffix: "", label: "전국 직영 매장", sub: "서울·수원·부산·여주·뉴욕" },
               { value: 350, suffix: "억+", label: "연 매출 규모", sub: "2025년 기준, 전 매장 직영" },
             ];
             const stats = RAW_STATS.map((raw, idx) => parseStatString(raw, STAT_FALLBACKS[idx]));

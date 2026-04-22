@@ -262,7 +262,7 @@ export default async function CareersPage() {
                   </p>
                   <p>
                     {cms?.story?.paragraph_3 ||
-                      "현재 전국·해외 24개 직영 매장, 연 매출 약 350억 규모로 운영되며 미국 법인 (USA Inc.)도 함께 운영 중입니다."}
+                      "현재 전국·해외 21개 직영 매장, 연 매출 약 350억 규모로 운영되며 미국 법인 (USA Inc.)도 함께 운영 중입니다."}
                   </p>
                 </div>
               </div>
@@ -280,7 +280,7 @@ export default async function CareersPage() {
                 </div>
                 <div className="bg-[#141414] border border-white/5 hover:border-[#C8A96E]/30 transition-colors rounded-2xl p-6 text-center">
                   <p className="text-3xl font-bold mb-1" style={{ color: "#C8A96E" }}>
-                    <AnimatedCounter value={24} />
+                    <AnimatedCounter value={21} />
                   </p>
                   <p className="text-xs tracking-widest uppercase" style={{ color: "#8A8A8A" }}>
                     직영 매장
