@@ -10,13 +10,14 @@ export interface BrandLocation {
   hours?: string;
 }
 
-/** 브랜드 페이지 5대 스토리텔링 요소 (벤치마킹 도출) */
+/** 브랜드 페이지 스토리텔링 요소 (벤치마킹 도출) */
 export interface BrandStoryElements {
   originStory?: string;       // 탄생 배경·역사
   chefOrArtisan?: string;     // 셰프·장인 이야기
   ingredientPhilosophy?: string; // 식재료 철학
   signatureMenu?: string;     // 시그니처 메뉴 소개
   spaceExperience?: string;   // 공간·경험 설계
+  masterArtisan?: string;     // Master Artisan 소개
 }
 
 export interface MenuItem {

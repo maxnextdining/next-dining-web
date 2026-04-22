@@ -70,11 +70,12 @@ const STATUS_CONFIG: Record<string, { label: string; dotColor: string; textColor
 };
 
 const STORY_SECTIONS = [
-  { key: "originStory",           title: "탄생 이야기", titleEn: "THE ORIGIN",       icon: "01", imageFile: "origin.jpg" },
-  { key: "chefOrArtisan",         title: "장인의 길",   titleEn: "CRAFTSMANSHIP",    icon: "02", imageFile: "chef.jpg" },
-  { key: "ingredientPhilosophy",  title: "식재료 철학", titleEn: "INGREDIENTS",      icon: "03", imageFile: "ingredient.jpg" },
-  { key: "signatureMenu",         title: "시그니처",    titleEn: "SIGNATURE",        icon: "04", imageFile: "signature.jpg" },
-  { key: "spaceExperience",       title: "공간 경험",   titleEn: "ATMOSPHERE",       icon: "05", imageFile: "space.jpg" },
+  { key: "originStory",           title: "탄생 이야기",    titleEn: "THE ORIGIN",       icon: "01", imageFile: "origin.jpg" },
+  { key: "chefOrArtisan",         title: "장인의 길",      titleEn: "CRAFTSMANSHIP",    icon: "02", imageFile: "chef.jpg" },
+  { key: "masterArtisan",         title: "Master Artisan", titleEn: "MASTER ARTISAN",   icon: "03", imageFile: "artisan.jpg" },
+  { key: "ingredientPhilosophy",  title: "식재료 철학",    titleEn: "INGREDIENTS",      icon: "04", imageFile: "ingredient.jpg" },
+  { key: "signatureMenu",         title: "시그니처",       titleEn: "SIGNATURE",        icon: "05", imageFile: "signature.jpg" },
+  { key: "spaceExperience",       title: "공간 경험",      titleEn: "ATMOSPHERE",       icon: "06", imageFile: "space.jpg" },
 ] as const;
 
 export default async function BrandDetailPage({ params }: Props) {
@@ -106,7 +107,8 @@ export default async function BrandDetailPage({ params }: Props) {
   };
   const elements = sheetStory ? {
     originStory: sheetStory.originStory || brand.storyElements?.originStory,
-    chefOrArtisan: sheetStory.masterArtisan || sheetStory.chefOrArtisan || brand.storyElements?.chefOrArtisan,
+    chefOrArtisan: sheetStory.chefOrArtisan || brand.storyElements?.chefOrArtisan,
+    masterArtisan: sheetStory.masterArtisan || brand.storyElements?.masterArtisan,
     ingredientPhilosophy: sheetStory.ingredientPhilosophy || brand.storyElements?.ingredientPhilosophy,
     signatureMenu: sheetStory.signatureMenu || brand.storyElements?.signatureMenu,
     spaceExperience: sheetStory.spaceExperience || brand.storyElements?.spaceExperience,
