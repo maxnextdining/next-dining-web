@@ -219,7 +219,7 @@ export const brands: Brand[] = [
     cuisine: '소바',
     menuHighlights: [
       { name: '자루 메밀면', price: '14,000원', photo: '/images/brands/story/jinkawa/menu1.jpg' },
-      { name: '우나기동 정식', price: '40,000원', photo: '/images/brands/story/jinkawa/menu2.jpg' },
+      { name: '우나기동', price: '35,000원', photo: '/images/brands/story/jinkawa/menu2.jpg' },
       { name: '사시미 & 스시 정식', price: '37,000원~49,000원', photo: '/images/brands/story/jinkawa/menu3.jpg' },
       { name: '스키야키 우동나베 코스', price: '49,000원', photo: '/images/brands/story/jinkawa/menu4.jpg' },
       { name: '가이세키 코스', price: '59,000원', photo: '/images/brands/story/jinkawa/menu5.jpg' },
