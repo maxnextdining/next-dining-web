@@ -311,7 +311,7 @@ export const brands: Brand[] = [
     ],
     priceRange: '₩₩₩₩',
     accentColor: '#1a1a2e',
-    gallery: ['/images/brands/gallery/daisen/store-1.jpg', '/images/brands/gallery/daisen/store-2.jpg', '/images/brands/gallery/daisen/store-3.jpg', '/images/brands/gallery/daisen/store-4.jpg', '/images/brands/gallery/daisen/store-5.jpg', '/images/brands/gallery/daisen/menu-1.jpg', '/images/brands/gallery/daisen/menu-2.jpg', '/images/brands/gallery/daisen/menu-3.jpg', '/images/brands/gallery/daisen/menu-4.jpg', '/images/brands/gallery/daisen/menu-5.jpg'],
+    gallery: ['/images/brands/gallery/daisen/hero-1.jpg', '/images/brands/gallery/daisen/hero-2.jpg', '/images/brands/gallery/daisen/hero-3.jpg', '/images/brands/gallery/daisen/store-1.jpg', '/images/brands/gallery/daisen/store-2.jpg', '/images/brands/gallery/daisen/store-3.jpg', '/images/brands/gallery/daisen/store-4.jpg', '/images/brands/gallery/daisen/store-5.jpg', '/images/brands/gallery/daisen/store-6.jpg', '/images/brands/gallery/daisen/menu-1.jpg', '/images/brands/gallery/daisen/menu-2.jpg', '/images/brands/gallery/daisen/menu-3.jpg', '/images/brands/gallery/daisen/menu-4.jpg', '/images/brands/gallery/daisen/menu-5.jpg', '/images/brands/gallery/daisen/menu-6.jpg'],
     cuisine: '프리미엄 스시',
     chefPhoto: '/images/brands/story/daisen/artisan.jpg',
     menuHighlights: [
