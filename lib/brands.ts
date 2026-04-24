@@ -120,7 +120,7 @@ export const brands: Brand[] = [
       spaceExperience: '주요 프리미엄 아울렛과 복합 문화 공간 등 접근성이 좋은 위치에서 전 세대가 편안하게 즐길 수 있는 세련된 분위기를 선사합니다. 정갈하게 차려진 소반은 시각적인 즐거움과 미식의 감동을 동시에 충족시키며, 방문객들에게 신뢰받는 한식 공간으로서의 특별한 기억을 남깁니다.',
     },
     locations: [
-      { name: '여주신세계아울렛점', address: '경기 여주시 명품로 360, 여주 신세계 프리미엄아울렛', status: 'active' },
+      { name: '신세계아울렛 여주점', address: '경기 여주시 명품로 360, 여주 신세계 프리미엄아울렛', status: 'active', phone: '031-880-1376', hours: '매일 10:00~20:00' },
     ],
     image: '/images/brands/bongwoori-soban.jpg',
     logo: '/images/brands/logos/bongwoori-soban.png',
@@ -152,7 +152,9 @@ export const brands: Brand[] = [
       spaceExperience: '활기찬 도심 속에서도 잠시 멈춰 정성 가득한 한 끼를 즐기며 몸과 마음을 채울 수 있는 정갈한 서비스와 품격 있는 분위기를 통해 방문객들에게 잊지 못할 미식의 감동을 전합니다.',
     },
     locations: [
-      { name: '시청점', address: '서울 중구 을지로 6, JEI재능교육빌딩 1층', status: 'active', phone: '0507-1387-8573' },
+      { name: '여의도점', address: '서울 영등포구 국제금융로8길 34 오륜빌딩 3층', status: 'active', phone: '0507-1480-8052', hours: '월~금 11:00~21:00 (BT 15:00~17:00) / 토,일 휴무' },
+      { name: '국회점', address: '서울 영등포구 국회대로72길 11 프린스텔', status: 'active', phone: '0507-1318-5454', hours: '매일 11:00~21:00 (BT 15:00~17:00)' },
+      { name: '시청점', address: '서울 중구 을지로 6, JEI재능교육빌딩 1층', status: 'active', phone: '0507-1387-8573', hours: '매일 11:00~21:00 (BT 15:00~17:00)' },
     ],
     chefPhoto: '/images/brands/story/jinjin-mandu/artisan.jpg',
     image: '/images/brands/jinjin-mandu.jpg',
@@ -168,7 +170,7 @@ export const brands: Brand[] = [
       { name: '어복쟁반 (대)', price: '103,000원', photo: '/images/brands/story/jinjin-mandu/menu3.jpg' },
     ],
     reservationLinks: [
-      { location: '시청점', url: 'https://app.catchtable.co.kr/ct/shop/jinjinmanducityhall' },
+      { location: '여의도점', url: 'https://app.catchtable.co.kr/ct/shop/jinjinmanducityhall' },
     ],
   },
   {
@@ -254,11 +256,11 @@ export const brands: Brand[] = [
     },
     chefPhoto: '/images/brands/story/bunjiro/artisan.jpg',
     locations: [
-      { name: '명동점 (한국본점)', address: '서울 중구 남대문로 81, 롯데백화점 본점 13층', status: 'active', phone: '02-726-4337', hours: '매일 10:30~21:00 (LO 20:00)' },
+      { name: '한국본점 (명동)', address: '서울 중구 남대문로 81, 롯데백화점 본점 13층', status: 'active', phone: '02-726-4337', hours: '매일 10:30~21:00 (LO 20:00)' },
       { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', phone: '02-794-2648', hours: '매일 11:00~22:00 (BT 15:00~17:00)' },
       { name: '타임빌라스 수원점', address: '경기 수원시 권선구 세화로 134, 타임빌라스 수원 3층', status: 'active', phone: '0507-1361-8572', hours: '매일 10:30~22:00 (LO 21:00)' },
       { name: '롯데월드몰점', address: '서울 송파구 올림픽로 300, 롯데월드몰 5층', status: 'active', phone: '02-3213-4581', hours: '매일 10:30~22:00' },
-      { name: '잠실롯백점', address: '서울 송파구 잠실 롯데백화점', status: 'coming-soon' },
+      { name: '롯데백화점 잠실점', address: '서울 송파구 잠실 롯데백화점', status: 'coming-soon' },
     ],
     image: '/images/brands/bunjiro.jpg',
     logo: '/images/brands/logos/bunjiro.png',
@@ -268,13 +270,13 @@ export const brands: Brand[] = [
     ],
     priceRange: '₩₩₩',
     accentColor: '#5C4033',
-    gallery: ['/images/brands/gallery/bunjiro/store-1.jpg', '/images/brands/gallery/bunjiro/store-2.jpg', '/images/brands/gallery/bunjiro/store-3.jpg', '/images/brands/gallery/bunjiro/store-4.jpg', '/images/brands/gallery/bunjiro/menu-1.jpg', '/images/brands/gallery/bunjiro/menu-2.jpg', '/images/brands/gallery/bunjiro/menu-3.jpg', '/images/brands/gallery/bunjiro/menu-4.jpg', '/images/brands/gallery/bunjiro/menu-5.jpg', '/images/brands/gallery/bunjiro/menu-6.jpg'],
+    gallery: ['/images/brands/gallery/bunjiro/hero-1.jpg', '/images/brands/gallery/bunjiro/hero-2.jpg', '/images/brands/gallery/bunjiro/hero-3.jpg', '/images/brands/gallery/bunjiro/store-1.jpg', '/images/brands/gallery/bunjiro/store-2.jpg', '/images/brands/gallery/bunjiro/store-3.jpg', '/images/brands/gallery/bunjiro/store-4.jpg', '/images/brands/gallery/bunjiro/store-5.jpg', '/images/brands/gallery/bunjiro/store-6.jpg', '/images/brands/gallery/bunjiro/menu-1.jpg', '/images/brands/gallery/bunjiro/menu-2.jpg', '/images/brands/gallery/bunjiro/menu-3.jpg', '/images/brands/gallery/bunjiro/menu-4.jpg', '/images/brands/gallery/bunjiro/menu-5.jpg', '/images/brands/gallery/bunjiro/menu-6.jpg'],
     cuisine: '돈카츠',
     menuHighlights: [
       { name: '장인 로스카츠', price: '16,000원~29,000원', photo: '/images/brands/story/bunjiro/menu1.jpg' },
     ],
     reservationLinks: [
-      { location: '명동점 (한국본점)', note: '전화예약' },
+      { location: '한국본점 (명동)', note: '전화예약' },
       { location: '사운즈한남점', url: 'https://app.catchtable.co.kr/ct/shop/bunjiro_soundshannam' },
       { location: '타임빌라스 수원점', note: '전화예약' },
       { location: '롯데월드몰점', note: '현장 대기' },
@@ -299,7 +301,7 @@ export const brands: Brand[] = [
       spaceExperience: '스시 카운터와 프라이빗 룸 등 다양한 공간 구성을 통해 방문 그 자체로 특별한 가치를 느낄 수 있는 미식의 장을 마련했습니다. 정갈하고 세련된 분위기는 소중한 분과의 데이트는 물론, 신뢰가 중요한 비즈니스 미팅과 가족 모임의 품격을 한층 높여주는 완벽한 경험을 완성합니다.',
     },
     locations: [
-      { name: '사운즈한남점 (한국본점)', address: '서울 용산구 대사관로 35, 사운즈한남 야외 2층', status: 'active', hours: '매일 11:30~22:30 (BT 15:00~17:30)' },
+      { name: '한국본점 (사운즈한남)', address: '서울 용산구 대사관로 35, 사운즈한남 야외 2층', status: 'active', phone: '070-7723-0072', hours: '매일 11:30~22:30 (BT 15:00~17:30)' },
     ],
     image: '/images/brands/daisen.jpg',
     logo: '/images/brands/logos/daisen.png',
@@ -317,7 +319,7 @@ export const brands: Brand[] = [
       { name: '디너 코스', price: '77,000원~150,000원', photo: '/images/brands/story/daisen/menu2.jpg' },
     ],
     reservationLinks: [
-      { location: '사운즈한남점 (한국본점)', url: 'https://app.catchtable.co.kr/ct/shop/daisensushi' },
+      { location: '한국본점 (사운즈한남)', url: 'https://app.catchtable.co.kr/ct/shop/daisensushi' },
     ],
   },
   {
@@ -339,8 +341,8 @@ export const brands: Brand[] = [
     },
     locations: [
       { name: '고속터미널점', address: '서울 서초구 신반포로 194, 서울고속버스터미널 경부선 1층', status: 'active', phone: '0507-1350-8553', hours: '매일 10:00~21:00 (LO 20:30)' },
-      { name: '용산아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
-      { name: '부산 롯데백화점 광복점', address: '부산 중구 중앙대로 2, 롯데백화점 광복점', status: 'active', phone: '051-678-4248', hours: '매일 10:30~21:00 (LO 20:00)' },
+      { name: '용산 아이파크몰점', address: '서울 용산구 한강대로23길 55, 아이파크몰 리빙관 7층', status: 'active', phone: '0507-1465-1666', hours: '매일 11:00~22:00 (LO 21:00)' },
+      { name: '롯데백화점 광복점', address: '부산 중구 중앙대로 2, 롯데백화점 광복점', status: 'active', phone: '051-678-4248', hours: '매일 10:30~21:00 (LO 20:00)' },
     ],
     image: '/images/brands/takumi-nagasaki.jpg',
     logo: '/images/brands/logos/takumi-nagasaki.png',
@@ -405,7 +407,7 @@ export const brands: Brand[] = [
       spaceExperience: '유럽의 노천 카페를 떠올리게 하는 야외 테라스와 감각적인 인테리어는 방문객에게 시각적인 편안함과 정서적인 휴식을 동시에 제공합니다. 재즈 음악이 흐르는 이 공간에서 즐기는 커피와 티, 와인은 단순한 취식을 넘어선 예술적 영감을 얻는 특별한 경험이 되어, 일상의 작은 순간을 더욱 풍요롭게 채워줍니다.',
     },
     locations: [
-      { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', hours: '매일 10:00~22:00 (LO 21:30)' },
+      { name: '사운즈한남점', address: '서울 용산구 대사관로 35, 사운즈한남 1층', status: 'active', phone: '02-794-9009', hours: '매일 10:00~22:00 (LO 21:30)' },
     ],
     image: '/images/brands/cafe-le-sens.jpg',
     logo: '/images/brands/logos/cafe-le-sens.png',
