@@ -170,7 +170,7 @@ export const brands: Brand[] = [
       { name: '어복쟁반 (대)', price: '103,000원', photo: '/images/brands/story/jinjin-mandu/menu3.jpg' },
     ],
     reservationLinks: [
-      { location: '여의도점', url: 'https://app.catchtable.co.kr/ct/shop/jinjinmanducityhall' },
+      { location: '시청점', url: 'https://app.catchtable.co.kr/ct/shop/jinjinmanducityhall' },
     ],
   },
   {
