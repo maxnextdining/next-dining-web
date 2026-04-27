@@ -162,7 +162,7 @@ export const brands: Brand[] = [
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
     priceRange: '₩₩',
     accentColor: '#B91C1C',
-    gallery: ['/images/brands/gallery/jinjin-mandu/store-1.jpg', '/images/brands/gallery/jinjin-mandu/store-2.jpg', '/images/brands/gallery/jinjin-mandu/store-3.jpg', '/images/brands/gallery/jinjin-mandu/store-4.jpg', '/images/brands/gallery/jinjin-mandu/store-5.jpg', '/images/brands/gallery/jinjin-mandu/store-6.jpg', '/images/brands/gallery/jinjin-mandu/menu-1.jpg', '/images/brands/gallery/jinjin-mandu/menu-2.jpg', '/images/brands/gallery/jinjin-mandu/menu-3.jpg', '/images/brands/gallery/jinjin-mandu/menu-4.jpg', '/images/brands/gallery/jinjin-mandu/menu-5.jpg'],
+    gallery: ['/images/brands/gallery/jinjin-mandu/store-1.jpg', '/images/brands/gallery/jinjin-mandu/store-2.jpg', '/images/brands/gallery/jinjin-mandu/store-3.jpg', '/images/brands/gallery/jinjin-mandu/store-4.jpg', '/images/brands/gallery/jinjin-mandu/store-5.jpg', '/images/brands/gallery/jinjin-mandu/store-6.jpg', '/images/brands/gallery/jinjin-mandu/menu-1.jpg', '/images/brands/gallery/jinjin-mandu/menu-2.jpg', '/images/brands/gallery/jinjin-mandu/menu-3.jpg', '/images/brands/gallery/jinjin-mandu/menu-4.jpg', '/images/brands/gallery/jinjin-mandu/menu-5.jpg', '/images/brands/gallery/jinjin-mandu/menu-6.jpg'],
     cuisine: '한식',
     menuHighlights: [
       { name: '손만두떡국', price: '18,000원', photo: '/images/brands/story/jinjin-mandu/menu1.jpg' },
