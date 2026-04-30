@@ -469,10 +469,10 @@ export default async function BrandDetailPage({ params }: Props) {
                           </span>
                           <div>
                             <p className="text-xs tracking-widest uppercase text-[#8A8A8A] font-body mb-1">
-                              {section.titleEn}
+                              {brand.storyTitleOverrides?.[section.key as keyof typeof brand.storyTitleOverrides]?.titleEn ?? section.titleEn}
                             </p>
                             <h3 className="font-display text-2xl text-[#EDEDED]">
-                              {section.title}
+                              {brand.storyTitleOverrides?.[section.key as keyof typeof brand.storyTitleOverrides]?.title ?? section.title}
                             </h3>
                           </div>
                         </div>

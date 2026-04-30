@@ -55,6 +55,7 @@ export interface Brand {
   accentColor?: string; // hex color for visual theming
   gallery?: string[]; // 갤러리 이미지 경로
   heroImage?: string;  // 히어로 풀스크린용 고해상도 이미지
+  storyTitleOverrides?: Partial<Record<keyof BrandStoryElements, { title: string; titleEn: string }>>;
   chefPhoto?: string;  // 장인/셰프 인물 사진
   chefName?: string;   // 장인/셰프 이름
   chefTitle?: string;  // 장인/셰프 직함/소개
@@ -243,6 +244,9 @@ export const brands: Brand[] = [
     category: 'japanese',
     format: 'dining',
     categoryLabel: 'JAPANESE PREMIUM TONKATSU',
+    storyTitleOverrides: {
+      spaceExperience: { title: '카메야마 도자기', titleEn: 'KAMEYAMA POTTERY' },
+    },
     tagline: '타카다 유지 장인의 돈카츠 철학',
     description:
       '분지로는 일본 나가사키 장인의 기술과 국내산 최상급 원육으로 완성한 프리미엄 돈카츠 브랜드입니다.',
