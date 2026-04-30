@@ -274,7 +274,7 @@ export const brands: Brand[] = [
       '롯데월드몰 돈카츠', '데이트 코스 한남', '서울 돈카츠 맛집', '일본 장인 돈카츠',
     ],
     priceRange: '₩₩₩',
-    accentColor: '#5C4033',
+    accentColor: '#4A2C2A',
     gallery: ['/images/brands/gallery/bunjiro/hero-1.jpg', '/images/brands/gallery/bunjiro/hero-2.jpg', '/images/brands/gallery/bunjiro/hero-3.jpg', '/images/brands/gallery/bunjiro/store-1.jpg', '/images/brands/gallery/bunjiro/store-2.jpg', '/images/brands/gallery/bunjiro/store-3.jpg', '/images/brands/gallery/bunjiro/store-4.jpg', '/images/brands/gallery/bunjiro/store-5.jpg', '/images/brands/gallery/bunjiro/store-6.jpg', '/images/brands/gallery/bunjiro/menu-1.jpg', '/images/brands/gallery/bunjiro/menu-2.jpg', '/images/brands/gallery/bunjiro/menu-3.jpg', '/images/brands/gallery/bunjiro/menu-4.jpg', '/images/brands/gallery/bunjiro/menu-5.jpg', '/images/brands/gallery/bunjiro/menu-6.jpg'],
     cuisine: '돈카츠',
     menuHighlights: [
@@ -386,7 +386,7 @@ export const brands: Brand[] = [
     logo: '/images/brands/logos/menya-always.png',
     keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울', '성수 라멘', '돈코츠 라멘'],
     priceRange: '₩₩',
-    accentColor: '#C2410C',
+    accentColor: '#C41E3A',
     cuisine: '라멘',
     menuHighlights: [
       { name: '레몬 돈코츠 라멘', price: '가격 미정', photo: '/images/brands/story/menya-always/menu1.jpg' },
