@@ -281,7 +281,7 @@ export const brands: Brand[] = [
       { name: '로스 카츠 (등심)', price: '17,000원', photo: '/images/brands/story/bunjiro/menu1.jpg' },
       { name: '히레 카츠 (안심)', price: '19,000원', photo: '/images/brands/story/bunjiro/menu2.jpg' },
       { name: '통 모짜렐라 치즈 카츠', price: '21,000원', photo: '/images/brands/story/bunjiro/menu3.jpg' },
-      { name: '냉메밀 안심카츠 정식', price: '24,000원', photo: '/images/brands/story/bunjiro/menu4.jpg' },
+      { name: '냉소바 정식', price: '24,000원', photo: '/images/brands/story/bunjiro/menu4.jpg' },
       { name: '카케 온우동 정식', price: '24,000원', photo: '/images/brands/story/bunjiro/menu5.jpg' },
       { name: '수제 숙성 카레', price: '4,000원', photo: '/images/brands/story/bunjiro/menu6.jpg' },
     ],
