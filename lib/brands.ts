@@ -242,6 +242,7 @@ export const brands: Brand[] = [
     nameEn: 'BUNJIRO',
     category: 'japanese',
     format: 'dining',
+    categoryLabel: 'JAPANESE PREMIUM TONKATSU',
     tagline: '타카다 유지 장인의 돈카츠 철학',
     description:
       '분지로는 일본 나가사키 장인의 기술과 국내산 최상급 원육으로 완성한 프리미엄 돈카츠 브랜드입니다.',
