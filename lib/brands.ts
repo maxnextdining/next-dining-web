@@ -278,7 +278,12 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/bunjiro/hero-1.jpg', '/images/brands/gallery/bunjiro/hero-2.jpg', '/images/brands/gallery/bunjiro/hero-3.jpg', '/images/brands/gallery/bunjiro/store-1.jpg', '/images/brands/gallery/bunjiro/store-2.jpg', '/images/brands/gallery/bunjiro/store-3.jpg', '/images/brands/gallery/bunjiro/store-4.jpg', '/images/brands/gallery/bunjiro/store-5.jpg', '/images/brands/gallery/bunjiro/store-6.jpg', '/images/brands/gallery/bunjiro/menu-1.jpg', '/images/brands/gallery/bunjiro/menu-2.jpg', '/images/brands/gallery/bunjiro/menu-3.jpg', '/images/brands/gallery/bunjiro/menu-4.jpg', '/images/brands/gallery/bunjiro/menu-5.jpg', '/images/brands/gallery/bunjiro/menu-6.jpg'],
     cuisine: '돈카츠',
     menuHighlights: [
-      { name: '장인 로스카츠', price: '16,000원~29,000원', photo: '/images/brands/story/bunjiro/menu1.jpg' },
+      { name: '로스 카츠 (등심)', price: '17,000원', photo: '/images/brands/story/bunjiro/menu1.jpg' },
+      { name: '히레 카츠 (안심)', price: '19,000원', photo: '/images/brands/story/bunjiro/menu2.jpg' },
+      { name: '통 모짜렐라 치즈 카츠', price: '21,000원', photo: '/images/brands/story/bunjiro/menu3.jpg' },
+      { name: '냉메밀 안심카츠 정식', price: '24,000원', photo: '/images/brands/story/bunjiro/menu4.jpg' },
+      { name: '카케 온우동 정식', price: '24,000원', photo: '/images/brands/story/bunjiro/menu5.jpg' },
+      { name: '수제 숙성 카레', price: '4,000원', photo: '/images/brands/story/bunjiro/menu6.jpg' },
     ],
     reservationLinks: [
       { location: '한국본점 (명동)', note: '전화예약' },
