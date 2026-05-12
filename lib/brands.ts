@@ -327,8 +327,12 @@ export const brands: Brand[] = [
     cuisine: '프리미엄 스시',
     chefPhoto: '/images/brands/story/daisen/artisan.jpg',
     menuHighlights: [
-      { name: '런치 코스', price: '50,000원~', photo: '/images/brands/story/daisen/menu1.jpg' },
-      { name: '디너 코스', price: '77,000원~150,000원', photo: '/images/brands/story/daisen/menu2.jpg' },
+      { name: '[런치] 사시미 스시 정식', price: '49,000원', photo: '/images/brands/story/daisen/menu1.jpg' },
+      { name: '[런치] 모듬 스시 정식', price: '39,000원~45,000원', photo: '/images/brands/story/daisen/menu2.jpg' },
+      { name: '[런치] 후토마끼 정식', price: '35,000원' },
+      { name: '런치 코스', price: '73,000원' },
+      { name: '디너 코스', price: '77,000원~150,000원' },
+      { name: '단품 요리', price: '' },
     ],
     reservationLinks: [
       { location: '한국본점 (사운즈한남)', url: 'https://app.catchtable.co.kr/ct/shop/daisensushi' },
