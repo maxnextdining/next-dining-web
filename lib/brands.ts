@@ -322,7 +322,7 @@ export const brands: Brand[] = [
       '프리미엄 스시 서울', '한남 데이트 코스', '특별한 날 식당 서울', '사운즈한남 스시',
     ],
     priceRange: '₩₩₩₩',
-    accentColor: '#1a1a2e',
+    accentColor: '#8B7355',
     gallery: ['/images/brands/gallery/daisen/hero-1.jpg', '/images/brands/gallery/daisen/hero-2.jpg', '/images/brands/gallery/daisen/hero-3.jpg', '/images/brands/gallery/daisen/store-1.jpg', '/images/brands/gallery/daisen/store-2.jpg', '/images/brands/gallery/daisen/store-3.jpg', '/images/brands/gallery/daisen/store-4.jpg', '/images/brands/gallery/daisen/store-5.jpg', '/images/brands/gallery/daisen/store-6.jpg', '/images/brands/gallery/daisen/menu-1.jpg', '/images/brands/gallery/daisen/menu-2.jpg', '/images/brands/gallery/daisen/menu-3.jpg', '/images/brands/gallery/daisen/menu-4.jpg', '/images/brands/gallery/daisen/menu-5.jpg', '/images/brands/gallery/daisen/menu-6.jpg', '/images/brands/gallery/daisen/menu-7.jpg', '/images/brands/gallery/daisen/menu-8.jpg', '/images/brands/gallery/daisen/menu-9.jpg', '/images/brands/gallery/daisen/menu-10.jpg', '/images/brands/gallery/daisen/menu-11.jpg', '/images/brands/gallery/daisen/menu-12.jpg', '/images/brands/gallery/daisen/menu-13.jpg', '/images/brands/gallery/daisen/menu-14.jpg', '/images/brands/gallery/daisen/menu-15.jpg', '/images/brands/gallery/daisen/menu-16.jpg', '/images/brands/gallery/daisen/menu-17.jpg', '/images/brands/gallery/daisen/menu-18.jpg', '/images/brands/gallery/daisen/menu-19.jpg', '/images/brands/gallery/daisen/menu-20.jpg', '/images/brands/gallery/daisen/menu-21.jpg'],
     cuisine: '프리미엄 스시',
     chefPhoto: '/images/brands/story/daisen/artisan.jpg',
