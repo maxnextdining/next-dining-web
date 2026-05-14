@@ -369,8 +369,12 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/takumi-nagasaki/store-1.jpg', '/images/brands/gallery/takumi-nagasaki/store-2.jpg', '/images/brands/gallery/takumi-nagasaki/store-3.jpg', '/images/brands/gallery/takumi-nagasaki/menu-1.jpg', '/images/brands/gallery/takumi-nagasaki/menu-2.jpg', '/images/brands/gallery/takumi-nagasaki/menu-3.jpg'],
     cuisine: '일식',
     menuHighlights: [
-      { name: '등심돈카츠', price: '14,000원~19,000원', photo: '/images/brands/story/takumi-nagasaki/menu1.jpg' },
-      { name: '카게우동', price: '14,000원', photo: '/images/brands/story/takumi-nagasaki/menu2.jpg' },
+      { name: '등심 돈카츠', price: '13,900원', photo: '/images/brands/story/takumi-nagasaki/menu1.jpg' },
+      { name: '통 모짜렐라 치즈 카츠', price: '17,900원', photo: '/images/brands/story/takumi-nagasaki/menu2.jpg' },
+      { name: '카츠동', price: '14,900원~16,900원' },
+      { name: '규동 정식', price: '10,900원' },
+      { name: '자루 소바', price: '12,900원' },
+      { name: '우삼겹 우동', price: '14,900원' },
     ],
   },
   {
