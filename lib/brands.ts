@@ -166,9 +166,15 @@ export const brands: Brand[] = [
     gallery: ['/images/brands/gallery/jinjin-mandu/store-1.jpg', '/images/brands/gallery/jinjin-mandu/store-2.jpg', '/images/brands/gallery/jinjin-mandu/store-3.jpg', '/images/brands/gallery/jinjin-mandu/store-4.jpg', '/images/brands/gallery/jinjin-mandu/store-5.jpg', '/images/brands/gallery/jinjin-mandu/store-6.jpg', '/images/brands/gallery/jinjin-mandu/menu-1.jpg', '/images/brands/gallery/jinjin-mandu/menu-2.jpg', '/images/brands/gallery/jinjin-mandu/menu-3.jpg', '/images/brands/gallery/jinjin-mandu/menu-4.jpg', '/images/brands/gallery/jinjin-mandu/menu-5.jpg', '/images/brands/gallery/jinjin-mandu/menu-6.jpg'],
     cuisine: '한식',
     menuHighlights: [
-      { name: '손만두떡국', price: '18,000원', photo: '/images/brands/story/jinjin-mandu/menu1.jpg' },
-      { name: '손만두술국', price: '19,000원', photo: '/images/brands/story/jinjin-mandu/menu2.jpg' },
-      { name: '어복쟁반 (대)', price: '103,000원', photo: '/images/brands/story/jinjin-mandu/menu3.jpg' },
+      { name: '손만두 떡국', price: '18,000원', photo: '/images/brands/story/jinjin-mandu/menu1.jpg' },
+      { name: '손만두 술국', price: '19,000원', photo: '/images/brands/story/jinjin-mandu/menu2.jpg' },
+      { name: '수육 곰탕', price: '20,000원', photo: '/images/brands/story/jinjin-mandu/menu4.jpg' },
+      { name: '평양냉면', price: '17,000원', photo: '/images/brands/story/jinjin-mandu/menu5.jpg' },
+      { name: '가오리 회 냉면', price: '18,000원', photo: '/images/brands/story/jinjin-mandu/menu6.jpg' },
+      { name: '녹두전', price: '14,000원', photo: '/images/brands/story/jinjin-mandu/menu7.jpg' },
+      { name: '어복쟁반 (2인)', price: '73,000원', photo: '/images/brands/story/jinjin-mandu/menu3.jpg' },
+      { name: '여의도 불고기 전골 (2인)', price: '69,000원', photo: '/images/brands/story/jinjin-mandu/menu8.jpg' },
+      { name: '모듬전', price: '37,000원', photo: '/images/brands/story/jinjin-mandu/menu9.jpg' },
     ],
     reservationLinks: [
       { location: '시청점', url: 'https://app.catchtable.co.kr/ct/shop/jinjinmanducityhall' },
