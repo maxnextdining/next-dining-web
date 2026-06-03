@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const h = await headers();
   const pathname = h.get("x-pathname") || "";
-  const lang = pathname === "/ja" || pathname.startsWith("/ja/") ? "ja" : "ko";
+  const lang = pathname === "/jp" || pathname.startsWith("/jp/") ? "ja" : "ko";
   const hiddenPages = await fetchHiddenPages();
 
   return (

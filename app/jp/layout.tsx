@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: "https://next-dining.com/ja",
+    url: "https://next-dining.com/jp",
     siteName: "NEXT DINING",
     title: "NEXT DINING — ネクストダイニング",
     description: "10のプレミアム飲食ブランド、直営店舗をソウル・ニューヨークで展開",
@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: {
-    canonical: "https://next-dining.com/ja",
+    canonical: "https://next-dining.com/jp",
     languages: {
       ko: "https://next-dining.com",
-      ja: "https://next-dining.com/ja",
+      ja: "https://next-dining.com/jp",
     },
   },
 };

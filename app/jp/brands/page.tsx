@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     description: "ネクストダイニングの10のプレミアム飲食ブランドポートフォリオ",
   },
   alternates: {
-    canonical: "https://next-dining.com/ja/brands",
+    canonical: "https://next-dining.com/jp/brands",
     languages: {
       ko: "https://next-dining.com/brands",
-      ja: "https://next-dining.com/ja/brands",
+      ja: "https://next-dining.com/jp/brands",
     },
   },
 };

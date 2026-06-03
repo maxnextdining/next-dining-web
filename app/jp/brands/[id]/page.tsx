@@ -40,10 +40,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [{ url: brand.image, width: 1200, height: 630, alt: brand.nameEn }],
     },
     alternates: {
-      canonical: `https://next-dining.com/ja/brands/${id}`,
+      canonical: `https://next-dining.com/jp/brands/${id}`,
       languages: {
         ko: `https://next-dining.com/brands/${id}`,
-        ja: `https://next-dining.com/ja/brands/${id}`,
+        ja: `https://next-dining.com/jp/brands/${id}`,
       },
     },
   };
@@ -153,7 +153,7 @@ export default async function JaBrandDetailPage({ params }: Props) {
                 ? "US"
                 : "KR",
           },
-          url: `https://next-dining.com/ja/brands/${brand.id}`,
+          url: `https://next-dining.com/jp/brands/${brand.id}`,
           ...(menuItems.length > 0 && {
             hasMenu: {
               "@type": "Menu",
@@ -171,7 +171,7 @@ export default async function JaBrandDetailPage({ params }: Props) {
           parentOrganization: {
             "@type": "Organization",
             name: "ネクストダイニング (Next Dining Corp)",
-            url: "https://next-dining.com/ja",
+            url: "https://next-dining.com/jp",
           },
         }))
       : null;

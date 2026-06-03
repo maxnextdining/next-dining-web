@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     description: "検証された職人のブランドを韓国で運営しています。ネクストダイニング企業概要",
   },
   alternates: {
-    canonical: "https://next-dining.com/ja/about",
+    canonical: "https://next-dining.com/jp/about",
     languages: {
       ko: "https://next-dining.com/about",
-      ja: "https://next-dining.com/ja/about",
+      ja: "https://next-dining.com/jp/about",
     },
   },
 };

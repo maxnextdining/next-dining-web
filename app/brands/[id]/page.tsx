@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `https://next-dining.com/brands/${id}`,
       languages: {
         ko: `https://next-dining.com/brands/${id}`,
-        ja: `https://next-dining.com/ja/brands/${id}`,
+        ja: `https://next-dining.com/jp/brands/${id}`,
       },
     },
   };

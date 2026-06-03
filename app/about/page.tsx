@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: "https://next-dining.com/about",
     languages: {
       ko: "https://next-dining.com/about",
-      ja: "https://next-dining.com/ja/about",
+      ja: "https://next-dining.com/jp/about",
     },
   },
 };

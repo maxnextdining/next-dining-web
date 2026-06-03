@@ -308,17 +308,17 @@ export function t(lang: Lang, key: DictKey): string {
 
 /** URL prefix for a given lang (/ja or '') */
 export function langPrefix(lang: Lang): string {
-  return lang === 'ja' ? '/ja' : '';
+  return lang === 'ja' ? '/jp' : '';
 }
 
 /** Given a path (e.g. /brands/foo), produce the equivalent path for the other lang */
 export function switchLangPath(currentPath: string, targetLang: Lang): string {
   // Strip existing /ja prefix
-  const stripped = currentPath.startsWith('/ja')
+  const stripped = currentPath.startsWith('/jp')
     ? currentPath.slice(3) || '/'
     : currentPath;
   if (targetLang === 'ja') {
-    return '/ja' + (stripped === '/' ? '' : stripped);
+    return '/jp' + (stripped === '/' ? '' : stripped);
   }
   return stripped || '/';
 }

@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   description:
     "ネクストダイニングは봉우리한정식、진가와、분지로、다이센스시など10のプレミアム飲食ブランドを運営しています。ソウル漢南洞、江南、明洞、蚕室、釜山、ニューヨークなど国内外21の直営店舗。",
   alternates: {
-    canonical: "https://next-dining.com/ja",
+    canonical: "https://next-dining.com/jp",
     languages: {
       ko: "https://next-dining.com",
-      ja: "https://next-dining.com/ja",
+      ja: "https://next-dining.com/jp",
     },
   },
 };
