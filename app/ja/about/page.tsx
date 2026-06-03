@@ -5,15 +5,15 @@ import AboutPageContent from "@/components/pages/AboutPageContent";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "회사 소개",
+  title: "会社概要",
   description:
-    "넥스트다이닝은 이하연 김치 명인의 봉우리, 370년 전통 진가와, 나가사키 장인 분지로, 큐슈 1위 다이센스시 등 검증된 외식 브랜드를 한국에서 운영하는 프리미엄 외식 그룹입니다.",
+    "ネクストダイニングは봉우리 한정식、370年の伝統 진가와、長崎の職人 분지로、九州1位の 다이센스시など検証された外食ブランドを韓国で運営するプレミアム外食グループです。",
   openGraph: {
-    title: "회사 소개 | NEXT DINING",
-    description: "검증된 장인의 브랜드를 한국에서 운영합니다. 넥스트다이닝 기업 소개",
+    title: "会社概要 | NEXT DINING",
+    description: "検証された職人のブランドを韓国で運営しています。ネクストダイニング企業概要",
   },
   alternates: {
-    canonical: "https://next-dining.com/about",
+    canonical: "https://next-dining.com/ja/about",
     languages: {
       ko: "https://next-dining.com/about",
       ja: "https://next-dining.com/ja/about",
@@ -21,10 +21,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function AboutPage() {
+export default async function JaAboutPage() {
   const [sheetBrandInfoList, cmsContent] = await Promise.all([
-    fetchBrandInfo('ko'),
-    fetchPageContent('ko'),
+    fetchBrandInfo('ja'),
+    fetchPageContent('ja'),
   ]);
 
   const originLineMap: Record<string, string> = {};
@@ -34,7 +34,7 @@ export default async function AboutPage() {
 
   return (
     <AboutPageContent
-      lang="ko"
+      lang="ja"
       originLineMap={originLineMap}
       content={cmsContent ?? {}}
     />

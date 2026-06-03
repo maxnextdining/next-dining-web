@@ -4,31 +4,57 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import type { Lang } from '@/lib/i18n';
+import { t, langPrefix, switchLangPath } from '@/lib/i18n';
 
-const ALL_NAV = [
-  { href: '/brands', label: '브랜드' },
-  { href: '/about', label: '회사 소개' },
-  { href: '/happenings', label: '새소식' },
-  { href: '/careers', label: '채용' },
-  { href: '/contact', label: '문의' },
+interface NavItem {
+  href: string;
+  labelKey: 'nav.brands' | 'nav.about' | 'nav.happenings' | 'nav.careers' | 'nav.contact';
+  pageId: string;
+}
+
+const ALL_NAV: NavItem[] = [
+  { href: '/brands',     labelKey: 'nav.brands',     pageId: 'brands' },
+  { href: '/about',      labelKey: 'nav.about',       pageId: 'about' },
+  { href: '/happenings', labelKey: 'nav.happenings',  pageId: 'happenings' },
+  { href: '/careers',    labelKey: 'nav.careers',     pageId: 'careers' },
+  { href: '/contact',    labelKey: 'nav.contact',     pageId: 'contact' },
 ];
 
-export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] }) {
-  const NAV = ALL_NAV.filter((n) => !hiddenPages.includes(n.href.slice(1)));
+// Pages without /ja equivalents — keep as Korean URLs for ja header
+const JA_EXCLUDED = new Set(['happenings', 'careers', 'contact']);
+
+interface HeaderProps {
+  hiddenPages?: string[];
+  lang?: Lang;
+}
+
+export default function Header({ hiddenPages = [], lang = 'ko' }: HeaderProps) {
+  const prefix = langPrefix(lang);
+
+  // Build nav: filter hidden, adjust hrefs for lang
+  const NAV = ALL_NAV
+    .filter((n) => !hiddenPages.includes(n.pageId))
+    .map((n) => {
+      // ja: excluded pages link to Korean URL
+      const href = lang === 'ja' && JA_EXCLUDED.has(n.pageId)
+        ? n.href
+        : `${prefix}${n.href}`;
+      return { href, label: t(lang, n.labelKey) };
+    });
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
 
-  // Always dark-themed site
   const isActive = (href: string) => pathname === href;
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 50);
-      // Smart header: hide on scroll down, show on scroll up
       if (y > lastScrollY.current && y > 120) {
         setHidden(true);
       } else {
@@ -40,7 +66,6 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
@@ -52,10 +77,15 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
     };
   }, [open]);
 
-  // Close menu on route change
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  const partnershipHref = lang === 'ja' ? '/contact?tab=partnership' : '/contact?tab=partnership';
+  const reservationHref = lang === 'ja' ? '/contact?tab=reservation' : '/contact?tab=reservation';
+
+  const koPath = switchLangPath(pathname, 'ko');
+  const jaPath = switchLangPath(pathname, 'ja');
 
   return (
     <>
@@ -79,7 +109,7 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
 
         <div className="mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="relative z-10 flex items-center shrink-0">
+          <Link href={prefix || '/'} className="relative z-10 flex items-center shrink-0">
             <Image
               src="/images/next-dining-logo-white.png"
               alt="NEXT DINING"
@@ -115,19 +145,45 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA + Language Switcher */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
+            {/* Language Switcher */}
+            <div className="flex items-center gap-1 text-xs font-mono tracking-widest mr-1">
+              <Link
+                href={koPath}
+                className={[
+                  'px-2 py-1 transition-colors duration-200',
+                  lang === 'ko'
+                    ? 'text-[#C8A96E]'
+                    : 'text-white/40 hover:text-white/70',
+                ].join(' ')}
+              >
+                {t(lang, 'lang.ko')}
+              </Link>
+              <span className="text-white/20">/</span>
+              <Link
+                href={jaPath}
+                className={[
+                  'px-2 py-1 transition-colors duration-200',
+                  lang === 'ja'
+                    ? 'text-[#C8A96E]'
+                    : 'text-white/40 hover:text-white/70',
+                ].join(' ')}
+              >
+                {t(lang, 'lang.ja')}
+              </Link>
+            </div>
             <Link
-              href="/contact?tab=partnership"
+              href={partnershipHref}
               className="cta-outline text-sm tracking-wide px-5 py-2 rounded-full border border-white/20 text-white/70 bg-transparent hover:border-white/40 hover:text-white"
             >
-              제휴·입점
+              {t(lang, 'header.cta_partnership')}
             </Link>
             <Link
-              href="/contact?tab=reservation"
+              href={reservationHref}
               className="cta-primary text-sm tracking-wide px-5 py-2 rounded-full bg-[#C8A96E] text-[#0A0A0A] font-semibold hover:bg-[#E8D5B0] hover:shadow-[0_0_20px_rgba(200,169,110,0.25)]"
             >
-              예약하기
+              {t(lang, 'header.cta_reservation')}
             </Link>
           </div>
 
@@ -135,7 +191,7 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
           <button
             className="md:hidden relative z-10 flex flex-col justify-center items-center w-10 h-10 gap-0"
             onClick={() => setOpen((v) => !v)}
-            aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
+            aria-label={open ? t(lang, 'header.aria_close') : t(lang, 'header.aria_open')}
             aria-expanded={open}
           >
             <span
@@ -176,7 +232,7 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
       >
         {/* Top bar */}
         <div className="flex items-center justify-between px-6 h-20 shrink-0">
-          <Link href="/" onClick={() => setOpen(false)}>
+          <Link href={prefix || '/'} onClick={() => setOpen(false)}>
             <Image
               src="/images/next-dining-logo-white.png"
               alt="NEXT DINING"
@@ -187,7 +243,7 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
           </Link>
           <button
             onClick={() => setOpen(false)}
-            aria-label="메뉴 닫기"
+            aria-label={t(lang, 'header.aria_close')}
             className="flex flex-col justify-center items-center w-10 h-10 gap-0"
           >
             <span
@@ -211,7 +267,6 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
                   isActive(n.href)
                     ? 'text-[#C8A96E]'
                     : 'text-white/70 hover:text-[#C8A96E]',
-                  // Staggered fade-in
                   open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4',
                 ].join(' ')}
                 style={{
@@ -237,6 +292,37 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
               )}
             </div>
           ))}
+
+          {/* Mobile language switcher */}
+          <div
+            className={[
+              'flex items-center gap-4 mt-8 transition-all duration-500',
+              open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4',
+            ].join(' ')}
+            style={{ transitionDelay: open ? `${100 + NAV.length * 80}ms` : '0ms' }}
+          >
+            <Link
+              href={koPath}
+              onClick={() => setOpen(false)}
+              className={[
+                'text-sm font-mono tracking-widest transition-colors',
+                lang === 'ko' ? 'text-[#C8A96E]' : 'text-white/40',
+              ].join(' ')}
+            >
+              KO
+            </Link>
+            <span className="text-white/20 text-sm">/</span>
+            <Link
+              href={jaPath}
+              onClick={() => setOpen(false)}
+              className={[
+                'text-sm font-mono tracking-widest transition-colors',
+                lang === 'ja' ? 'text-[#C8A96E]' : 'text-white/40',
+              ].join(' ')}
+            >
+              JA
+            </Link>
+          </div>
         </nav>
 
         {/* Bottom CTA */}
@@ -248,18 +334,18 @@ export default function Header({ hiddenPages = [] }: { hiddenPages?: string[] })
           style={{ transitionDelay: open ? '520ms' : '0ms' }}
         >
           <Link
-            href="/contact?tab=reservation"
+            href={reservationHref}
             onClick={() => setOpen(false)}
             className="cta-primary block w-full text-center text-sm tracking-widest py-4 rounded-full bg-[#C8A96E] text-[#0A0A0A] font-semibold hover:bg-[#E8D5B0]"
           >
-            예약하기
+            {t(lang, 'header.cta_reservation')}
           </Link>
           <Link
-            href="/contact?tab=partnership"
+            href={partnershipHref}
             onClick={() => setOpen(false)}
             className="cta-outline block w-full text-center text-sm tracking-widest py-4 rounded-full border border-white/20 text-white/70 bg-transparent hover:border-white/40 hover:text-white"
           >
-            제휴·입점
+            {t(lang, 'header.cta_partnership')}
           </Link>
         </div>
       </div>

@@ -46,6 +46,7 @@ export interface Brand {
   image: string;
   logo: string;
   keywords: string[]; // GEO 최적화용 키워드
+  keywordsJa?: string[]; // 일본어 SEO 키워드 (/ja 전용)
   priceRange?: string;
   cuisine?: string;
   website?: string;
@@ -59,6 +60,9 @@ export interface Brand {
   chefPhoto?: string;  // 장인/셰프 인물 사진
   chefName?: string;   // 장인/셰프 이름
   chefTitle?: string;  // 장인/셰프 직함/소개
+  chefNameJa?: string;  // 장인/셰프 이름 (일본어, /ja 전용)
+  chefTitleJa?: string; // 장인/셰프 직함/소개 (일본어, /ja 전용)
+  cuisineJa?: string;   // 요리 카테고리 라벨 (일본어, /ja 전용)
   menuPhotos?: { name: string; photo: string; price: string }[]; // 메뉴 사진 포함
 }
 
@@ -87,13 +91,17 @@ export const brands: Brand[] = [
     ],
     chefPhoto: '/images/brands/story/bongwoori/artisan.jpg',
     chefName: '이하연 명인',
+    chefNameJa: 'イ・ハヨン名人',
+    chefTitleJa: '大韓民国国家認定キムチ名人 第58号',
     image: '/images/brands/bongwoori.jpg',
     logo: '/images/brands/logos/bongwoori.png',
     keywords: ['한정식', '프리미엄 한식', '역삼 비즈니스 런치', '을지로 한정식', '서울 한정식 추천', '기업 접대 식당'],
+    keywordsJa: ['韓定食', 'プレミアム韓食', '驛三ビジネスランチ', '乙支路の韓定食', 'ソウル韓定食おすすめ', '接待レストラン'],
     priceRange: '₩₩₩₩',
     accentColor: '#8B6914',
     gallery: ['/images/brands/gallery/bongwoori/store-1.jpg', '/images/brands/gallery/bongwoori/store-2.jpg', '/images/brands/gallery/bongwoori/store-3.jpg', '/images/brands/gallery/bongwoori/store-4.jpg', '/images/brands/gallery/bongwoori/store-5.jpg', '/images/brands/gallery/bongwoori/menu-1.jpg', '/images/brands/gallery/bongwoori/menu-2.jpg', '/images/brands/gallery/bongwoori/menu-3.jpg', '/images/brands/gallery/bongwoori/menu-4.jpg', '/images/brands/gallery/bongwoori/menu-5.jpg'],
     cuisine: '한정식',
+    cuisineJa: '韓定食',
     menuHighlights: [
       { name: '봉우리 정식', price: '65,000원', photo: '/images/brands/story/bongwoori/menu1.jpg' },
       { name: '식객 정식', price: '78,000원', photo: '/images/brands/story/bongwoori/menu2.jpg' },
@@ -126,10 +134,12 @@ export const brands: Brand[] = [
     image: '/images/brands/bongwoori-soban.jpg',
     logo: '/images/brands/logos/bongwoori-soban.png',
     keywords: ['여주 맛집', '여주신세계 식당', '아울렛 한식', '경기도 한정식'],
+    keywordsJa: ['驪州グルメ', '驪州新世界レストラン', 'アウトレット韓食', '京畿道の韓定食'],
     priceRange: '₩₩₩',
     accentColor: '#8B6914',
     gallery: ['/images/brands/gallery/bongwoori-soban/store-1.jpg', '/images/brands/gallery/bongwoori-soban/store-2.jpg', '/images/brands/gallery/bongwoori-soban/store-3.jpg', '/images/brands/gallery/bongwoori-soban/store-4.jpg', '/images/brands/gallery/bongwoori-soban/menu-1.jpg', '/images/brands/gallery/bongwoori-soban/menu-2.jpg', '/images/brands/gallery/bongwoori-soban/menu-3.jpg', '/images/brands/gallery/bongwoori-soban/menu-4.jpg'],
     cuisine: '한식',
+    cuisineJa: '韓食',
     menuHighlights: [
       { name: '산나물 비빔밥', price: '16,000원', photo: '/images/brands/story/bongwoori-soban/menu1.jpg' },
     ],
@@ -161,6 +171,7 @@ export const brands: Brand[] = [
     image: '/images/brands/jinjin-mandu.jpg',
     logo: '/images/brands/logos/jinjin-mandu.png',
     keywords: ['시청 만두', '시청 점심 맛집', '수제만두 서울', '시청역 맛집', '만두 전문점', '황해도식 만두'],
+    keywordsJa: ['市庁マンドゥ', '市庁ランチグルメ', '手作り餃子ソウル', '市庁駅グルメ', '餃子専門店', '黄海道式餃子'],
     priceRange: '₩₩',
     accentColor: '#B91C1C',
     gallery: [
@@ -190,6 +201,7 @@ export const brands: Brand[] = [
       '/images/brands/gallery/jinjin-mandu/menu-12.jpg',
     ],
     cuisine: '한식',
+    cuisineJa: '韓食',
     menuHighlights: [
       { name: '손만두 떡국', price: '18,000원', photo: '/images/brands/story/jinjin-mandu/menu1.jpg' },
       { name: '손만두 술국', price: '19,000원', photo: '/images/brands/story/jinjin-mandu/menu2.jpg' },
@@ -237,6 +249,7 @@ export const brands: Brand[] = [
     image: '/images/brands/jinkawa.jpg',
     logo: '/images/brands/logos/jinkawa.png',
     keywords: ['진가와', '역삼 소바', '여의도 일식', '을지로 소바', '광화문 맛집', '잠실 일식', '정통 소바', '롯데월드몰 맛집', '강남 일식당', '부산 소바'],
+    keywordsJa: ['JINKAWA', '驛三そば', '汝矣島和食', '乙支路そば', '光化門グルメ', '蚕室和食', '本格そば', 'ロッテワールドモールグルメ', '江南和食堂', '釜山そば'],
     priceRange: '₩₩₩',
     accentColor: '#1E3A5F',
     gallery: [
@@ -251,6 +264,7 @@ export const brands: Brand[] = [
       '/images/brands/gallery/jinkawa/menu-10.jpg', '/images/brands/gallery/jinkawa/menu-11.jpg', '/images/brands/gallery/jinkawa/menu-12.jpg',
     ],
     cuisine: '소바',
+    cuisineJa: 'そば',
     menuHighlights: [
       { name: '자루 메밀면', price: '14,000원', photo: '/images/brands/story/jinkawa/menu1.jpg' },
       { name: '우나기동', price: '35,000원', photo: '/images/brands/story/jinkawa/menu2.jpg' },
@@ -305,10 +319,12 @@ export const brands: Brand[] = [
       '분지로', '나가사키 돈카츠', '명동 돈카츠', '한남 맛집', '사운즈한남 식당',
       '롯데월드몰 돈카츠', '데이트 코스 한남', '서울 돈카츠 맛집', '일본 장인 돈카츠',
     ],
+    keywordsJa: ['BUNJIRO', '長崎とんかつ', '明洞とんかつ', '漢南グルメ', 'サウンズ漢南レストラン', 'ロッテワールドモールとんかつ', '漢南デートコース', 'ソウルとんかつ', '日本職人とんかつ'],
     priceRange: '₩₩₩',
     accentColor: '#4A2C2A',
     gallery: ['/images/brands/gallery/bunjiro/hero-1.jpg', '/images/brands/gallery/bunjiro/hero-2.jpg', '/images/brands/gallery/bunjiro/hero-3.jpg', '/images/brands/gallery/bunjiro/asset-1.jpg', '/images/brands/gallery/bunjiro/asset-2.jpg', '/images/brands/gallery/bunjiro/asset-3.jpg', '/images/brands/gallery/bunjiro/asset-4.jpg', '/images/brands/gallery/bunjiro/asset-5.jpg', '/images/brands/gallery/bunjiro/asset-6.jpg', '/images/brands/gallery/bunjiro/asset-7.jpg', '/images/brands/gallery/bunjiro/asset-8.jpg', '/images/brands/gallery/bunjiro/asset-9.jpg', '/images/brands/gallery/bunjiro/asset-10.jpg', '/images/brands/gallery/bunjiro/asset-11.jpg', '/images/brands/gallery/bunjiro/asset-12.jpg'],
     cuisine: '돈카츠',
+    cuisineJa: 'とんかつ',
     menuHighlights: [
       { name: '로스 카츠 (등심)', price: '17,000원', photo: '/images/brands/story/bunjiro/menu1.jpg' },
       { name: '히레 카츠 (안심)', price: '19,000원', photo: '/images/brands/story/bunjiro/menu2.jpg' },
@@ -352,10 +368,12 @@ export const brands: Brand[] = [
       '다이센스시', '한남 프라이빗 스시', '한남동 스시', '서울 프리미엄 스시',
       '프리미엄 스시 서울', '한남 데이트 코스', '특별한 날 식당 서울', '사운즈한남 스시',
     ],
+    keywordsJa: ['大山スシ', '漢南プライベートスシ', '漢南洞スシ', 'ソウルプレミアムスシ', '漢南デートコース', '特別な日レストランソウル', 'サウンズ漢南スシ', '韓国高級寿司'],
     priceRange: '₩₩₩₩',
     accentColor: '#8B7355',
     gallery: ['/images/brands/gallery/daisen/hero-1.jpg', '/images/brands/gallery/daisen/hero-2.jpg', '/images/brands/gallery/daisen/hero-3.jpg', '/images/brands/gallery/daisen/store-1.jpg', '/images/brands/gallery/daisen/store-2.jpg', '/images/brands/gallery/daisen/store-3.jpg', '/images/brands/gallery/daisen/store-4.jpg', '/images/brands/gallery/daisen/store-5.jpg', '/images/brands/gallery/daisen/store-6.jpg', '/images/brands/gallery/daisen/menu-1.jpg', '/images/brands/gallery/daisen/menu-2.jpg', '/images/brands/gallery/daisen/menu-3.jpg', '/images/brands/gallery/daisen/menu-4.jpg', '/images/brands/gallery/daisen/menu-5.jpg', '/images/brands/gallery/daisen/menu-6.jpg', '/images/brands/gallery/daisen/menu-7.jpg', '/images/brands/gallery/daisen/menu-8.jpg', '/images/brands/gallery/daisen/menu-9.jpg', '/images/brands/gallery/daisen/menu-10.jpg', '/images/brands/gallery/daisen/menu-11.jpg', '/images/brands/gallery/daisen/menu-12.jpg', '/images/brands/gallery/daisen/menu-13.jpg', '/images/brands/gallery/daisen/menu-14.jpg', '/images/brands/gallery/daisen/menu-15.jpg', '/images/brands/gallery/daisen/menu-16.jpg', '/images/brands/gallery/daisen/menu-17.jpg', '/images/brands/gallery/daisen/menu-18.jpg', '/images/brands/gallery/daisen/menu-19.jpg', '/images/brands/gallery/daisen/menu-20.jpg', '/images/brands/gallery/daisen/menu-21.jpg'],
     cuisine: '프리미엄 스시',
+    cuisineJa: 'プレミアム寿司',
     chefPhoto: '/images/brands/story/daisen/artisan.jpg',
     menuHighlights: [
       { name: '[런치] 사시미 스시 정식', price: '49,000원', photo: '/images/brands/story/daisen/menu1.jpg' },
@@ -395,10 +413,12 @@ export const brands: Brand[] = [
     image: '/images/brands/takumi-nagasaki.jpg',
     logo: '/images/brands/logos/takumi-nagasaki.png',
     keywords: ['타쿠미나가사키', '고속터미널 일식', '용산 일식당', '아이파크몰 맛집', '파인캐주얼 일식', '나가사키 요리'],
+    keywordsJa: ['タクミナガサキ', '高速ターミナル和食', '龍山和食堂', 'アイパークモールグルメ', 'ファインカジュアル和食', '長崎料理'],
     priceRange: '₩₩₩',
     accentColor: '#2C3E50',
     gallery: ['/images/brands/gallery/takumi-nagasaki/store-1.jpg', '/images/brands/gallery/takumi-nagasaki/store-2.jpg', '/images/brands/gallery/takumi-nagasaki/store-3.jpg', '/images/brands/gallery/takumi-nagasaki/store-4.jpg', '/images/brands/gallery/takumi-nagasaki/store-5.jpg', '/images/brands/gallery/takumi-nagasaki/store-6.jpg', '/images/brands/gallery/takumi-nagasaki/menu-1.jpg', '/images/brands/gallery/takumi-nagasaki/menu-2.jpg', '/images/brands/gallery/takumi-nagasaki/menu-3.jpg'],
     cuisine: '일식',
+    cuisineJa: '和食',
     menuHighlights: [
       { name: '등심 돈카츠', price: '13,900원', photo: '/images/brands/story/takumi-nagasaki/menu1.jpg' },
       { name: '통 모짜렐라 치즈 카츠', price: '17,900원', photo: '/images/brands/story/takumi-nagasaki/menu2.jpg' },
@@ -432,9 +452,11 @@ export const brands: Brand[] = [
     image: '/images/brands/menya-always.jpg',
     logo: '/images/brands/logos/menya-always.png',
     keywords: ['멘야올웨이즈', '서울 라멘', '정통 일본 라멘', '라멘 맛집 서울', '성수 라멘', '돈코츠 라멘'],
+    keywordsJa: ['MENYA ALWAYS', 'ソウルラーメン', '本格日本ラーメン', 'ラーメングルメソウル', '聖水ラーメン', '豚骨ラーメン'],
     priceRange: '₩₩',
     accentColor: '#C41E3A',
     cuisine: '라멘',
+    cuisineJa: 'ラーメン',
     menuHighlights: [
       { name: '레몬 돈코츠 라멘', price: '가격 미정', photo: '/images/brands/story/menya-always/menu1.jpg' },
       { name: '특제 츠케멘', price: '가격 미정', photo: '/images/brands/story/menya-always/menu2.jpg' },
@@ -464,10 +486,12 @@ export const brands: Brand[] = [
     image: '/images/brands/cafe-le-sens.jpg',
     logo: '/images/brands/logos/cafe-le-sens.png',
     keywords: ['카페르상스', '한남동 카페', '사운즈한남 카페', '한남 브런치', '한남 데이트 카페', '용산 카페 추천'],
+    keywordsJa: ['カフェルサンス', '漢南洞カフェ', 'サウンズ漢南カフェ', '漢南ブランチ', '漢南デートカフェ', '龍山カフェおすすめ'],
     priceRange: '₩₩',
     accentColor: '#6B4C3B',
     gallery: ['/images/brands/gallery/cafe-le-sens/gallery-01.jpg', '/images/brands/gallery/cafe-le-sens/gallery-02.jpg', '/images/brands/gallery/cafe-le-sens/gallery-03.jpg', '/images/brands/gallery/cafe-le-sens/gallery-04.jpg', '/images/brands/gallery/cafe-le-sens/gallery-05.jpg', '/images/brands/gallery/cafe-le-sens/gallery-06.jpg', '/images/brands/gallery/cafe-le-sens/gallery-07.jpg', '/images/brands/gallery/cafe-le-sens/gallery-08.jpg', '/images/brands/gallery/cafe-le-sens/gallery-09.jpg', '/images/brands/gallery/cafe-le-sens/gallery-10.jpg', '/images/brands/gallery/cafe-le-sens/gallery-11.jpg', '/images/brands/gallery/cafe-le-sens/gallery-12.jpg', '/images/brands/gallery/cafe-le-sens/gallery-13.jpg', '/images/brands/gallery/cafe-le-sens/gallery-14.jpg', '/images/brands/gallery/cafe-le-sens/gallery-15.jpg', '/images/brands/gallery/cafe-le-sens/gallery-16.jpg', '/images/brands/gallery/cafe-le-sens/gallery-17.jpg'],
     cuisine: '카페',
+    cuisineJa: 'カフェ',
     menuHighlights: [
       { name: '스페셜티 커피 & 티', price: '6,000원~', photo: '/images/brands/story/cafe-le-sens/menu1.jpg' },
       { name: '아티장 브레드 & 디저트', price: '5,000원~', photo: '/images/brands/story/cafe-le-sens/menu2.jpg' },
@@ -500,10 +524,12 @@ export const brands: Brand[] = [
     image: '/images/brands/noflex-nyc.jpg',
     logo: '/images/brands/logos/noflex-nyc.png',
     keywords: ['NOFLEX NYC', '노플렉스뉴욕', '뉴욕 한국 레스토랑', 'media art restaurant NYC', 'immersive dining NYC', '맨해튼 칵테일바', '넥스트다이닝 미국'],
+    keywordsJa: ['NOFLEX NYC', 'ニューヨーク韓国レストラン', 'メディアアートレストランNYC', '没入型ダイニングNYC', 'マンハッタンカクテルバー', 'Kダイニング', 'ネクストダイニングNY'],
     priceRange: '$$$',
     accentColor: '#5B21B6',
     gallery: ['/images/brands/gallery/noflex-nyc/store-1.jpg', '/images/brands/gallery/noflex-nyc/store-2.jpg', '/images/brands/gallery/noflex-nyc/menu-1.jpg', '/images/brands/gallery/noflex-nyc/menu-2.jpg', '/images/brands/gallery/noflex-nyc/menu-3.jpg', '/images/brands/gallery/noflex-nyc/menu-4.jpg'],
     cuisine: '모던 다이닝 & 칵테일 바',
+    cuisineJa: 'モダン韓食 & カクテルバー',
     menuHighlights: [
       { name: 'K-모던 한식 플레이트', price: '$25~', photo: '/images/brands/story/noflex-nyc/menu1.jpg' },
       { name: '시그니처 칵테일', price: '$18~', photo: '/images/brands/story/noflex-nyc/menu2.jpg' },

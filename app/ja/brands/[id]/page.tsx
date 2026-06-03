@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import { brands, getBrandById } from "@/lib/brands";
 import { fetchBrandMenu } from "@/lib/menu-sheets";
-import { fetchBrandInfoById, fetchBrandStories } from "@/lib/sheets-cms";
+import { fetchBrandInfoById, fetchBrandStories, fetchBrandInfo, fetchStoreInfo } from "@/lib/sheets-cms";
 import type { Metadata } from "next";
 import BrandDetailContent from "@/components/pages/BrandDetailContent";
 
-/** ISR: 1시간마다 재생성 — Google Sheets 메뉴 반영 */
+/** ISR: 1시간마다 재생성 */
 export const revalidate = 3600;
 
 interface Props {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const brand = getBrandById(id);
   if (!brand) return {};
 
-  const sheetBrandInfo = await fetchBrandInfoById(id, 'ko');
+  const sheetBrandInfo = await fetchBrandInfoById(id, 'ja');
   const description = sheetBrandInfo?.description || brand.description;
   const tagline = sheetBrandInfo?.tagline || brand.tagline;
 
@@ -31,16 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .join(", ");
 
   return {
-    title: `${brand.name} (${brand.nameEn})`,
-    description: `${description} 운영 지점: ${locationNames || "오픈 준비 중"}`,
-    keywords: brand.keywords,
+    title: `${brand.nameEn}`,
+    description: `${description} 店舗: ${locationNames || "オープン準備中"}`,
+    keywords: brand.keywordsJa ?? brand.keywords,
     openGraph: {
-      title: `${brand.name} | NEXT DINING`,
+      title: `${brand.nameEn} | NEXT DINING`,
       description: tagline,
-      images: [{ url: brand.image, width: 1200, height: 630, alt: brand.name }],
+      images: [{ url: brand.image, width: 1200, height: 630, alt: brand.nameEn }],
     },
     alternates: {
-      canonical: `https://next-dining.com/brands/${id}`,
+      canonical: `https://next-dining.com/ja/brands/${id}`,
       languages: {
         ko: `https://next-dining.com/brands/${id}`,
         ja: `https://next-dining.com/ja/brands/${id}`,
@@ -49,15 +49,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BrandDetailPage({ params }: Props) {
+export default async function JaBrandDetailPage({ params }: Props) {
   const { id } = await params;
   const brand = getBrandById(id);
   if (!brand) notFound();
 
-  const [sheetBrandInfo, sheetStories, sheetMenu] = await Promise.all([
-    fetchBrandInfoById(id, 'ko'),
-    fetchBrandStories('ko'),
-    fetchBrandMenu(id),
+  const [sheetBrandInfo, sheetStories, sheetMenu, allBrandInfoJa, storeInfoJa] = await Promise.all([
+    fetchBrandInfoById(id, 'ja'),
+    fetchBrandStories('ja'),
+    fetchBrandMenu(id, 'ja'),
+    fetchBrandInfo('ja'),
+    fetchStoreInfo('ja'),
   ]);
 
   const sheetStory = sheetStories[id];
@@ -79,11 +81,38 @@ export default async function BrandDetailPage({ params }: Props) {
 
   const activeLocations = brand.locations.filter((l) => l.status === "active");
 
-  const CATEGORY_LABEL_KO: Record<string, string> = {
-    japanese: "일식",
-    korean: "한식",
-    american: "양식",
-    cafe: "카페",
+  // 관련 브랜드 카드 tagline_ja 맵 (brandId → tagline_ja)
+  const relatedTaglineMap: Record<string, string> = {};
+  for (const info of allBrandInfoJa) {
+    if (info.tagline) {
+      relatedTaglineMap[info.brandId] = info.tagline;
+    }
+  }
+
+  // 매장 이름·영업시간 일본어 덮어쓰기 맵 (한국어 store_name으로 매칭)
+  // sheets-cms fetchStoreInfo('ja'): storeName = store_name_ja 우선, hours = hours_ja 우선
+  // brand.locations[].name = 한국어 원본 → koName으로 매칭
+  const brandStoresJa = storeInfoJa.filter((s) => s.brandId === id);
+  // 시트의 store_name 컬럼(한국어)과 매칭하기 위해 ko 버전도 fetch
+  const storeInfoKo = await fetchStoreInfo('ko');
+  const brandStoresKo = storeInfoKo.filter((s) => s.brandId === id);
+
+  const jaStoreOverrides = brand.locations.map((loc) => {
+    // ko 시트에서 동일 brand_id + 동일 순서로 매칭 (store_name ko가 brand.locations[].name과 일치 가정)
+    const koIdx = brandStoresKo.findIndex((s) => s.storeName === loc.name);
+    const jaStore = koIdx >= 0 ? brandStoresJa[koIdx] : undefined;
+    return {
+      koName: loc.name,
+      jaName: jaStore?.storeName || loc.name,
+      jaHours: jaStore?.hours || loc.hours || '',
+    };
+  });
+
+  const CATEGORY_LABEL_JA: Record<string, string> = {
+    japanese: "和食",
+    korean: "韓食",
+    american: "洋食",
+    cafe: "カフェ",
   };
 
   const menuItems: { name: string; price: string; photo?: string }[] =
@@ -100,10 +129,10 @@ export default async function BrandDetailPage({ params }: Props) {
       ? activeLocations.map((loc) => ({
           "@context": "https://schema.org",
           "@type": "Restaurant",
-          name: brand.name,
-          alternateName: brand.nameEn,
+          name: brand.nameEn,
+          alternateName: brand.name,
           description: brandInfo.description,
-          servesCuisine: brand.cuisine || CATEGORY_LABEL_KO[brand.category],
+          servesCuisine: brand.cuisineJa || CATEGORY_LABEL_JA[brand.category],
           priceRange: brand.priceRange,
           ...(loc.phone && { telephone: loc.phone }),
           ...(loc.hours && { openingHours: loc.hours }),
@@ -111,11 +140,11 @@ export default async function BrandDetailPage({ params }: Props) {
             "@type": "PostalAddress",
             streetAddress: loc.address,
             addressLocality: loc.address.startsWith("서울")
-              ? "서울"
+              ? "Seoul"
               : loc.address.startsWith("경기")
-              ? "경기"
+              ? "Gyeonggi"
               : loc.address.startsWith("부산")
-              ? "부산"
+              ? "Busan"
               : loc.address.split(" ")[0],
             addressCountry:
               loc.address.includes("NY") ||
@@ -124,13 +153,13 @@ export default async function BrandDetailPage({ params }: Props) {
                 ? "US"
                 : "KR",
           },
-          url: `https://next-dining.com/brands/${brand.id}`,
+          url: `https://next-dining.com/ja/brands/${brand.id}`,
           ...(menuItems.length > 0 && {
             hasMenu: {
               "@type": "Menu",
               hasMenuSection: {
                 "@type": "MenuSection",
-                name: "대표 메뉴",
+                name: "代表メニュー",
                 hasMenuItem: menuItems.map((item) => ({
                   "@type": "MenuItem",
                   name: item.name,
@@ -141,20 +170,22 @@ export default async function BrandDetailPage({ params }: Props) {
           }),
           parentOrganization: {
             "@type": "Organization",
-            name: "넥스트다이닝 (Next Dining Corp)",
-            url: "https://next-dining.com",
+            name: "ネクストダイニング (Next Dining Corp)",
+            url: "https://next-dining.com/ja",
           },
         }))
       : null;
 
   return (
     <BrandDetailContent
-      lang="ko"
+      lang="ja"
       brandId={id}
       brandInfo={brandInfo}
       elements={elements}
       menuItems={menuItems}
       jsonLd={jsonLd}
+      relatedTaglineMap={relatedTaglineMap}
+      jaStoreOverrides={jaStoreOverrides}
     />
   );
 }
