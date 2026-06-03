@@ -282,7 +282,7 @@ export async function fetchBrandStories(
         ingredientPhilosophy: getColValue(cols, headerMap, 'ingredient_philosophy', l),
         signatureMenu: getColValue(cols, headerMap, 'signature_menu', l),
         spaceExperience: getColValue(cols, headerMap, 'space_experience', l),
-        masterArtisan: getColValue(cols, headerMap, 'master_artisan', 'ko'),
+        masterArtisan: getColValue(cols, headerMap, 'Master Artisan', l),
       };
     },
     lang
