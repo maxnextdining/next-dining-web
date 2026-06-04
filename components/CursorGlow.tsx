@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 
 export default function CursorGlow() {
   const [pos, setPos] = useState({ x: -999, y: -999 });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    setMounted(true);
 
     let rafId: number;
     let targetX = -999;
@@ -36,7 +37,7 @@ export default function CursorGlow() {
     };
   }, []);
 
-  if (typeof window === 'undefined') return null;
+  if (!mounted) return null;
 
   return (
     <div
