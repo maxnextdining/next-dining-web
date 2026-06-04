@@ -242,7 +242,7 @@ export default function AboutPageContent({ lang, originLineMap, content }: Props
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2 mb-1.5">
                               <h4 className="font-bold" style={{ color: "#EDEDED" }}>
-                                {brand.name}
+                                {lang === 'ja' ? brand.nameEn : brand.name}
                               </h4>
                               <span
                                 className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${FORMAT_COLOR[brand.format]}`}

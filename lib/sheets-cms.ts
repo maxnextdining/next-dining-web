@@ -112,7 +112,8 @@ export async function fetchSheetTab<T>(
   mapRow: (cols: string[], headerMap: Record<string, number>, lang: Lang) => T | null,
   lang: Lang = 'ko'
 ): Promise<T[]> {
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tabName)}`;
+  // headers=1: gviz가 문자열-only 행을 헤더로 오인해 병합하는 것 방지 (헤더 1행 명시)
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(tabName)}`;
   try {
     const res = await fetch(url, { next: { revalidate: 3600 } });
     if (!res.ok) {
