@@ -74,6 +74,12 @@ body {
   overflow-x: hidden;
 }
 
+/* 일본어는 단어 사이 공백이 없어 keep-all이 줄바꿈을 막아 텍스트가 컨테이너 밖으로 넘친다.
+   글자 단위 줄바꿈을 허용해 화면 폭에 맞춰 wrap (한국어는 어절 보호 위해 keep-all 유지) */
+:lang(ja) {
+  word-break: normal;
+}
+
 /* ===== Display Font Weight ===== */
 .font-display {
   font-weight: 600;
